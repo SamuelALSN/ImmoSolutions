@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="single-add-property">
-                    <h3>@lang("Description de la propriété et prix ")</h3>
+                    <h3>@lang("Description du Bien immobiliers et prix ")</h3>
                     <div class="property-form-group">
                         <form>
                             <div class="row">
@@ -55,19 +55,19 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <label for="description">Property Description</label>
+                                        <label for="description">@lang("Description de la propriete")</label>
                                         <textarea id="description" name="pro-dexc"
-                                                  placeholder="Describe about your property"></textarea>
+                                                  placeholder="@lang("Breve Description de votre propriete ")"></textarea>
                                     </p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-4 col-md-12">
                                     <div class="dropdown faq-drop">
-                                        <label for="dropdownmissdcall">Status</label>
+                                        <label for="dropdownmissdcall">@lang("Type de baille")</label>
                                         <button class="pro-status dropdown-toggle" type="button" id="dropdownmissdcall"
                                                 data-toggle="dropdown" aria-haspopup="true">
-                                            Select status
+                                            @lang("Selectioner")
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu faq-drop-open" aria-labelledby="dropdownmissdcall">
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-12">
                                     <div class="dropdown faq-drop">
-                                        <label for="dropdowntype">type</label>
+                                        <label for="dropdowntype">@lang("type du bien")</label>
                                         <button class="pro-type dropdown-toggle" type="button" id="dropdowntype"
                                                 data-toggle="dropdown" aria-haspopup="true">
                                             Select Type
@@ -139,33 +139,33 @@
                     </div>
                 </div>
                 <div class="single-add-property">
-                    <h3>property Location</h3>
+                    <h3>@lang("Localisation de la propriété")</h3>
                     <div class="property-form-group">
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <p>
                                     <label for="address">Address</label>
-                                    <input type="text" name="address" placeholder="Enter Your Address" id="address">
+                                    <input type="text" name="address" placeholder="@lang("Entrez votre adresse")" id="address">
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <p>
-                                    <label for="city">City</label>
-                                    <input type="text" name="city" placeholder="Enter Your City" id="city">
+                                    <label for="city">@lang("Ville")</label>
+                                    <input type="text" name="city" placeholder="@lang("Entrez votre ville ")" id="city">
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <p>
-                                    <label for="state">State</label>
-                                    <input type="text" name="state" placeholder="Enter Your State" id="state">
+                                    <label for="state">@lang("Région")</label>
+                                    <input type="text" name="state" placeholder="@lang("Entrer votre Région")" id="state">
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <p>
-                                    <label for="country">Country</label>
-                                    <input type="text" name="country" placeholder="Enter Your Country" id="country">
+                                    <label for="country">@lang("Pays")</label>
+                                    <input type="text" name="country" placeholder="@lang("Entrer votre Pays")" id="country">
                                 </p>
                             </div>
                         </div>
@@ -347,7 +347,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="prperty-submit-button">
-                                <button type="submit">Submit Property</button>
+                                <button type="submit">@lang("Soumettre la Propriété")</button>
                             </div>
                         </div>
                     </div>

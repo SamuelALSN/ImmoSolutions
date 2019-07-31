@@ -18,24 +18,22 @@
                         <div class="nav-footer">
                             <ul>
                                 <li><a href="index.html">Home One</a></li>
-                                <li><a href="https://code-theme.com/html/findhouses/properties-right-sidebar.html">Properties Right</a></li>
-                                <li><a href="properties-full-list.html">Properties List</a></li>
-                                <li><a href="properties-details.html">Property Details</a></li>
-                                <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
+                                <li><a href=""> @lang("Liste des Proprietes")</a></li>
+                                <li><a href="">@lang("Details des proprietes ")</a></li>
+                                <li class="no-mgb"><a href="">@lang("Nos Agents Immobiliers")</a></li>
                             </ul>
                             <ul class="nav-right">
-                                <li><a href="agent-details.html">Agents Details</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="blog.html">Blog Default</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                                <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
+                                <li><a href="">Agents Details</a></li>
+                                <li><a href="">@lang("A propos de Nous ")</a></li>
+                                <li><a href="">@lang("Notre Blog")</a></li>
+                                <li class="no-mgb"><a href="">@lang("Nous contacter")</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="widget">
-                        <h3>Twitter Feeds</h3>
+                        <h3>@lang("Twitter ")</h3>
                         <div class="twitter-widget contuct">
                             <div class="twitter-area">
                                 <div class="single-item">
@@ -43,8 +41,8 @@
                                         <i class="fa fa-twitter" aria-hidden="true"></i>
                                     </div>
                                     <div class="text">
-                                        <h5><a href="index.html#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                        <h4>about 5 days ago</h4>
+                                        <h5><a href="">@ImmoSolutions</a> Commentaire 1</h5>
+                                        <h4>Il y'a 5 jour</h4>
                                     </div>
                                 </div>
                                 <div class="single-item">
@@ -52,8 +50,8 @@
                                         <i class="fa fa-twitter" aria-hidden="true"></i>
                                     </div>
                                     <div class="text">
-                                        <h5><a href="index.html#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                        <h4>about 5 days ago</h4>
+                                        <h5><a href="">@ImmoSolutionss</a> Commentaire 2 .</h5>
+                                        <h4>Il y'a 5 jour</h4>
                                     </div>
                                 </div>
                                 <div class="single-item">
@@ -61,8 +59,8 @@
                                         <i class="fa fa-twitter" aria-hidden="true"></i>
                                     </div>
                                     <div class="text">
-                                        <h5><a href="index.html#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                        <h4>about 5 days ago</h4>
+                                        <h5><a href="#">@findhouses</a> Commentaire 3 </h5>
+                                        <h4>Il y'a 5 jour</h4>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +69,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="contactus">
-                        <h3>Contact Us</h3>
+                        <h3>@lang("Nous Contacter")</h3>
                         <ul>
                             <li>
                                 <div class="info">

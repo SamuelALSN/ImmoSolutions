@@ -27,8 +27,8 @@
 <section class="headings">
     <div class="text-heading text-center">
         <div class="container">
-            <h1>Submit Property</h1>
-            <h2><a href="index.html">Home </a> &nbsp;/&nbsp; Submit Property</h2>
+            <h1>@lang("Soumettre un Bien ")</h1>
+            <h2><a href="{{url('/welcome')}}">@lang("Accueil") </a> &nbsp;/&nbsp; @lang("Soumettre une propriete")</h2>
         </div>
     </div>
 </section>
@@ -40,15 +40,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="single-add-property">
-                    <h3>Property description and price</h3>
+                    <h3>@lang("Description de la propriété et prix ")</h3>
                     <div class="property-form-group">
                         <form>
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <label for="title">Property Title</label>
+                                        <label for="title">@lang("Titre de la propriete")</label>
                                         <input type="text" name="title" id="title"
-                                               placeholder="Enter your property title">
+                                               placeholder="@lang("Entrer le titre de la propriete")">
                                     </p>
                                 </div>
                             </div>

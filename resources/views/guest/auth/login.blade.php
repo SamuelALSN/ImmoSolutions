@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="html 5 template">
+    <meta name="description" content="ImmoSolutions find houses in Lome, Togo ">
     <meta name="author" content="">
     <title>{{config('app.name')}}</title>
     <!-- FAVICON -->
@@ -28,8 +28,8 @@
 <section class="headings">
     <div class="text-heading text-center">
         <div class="container">
-            <h1>@lang("Connection ")</h1>
-            <h2><a href="index.html">@lang("Acceuil")</a> &nbsp;/&nbsp; @lang("Se connecter")</h2>
+            <h1>@lang("Connection")</h1>
+            <h2><a href="{{url('/home')}}">@lang("Acceuil")</a> &nbsp;/&nbsp; @lang("Se connecter")</h2>
         </div>
     </div>
 </section>
@@ -78,9 +78,13 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+                @if(Route::has('password.request'))
+                <div class="float-right mt-1"><a id="forgot" href="{{route('password.request')}}">
+                        @lang("Mot de Passe oublié")</a>
+                </div>
+                @endif
             </div>
-            <a href="login.html#0" class="btn_1 rounded full-width">@lang("Se connecter pour trouver des logements")</a>
+            <button type="submit" class="btn_1 rounded full-width">@lang("Se connecter")</button>
             <div class="text-center add_top_10">@lang(" Voulez vous  trouver des logements ?") <strong><a href="{{url('/guest-register')}}">
                         @lang("S'inscrire pour")
                         </a></strong></div>

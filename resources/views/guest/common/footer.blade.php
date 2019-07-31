@@ -8,8 +8,8 @@
                         <a href="index.html" class="logo">
                             <img src="{{asset('guest/images/logo-footer.svg')}}" alt="netcom">
                         </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus impedit perferendis, laudantium molestiae ipsam rem veniam facere quos! Temporibus, minima culpa deleniti magnam.</p>
-                        <a href="about.html" class="btn btn-secondary">Read More...</a>
+                        <p> La réponse a vos soucis de logement</p>
+                        <a href="about.html" class="btn btn-secondary">@lang("Voir plus...")</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -76,19 +76,19 @@
                             <li>
                                 <div class="info">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <p class="in-p">95 South Park Ave, USA</p>
+                                    <p class="in-p">Lomé, Togo</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <p class="in-p">+456 875 369 208</p>
+                                    <p class="in-p">+228 90557831</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <p class="in-p ti">support@findhouses.com</p>
+                                    <p class="in-p ti">immosolutions@gmail.com</p>
                                 </div>
                             </li>
                         </ul>

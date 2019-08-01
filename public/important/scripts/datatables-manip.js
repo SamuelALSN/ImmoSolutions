@@ -1,5 +1,4 @@
-<script type="text/javascript">
-    $(document).ready(function () {
+ $(document).ready(function () {
         var myTable = $('#DataTables_Table_0').DataTable();
 
         function parsedata(selecteddata) {
@@ -13,13 +12,14 @@
 
         $(document).on('click', '#edit-user', function () {
             $('.modal-titleEdit').text("@lang('Modifier utilisateur')");
-            $('#save_user').attr("id","update_user");
+            $('#save_user').attr("id", "update_user");
             var alldata = $(this).data('info').split(',');
             parsedata(alldata);
         });
 
-        // affichage du modal de suppression
+        // show delete modal
         $(document).on('click', '#delete-user', function () {
+
             $('.modal-titleDelete').text("@lang('Voulez vous supprimer ?')");
             var deletingdata = $(this).data('info').split(',');
 
@@ -55,27 +55,24 @@
                 }
             });
             var user_id = $.trim($('.did').text());
-            {{--$.ajax({--}}
-            {{--    type:'delete',--}}
-            {{--    --}}{{--url:"{{route('user.destroy')}}"+'/user/'+user_id,--}}
-            {{--    url:"{{route('user.destroy')}}",--}}
+            $.ajax({
+                type: 'delete',
+                url: "user" + '/' + user_id,
+                data: {
+                    id: user_id,
+                },
+                success: function (data) {
+                    $('#dangerModal').modal('toggle');
+                    alertify.notify('Utilisateur id ' + JSON.parse(data) + ' supprimé ', 'success', 10, function () {
+                        console.log('dismissed');
 
-            {{--    data:{--}}
-            {{--      id:user_id,--}}
+                    });
+                    setTimeout(function () {// wait for 5 secs(2)
+                        location.reload(); // then reload the page.(3)
+                    }, 1000);
+                },
 
-            {{--    },--}}
-
-            {{--    // data:{--}}
-            {{--    //    '_token':$('input[name=_token]').val(),--}}
-            {{--    //--}}
-            {{--    // },--}}
-            {{--    success: function (data) {--}}
-            {{--        myTable.draw();--}}
-            {{--    },--}}
-            {{--    // success:function (data) {--}}
-            {{--    //     $('.odd'+$('.did').text()).remove();--}}
-            {{--    // }--}}
-            {{--})--}}
+            })
         });
 
         // create user function
@@ -86,36 +83,36 @@
                 }
             });
 
-                //e.preventDefault();
-                $(this).html('Envoi..');
+            //e.preventDefault();
+            $(this).html('Envoi..');
 
-                $.ajax({
-                    data: $('#postform').serialize(),
-                    url: "{{ route('user.store')}}",
-                    type: "POST",
-                    dataType: 'json',
-                    success: function (data) {
-                        $('#save_user').html('Enregistrer');
-                        $('#postform').trigger("reset");
-                        $('#primaryModal').hide();
-                        table.draw();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                        $('#save_user').html('Modifier');
-                    }
-                });
+            $.ajax({
+                data: $('#postform').serialize(),
+                url: "{{ route('user.store')}}",
+                type: "POST",
+                dataType: 'json',
+                success: function (data) {
+                    $('#save_user').html('Enregistrer');
+                    $('#postform').trigger("reset");
+                    $('#primaryModal').hide();
+                    table.draw();
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                    $('#save_user').html('Modifier');
+                }
+            });
 
         });
 
         // update user function
 
-        $(document).on('click', "#update_user",function () {
-           $.ajaxSetup({
-               'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-           })
+        $(document).on('click', "#update_user", function () {
+            $.ajaxSetup({
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            })
             //e.preventDefault();
-           $(this).html('Envoi..')
+            $(this).html('Envoi..')
 
             $.ajax({
                 data: $('#postform').serialize(),
@@ -134,5 +131,4 @@
                 }
             });
         });
-    });
-</script>
+    })

@@ -6,12 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
-
+ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements  MustVerifyEmail
 {
     use HasRoles;
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +26,7 @@ class User extends Authenticatable implements  MustVerifyEmail
 //        'signup_sm_ip_address',
 //        'admin_ip_address',
 //        'updated_ip_address',
-//        'deleted_ip_address',
+         'deleted_ip_address',
     ];
 
     /**

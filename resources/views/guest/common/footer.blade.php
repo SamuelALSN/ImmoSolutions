@@ -108,5 +108,5 @@
         </div>
     </div>
 </footer>
-<a data-scroll href="index.html#heading" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+<a data-scroll href="#heading" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
 

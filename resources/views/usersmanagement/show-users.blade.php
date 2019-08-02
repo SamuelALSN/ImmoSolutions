@@ -172,5 +172,5 @@
     <script src="{{asset('datatables/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.bootstrap4.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.js')}}"></script>
-    @include('scripts.datatables')
+   <script src = "{{asset('important/scripts/datatables-manip.js')}}"></script>
 @endsection

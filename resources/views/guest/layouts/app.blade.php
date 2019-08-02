@@ -45,7 +45,7 @@
 <div class="color-switcher" id="choose_color"><a href="index.html#." class="picker_close"><i
             class="fa fa-cog fa-spin fa-2x"></i></a>
     <div class="theme-colours">
-        <p class="font-italic">Choose Colour style</p>
+        <p class="font-italic">@lang("Personnaliser les couleurs")</p>
         <ul>
             <li>
                 <a href="index.html#." class="blue" id="blue"></a>

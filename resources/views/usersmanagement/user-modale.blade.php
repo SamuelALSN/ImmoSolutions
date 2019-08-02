@@ -12,7 +12,7 @@
                 <form id="postform" method="POST" action="">
                     @csrf
 
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3" id="div_id">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
                             <i class="flag-icon-ke"></i>

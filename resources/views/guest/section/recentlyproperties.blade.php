@@ -2,8 +2,8 @@
 <section class="recently portfolio">
     <div class="container-fluid">
         <div class="section-title">
-            <h3>Recently</h3>
-            <h2>Properties</h2>
+            <h3>@lang("Biens")</h3>
+            <h2>@lang("Récents ")</h2>
         </div>
         <div class="row portfolio-items">
             <div class="item col-lg-3 col-md-6 col-xs-12 landscapes">

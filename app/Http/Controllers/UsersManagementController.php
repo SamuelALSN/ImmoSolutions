@@ -198,22 +198,21 @@ class UsersManagementController extends Controller
      * @return \Illuminate\Http\Response
      */
 //    public function destroy(user $user)
-    public function destroy(user $user)
+    public function destroy($id)
     {
+
+
         $currentUser = Auth::user();
-        $user = User::findorFail($user);
+        $user = User::findorFail($id);
         $ipAdress = new CaptureIpTrait();
         if($user->id!= $currentUser->id){
-            $user->deleted_ip_adress = $ipAdress->getClientIp();
+            //$user->deleted_ip_adress = $ipAdress->getClientIp();
             $user->save();
             $user->delete();
-            return response()->json($user);
+            return response()->json($user->id);
         }
 
-         return Response::json(array(
-        'errors' => 'suppression impossible'));
+         return response()->json([ 'errors' => 'suppression impossible']);
 
-
-       // return view('admin.home');
     }
 }

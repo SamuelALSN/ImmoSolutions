@@ -9,7 +9,10 @@
     <meta name="author" content="">
     <meta name="keyword" content="">
     <title> {{config('app.name','ImmoSolutions')}}</title>
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/themes/default.min.css"/>
     <!-- CSRF Token -->
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,7 +26,7 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/pace-progress/css/pace.min.css')}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+{{--    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>--}}
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -50,7 +53,7 @@
 <script src="{{asset('js/pace-progress/pace.min.js')}}"></script>
 <script src="{{asset('js/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
 <script src="{{asset('js/@coreui/coreui/dist/js/coreui.min.js')}}"></script>
-
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
 @yield('script')
 <!-- Plugins and scripts required by specific  view-->
 </body>

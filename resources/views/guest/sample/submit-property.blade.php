@@ -77,7 +77,6 @@
                             </div>
 
 
-
                         </div>
                     </div>
 
@@ -87,9 +86,9 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <p>
-                                        <label for="city">@lang("Pays")</label>
-                                        <select class="form-control">
-                                            <option id="pays"></option>
+                                        <label for="country">@lang("Pays")</label>
+                                        <select id="country" class="form-control"
+                                                style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;">
                                         </select>
                                     </p>
                                 </div>
@@ -97,18 +96,18 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-12">
                                     <p>
-                                        <label for="state">@lang("Région")</label>
-                                        <select class="form-control">
-                                            <option id="region"></option>
+                                        <label id="label_state" for="state">@lang("Région")</label>
+                                        <select id="state" class="form-control"
+                                                style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;">
                                         </select>
                                         {{--                                    <input type="text" name="state" placeholder="@lang("Entrer votre Région")" id="state">--}}
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <p>
-                                        <label for="country">@lang("ville")</label>
-                                        <select class="form-control">
-                                            <option id="ville"></option>
+                                        <label id="label_city" for="city">@lang("ville")</label>
+                                        <select id="city" class="form-control"
+                                                style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;">
                                         </select>
                                         {{--                                    <input type="text" name="country" placeholder="@lang("Entrer votre Pays")" id="country">--}}
                                     </p>
@@ -155,7 +154,6 @@
                                     {{--                                <div class="dropdown faq-drop no-mb">--}}
                                     <label for="age">@lang("Categorie")<span></span></label>
                                     <select class="form-control">
-                                        <option></option>
                                     </select>
 
                                     {{--                                </div>--}}
@@ -164,7 +162,6 @@
                                     <div class="dropdown faq-drop no-mb">
                                         <label for="bed">Sous Categorie</label>
                                         <select class="form-control">
-                                            <option></option>
                                         </select>
                                     </div>
                                 </div>
@@ -173,7 +170,6 @@
                                     <div class="dropdown faq-drop no-mb">
                                         <label for="bed">Standing</label>
                                         <select class="form-control">
-                                            <option></option>
                                         </select>
 
                                     </div>
@@ -369,12 +365,107 @@
         });
     });
 </script>
-{{--<script>--}}
-{{--    $(".dropzone").dropzone({--}}
-{{--        dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> Click here or drop files to upload",--}}
-{{--    });--}}
 
-{{--</script>--}}
+<script>
+    // fetch API USING
+    window.addEventListener('DOMContentLoaded', (e) => {
+        var country = $('#country');
+        var state = $('#state');
+        var city = $('#city');
+
+        state.hide();
+        city.hide();
+        $('#label_state').hide();
+        $('#label_city').hide();
+
+        country.on('change', function () {
+            $('#state').show();
+            $('#label_state').show();
+        });
+
+        state.on('change', function () {
+            $('#city').show();
+            $('#label_city').show();
+        });
+        // endhide
+
+        // get countryData
+        fetch('{{url('/country')}}')
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(allCountry => {
+                        var v = "<option> @lang("Choisir")</option>";
+                        for (let i = 0; i < allCountry.length; i++) {
+                            v += "<option value=" + allCountry[i].id + ">" + allCountry[i].name + "</option>";
+                            $('#country').html(v);
+                        }
+                    })
+                } else {
+                    console.error('Réponse du serveur : ' + response.status);
+                }
+            });
+
+        // get state
+        country.on('change', function () {
+            var c = country.val();
+            //alert(c);
+            fetch('{{url('/country')}}' + '/' + c)
+                .then(response => {
+                    if (response.ok) {
+                        response.json().then(relatedStates => {
+                            var s = "<option>@lang("Choisir")</option>";
+                            for (let i = 0; i < relatedStates.length; i++) {
+                                s += "<option value =" + relatedStates[i].id + ">" + relatedStates[i].name + "</option>";
+                                $('#state').html(s);
+                                //console.log(relatedStates[i].name)
+                            }
+                        })
+                    } else {
+                        console.error(' Reponse serveur : ' + response.status);
+                    }
+
+                })
+        });
+    });
+
+    // end state
+
+
+    // load city
+    $('#state').on('change', function () {
+        var ci = $('#state').val();
+        //alert(ci);
+        fetch('{{url('/state')}}' + '/' + ci)
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(Relatedcities => {
+                        var cit = "<option>@lang("Choisir")</option>";
+                        for (let i = 0; i < Relatedcities.length; i++) {
+                            cit += "<option value =" + Relatedcities[i].id + ">" + Relatedcities[i].name + "</option>";
+                            $('#city').html(cit);
+                            //console.log(relatedStates[i].name)
+                        }
+                    })
+                } else {
+                    console.error(' Reponse serveur : ' + response.status);
+                }
+
+            })
+    });
+
+    //endcity
+
+
+</script>
+
+<script>
+
+    {{--                        // let newLI = document.createElement('li');--}}
+    {{--                        // newLI.appendChild(document.createTextNode(regions[i].nom));--}}
+    {{--                        // parent.appendChild(newLI);--}}
+
+</script>
+
 </body>
 
 </html>

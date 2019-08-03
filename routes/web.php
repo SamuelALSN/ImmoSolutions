@@ -75,3 +75,13 @@ Route::get('/guest-register',function(){
 Route::resources([
     'property'=>'PropertyController'
 ]);
+
+// load country wiith ajax
+
+Route::resources([
+    'country'=>'CountryController'
+]);
+
+Route::resources([
+   'state'=>'StateController'
+]);

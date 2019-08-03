@@ -29,9 +29,9 @@ class HomeController extends Controller
         //$role = $user->getRoleNames();
 
         $user = Auth::user();
-        if ($user->hasrole('super-admin')) {
+        if ($user->hasrole('Admin')) {
             return view('home');
-        } elseif ($user->hasrole('moderator')) {
+        } elseif ($user->hasrole('Agents')) {
             return view('moderator.home');
         }
 

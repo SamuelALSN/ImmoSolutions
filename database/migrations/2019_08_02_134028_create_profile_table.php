@@ -13,18 +13,20 @@ class CreateProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('user_id')->unsigned()->unique();
+            $table->unsignedBigInteger('user_id')->unsigned()->unique();
             $table->foreign('user_id')->on('users')->references('id')
                 ->onDelete('cascade');
-            $table->string('sex')->nullable();
+            $table->text('bio')->nullable();
+            $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
-            $table->integer('phone')->nullable();
-            $table->integer('phone2')->nullable();
+            $table->string('phoneNumber')->nullable();
+            $table->string('phoneNumber2')->nullable();
             $table->string('avatar')->nullable();
             $table->boolean('avatar_status')->default(false);
-            $table->string('facebook_acount')->nullable();
+            $table->string('location')->nullable();
+            $table->string('facebook_account')->nullable();
             $table->string('gmail_account')->nullable();
             $table->string('bank_account')->nullable();
             $table->string('bank_account2')->nullable();

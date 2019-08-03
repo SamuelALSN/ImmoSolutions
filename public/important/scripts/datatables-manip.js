@@ -39,11 +39,11 @@ $(document).ready(function () {
     showing show modal
      */
     $(document).on('click', '#show-user', function () {
-        $('.modal-titleShow').text("@lang('Informations')");
+        $('.modal-titleShow').text("Informations");
 
         var showdata = $(this).data('info').split(',');
 
-        $('.showparagraph').html('l\'utilisateur ' + showdata[1] + '');
+        $('.showparagraph').html('l\'utilisateur ' + showdata[1] + ' vérifié le '+showdata[7]);
     });
 
     /*

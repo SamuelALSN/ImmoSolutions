@@ -95,17 +95,25 @@
 
                                                             @if($user_role->name =='customer')
                                                                 @php $badgeClass ='primary' @endphp
-                                                            @elseif($user_role->name =='moderator')
+                                                            @elseif($user_role->name =='Agents')
                                                                 @php $badgeClass='warning' @endphp
-                                                            @elseif($user_role->name =='super-admin')
+                                                            @elseif($user_role->name =='Admin')
                                                                 @php $badgeClass='success' @endphp
                                                             @endif
                                                             <span
                                                                 class="badge badge-{{$badgeClass}}">{{$user_role->name}}</span>
                                                         @endforeach
                                                     </td>
+
                                                     <td>
-                                                        <span class="badge badge-success">Active</span>
+                                                        @if($user->email_verified_at === null)
+                                                            @php $badgeclasss ='danger'@endphp
+                                                            @php $info ='Non Active' @endphp
+                                                        @else
+                                                            @php $badgeclasss ='success' @endphp
+                                                            @php $info ='Active' @endphp
+                                                        @endif
+                                                        <span class="badge badge-{{$badgeclasss}}"> {{$info}} </span>
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-success" data-toggle="modal"
@@ -117,7 +125,8 @@
                                                            {{$user->email}},
                                                            {{$user->password}},
                                                            {{$user_role->name}},
-                                                           {{$user->country_id}}, ">
+                                                           {{$user->country_id}},
+                                                            {{$user->email_verified_at}}">
                                                             <i class="fa fa-search-plus"></i>
                                                         </a>
                                                         <a class="btn btn-info" data-toggle="modal"

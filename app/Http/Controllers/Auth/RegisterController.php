@@ -6,7 +6,10 @@ use App\User;
 use App\Http\Controllers\Controller;
 use App\Traits\CaptureIpTrait;
 use  Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 // spatie role and permission
@@ -86,5 +89,15 @@ class RegisterController extends Controller
         $user->assignRole('customer');
         return $user;
 
+    }
+
+    public function logout()
+    {
+        $user = Auth::user();
+        Log::info('User Logged Out. ', [$user]);
+        Auth::logout();
+        Session::flush();
+
+        return redirect('/');
     }
 }

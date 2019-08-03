@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
  use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Profile;
 class User extends Authenticatable implements  MustVerifyEmail
 {
     use HasRoles;
@@ -55,4 +55,12 @@ class User extends Authenticatable implements  MustVerifyEmail
     /**
      *  Build  User PRelationaships
      */
+
+    /*
+     * profile Relationships
+     */
+
+    public function profiles(){
+        return $this->hasOne('App\Profile');
+    }
 }

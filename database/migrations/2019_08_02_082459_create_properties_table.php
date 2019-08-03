@@ -18,7 +18,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_name');
             $table->string('adresse')->nullable();
             $table->string('location')->nullable();
-            $table->string('area');
+            $table->integer('area');
             $table->dateTime('buildingdate')->nullable();
             $table->boolean('activated')->default(false);
             $table->decimal('latitudepostion')->nullable();
@@ -46,7 +46,7 @@ class CreatePropertiesTable extends Migration
                 ->onDelete('cascade');
             $table->foreign('country_id')->on('countries')->references('id')
                 ->onDelete('cascade');
-            $table->foreign('state_id')->on('state')->references('id')
+            $table->foreign('state_id')->on('states')->references('id')
                 ->onDelete('cascade');
             $table->foreign('city_id')->on('cities')->references('id')
                 ->onDelete('cascade');

@@ -17,13 +17,12 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('country_id')->unsigned()->index();
             $table->string('name');
-            $table->string('last_name');
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('activated')->default(false);
             // IpAdress management
-            $table->integer('phone_number')->nullable();
             $table->ipAddress('signup_ip_address')->nullable();
             $table->ipAddress('signup_confirmation_ip_address')->nullable();
             $table->ipAddress('signup_sm_ip_address')->nullable();

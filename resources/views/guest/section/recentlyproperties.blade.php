@@ -14,7 +14,7 @@
                         </div>
                         <div class="button-effect">
                             <a href="properties-details.html" class="btn"><i class="fa fa-link"></i></a>
-                            <a href="../../www.youtube.com/watch.htm" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                            <a href="" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                             <a class="img-poppu btn" href="{{asset('guest/images/feature-properties/fp-1.jpg')}}" data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
                         </div>
                         <div class="homes">

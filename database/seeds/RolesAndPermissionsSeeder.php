@@ -35,10 +35,10 @@ class RolesAndPermissionsSeeder extends Seeder
 //        $role->givePermissionTo('unpublish advert ');
 
         // or may be done by chaining
-        $role = Role::create(['name' => 'moderator'])
+        $role = Role::create(['name' => 'Agents'])
             ->givePermissionTo(['publish advert', 'unpublish advert']);
 
-        $role = Role::create(['name' => 'super-admin']);
+        $role = Role::create(['name' => 'Admin']);
         $role->givePermissionTo(Permission::all());
     }
 }

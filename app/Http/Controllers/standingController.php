@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Property;
+use App\standing;
 use Illuminate\Http\Request;
 
-class PropertyController extends Controller
+class standingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class PropertyController extends Controller
     public function index()
     {
         //
-
-        return view('guest.sample.submit-property');
+        return response(standing::all());
     }
 
     /**
@@ -38,16 +37,15 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         //
-        return 'ok';
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Property  $property
+     * @param  \App\standing  $standing
      * @return \Illuminate\Http\Response
      */
-    public function show(Property $property)
+    public function show(standing $standing)
     {
         //
     }
@@ -55,10 +53,10 @@ class PropertyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Property  $property
+     * @param  \App\standing  $standing
      * @return \Illuminate\Http\Response
      */
-    public function edit(Property $property)
+    public function edit(standing $standing)
     {
         //
     }
@@ -67,10 +65,10 @@ class PropertyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Property  $property
+     * @param  \App\standing  $standing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Property $property)
+    public function update(Request $request, standing $standing)
     {
         //
     }
@@ -78,10 +76,10 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Property  $property
+     * @param  \App\standing  $standing
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Property $property)
+    public function destroy(standing $standing)
     {
         //
     }

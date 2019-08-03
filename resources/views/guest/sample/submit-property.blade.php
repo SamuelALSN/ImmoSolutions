@@ -53,7 +53,7 @@
                                 <div class="col-md-12">
                                     <p>
                                         <label for="title">@lang("Titre de la propriete")</label>
-                                        <input type="text" name="title" id="title"
+                                        <input type="text" name="property_name" id="property_name"
                                                placeholder="@lang("Entrer le titre de la propriete")">
                                     </p>
                                 </div>
@@ -62,7 +62,7 @@
                                 <div class="col-md-12">
                                     <p>
                                         <label for="description">@lang("Description de la propriete")</label>
-                                        <textarea id="description" name="pro-dexc"
+                                        <textarea id="description" name="description"
                                                   placeholder="@lang("Breve Description de votre propriete ")"></textarea>
                                     </p>
                                 </div>
@@ -87,7 +87,7 @@
                                 <div class="col-lg-12 col-md-12">
                                     <p>
                                         <label for="country">@lang("Pays")</label>
-                                        <select id="country" class="form-control"
+                                        <select id="country" class="form-control" name="country_id"
                                                 style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;">
                                         </select>
                                     </p>
@@ -97,34 +97,33 @@
                                 <div class="col-lg-6 col-md-12">
                                     <p>
                                         <label id="label_state" for="state">@lang("Région")</label>
-                                        <select id="state" class="form-control"
+                                        <select id="state" class="form-control" name="state_id"
                                                 style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;">
                                         </select>
-                                        {{--                                    <input type="text" name="state" placeholder="@lang("Entrer votre Région")" id="state">--}}
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <p>
                                         <label id="label_city" for="city">@lang("ville")</label>
-                                        <select id="city" class="form-control"
+                                        <select id="city" class="form-control" name="city_id"
                                                 style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;">
                                         </select>
-                                        {{--                                    <input type="text" name="country" placeholder="@lang("Entrer votre Pays")" id="country">--}}
+
                                     </p>
                                 </div>
 
                                 <div class="col-lg-6 col-md-12">
                                     <p>
                                         <label for="address">Address</label>
-                                        <input type="text" name="address" placeholder="@lang("Entrez votre adresse")"
-                                               id="address">
+                                        <input type="text" name="adresse" placeholder="@lang("Entrez votre adresse")"
+                                               id="adresse">
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <p>
-                                        <label for="address">Localisation</label>
-                                        <input type="text" name="address"
-                                               placeholder="@lang("Entrez votre Localisation")" id="localisation">
+                                        <label for="location">Localisation</label>
+                                        <input type="text" name="location"
+                                               placeholder="@lang("Entrez votre Localisation")" id="location">
                                     </p>
                                 </div>
                             </div>
@@ -132,15 +131,15 @@
                                 <div class="col-lg-6 col-md-12">
                                     <p class="no-mb first">
                                         <label for="latitude">Google Maps latitude</label>
-                                        <input type="text" name="latitude" placeholder="Google Maps latitude"
-                                               id="latitude">
+                                        <input type="text" name="latitudeposition" placeholder="Google Maps latitude"
+                                               id="latitudeposition">
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <p class="no-mb last">
                                         <label for="longitude">Google Maps longitude</label>
-                                        <input type="text" name="longitude" placeholder="Google Maps longitude"
-                                               id="longitude">
+                                        <input type="text" name="longitudeposition" placeholder="Google Maps longitude"
+                                               id="longitudeposition">
                                     </p>
                                 </div>
                             </div>
@@ -151,25 +150,25 @@
                         <div class="property-form-group">
                             <div class="row">
                                 <div class="col-lg-4 col-md-12">
-                                    {{--                                <div class="dropdown faq-drop no-mb">--}}
-                                    <label for="age">@lang("Categorie")<span></span></label>
-                                    <select class="form-control">
+                                    <label for="propertytpe">@lang("Categorie")<span></span></label>
+                                    <select class="form-control" name="propertytype_id" id="propertytype_id"
+                                            style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;">
                                     </select>
-
-                                    {{--                                </div>--}}
                                 </div>
                                 <div class="col-lg-4 col-md-12">
                                     <div class="dropdown faq-drop no-mb">
-                                        <label for="bed">Sous Categorie</label>
-                                        <select class="form-control">
+                                        <label for="subpropertyType" id="label_subpropertyType"> @lang("Sous Categorie")</label>
+                                        <select class="form-control" name="subpropertyType_id" style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;"
+                                                id="subpropertyType_id">
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-12">
                                     <div class="dropdown faq-drop no-mb">
-                                        <label for="bed">Standing</label>
-                                        <select class="form-control">
+                                        <label for="standing">Standing</label>
+                                        <select class="form-control" name="standing_id" style="font-size: 0.7rem;line-height: 1.8;letter-spacing: 0.104em;"
+                                                id="standing_id">
                                         </select>
 
                                     </div>
@@ -182,16 +181,16 @@
                         <div class="property-form-group">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12">
-                                    {{--                                <div class="dropdown faq-drop no-mb">--}}
-                                    <label for="age">@lang("Date de Construction ")<span>(optional)</span></label>
-                                    <input class="form-control" type="text">
+                                    <label for="date">@lang("Date de Construction ")<span>(optionel)</span></label>
+                                    <input class="form-control"
+                                           type="date" name="buildingdate" id="buildingdate">
 
-                                    {{--                                </div>--}}
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="dropdown faq-drop no-mb">
-                                        <label for="bed">Surface</label>
-                                        <input class="form-control" type="text">
+                                        <label for="surface">Surface</label>
+                                        <input class="form-control" type="text"
+                                               name="surface" id="surface">
                                     </div>
                                 </div>
                             </div>
@@ -200,9 +199,9 @@
                     <div class="add-property-button">
                         <div class="row">
                             <div class="col-md-12">
-
-                                <button id="soumettre">@lang("Soumettre la Propriété")</button>
-
+                                <div class="prperty-submit-button">
+                                    <button id="soumettre">@lang("Soumettre la Propriété")</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -356,13 +355,6 @@
     $(document).ready(function () {
         $('.page-heading').hide();
         $('#my-dropzone').hide();
-
-        $('#essai').click(function () {
-            $('#propertyForm').slideUp("slow");
-            $('.page-heading').show();
-            $('#my-dropzone').slideDown("slow");
-
-        });
     });
 </script>
 
@@ -377,7 +369,8 @@
         city.hide();
         $('#label_state').hide();
         $('#label_city').hide();
-
+        $('#subpropertyType_id').hide();
+        $('#label_subpropertyType').hide();
         country.on('change', function () {
             $('#state').show();
             $('#label_state').show();
@@ -394,7 +387,7 @@
             .then(response => {
                 if (response.ok) {
                     response.json().then(allCountry => {
-                        var v = "<option> @lang("Choisir")</option>";
+                        var v = "<option disabled> @lang("Choisir")</option>";
                         for (let i = 0; i < allCountry.length; i++) {
                             v += "<option value=" + allCountry[i].id + ">" + allCountry[i].name + "</option>";
                             $('#country').html(v);
@@ -413,7 +406,7 @@
                 .then(response => {
                     if (response.ok) {
                         response.json().then(relatedStates => {
-                            var s = "<option>@lang("Choisir")</option>";
+                            var s = "<option disabled>@lang("Choisir")</option>";
                             for (let i = 0; i < relatedStates.length; i++) {
                                 s += "<option value =" + relatedStates[i].id + ">" + relatedStates[i].name + "</option>";
                                 $('#state').html(s);
@@ -426,23 +419,66 @@
 
                 })
         });
-    });
-
-    // end state
 
 
-    // load city
-    $('#state').on('change', function () {
-        var ci = $('#state').val();
-        //alert(ci);
-        fetch('{{url('/state')}}' + '/' + ci)
+        // end state
+
+        // load city
+        $('#state').on('change', function () {
+            var ci = $('#state').val();
+            //alert(ci);
+            fetch('{{url('/state')}}' + '/' + ci)
+                .then(response => {
+                    if (response.ok) {
+                        response.json().then(Relatedcities => {
+                            var cit = "<option disabled>@lang("Choisir")</option>";
+                            for (let i = 0; i < Relatedcities.length; i++) {
+                                cit += "<option value =" + Relatedcities[i].id + ">" + Relatedcities[i].name + "</option>";
+                                $('#city').html(cit);
+                                //console.log(relatedStates[i].name)
+                            }
+                        })
+                    } else {
+                        console.error(' Reponse serveur : ' + response.status);
+                    }
+
+                })
+        });
+        //endcity
+
+        /**
+         * propertyTypeData
+         */
+
+        //getStanding
+  //1
+        fetch('{{url('/standing')}}')
             .then(response => {
                 if (response.ok) {
-                    response.json().then(Relatedcities => {
-                        var cit = "<option>@lang("Choisir")</option>";
-                        for (let i = 0; i < Relatedcities.length; i++) {
-                            cit += "<option value =" + Relatedcities[i].id + ">" + Relatedcities[i].name + "</option>";
-                            $('#city').html(cit);
+                    response.json().then(standing => {
+                        var stand = "<option disabled>@lang("Choisir")</option>";
+                        for (let i = 0; i < standing.length; i++) {
+                            stand += "<option value =" + standing[i].id + ">" + standing[i].standing_name + "</option>";
+                            $('#standing_id').html(stand);
+                        }
+                    })
+                } else {
+                    console.error(' Reponse serveur : ' + response.status);
+                }
+
+            });
+
+
+        //getpropertyType
+  //2
+        fetch('{{url('/property-type')}}')
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(propertytype => {
+                        var proptype = "<option disabled>@lang("Choisir")</option>";
+                        for (let i = 0; i <propertytype.length; i++) {
+                            proptype += "<option value =" + propertytype[i].id + ">" + propertytype[i].name + "</option>";
+                            $('#propertytype_id').html(proptype);
                             //console.log(relatedStates[i].name)
                         }
                     })
@@ -450,19 +486,102 @@
                     console.error(' Reponse serveur : ' + response.status);
                 }
 
-            })
-    });
+            });
 
-    //endcity
+
+        // get subpropertyTYPE
+
+        $('#propertytype_id').on('change', function () {
+            $('#label_subpropertyType').show();
+            $('#subpropertyType_id').show();
+            var sub = $('#propertytype_id').val();
+            alert(sub);
+            fetch('{{url('/property-type')}}' + '/' + sub)
+                .then(response => {
+                    if (response.ok) {
+                        response.json().then(subproptype => {
+                            var sub = "<option disabled>@lang("Choisir")</option>";
+                            for (let i = 0; i < subproptype .length; i++) {
+                                sub += "<option value =" + subproptype [i].id + ">" + subproptype [i].name + "</option>";
+                                $('#subpropertyType_id').html(sub);
+                            }
+                        })
+                    } else {
+                        console.error(' Reponse serveur : ' + response.status);
+                    }
+
+                })
+        });
+
+        //2
+
+
+        //3
+
+        $('#state').on('change', function () {
+            var ci = $('#state').val();
+            //alert(ci);
+            fetch('{{url('/state')}}' + '/' + ci)
+                .then(response => {
+                    if (response.ok) {
+                        response.json().then(Relatedcities => {
+                            var cit = "<option>@lang("Choisir")</option>";
+                            for (let i = 0; i < Relatedcities.length; i++) {
+                                cit += "<option value =" + Relatedcities[i].id + ">" + Relatedcities[i].name + "</option>";
+                                $('#city').html(cit);
+                                //console.log(relatedStates[i].name)
+                            }
+                        })
+                    } else {
+                        console.error(' Reponse serveur : ' + response.status);
+                    }
+
+                })
+        });
+
+        /*
+         end PropertyTypeData
+         */
+
+
+        // INSERT DATA IN DATABASE HERE
+        $('#soumettre').on('click', function () {
+            event.preventDefault();
+            var token = $("input[name='_token']").val();
+            fetch('{{url('/property')}}', {
+                headers: {
+                    "Content-type": "application/json;charset=utf-8",
+                    "Accept": "application/json,text-plain",
+                    "X-Requested-Width": "XMLHttpRequest",
+                    "X-CSRF-TOKEN": token
+                },
+                method: 'POST',
+                credentials: "same-origin",
+                //body:JSON.stringify({})
+                body: new FormData($('#propertyForm'))
+            })
+                .then((data) => {
+                    form.reset();
+                    $('#propertyForm').slideUp("slow");
+                    $('.page-heading').show();
+                    $('#my-dropzone').slideDown("slow");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+
+    });
 
 
 </script>
 
-<script>
 
+<script>
     {{--                        // let newLI = document.createElement('li');--}}
     {{--                        // newLI.appendChild(document.createTextNode(regions[i].nom));--}}
     {{--                        // parent.appendChild(newLI);--}}
+
 
 </script>
 

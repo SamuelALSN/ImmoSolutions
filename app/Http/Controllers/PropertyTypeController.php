@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Property;
+use App\propertytype;
 use Illuminate\Http\Request;
 
-class PropertyController extends Controller
+class PropertyTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class PropertyController extends Controller
     public function index()
     {
         //
-
-        return view('guest.sample.submit-property');
+        return response(propertytype::all());
     }
 
     /**
@@ -38,27 +37,29 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         //
-        return 'ok';
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Property  $property
+     * @param  \App\propertytype  $propertytype
      * @return \Illuminate\Http\Response
      */
-    public function show(Property $property)
+    //public function show(propertytype $propertytype)
+    public function show($propertytype)
     {
-        //
+        $propertytype1 = propertytype::find($propertytype);
+        $subPropertyType = $propertytype1->subpropertytypes;
+        return response($subPropertyType);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Property  $property
+     * @param  \App\propertytype  $propertytype
      * @return \Illuminate\Http\Response
      */
-    public function edit(Property $property)
+    public function edit(propertytype $propertytype)
     {
         //
     }
@@ -67,10 +68,10 @@ class PropertyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Property  $property
+     * @param  \App\propertytype  $propertytype
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Property $property)
+    public function update(Request $request, propertytype $propertytype)
     {
         //
     }
@@ -78,10 +79,10 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Property  $property
+     * @param  \App\propertytype  $propertytype
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Property $property)
+    public function destroy(propertytype $propertytype)
     {
         //
     }

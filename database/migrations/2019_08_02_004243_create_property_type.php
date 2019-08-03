@@ -15,7 +15,7 @@ class CreatePropertyType extends Migration
     {
         Schema::create('propertyType', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('propertyType_name');
+            $table->string('name');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -24,7 +24,7 @@ class CreatePropertyType extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('propertyType_id')->unsigned()->index();
             $table->foreign('propertyType_id')->references('id')->on('propertyType');
-            $table->string('sub_propertyType_name');
+            $table->string('name');
             $table->softDeletes();
             $table->timestamps();
         });

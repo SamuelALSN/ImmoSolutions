@@ -85,3 +85,11 @@ Route::resources([
 Route::resources([
    'state'=>'StateController'
 ]);
+
+Route::resources([
+   'property-type'=>'PropertyTypeController'
+]);
+
+Route::resources([
+   'standing'=>'standingController'
+]);

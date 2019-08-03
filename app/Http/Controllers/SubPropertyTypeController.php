@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Property;
+use App\subPropertyType;
 use Illuminate\Http\Request;
 
-class PropertyController extends Controller
+class SubPropertyTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,6 @@ class PropertyController extends Controller
     public function index()
     {
         //
-
-        return view('guest.sample.submit-property');
     }
 
     /**
@@ -38,16 +36,15 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         //
-        return 'ok';
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Property  $property
+     * @param  \App\subPropertyType  $subPropertyType
      * @return \Illuminate\Http\Response
      */
-    public function show(Property $property)
+    public function show(subPropertyType $subPropertyType)
     {
         //
     }
@@ -55,10 +52,10 @@ class PropertyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Property  $property
+     * @param  \App\subPropertyType  $subPropertyType
      * @return \Illuminate\Http\Response
      */
-    public function edit(Property $property)
+    public function edit(subPropertyType $subPropertyType)
     {
         //
     }
@@ -67,10 +64,10 @@ class PropertyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Property  $property
+     * @param  \App\subPropertyType  $subPropertyType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Property $property)
+    public function update(Request $request, subPropertyType $subPropertyType)
     {
         //
     }
@@ -78,10 +75,10 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Property  $property
+     * @param  \App\subPropertyType  $subPropertyType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Property $property)
+    public function destroy(subPropertyType $subPropertyType)
     {
         //
     }

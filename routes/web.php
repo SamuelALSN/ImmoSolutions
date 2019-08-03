@@ -48,9 +48,9 @@ Route::get('/welcome',function (){
     return view('guest.home');
 });
 
-Route::get('/submit',function(){
-    return view('guest.sample.submit-property');
-});
+//Route::get('/submit',function(){
+//    return view('guest.sample.submit-property');
+//});
 
 Route::get('/properties-detail',function(){
     return view('guest.sample.properties-detail');
@@ -70,3 +70,8 @@ Route::get('/guest-login',function(){
 Route::get('/guest-register',function(){
     return view('guest.auth.register');
 });
+
+// submit property
+Route::resources([
+    'property'=>'PropertyController'
+]);

@@ -1,224 +1,93 @@
-<script type="text/javascript">
-    // ici nous cachons les select de state et city et le rendons visible apres un changement d'etat du select de country
-    $(document).ready(function () {
-        $('#state').hide();
-        $('#label_state').hide();
-        $('#city').hide();
-        $('#label_city').hide();
-
-        $('#country').on('change',function () {
-            $('#state').show();
-            $('#label_state').show();
-        });
-
-        $('#state').on('change',function () {
-            $('#city').show();
-            $('#label_city').show();
-        });
-
-        $('#city').on('change',function () {
-
-        })
-    });
-
-</script>
-
-
-
-{{--<script>--}}
-{{--    // states loading here--}}
-{{--    $(function (){--}}
-{{--        $('#country').on('change',function (e) {--}}
-
-{{--            $.ajaxSetup({--}}
-{{--                headers: {--}}
-{{--                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
-{{--                }--}}
-{{--            });--}}
-
-{{--            var c = $('#country').val();--}}
-{{--            var country = {id:c};--}}
-{{--            if ($)--}}
-{{--                $.ajax({--}}
-{{--                    method: 'GET',--}}
-{{--                    url : "+"+c+"/ajax_getStates",--}}
-{{--                    data : country,--}}
-{{--                    type : 'JSON',--}}
-
-
-{{--                    success : function(a){--}}
-{{--                        //$('#info').html(a);--}}
-{{--                        var b = JSON.parse(a);--}}
-
-{{--                        var v ;--}}
-{{--                        v ="<option>@lang('choose')</option>";--}}
-
-{{--                        $.each(b, function(i,value){--}}
-{{--                            v += "<option value="+b[i].id+">"+b[i].name+"</option>";--}}
-{{--                        });--}}
-
-{{--                        $('#state').html(v);--}}
-
-{{--                    },--}}
-
-{{--                    error : function(){--}}
-{{--                        alert('Operation Failed ');--}}
-{{--                    },--}}
-
-{{--                    complete : function(){--}}
-
-{{--                    }--}}
-
-{{--                });--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
-
-{{--<script>--}}
-{{--    // city loading here--}}
-{{--    $(function (){--}}
-{{--        $('#state').on('change',function (e) {--}}
-
-{{--            $.ajaxSetup({--}}
-{{--                headers: {--}}
-{{--                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
-{{--                }--}}
-{{--            });--}}
-
-{{--            var c = $('#state').val();--}}
-{{--            var country = {id:c};--}}
-{{--            if ($)--}}
-{{--                $.ajax({--}}
-{{--                    method: 'GET',--}}
-{{--                    url : "+"+c+"/ajax_getCities",--}}
-{{--                    data : country,--}}
-{{--                    type : 'JSON',--}}
-
-
-{{--                    success : function(a){--}}
-{{--                        //$('#info').html(a);--}}
-{{--                        var b = JSON.parse(a);--}}
-
-{{--                        var v ;--}}
-
-{{--                        $.each(b, function(i,value){--}}
-{{--                            v += "<option value="+value.name+">"+b[i].name+"</option>";--}}
-{{--                        });--}}
-
-{{--                        $('#city').html(v);--}}
-
-{{--                    },--}}
-
-{{--                    error : function(){--}}
-{{--                        alert('l opperation n à pas marché');--}}
-{{--                    },--}}
-
-{{--                    complete : function(){--}}
-
-{{--                    }--}}
-
-{{--                });--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
-
-{{--<script>--}}
-{{--    $(function (){--}}
-{{--        $('#state').on('change',function (e) {--}}
-
-{{--            $.ajaxSetup({--}}
-{{--                headers: {--}}
-{{--                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
-{{--                }--}}
-{{--            });--}}
-
-{{--            var c = $('#state').val();--}}
-{{--            var country = {id:c};--}}
-{{--            if ($)--}}
-{{--                $.ajax({--}}
-{{--                    method: 'GET',--}}
-{{--                    url : "+"+c+"/ajax_getCities",--}}
-{{--                    data : country,--}}
-{{--                    type : 'JSON',--}}
-
-
-{{--                    success : function(a){--}}
-{{--                        //$('#info').html(a);--}}
-{{--                        var b = JSON.parse(a);--}}
-
-{{--                        var v ;--}}
-{{--                        v = "<option>@lang('choose')</option>";--}}
-{{--                        $.each(b, function(i,value){--}}
-{{--                            v += "<option value="+value.name+">"+b[i].name+"</option>";--}}
-{{--                        });--}}
-
-{{--                        $('#city').html(v);--}}
-
-{{--                    },--}}
-
-{{--                    error : function(){--}}
-{{--                        alert('operation Failed ');--}}
-{{--                    },--}}
-
-{{--                    complete : function(){--}}
-
-{{--                    }--}}
-
-{{--                });--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
-
-
 <script>
-    // states loading here
-    $(function (){
-        $('#country').on('change',function (e) {
+ document.ready(function (e) {
+     var country = $('#country');
+     var state = $('#state');
+     var city = $('#city');
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
+     state.hide();
+     city.hide();
+     $('#label_state').hide();
+     $('#label_city').hide();
+     $('#subpropertyType_id').hide();
+     $('#label_subpropertyType').hide();
+     country.on('change', function () {
+         $('#state').show();
+         $('#label_state').show();
+     });
 
-            var c = $('#country').val();
-            var country = {id:c};
-            if ($)
-                $.ajax({
-                    method: 'GET',
-                    url : "+"+c+"/ajax_phonecode",
-                    data : country,
-                    type : 'JSON',
+     state.on('change', function () {
+         $('#city').show();
+         $('#label_city').show();
+     });
+     // endhide
 
 
-                    success : function(a){
-                        //$('#info').html(a);
-                        var b = JSON.parse(a);
+     // get countryData
+     fetch('{{url('/country')}}')
+         .then(response => {
+             if (response.ok) {
+                 response.json().then(allCountry => {
+                     var v = "<option disabled> @lang("Choisir")</option>";
+                     for (let i = 0; i < allCountry.length; i++) {
+                         v += "<option value=" + allCountry[i].id + ">" + allCountry[i].name + "</option>";
+                         $('#country').html(v);
+                     }
+                 })
+             } else {
+                 console.error('Réponse du serveur : ' + response.status);
+             }
+         });
 
-                        var v ;
-                        //v ="<option>@lang('choose')</option>";
+     // get state
+     country.on('change', function () {
+         var c = country.val();
+         //alert(c);
+         fetch('{{url('/country')}}' + '/' + c)
+             .then(response => {
+                 if (response.ok) {
+                     response.json().then(relatedStates => {
+                         var s = "<option disabled>@lang("Choisir")</option>";
+                         for (let i = 0; i < relatedStates.length; i++) {
+                             s += "<option value =" + relatedStates[i].id + ">" + relatedStates[i].name + "</option>";
+                             $('#state').html(s);
+                             //console.log(relatedStates[i].name)
+                         }
+                     })
+                 } else {
+                     console.error(' Reponse serveur : ' + response.status);
+                 }
 
-                        // $.each(b, function(i,value){
-                        //     v += "<option value="+b[i].id+">"+b[i].name+"</option>";
-                        // });
-                        // $.each(b, function(i,value){
-                        // v = "<option value="+b[i].id+">"+b[i].name+"</option>";
-                        v =" <span id=\"span_phone\" class=\"input-group-text\"> "+b.name+"</span>";
-                        //});
+             })
+     });
 
-                        $('#div_span').html(v);
 
-                    },
+     // end state
 
-                    error : function(){
-                        alert('Operation Failed ');
-                    },
+     // load city
+     $('#state').on('change', function () {
+         var ci = $('#state').val();
+         //alert(ci);
+         fetch('{{url('/state')}}' + '/' + ci)
+             .then(response => {
+                 if (response.ok) {
+                     response.json().then(Relatedcities => {
+                         var cit = "<option disabled>@lang("Choisir")</option>";
+                         for (let i = 0; i < Relatedcities.length; i++) {
+                             cit += "<option value =" + Relatedcities[i].id + ">" + Relatedcities[i].name + "</option>";
+                             $('#city').html(cit);
+                             //console.log(relatedStates[i].name)
+                         }
+                     })
+                 } else {
+                     console.error(' Reponse serveur : ' + response.status);
+                 }
 
-                    complete : function(){
+             })
+     });
+     //endcity
 
-                    }
 
-                });
-        });
-    });
+
+ });
+
 </script>

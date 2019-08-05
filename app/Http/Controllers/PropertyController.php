@@ -16,7 +16,7 @@ class PropertyController extends Controller
     {
         //
 
-        return view('guest.sample.submit-property');
+        return view('guest.sample.submit-property2');
     }
 
     /**
@@ -38,6 +38,7 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
         return 'ok';
     }
 

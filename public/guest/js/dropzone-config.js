@@ -32,5 +32,8 @@ Dropzone.options.myDropzone = {
         $("#counter").text("Images: " + total_photos_counter);
         file["customName"] = name;
         alertify.success(' '+done.message);
+        $('.page-heading').slideUp("slow");
+        $('#my-dropzone').slideUp("slow");
+        $('#TransactionForm').slideUp("3000").slideDown("3000");
     }
 };

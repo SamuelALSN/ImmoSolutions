@@ -16,6 +16,7 @@ class CreateStandingTable extends Migration
         Schema::create('standing', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('standing_name');
+            $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -79,7 +79,7 @@
                     lng: position.coords.longitude
                 };
                 infoWindow.setPosition(pos);
-                infoWindow.setContent('Localisation Trouvé.');
+                infoWindow.setContent('Nous vous avons localisé ici .');
                 infoWindow.open(map);
                 map.setCenter(pos);
                 marker = new google.maps.Marker({

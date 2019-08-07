@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertyType extends Migration
+class CreateTransactionTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreatePropertyType extends Migration
      */
     public function up()
     {
-        Schema::create('propertyType', function (Blueprint $table) {
+        Schema::create('transaction_type', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('description')->nullable();
+            $table->boolean('activated')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ class CreatePropertyType extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('property_type');
+        Schema::dropIfExists('transaction_type');
     }
 }

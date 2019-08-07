@@ -46,7 +46,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-    // dd($request->input('docfile'));
+    dd($request->all());
 
         //
         $validator = Validator::make($request->all(),[

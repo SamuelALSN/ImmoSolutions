@@ -116,14 +116,16 @@
                                     <div id="address">
                                         <div class="row">
                                             <div class="col-lg-4 col-md-12">
-                                                <label for=""> @lang("Adress")</label>
+                                                <label for=""> @lang("Adresse")</label>
                                                 <p>
                                                     <input class="" id="street_number" disabled="true" placeholder="Numero Rue"/>
                                                 </p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <label for=""> @lang("Rue")</label>
                                                 <p>
                                                     <input class="" id="route" disabled="true" placeholder="rue"/>
                                                 </p>
-
                                             </div>
                                             <div class="col-lg-4 col-md-12">
                                                 <p>
@@ -173,20 +175,37 @@
                         <h3>@lang("Categories du Bien ")</h3>
                         <div class="property-form-group">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12">
+                                <div class="col-lg-6 col-md-12">
                                     <label for="propertytpe">@lang("Categorie")<span></span></label>
-                                    <select class="form-control" name="propertytype_id" id="propertytype_id">
-                                    </select>
+                                    <p>
+                                        <select class="form-control" name="propertytype_id" id="propertytype_id">
+                                        </select>
+                                    </p>
+
+                                    <p>
+                                        <label id="label_meuble"> @lang("meublé")<input  type="checkbox" name="meuble"   id="meuble" value=""/>
+
+                                        </label>
+                                        <input type="number" class="" id="room"   placeholder="Chambre"   min="0" max="100"/>
+                                        <input   type="number" class="" id="bathroom"  placeholder="Salle de bain" min="0" max="100"/>
+                                        <input   type="number" class="" id="garage"  placeholder="Garages"   min="0" max="100"/>
+                                        <input  type="number" class="" id="piscine"  placeholder="Piscine"   min="0" max="100"/>
+                                    </p>
+
                                 </div>
-{{--                                <div class="col-lg-6 col-md-12">--}}
-{{--                                    <div class="dropdown faq-drop no-mb">--}}
-{{--                                        <label for="standing">Standing</label>--}}
-{{--                                        <select class="form-control" id="standing_id">--}}
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="dropdown faq-drop no-mb">
+                                        <label for="standing">Standing</label>
 
-{{--                                        </select>--}}
+                                        <p>
+                                            <select class="form-control" id="standing_id">
 
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                            </select>
+                                        </p>
+
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -195,14 +214,14 @@
                         <div class="property-form-group">
                             <div class="row">
                                 <p class="col-lg-6 col-md-12">
-                                    <label for="date">@lang("Date de Construction ")<span>(optionel)</span></label>
+                                    <label for="date">@lang("Date de Construction ")<span> </span></label>
                                     <input class="form-control"
                                            type="date" name="buildingdate" id="buildingdate">
 
                                 </p>
                                 <div class="col-lg-6 col-md-12">
                                     <p class="">
-                                        <label for="surface">Surface </label>
+                                        <label for="surface">Surface <span>m2</span> </label>
                                         <input class="form-control" type="text"
                                                name="surface" id="surface">
                                     </p>
@@ -214,7 +233,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="prperty-submit-button">
-                                    <button class="btn btn-primary" id="soumettre">@lang("Soumettre la Propriété")</button>
+                                    <button class="btn btn-success" id="soumettre">@lang("Soumettre la Propriété")</button>
                                 </div>
                             </div>
                         </div>
@@ -227,21 +246,20 @@
         <div class="row">
             <div class="col-sm-10 offset-sm-1">
                 <h2 class="page-heading">Charger vos Images <span id="counter"></span></h2>
-                <form method="post" action="{{ url('/images') }}"
+                <form  method="post" action="{{ url('/images') }}"
                       enctype="multipart/form-data" class="dropzone" id="my-dropzone">
                     {{ csrf_field() }}
                     <input  type="hidden"  id="propertyadd_id" name="propertyadd_id"  value="">
                     <div class="dz-message">
                         <div class="col-xs-8">
                             <div class="message">
-                                <p>Cliquez ici pour charger une image </p>
+                                <p> pour chargez toutes les images du bien  </p>
                             </div>
                         </div>
                     </div>
                     <div class="fallback">
                         <input type="file" name="file" multiple>
                     </div>
-{{--                    <input type="hidden" name="propertyadd_id"  id="propertyadd_id" value="1">--}}
                 </form>
             </div>
         </div>
@@ -304,6 +322,66 @@
             {{--Fin de  la zone  de chargement d'image --}}
         </div>
 
+        <form  id="TransactionForm" action="" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="single-add-property">
+                        <h3>@lang("Details de la Transaction ")</h3>
+                        <div class="property-form-group">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        <label for="type">@lang("Type de Transaction ")</label>
+                                       <select name="type" ></select>
+                                    </p>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <p>
+                                        <label for="">@lang("Montant du Bien ")</label>
+                                        <input type="text" name="ammount">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        <label for="">@lang("Date Debut Transaction ")</label>
+                                        <select name="datedeb" ></select>
+                                    </p>
+                                    <p>
+                                        <label for="">@lang("Date Fin de Transaction " )</label>
+                                        <select name="datefin" ></select>
+                                    </p>
+                                    <p>
+                                        <label for="">@lang("Date Autorisation Visite")</label>
+                                        <select name="datevisite" ></select>
+                                    </p>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <p>
+                                        <label for="type">@lang(" Majoration ")</label>
+                                        <input type="text" name="ammount">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-property-button">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="prperty-submit-button">
+                                    <button class="btn btn-success" id="soumettre">@lang("Soumettre la Propriété")</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
     </div>
 
@@ -315,7 +393,7 @@
 <!-- END SECTION NEWSLETTER -->
 
 <!-- START FOOTER -->
-@include('guest.common.footer')
+{{--@include('guest.common.footer')--}}
 
 <!-- END FOOTER -->
 {{--<!--Style Switcher===========================================-->--}}
@@ -371,12 +449,17 @@
     $(document).ready(function () {
         $('.page-heading').hide();
         $('#my-dropzone').hide();
+        $("input[type='number']").hide();
+        $('#label_meuble').hide();
+       // $('#TransactionForm').hide();
     });
 </script>
 
 <script>
     // fetch API USING
     window.addEventListener('DOMContentLoaded', (e) => {
+
+
 
         /**
          * propertyTypeData
@@ -408,7 +491,6 @@
                         for (let i = 0; i <propertytype.length; i++) {
                             proptype += "<option value =" + propertytype[i].id + ">" + propertytype[i].name + "</option>";
                             $('#propertytype_id').html(proptype);
-                            //console.log(relatedStates[i].name)
                         }
                     })
                 } else {
@@ -416,31 +498,42 @@
                 }
 
             });
-        {{--// get subpropertyTYPE--}}
-        {{--$('#propertytype_id').on('change', function () {--}}
-        {{--    $('#label_subpropertyType').fadeIn("slow");--}}
-        {{--    $('#subpropertyType_id').fadeIn("slow");--}}
-        {{--    var sub = $('#propertytype_id').val();--}}
-        {{--    fetch('{{url('/property-type')}}' + '/' + sub)--}}
-        {{--        .then(response => {--}}
-        {{--            if (response.ok) {--}}
-        {{--                response.json().then(subproptype => {--}}
-        {{--                    var subP;--}}
-        {{--                    for (let i = 0; i <subproptype.length; i++) {--}}
-        {{--                        subP += "<option value =" + subproptype[i].id + ">" + subproptype[i].name + "</option>";--}}
-        {{--                        $('#subpropertyType_id').html(subP);--}}
-        {{--                    }--}}
-        {{--                })--}}
-        {{--            } else {--}}
-        {{--                console.error(' Reponse serveur : ' + response.status);--}}
-        {{--            }--}}
 
-        {{--        })--}}
-        {{--});--}}
+
+        // get subpropertyTYPE
+        $('#propertytype_id').on('change', function () {
+            $('#label_meuble').hide();
+            $("input[type='number']").hide();
+            $('#standing_id').hide();
+           //alert ($('#propertytype_id option:selected').text());
+            if($('#propertytype_id option:selected').text()!=='Terrain'){
+                $('#label_meuble').fadeIn("slow");
+                $("input[type='number']").fadeIn("slow");
+                $('#standing_id').fadeIn("slow");
+            }
+
+            {{--fetch('{{url('/property-type')}}' + '/' + sub)--}}
+            {{--    .then(response => {--}}
+            {{--        if (response.ok) {--}}
+            {{--            response.json().then(subproptype => {--}}
+            {{--                var subP;--}}
+            {{--                for (let i = 0; i <subproptype.length; i++) {--}}
+            {{--                    subP += "<option value =" + subproptype[i].id + ">" + subproptype[i].name + "</option>";--}}
+            {{--                    $('#subpropertyType_id').html(subP);--}}
+            {{--                }--}}
+            {{--            })--}}
+            {{--        } else {--}}
+            {{--            console.error(' Reponse serveur : ' + response.status);--}}
+            {{--        }--}}
+
+            {{--    })--}}
+        });
 
         /*
          end PropertyTypeData
          */
+       // if ($('input.checkbox_check').is(':checked')) {
+
         $('#docfile').on('change',function (e) {
             val =$('#docfile').val();
             var file_type = val.substr(val.lastIndexOf('.')).toLowerCase();
@@ -456,6 +549,14 @@
         // INSERT DATA IN DATABASE HERE
         $('#soumettre').on('click', function () {
             event.preventDefault();
+
+            if($('#meuble').is(':checked')){
+                $('#meuble').val("yes");
+            }
+
+            if($('#propertytype_id option:selected').text()=='Terrain'){
+                $('#standing_id').val(0);
+            }
             var form =$('#propertyForm');
             var token = $("input[name='_token']").val();
             fetch('{{url('/property')}}', {
@@ -483,6 +584,12 @@
                     postal_code:$('#postal_code').val(),
                     country:$('#country').val(),
                     docfile: $('#docfile').val(),
+                    room:$('#room').val(),
+                    bathroom:$('#bathroom').val(),
+                    garage:$('#garage').val(),
+                    piscine:$('#piscine').val(),
+                    meuble:$('#meuble').val(),
+                    standing:$('#standing_id').val(),
                 })
             })
                 .then((data) => {
@@ -493,6 +600,7 @@
                                 $('#propertyForm').slideUp("slow");
                                 $('#my-dropzone').slideUp(2000).slideDown(2000);
                                 $('.page-heading').show();
+
                                 alertify.success(' '+validation.success);
                                 console.log(validation.success);
                                 $('#propertyadd_id').val(validation.id);
@@ -530,6 +638,7 @@
 </script>
 <script  src="{{asset('js/alertify/alertify.min.js')}}"></script>
 <script src="{{asset('guest/js/dropzone-config.js')}}"></script>
+
 </body>
 
 </html>

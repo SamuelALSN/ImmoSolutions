@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Property;
 use Illuminate\Http\Request;
-
+use Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class PropertyController extends Controller
 {
     /**
@@ -12,6 +14,13 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $destinationPath;
+
+    public function __construct()
+    {
+        $this->destinationPath = public_path('/storage/document');
+    }
+
     public function index()
     {
         //
@@ -37,9 +46,62 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
+    // dd($request->input('docfile'));
+
         //
-        dd($request->all());
-        return 'ok';
+        $validator = Validator::make($request->all(),[
+           'name'=>'required|max:255' ,
+           'description'=>'nullable|string|max:255' ,
+           'area'=>'required|max:255' ,
+           'buildingdate'=>'date' ,
+           'latitudeposition'=>'required|numeric' ,
+           'longitudeposition'=>'required|numeric' ,
+           'propertytype_id'=>'required|integer' ,
+           'street_number'=>'nullable' ,
+           'adresse'=>'nullable',
+           'route'=>'nullable' ,
+           'locality'=>'required|max:255' ,
+           'administrative_area_level_1'=>'nullable' ,
+           'postal_code'=>'nullable' ,
+           'country'=>'required' ,
+           'docfile.*'=>'mimes:pdf' ,
+        ]);
+
+        $user_id = Auth::user()->id;
+        if($validator->passes()){
+//            dd($request->input('docfile'));
+//            $document = $request->input('docfile');
+//
+//            $request->file('docfile')->move($this->destinationPath);
+            $id =DB::table('property')
+              ->insertGetId(
+                ['user_id'=>$user_id,
+                'name'=>$request->input('name'),
+                'description'=>$request->input('description'),
+                'area'=>$request->input('area'),
+                'buildingdate'=>$request->input('buildingdate'),
+                'latitudeposition'=>$request->input('latitudeposition'),
+                'longitudeposition'=>$request->input('longitudeposition'),
+                'adresse'=>$request->input('adresse'),
+                'propertytype_id'=>$request->input('propertytype_id'),
+                'street_number'=>$request->input('street_number'),
+                'route'=>$request->input('route'),
+                'locality'=>$request->input('locality'),
+                'administrative_area_level_1'=>$request->input('administrative_area_level_1'),
+                'postal_code'=>$request->input('postal_code'),
+                    'docfile'=>$request->input('docfile'),
+                    ]
+
+            );
+          return response()->json([
+              'id'=>$id,
+              'success'=>'Bien Créé'
+          ]);
+        }
+
+        return response()->json(['error'=>$validator->errors()->all()]);
+
+
     }
 
     /**

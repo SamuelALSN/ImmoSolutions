@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{asset('guest/css/dropzone.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/dropzonecustom.css')}}">
 
+    <link rel="stylesheet" href="{{asset('css/alertify/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/alertify/default.min.css')}}">
+
 </head>
 
 <body class="inner-pages">
@@ -42,7 +45,12 @@
 <!-- START SECTION SUBMIT PROPERTY -->
 <section class="royal-add-property-area section_100">
     <div class="container">
-        <form id="propertyForm" action="" method="POST">
+
+        <div class="alert alert-danger print-error-msg" style="display:none">
+        <ul></ul>
+        </div>
+
+        <form id="propertyForm" action="" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -54,7 +62,7 @@
                                 <div class="col-md-12">
                                     <p>
                                         <label for="title">@lang("Titre de la propriete")</label>
-                                        <input type="text" name="property_name" id="property_name"
+                                        <input type="text" name="name" id="name"
                                                placeholder="@lang("Entrer le titre de la propriete")">
                                     </p>
                                 </div>
@@ -67,8 +75,10 @@
                                                   placeholder="@lang("Breve Description de votre propriete ")"></textarea>
                                     </p>
                                    <p>
-                                       <label for="title">@lang("Titre foncier/Autre document Similaire")</label>
-                                       <input type="file" id="docfile" name="docfile"/>
+                                       <label for="title">@lang("Titre foncier / Autre document Similaire") En Pdf</label>
+                                       <input type="file" id="docfile" name="docfile" autofocus
+
+                                       accept=".pdf"/>
 
                                    </p>
                                 </div>
@@ -148,33 +158,35 @@
                             </div>
                         </div>
                     </div>
+                    <div class="single-add-property">
+                        <h3>@lang(" Inidiquez  les coordonnées géographique depuis la carte  ")</h3>
+                            <div id="map" style=" height: 350px; width: 1050px;"></div>
+                        <h4> @lang("Ou Saisissez directement la latitude et la longitude ")</h4>
+                            <p>
+                                <input type="text" class="" id="latitude"  placeholder="latitude"/>
+                                <input  type="text" class="" id="longitude"  placeholder="longitude"/>
+                            </p>
+
+                    </div>
 
                     <div class="single-add-property">
                         <h3>@lang("Categories du Bien ")</h3>
                         <div class="property-form-group">
                             <div class="row">
-                                <div class="col-lg-4 col-md-12">
+                                <div class="col-lg-12 col-md-12">
                                     <label for="propertytpe">@lang("Categorie")<span></span></label>
                                     <select class="form-control" name="propertytype_id" id="propertytype_id">
                                     </select>
                                 </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="dropdown faq-drop no-mb">
-                                        <label for="subpropertyType" id="label_subpropertyType"> @lang("Sous Categorie")</label>
-                                        <select class="form-control" name="subpropertyType_id" id="subpropertyType_id">
-                                        </select>
-                                    </div>
-                                </div>
+{{--                                <div class="col-lg-6 col-md-12">--}}
+{{--                                    <div class="dropdown faq-drop no-mb">--}}
+{{--                                        <label for="standing">Standing</label>--}}
+{{--                                        <select class="form-control" id="standing_id">--}}
 
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="dropdown faq-drop no-mb">
-                                        <label for="standing">Standing</label>
-                                        <select class="form-control" id="standing_id">
+{{--                                        </select>--}}
 
-                                        </select>
-
-                                    </div>
-                                </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -182,18 +194,18 @@
                         <h3>@lang("Autres Informations")</h3>
                         <div class="property-form-group">
                             <div class="row">
-                                <div class="col-lg-6 col-md-12">
+                                <p class="col-lg-6 col-md-12">
                                     <label for="date">@lang("Date de Construction ")<span>(optionel)</span></label>
                                     <input class="form-control"
                                            type="date" name="buildingdate" id="buildingdate">
 
-                                </div>
+                                </p>
                                 <div class="col-lg-6 col-md-12">
-                                    <div class="dropdown faq-drop no-mb">
-                                        <label for="surface">Surface</label>
+                                    <p class="">
+                                        <label for="surface">Surface </label>
                                         <input class="form-control" type="text"
                                                name="surface" id="surface">
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +214,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="prperty-submit-button">
-                                    <button id="soumettre">@lang("Soumettre la Propriété")</button>
+                                    <button class="btn btn-primary" id="soumettre">@lang("Soumettre la Propriété")</button>
                                 </div>
                             </div>
                         </div>
@@ -215,9 +227,10 @@
         <div class="row">
             <div class="col-sm-10 offset-sm-1">
                 <h2 class="page-heading">Charger vos Images <span id="counter"></span></h2>
-                <form method="post" action="{{ url('/images-save') }}"
+                <form method="post" action="{{ url('/images') }}"
                       enctype="multipart/form-data" class="dropzone" id="my-dropzone">
                     {{ csrf_field() }}
+                    <input  type="hidden"  id="propertyadd_id" name="propertyadd_id"  value="">
                     <div class="dz-message">
                         <div class="col-xs-8">
                             <div class="message">
@@ -228,7 +241,7 @@
                     <div class="fallback">
                         <input type="file" name="file" multiple>
                     </div>
-                    <input type="hidden" name="" value="">
+{{--                    <input type="hidden" name="propertyadd_id"  id="propertyadd_id" value="1">--}}
                 </form>
             </div>
         </div>
@@ -305,44 +318,44 @@
 @include('guest.common.footer')
 
 <!-- END FOOTER -->
-<!--Style Switcher===========================================-->
-<div class="color-switcher" id="choose_color"><a href="#." class="picker_close"><i class="fa fa-cog fa-spin fa-2x"></i></a>
-    <div class="theme-colours">
-        <p class="font-italic">Choose Colour style</p>
-        <ul>
-            <li>
-                <a href="" class="blue" id="blue"></a>
-            </li>
-            <li>
-                <a href="#." class="pink" id="pink"></a>
-            </li>
-            <li>
-                <a href="#." class="orange" id="orange"></a>
-            </li>
-            <li>
-                <a href="#." class="purple" id="purple"></a>
-            </li>
-            <li>
-                <a href="#." class="green" id="green"></a>
-            </li>
-            <li>
-                <a href="#." class="red" id="red"></a>
-            </li>
-            <li>
-                <a href="#." class="cyan" id="cyan"></a>
-            </li>
-            <li>
-                <a href="#." class="sky-blue" id="sky-blue"></a>
-            </li>
-            <li>
-                <a href="#." class="gray" id="gray"></a>
-            </li>
-            <li>
-                <a href="#." class="brown" id="brown"></a>
-            </li>
-        </ul>
-    </div>
-</div>
+{{--<!--Style Switcher===========================================-->--}}
+{{--<div class="color-switcher" id="choose_color"><a href="#." class="picker_close"><i class="fa fa-cog fa-spin fa-2x"></i></a>--}}
+{{--    <div class="theme-colours">--}}
+{{--        <p class="font-italic">Choose Colour style</p>--}}
+{{--        <ul>--}}
+{{--            <li>--}}
+{{--                <a href="" class="blue" id="blue"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="pink" id="pink"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="orange" id="orange"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="purple" id="purple"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="green" id="green"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="red" id="red"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="cyan" id="cyan"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="sky-blue" id="sky-blue"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="gray" id="gray"></a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#." class="brown" id="brown"></a>--}}
+{{--            </li>--}}
+{{--        </ul>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <!-- ARCHIVES JS -->
 <script src="{{asset('guest/js/jquery.min.js')}}"></script>
@@ -354,7 +367,6 @@
 <script src="{{asset('guest/js/inner.js')}}"></script>
 
 @include("guest.myscripts.locate")
-
 <script>
     $(document).ready(function () {
         $('.page-heading').hide();
@@ -404,31 +416,42 @@
                 }
 
             });
-        // get subpropertyTYPE
-        $('#propertytype_id').on('change', function () {
-            $('#label_subpropertyType').fadeIn("slow");
-            $('#subpropertyType_id').fadeIn("slow");
-            var sub = $('#propertytype_id').val();
-            fetch('{{url('/property-type')}}' + '/' + sub)
-                .then(response => {
-                    if (response.ok) {
-                        response.json().then(subproptype => {
-                            var subP;
-                            for (let i = 0; i <subproptype.length; i++) {
-                                subP += "<option value =" + subproptype[i].id + ">" + subproptype[i].name + "</option>";
-                                $('#subpropertyType_id').html(subP);
-                            }
-                        })
-                    } else {
-                        console.error(' Reponse serveur : ' + response.status);
-                    }
+        {{--// get subpropertyTYPE--}}
+        {{--$('#propertytype_id').on('change', function () {--}}
+        {{--    $('#label_subpropertyType').fadeIn("slow");--}}
+        {{--    $('#subpropertyType_id').fadeIn("slow");--}}
+        {{--    var sub = $('#propertytype_id').val();--}}
+        {{--    fetch('{{url('/property-type')}}' + '/' + sub)--}}
+        {{--        .then(response => {--}}
+        {{--            if (response.ok) {--}}
+        {{--                response.json().then(subproptype => {--}}
+        {{--                    var subP;--}}
+        {{--                    for (let i = 0; i <subproptype.length; i++) {--}}
+        {{--                        subP += "<option value =" + subproptype[i].id + ">" + subproptype[i].name + "</option>";--}}
+        {{--                        $('#subpropertyType_id').html(subP);--}}
+        {{--                    }--}}
+        {{--                })--}}
+        {{--            } else {--}}
+        {{--                console.error(' Reponse serveur : ' + response.status);--}}
+        {{--            }--}}
 
-                })
-        });
+        {{--        })--}}
+        {{--});--}}
 
         /*
          end PropertyTypeData
          */
+        $('#docfile').on('change',function (e) {
+            val =$('#docfile').val();
+            var file_type = val.substr(val.lastIndexOf('.')).toLowerCase();
+            if (file_type === '.pdf') {
+                $('#docfile').prop('disabled',true);
+
+            }else{
+                $('#docfile').autofocus;
+                alert(' Veuillez choisir un fichier .PDF');
+            }
+        });
 
         // INSERT DATA IN DATABASE HERE
         $('#soumettre').on('click', function () {
@@ -445,41 +468,68 @@
                 method: 'POST',
                 credentials: "same-origin",
                 body:JSON.stringify({
-                    property_name:$('#property_name').val(),
+                    name:$('#name').val(),
                     description:$('#description').val(),
-                    adresse:$('#adresse').val(),
-                    location:$('#location').val(),
                     area:$('#surface').val(),
                     buildingdate:$('#buildingdate').val(),
-                    latitudeposition:$('#latitudemaps').val(),
-                    longitudeposition:$('#longitudemaps').val(),
-                    standing_id:$('#standing_id').val(),
+                    latitudeposition:$('#latitude').val(),
+                    longitudeposition:$('#longitude').val(),
                     propertytype_id:$('#propertytype_id').val(),
-                    subpropertyType_id:$('#subpropertyType_id').val(),
                     street_number:$('#street_number').val(),
+                    adresse:$('#autocomplete').val(),
                     route:$('#route').val(),
                     locality:$('#locality').val(),
                     administrative_area_level_1:$('#administrative_area_level_1').val(),
                     postal_code:$('#postal_code').val(),
                     country:$('#country').val(),
-                    file: $('#docfile').val(),
+                    docfile: $('#docfile').val(),
                 })
             })
                 .then((data) => {
-                    document.getElementById("propertyForm").reset();
-                    $('#propertyForm').slideUp("slow");
-                    $('.page-heading').show();
-                    $('#my-dropzone').slideUp(2000).slideDown(2000);
+                    if(data.ok){
+                        data.json().then(validation=>{
+                            if($.isEmptyObject(validation.error)){
+                                document.getElementById("propertyForm").reset();
+                                $('#propertyForm').slideUp("slow");
+                                $('#my-dropzone').slideUp(2000).slideDown(2000);
+                                $('.page-heading').show();
+                                alertify.success(' '+validation.success);
+                                console.log(validation.success);
+                                $('#propertyadd_id').val(validation.id);
+                            }else{
+                                printErrorMsg(validation.error);
+                                console.log(validation) ;
+                            }
+                        })
+                    }else{
+                        console.error('Reponse serveur : '+data.status);
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         });
 
+        function printErrorMsg (msg) {
+
+            $(".print-error-msg").find("ul").html('');
+
+            $(".print-error-msg").css('display','block');
+
+            $.each( msg, function( key, value ) {
+                alertify.error('Renseignez les champs :'+value);
+               // $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+
+            });
+
+        }
+
     });
 
 
 </script>
+<script  src="{{asset('js/alertify/alertify.min.js')}}"></script>
+<script src="{{asset('guest/js/dropzone-config.js')}}"></script>
 </body>
 
 </html>

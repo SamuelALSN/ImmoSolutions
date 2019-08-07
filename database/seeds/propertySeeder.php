@@ -32,25 +32,25 @@ class propertySeeder extends Seeder
         );
         DB::table('propertyType')->insert($propertiestype);
 
-        DB::table('sub_propertytype')->delete();
-        $subpropertiestype = array(
-            array('id'=>1 , 'name'=>' VILLA F1','propertyType_id'=>3),
-            array('id'=>2, 'name'=>' VILLA F2','propertyType_id'=>3),
-            array('id'=>3 , 'name'=>' VILLA F3','propertyType_id'=>3),
-            array('id'=>4, 'name'=>'VILLA F4','propertyType_id'=>3),
-//            array('id'=>5, 'sub_name'=>'REZ DE CHAUSEE ',''),
-//            array('id'=>6, 'sub_name'=>'Studio',''),
-//            array('id'=>7, 'sub_name'=>'ChambreEtudiant',''),
-//            array('id'=>8, 'sub_name'=>'Hotel',''),
-//            array('id'=>9, 'sub_name'=>'Commerce',''),
-//            array('id'=>10, 'sub_name'=>'Loft ,Atelier ',''),
-//            array('id'=>11, 'sub_name'=>'Bureaux',''),
-//            array('id'=>12, 'sub_name'=>'Magasin',''),
-//            array('id'=>13, 'sub_name'=>'Entrepots et Locaux d\'activités',''),
-//            array('id'=>13, 'sub_name'=>'Boutique',''),
-
-        );
-
-        DB::table('sub_propertytype')->insert($subpropertiestype);
+//        DB::table('sub_propertytype')->delete();
+//        $subpropertiestype = array(
+//            array('id'=>1 , 'name'=>' VILLA F1','propertyType_id'=>3),
+//            array('id'=>2, 'name'=>' VILLA F2','propertyType_id'=>3),
+//            array('id'=>3 , 'name'=>' VILLA F3','propertyType_id'=>3),
+//            array('id'=>4, 'name'=>'VILLA F4','propertyType_id'=>3),
+////            array('id'=>5, 'sub_name'=>'REZ DE CHAUSEE ',''),
+////            array('id'=>6, 'sub_name'=>'Studio',''),
+////            array('id'=>7, 'sub_name'=>'ChambreEtudiant',''),
+////            array('id'=>8, 'sub_name'=>'Hotel',''),
+////            array('id'=>9, 'sub_name'=>'Commerce',''),
+////            array('id'=>10, 'sub_name'=>'Loft ,Atelier ',''),
+////            array('id'=>11, 'sub_name'=>'Bureaux',''),
+////            array('id'=>12, 'sub_name'=>'Magasin',''),
+////            array('id'=>13, 'sub_name'=>'Entrepots et Locaux d\'activités',''),
+////            array('id'=>13, 'sub_name'=>'Boutique',''),
+//
+//        );
+//
+//        DB::table('sub_propertytype')->insert($subpropertiestype);
     }
 }

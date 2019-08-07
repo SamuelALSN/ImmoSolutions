@@ -17,7 +17,7 @@ Dropzone.options.myDropzone = {
     init: function () {
         this.on("removedfile", function (file) {
             $.post({
-                url: '/images-delete',
+                url: '/images',
                 data: {id: file.customName, _token: $('[name="_token"]').val()},
                 dataType: 'json',
                 success: function (data) {
@@ -29,7 +29,8 @@ Dropzone.options.myDropzone = {
     },
     success: function (file, done) {
         total_photos_counter++;
-        $("#counter").text("# " + total_photos_counter);
+        $("#counter").text("Images: " + total_photos_counter);
         file["customName"] = name;
+        alertify.success(' '+done.message);
     }
 };

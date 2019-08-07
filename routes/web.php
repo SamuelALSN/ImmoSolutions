@@ -93,3 +93,7 @@ Route::resources([
 Route::resources([
    'standing'=>'standingController'
 ]);
+
+Route::resources([
+   'images'=>'ImagesController'
+]);

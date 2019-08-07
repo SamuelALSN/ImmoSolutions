@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\user;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use  Spatie\Permission\Models\Role;
@@ -80,6 +81,8 @@ class UsersManagementController extends Controller
                 'country_id' => $request->$request->country_id,
                 'activated' => 0,
                 'signup_ip_address' => $request->$ipAdress->getClientIp(),
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
             ]);
 
             $user->assignRole($request->role);

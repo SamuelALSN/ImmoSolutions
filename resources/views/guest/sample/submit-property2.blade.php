@@ -221,9 +221,10 @@
                                 </p>
                                 <div class="col-lg-6 col-md-12">
                                     <p class="">
-                                        <label for="surface">Surface <span>m2</span> </label>
-                                        <input class="form-control" type="text"
-                                               name="surface" id="surface">
+                                        <label for="surface">Surface <span>m<sup>2</sup></span> </label>
+                                        <input class="" type="number" placeholder="m carré"
+                                               name="surface" id="surface"
+                                               min="1" max="5000">
                                     </p>
                                 </div>
                             </div>
@@ -253,7 +254,7 @@
                     <div class="dz-message">
                         <div class="col-xs-8">
                             <div class="message">
-                                <p> pour chargez toutes les images du bien  </p>
+                                <p>  Chargez toutes les images du bien  </p>
                             </div>
                         </div>
                     </div>
@@ -334,14 +335,15 @@
                                 <div class="col-md-12">
                                     <p>
                                         <label for="type">@lang("Type de Transaction ")</label>
-                                       <select name="type" ></select>
+                                        <select class="form-control" name="type"  id="typetransaction">
+                                       </select>
                                     </p>
                                 </div>
 
                                 <div class="col-md-12">
                                     <p>
                                         <label for="">@lang("Montant du Bien ")</label>
-                                        <input type="text" name="ammount">
+                                        <input id="ammount" type="number" name="ammount">
                                     </p>
                                 </div>
                             </div>
@@ -349,22 +351,30 @@
                                 <div class="col-md-12">
                                     <p>
                                         <label for="">@lang("Date Debut Transaction ")</label>
-                                        <select name="datedeb" ></select>
+                                        <input id="datedeb" type="date" name="datedeb" >
                                     </p>
                                     <p>
                                         <label for="">@lang("Date Fin de Transaction " )</label>
-                                        <select name="datefin" ></select>
+                                        <input  id="datefin" type="date" name="datefin" >
                                     </p>
                                     <p>
                                         <label for="">@lang("Date Autorisation Visite")</label>
-                                        <select name="datevisite" ></select>
+                                        <input  id="datevisite" type="date" name="datevisite" >
                                     </p>
                                 </div>
 
                                 <div class="col-md-12">
                                     <p>
-                                        <label for="type">@lang(" Majoration ")</label>
-                                        <input type="text" name="ammount">
+                                        <label for="type">@lang(" Majoration / Minoration ")</label>
+                                        <input id="percentage" type="number" name="percentage"
+                                               min="1" max="50000">
+                                    </p>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <p>
+                                        <label for="type">@lang(" Interval de temps ")</label>
+                                        <input  id="interval" type="number" name="interval">
                                     </p>
                                 </div>
                             </div>
@@ -374,7 +384,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="prperty-submit-button">
-                                    <button class="btn btn-success" id="soumettre">@lang("Soumettre la Propriété")</button>
+                                    <button class="btn btn-success" id="enregistrer">@lang("Enregistrer")</button>
                                 </div>
                             </div>
                         </div>
@@ -450,8 +460,9 @@
         $('.page-heading').hide();
         $('#my-dropzone').hide();
         $("input[type='number']").hide();
+        $('#surface').show();
         $('#label_meuble').hide();
-       // $('#TransactionForm').hide();
+        $('#TransactionForm').hide();
     });
 </script>
 
@@ -505,6 +516,7 @@
             $('#label_meuble').hide();
             $("input[type='number']").hide();
             $('#standing_id').hide();
+            $('#surface').show();
            //alert ($('#propertytype_id option:selected').text());
             if($('#propertytype_id option:selected').text()!=='Terrain'){
                 $('#label_meuble').fadeIn("slow");
@@ -620,9 +632,9 @@
 
         function printErrorMsg (msg) {
 
-            $(".print-error-msg").find("ul").html('');
+            //$(".print-error-msg").find("ul").html('');
 
-            $(".print-error-msg").css('display','block');
+           // $(".print-error-msg").css('display','block');
 
             $.each( msg, function( key, value ) {
                 alertify.error('Renseignez les champs :'+value);
@@ -634,6 +646,30 @@
 
     });
 
+
+</script>
+
+<script>
+    // formulaire transaction
+    window.addEventListener('DOMContentLoaded', (e) => {
+
+        fetch('{{url('/typetransaction')}}')
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(typetransaction => {
+                        var proptype= "<option disabled>@lang("Choisir")</option>";
+                        for (let i = 0; i <typetransaction.length; i++) {
+                            proptype += "<option value =" + typetransaction[i].id +">" + typetransaction[i].name + "</option>";
+                            $('#typetransaction').html(proptype);
+                        }
+                    })
+                } else {
+                    console.error(' Reponse serveur : ' + response.status);
+                }
+
+            })
+
+    });
 
 </script>
 <script  src="{{asset('js/alertify/alertify.min.js')}}"></script>

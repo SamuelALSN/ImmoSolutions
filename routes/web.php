@@ -41,10 +41,10 @@ Route::get('/charts', function () {
 });
 
 Route::resources([
-   'user'=>'UsersManagementController'
+    'user' => 'UsersManagementController'
 ]);
 
-Route::get('/welcome',function (){
+Route::get('/welcome', function () {
     return view('guest.home');
 });
 
@@ -52,48 +52,55 @@ Route::get('/welcome',function (){
 //    return view('guest.sample.submit-property');
 //});
 
-Route::get('/properties-detail',function(){
+Route::get('/properties-detail', function () {
     return view('guest.sample.properties-detail');
 });
 
-Route::get('/properties-full-list',function(){
+Route::get('/properties-full-list', function () {
     return view('guest.sample.properties-full-list');
 });
-Route::get('/properties-map',function(){
+Route::get('/properties-map', function () {
     return view('guest.sample.properties-map');
 });
 
-Route::get('/guest-login',function(){
+Route::get('/guest-login', function () {
     return view('guest.auth.login');
 });
 
-Route::get('/guest-register',function(){
+Route::get('/guest-register', function () {
     return view('guest.auth.register');
 });
 
 // submit property
 Route::resources([
-    'property'=>'PropertyController'
+    'property' => 'PropertyController'
 ]);
 
 // load country wiith ajax
 
 Route::resources([
-    'country'=>'CountryController'
+    'country' => 'CountryController'
 ]);
 
 Route::resources([
-   'state'=>'StateController'
+    'state' => 'StateController'
 ]);
 
 Route::resources([
-   'property-type'=>'PropertyTypeController'
+    'property-type' => 'PropertyTypeController'
 ]);
 
 Route::resources([
-   'standing'=>'standingController'
+    'standing' => 'standingController'
 ]);
 
 Route::resources([
-   'images'=>'ImagesController'
+    'images' => 'ImagesController'
+]);
+Route::resources([
+    'typetransaction' => 'TypeTransactionController'
+]);
+
+Route::resources([
+    'transaction' => 'TransactionController'
 ]);

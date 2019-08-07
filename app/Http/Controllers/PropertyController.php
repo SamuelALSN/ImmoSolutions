@@ -46,7 +46,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-    dd($request->all());
+  //  dd($request->all());
 
         //
         $validator = Validator::make($request->all(),[
@@ -90,6 +90,12 @@ class PropertyController extends Controller
                 'administrative_area_level_1'=>$request->input('administrative_area_level_1'),
                 'postal_code'=>$request->input('postal_code'),
                     'docfile'=>$request->input('docfile'),
+                    'rooms'=>$request->input('room'),
+                    'bathRooms'=>$request->input('bathroom'),
+                    'garages'=>$request->input('garage'),
+                    'swimmingpool'=>$request->input('piscine'),
+                    'meuble'=>$request->input('meuble'),
+                    'standing_id'=>$request->input('standing'),
                     ]
 
             );

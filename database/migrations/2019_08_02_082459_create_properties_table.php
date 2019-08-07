@@ -42,8 +42,8 @@ class CreatePropertiesTable extends Migration
             $table->foreign('user_id')->on('users')->references('id')
                 ->onDelete('cascade');
             // info caracteristiques
-            $table->integer('Rooms')->nullable();
-            $table->integer('BathRooms')->nullable();
+            $table->integer('rooms')->nullable();
+            $table->integer('bathRooms')->nullable();
             $table->integer('garages')->nullable();
             $table->integer('swimmingpool')->nullable();
             $table->string('meuble')->nullable();

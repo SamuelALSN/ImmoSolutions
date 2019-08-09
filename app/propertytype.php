@@ -13,4 +13,8 @@ class propertytype extends Model
     {
        return  $this->hasMany('App\subPropertytype');
     }
+
+    public  function properties(){
+        return $this->hasMany('App\Property');
+    }
 }

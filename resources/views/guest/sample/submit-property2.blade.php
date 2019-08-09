@@ -47,7 +47,7 @@
     <div class="container">
 
         <div class="alert alert-danger print-error-msg" style="display:none">
-        <ul></ul>
+            <ul></ul>
         </div>
 
         <form id="propertyForm" action="" method="POST" enctype="multipart/form-data">
@@ -74,13 +74,14 @@
                                         <textarea id="description" name="description"
                                                   placeholder="@lang("Breve Description de votre propriete ")"></textarea>
                                     </p>
-                                   <p>
-                                       <label for="title">@lang("Titre foncier / Autre document Similaire") En Pdf</label>
-                                       <input type="file" id="docfile" name="docfile" autofocus
+                                    <p>
+                                        <label for="title">@lang("Titre foncier / Autre document Similaire") En
+                                            Pdf</label>
+                                        <input type="file" id="docfile" name="docfile" autofocus
 
-                                       accept=".pdf"/>
+                                               accept=".pdf"/>
 
-                                   </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -113,61 +114,62 @@
 
                             <div class="row">
 
-                                    <div id="address">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-12">
-                                                <label for=""> @lang("Adresse")</label>
-                                                <p>
-                                                    <input class="" id="street_number" disabled="true" placeholder="Numero Rue"/>
-                                                </p>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <label for=""> @lang("Rue")</label>
-                                                <p>
-                                                    <input class="" id="route" disabled="true" placeholder="rue"/>
-                                                </p>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <p>
-                                                    <label for="">@lang("ville") </label>
-                                                    <input class="field" id="locality" disabled="true"/>
-                                                </p>
+                                <div id="address">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-12">
+                                            <label for=""> @lang("Adresse")</label>
+                                            <p>
+                                                <input class="" id="street_number" disabled="true"
+                                                       placeholder="Numero Rue"/>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 col-md-12">
+                                            <label for=""> @lang("Rue")</label>
+                                            <p>
+                                                <input class="" id="route" disabled="true" placeholder="rue"/>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 col-md-12">
+                                            <p>
+                                                <label for="">@lang("ville") </label>
+                                                <input class="field" id="locality" disabled="true"/>
+                                            </p>
 
-                                            </div>
-                                            <div class=" col-lg-4  col-md-12">
-                                                <p>
-                                                    <label for=""> @lang("region")</label>
-                                                    <input class="field" id="administrative_area_level_1" disabled="true"/>
-                                                </p>
+                                        </div>
+                                        <div class=" col-lg-4  col-md-12">
+                                            <p>
+                                                <label for=""> @lang("region")</label>
+                                                <input class="field" id="administrative_area_level_1" disabled="true"/>
+                                            </p>
 
-                                           </div>
-                                            <div class=" col-lg-4 col-md-12">
-                                                <p>
-                                                    <label for=""> @lang("Code postal") </label>
-                                                    <input class="field" id="postal_code" disabled="true"/>
-                                                </p>
+                                        </div>
+                                        <div class=" col-lg-4 col-md-12">
+                                            <p>
+                                                <label for=""> @lang("Code postal") </label>
+                                                <input class="field" id="postal_code" disabled="true"/>
+                                            </p>
 
-                                            </div>
-                                            <div class= " col-lg-4 col-md-12">
-                                                <p>
-                                                    <label for=""> @lang("Pays") </label>
-                                                    <input class="" id="country" disabled="true"/>
-                                                </p>
-                                            </div>
+                                        </div>
+                                        <div class=" col-lg-4 col-md-12">
+                                            <p>
+                                                <label for=""> @lang("Pays") </label>
+                                                <input class="" id="country" disabled="true"/>
+                                            </p>
                                         </div>
                                     </div>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div class="single-add-property">
                         <h3>@lang(" Inidiquez  les coordonnées géographique depuis la carte  ")</h3>
-                            <div id="map" style=" height: 350px; width: 1050px;"></div>
+                        <div id="map" style=" height: 350px; width: 1050px;"></div>
                         <h4> @lang("Ou Saisissez directement la latitude et la longitude ")</h4>
-                            <p>
-                                <input type="text" class="" id="latitude"  placeholder="latitude"/>
-                                <input  type="text" class="" id="longitude"  placeholder="longitude"/>
-                            </p>
+                        <p>
+                            <input type="text" class="" id="latitude" placeholder="latitude"/>
+                            <input type="text" class="" id="longitude" placeholder="longitude"/>
+                        </p>
 
                     </div>
 
@@ -183,13 +185,18 @@
                                     </p>
 
                                     <p>
-                                        <label id="label_meuble"> @lang("meublé")<input  type="checkbox" name="meuble"   id="meuble" value=""/>
+                                        <label id="label_meuble"> @lang("meublé")<input type="checkbox" name="meuble"
+                                                                                        id="meuble" value=""/>
 
                                         </label>
-                                        <input type="number" class="" id="room"   placeholder="Chambre"   min="0" max="100"/>
-                                        <input   type="number" class="" id="bathroom"  placeholder="Salle de bain" min="0" max="100"/>
-                                        <input   type="number" class="" id="garage"  placeholder="Garages"   min="0" max="100"/>
-                                        <input  type="number" class="" id="piscine"  placeholder="Piscine"   min="0" max="100"/>
+                                        <input type="number" class="" id="room" placeholder="Chambre" min="0"
+                                               max="100"/>
+                                        <input type="number" class="" id="bathroom" placeholder="Salle de bain" min="0"
+                                               max="100"/>
+                                        <input type="number" class="" id="garage" placeholder="Garages" min="0"
+                                               max="100"/>
+                                        <input type="number" class="" id="piscine" placeholder="Piscine" min="0"
+                                               max="100"/>
                                     </p>
 
                                 </div>
@@ -234,7 +241,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="prperty-submit-button">
-                                    <button class="btn btn-success" id="soumettre">@lang("Soumettre la Propriété")</button>
+                                    <button class="btn btn-success"
+                                            id="soumettre">@lang("Soumettre la Propriété")</button>
                                 </div>
                             </div>
                         </div>
@@ -247,14 +255,14 @@
         <div class="row">
             <div class="col-sm-10 offset-sm-1">
                 <h2 class="page-heading">Charger vos Images <span id="counter"></span></h2>
-                <form  method="post" action="{{ url('/images') }}"
+                <form method="post" action="{{ url('/images') }}"
                       enctype="multipart/form-data" class="dropzone" id="my-dropzone">
                     {{ csrf_field() }}
-                    <input  type="hidden"  id="propertyadd_id" name="propertyadd_id"  value="">
+                    <input type="hidden" id="propertyadd_id" name="propertyadd_id" value="">
                     <div class="dz-message">
                         <div class="col-xs-8">
                             <div class="message">
-                                <p>  Chargez toutes les images du bien  </p>
+                                <p> Chargez toutes les images du bien </p>
                             </div>
                         </div>
                     </div>
@@ -323,7 +331,7 @@
             {{--Fin de  la zone  de chargement d'image --}}
         </div>
 
-        <form  id="TransactionForm" action="" method="POST" enctype="multipart/form-data">
+        <form id="TransactionForm" action="" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -333,48 +341,41 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>
+                                    <p id="section_type">
                                         <label for="type">@lang("Type de Transaction ")</label>
-                                        <select class="form-control" name="type"  id="typetransaction">
-                                       </select>
+                                        <input type="text" id="Insertproperty" hidden>
                                     </p>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <p>
-                                        <label for="">@lang("Montant du Bien ")</label>
-                                        <input id="ammount" type="number" name="ammount">
+                                    <label for="">@lang("Montant du Bien ")</label>
+                                    <p id="section_amount">
                                     </p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>
-                                        <label for="">@lang("Date Debut Transaction ")</label>
-                                        <input id="datedeb" type="date" name="datedeb" >
+                                    <label for="">@lang("Date Debut Transaction ")</label>
+
+                                    <p id="section_datedeb">
                                     </p>
-                                    <p>
-                                        <label for="">@lang("Date Fin de Transaction " )</label>
-                                        <input  id="datefin" type="date" name="datefin" >
-                                    </p>
-                                    <p>
-                                        <label for="">@lang("Date Autorisation Visite")</label>
-                                        <input  id="datevisite" type="date" name="datevisite" >
+                                    <label for="">@lang("Date Fin de Transaction " )</label>
+                                    <p id="section_datefin">
+                                       </p>
+                                    <label for="">@lang("Date Autorisation Visite")</label>
+                                    <p id="section_datevisite">
                                     </p>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <p>
-                                        <label for="type">@lang(" Majoration / Minoration ")</label>
-                                        <input id="percentage" type="number" name="percentage"
-                                               min="1" max="50000">
+                                    <label for="type">@lang(" Majoration / Minoration ")</label>
+                                    <p id="section_maj_min">
                                     </p>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <p>
-                                        <label for="type">@lang(" Interval de temps ")</label>
-                                        <input  id="interval" type="number" name="interval">
+                                    <label for="type">@lang(" Interval de temps ")</label>
+                                    <p id="section_interval">
                                     </p>
                                 </div>
                             </div>
@@ -462,14 +463,13 @@
         $("input[type='number']").hide();
         $('#surface').show();
         $('#label_meuble').hide();
-        $('#TransactionForm').hide();
+     //   $('#TransactionForm').hide();
     });
 </script>
 
 <script>
     // fetch API USING
     window.addEventListener('DOMContentLoaded', (e) => {
-
 
 
         /**
@@ -499,7 +499,7 @@
                 if (response.ok) {
                     response.json().then(propertytype => {
                         var proptype = "<option disabled>@lang("Choisir")</option>";
-                        for (let i = 0; i <propertytype.length; i++) {
+                        for (let i = 0; i < propertytype.length; i++) {
                             proptype += "<option value =" + propertytype[i].id + ">" + propertytype[i].name + "</option>";
                             $('#propertytype_id').html(proptype);
                         }
@@ -517,8 +517,8 @@
             $("input[type='number']").hide();
             $('#standing_id').hide();
             $('#surface').show();
-           //alert ($('#propertytype_id option:selected').text());
-            if($('#propertytype_id option:selected').text()!=='Terrain'){
+            //alert ($('#propertytype_id option:selected').text());
+            if ($('#propertytype_id option:selected').text() !== 'Terrain') {
                 $('#label_meuble').fadeIn("slow");
                 $("input[type='number']").fadeIn("slow");
                 $('#standing_id').fadeIn("slow");
@@ -544,15 +544,15 @@
         /*
          end PropertyTypeData
          */
-       // if ($('input.checkbox_check').is(':checked')) {
+        // if ($('input.checkbox_check').is(':checked')) {
 
-        $('#docfile').on('change',function (e) {
-            val =$('#docfile').val();
+        $('#docfile').on('change', function (e) {
+            val = $('#docfile').val();
             var file_type = val.substr(val.lastIndexOf('.')).toLowerCase();
             if (file_type === '.pdf') {
-                $('#docfile').prop('disabled',true);
+                $('#docfile').prop('disabled', true);
 
-            }else{
+            } else {
                 $('#docfile').autofocus;
                 alert(' Veuillez choisir un fichier .PDF');
             }
@@ -562,14 +562,14 @@
         $('#soumettre').on('click', function () {
             event.preventDefault();
 
-            if($('#meuble').is(':checked')){
+            if ($('#meuble').is(':checked')) {
                 $('#meuble').val("yes");
             }
 
-            if($('#propertytype_id option:selected').text()=='Terrain'){
+            if ($('#propertytype_id option:selected').text() == 'Terrain') {
                 $('#standing_id').val(0);
             }
-            var form =$('#propertyForm');
+            var form = $('#propertyForm');
             var token = $("input[name='_token']").val();
             fetch('{{url('/property')}}', {
                 headers: {
@@ -580,49 +580,50 @@
                 },
                 method: 'POST',
                 credentials: "same-origin",
-                body:JSON.stringify({
-                    name:$('#name').val(),
-                    description:$('#description').val(),
-                    area:$('#surface').val(),
-                    buildingdate:$('#buildingdate').val(),
-                    latitudeposition:$('#latitude').val(),
-                    longitudeposition:$('#longitude').val(),
-                    propertytype_id:$('#propertytype_id').val(),
-                    street_number:$('#street_number').val(),
-                    adresse:$('#autocomplete').val(),
-                    route:$('#route').val(),
-                    locality:$('#locality').val(),
-                    administrative_area_level_1:$('#administrative_area_level_1').val(),
-                    postal_code:$('#postal_code').val(),
-                    country:$('#country').val(),
+                body: JSON.stringify({
+                    name: $('#name').val(),
+                    description: $('#description').val(),
+                    area: $('#surface').val(),
+                    buildingdate: $('#buildingdate').val(),
+                    latitudeposition: $('#latitude').val(),
+                    longitudeposition: $('#longitude').val(),
+                    propertytype_id: $('#propertytype_id').val(),
+                    street_number: $('#street_number').val(),
+                    adresse: $('#autocomplete').val(),
+                    route: $('#route').val(),
+                    locality: $('#locality').val(),
+                    administrative_area_level_1: $('#administrative_area_level_1').val(),
+                    postal_code: $('#postal_code').val(),
+                    country: $('#country').val(),
                     docfile: $('#docfile').val(),
-                    room:$('#room').val(),
-                    bathroom:$('#bathroom').val(),
-                    garage:$('#garage').val(),
-                    piscine:$('#piscine').val(),
-                    meuble:$('#meuble').val(),
-                    standing:$('#standing_id').val(),
+                    room: $('#room').val(),
+                    bathroom: $('#bathroom').val(),
+                    garage: $('#garage').val(),
+                    piscine: $('#piscine').val(),
+                    meuble: $('#meuble').val(),
+                    standing: $('#standing_id').val(),
                 })
             })
                 .then((data) => {
-                    if(data.ok){
-                        data.json().then(validation=>{
-                            if($.isEmptyObject(validation.error)){
+                    if (data.ok) {
+                        data.json().then(validation => {
+                            if ($.isEmptyObject(validation.error)) {
                                 document.getElementById("propertyForm").reset();
                                 $('#propertyForm').slideUp("slow");
                                 $('#my-dropzone').slideUp(2000).slideDown(2000);
                                 $('.page-heading').show();
 
-                                alertify.success(' '+validation.success);
+                                alertify.success(' ' + validation.success);
                                 console.log(validation.success);
                                 $('#propertyadd_id').val(validation.id);
-                            }else{
+                                $('#Insertproperty').val(validation.id);
+                            } else {
                                 printErrorMsg(validation.error);
-                                console.log(validation) ;
+                                console.log(validation);
                             }
                         })
-                    }else{
-                        console.error('Reponse serveur : '+data.status);
+                    } else {
+                        console.error('Reponse serveur : ' + data.status);
                     }
                 })
                 .catch(function (error) {
@@ -630,15 +631,15 @@
                 });
         });
 
-        function printErrorMsg (msg) {
+        function printErrorMsg(msg) {
 
             //$(".print-error-msg").find("ul").html('');
 
-           // $(".print-error-msg").css('display','block');
+            // $(".print-error-msg").css('display','block');
 
-            $.each( msg, function( key, value ) {
-                alertify.error('Renseignez les champs :'+value);
-               // $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+            $.each(msg, function (key, value) {
+                alertify.error('Renseignez les champs :' + value);
+                // $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
 
             });
 
@@ -650,29 +651,133 @@
 </script>
 
 <script>
-    // formulaire transaction
+    // traitement du formulaire d'enregistrement de la transaction
     window.addEventListener('DOMContentLoaded', (e) => {
 
         fetch('{{url('/typetransaction')}}')
             .then(response => {
                 if (response.ok) {
                     response.json().then(typetransaction => {
-                        var proptype= "<option disabled>@lang("Choisir")</option>";
-                        for (let i = 0; i <typetransaction.length; i++) {
-                            proptype += "<option value =" + typetransaction[i].id +">" + typetransaction[i].name + "</option>";
-                            $('#typetransaction').html(proptype);
+                     var chekbox  ="<label> </label>";
+                     var input_amount="";
+                     var input_datedeb="";
+                     var input_datefin="";
+                     var input_datevisite="";
+                     var input_maj_min ="";
+                     var input_interval="";
+
+                        for (let i = 0; i < typetransaction.length; i++) {
+                            chekbox += "<label> " +typetransaction[i].name+ " <input id=" +'type-'+typetransaction[i].id +" type=checkbox name= type[] value="+typetransaction[i].id +">  </label>";
+                            input_amount +='<input id="amount-'+typetransaction[i].id+'"  type="number" name="amount" min="0">';
+                            input_datedeb +='<input id="datedeb-'+typetransaction[i].id+'" type="date" name="datedeb">';
+                            input_datefin+='<input id="datefin-'+typetransaction[i].id+'" type="date" name="datefin" >';
+                            input_datevisite+= '<input id="datevisite-'+typetransaction[i].id+'" type="date" name="datevisite">';
+                            input_maj_min+=' <input id="percentage-'+typetransaction[i].id+'" type="number" name="percentage" min="-100" max="100">';
+                            input_interval+='  <input id="interval-'+typetransaction[i].id+'" type="number" name="interval" min="0">';
+
+                            $('#section_type').html(chekbox);
+                            $('#section_amount').html(input_amount);
+                          //  $('#amount-'+typetransaction[i].id).hide();
+                            $('#section_datedeb').html(input_datedeb);
+                            $('#section_datefin').html(input_datefin);
+                            $('#section_datevisite').html(input_datevisite);
+                            $('#section_maj_min').html(input_maj_min);
+                            $('#section_interval').html(input_interval);
                         }
+
+                        for (let i=0;i<typetransaction.length;i++){
+
+                            $('#amount-'+typetransaction[i].id).hide();
+                            $('#datedeb-'+typetransaction[i].id).hide();
+                            $('#datefin-'+typetransaction[i].id).hide();
+                            $('#datevisite-'+typetransaction[i].id).hide();
+                            $('#percentage-'+typetransaction[i].id).hide();
+                            $('#interval-'+typetransaction[i].id).hide();
+
+                            $('#type-'+typetransaction[i].id).on('change',function (e) {
+
+                               $('#amount-'+typetransaction[i].id).fadeToggle(1000);
+                               $('#datedeb-'+typetransaction[i].id).fadeToggle(1000);
+                               $('#datefin-'+typetransaction[i].id).fadeToggle(1000);
+                               $('#datevisite-'+typetransaction[i].id).fadeToggle(1000);
+                               $('#percentage-'+typetransaction[i].id).fadeToggle(1000);
+                               $('#interval-'+typetransaction[i].id).fadeToggle(1000);
+
+
+                               //alert($('#amount-'+typetransaction[i].id).val());
+                            });
+                        }
+
+
+
+                        // for(let i=0 ;i<typetransaction.length;i++){
+                        //
+                        // }
                     })
                 } else {
                     console.error(' Reponse serveur : ' + response.status);
                 }
 
+            });
+
+        // var checbox =[];
+        // $("input:checked").each(function(){
+        //     alert(1);
+        //     data['checkbox[]'].push($(this).val());
+        //     //console.log(checbox);
+        // });
+
+        // FETCH POST
+        $('#enregistrer').on('click', function () {
+            event.preventDefault();
+
+            var form = $('#TransactionForm');
+            var token = $("input[name='_token']").val();
+            fetch('{{url('/transaction')}}', {
+                headers: {
+                    "Content-type": "application/json;charset=utf-8",
+                    "Accept": "application/json,text-plain",
+                    "X-Requested-Width": "XMLHttpRequest",
+                    "X-CSRF-TOKEN": token
+                },
+                method: 'POST',
+                credentials: "same-origin",
+                body: JSON.stringify({
+                    typetransaction: $('#typetransaction').val(),
+                    amount: $('#amount').val(),
+                    datedeb: $('#datedeb').val(),
+                    datefin: $('#datefin').val(),
+                    datevisite: $('#datevisite').val(),
+                    percentage: $('#percentage').val(),
+                    interval: $('#interval').val(),
+                    property:$('#Insertproperty').val(),
+                })
             })
+                .then((data) => {
+                    if (data.ok) {
+                        data.json().then(validation => {
+                            if ($.isEmptyObject(validation.error)) {
+                                document.getElementById("TransactionForm").reset();
+                                alertify.success(' ' + validation.success);
+                                console.log(validation.success);
+                            } else {
+                                printErrorMsg(validation.error);
+                                console.log(validation);
+                            }
+                        })
+                    } else {
+                        console.error('Reponse serveur : ' + data.status);
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
 
     });
 
 </script>
-<script  src="{{asset('js/alertify/alertify.min.js')}}"></script>
+<script src="{{asset('js/alertify/alertify.min.js')}}"></script>
 <script src="{{asset('guest/js/dropzone-config.js')}}"></script>
 
 </body>

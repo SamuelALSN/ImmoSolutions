@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Property;
+use App\standing;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\DB;
@@ -24,8 +25,11 @@ class PropertyController extends Controller
     public function index()
     {
         //
+       $properties = Property::all();
+      // $standing = standing::all();
 
-        return view('guest.sample.submit-property2');
+        //return view('propertiesmanagement.show-properties',compact('properties','standing'));
+        return view('propertiesmanagement.show-properties',compact('properties'));
     }
 
     /**
@@ -36,6 +40,7 @@ class PropertyController extends Controller
     public function create()
     {
         //
+        return view('guest.sample.submit-property2');
     }
 
     /**

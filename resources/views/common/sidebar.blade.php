@@ -2,42 +2,56 @@
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="{{url('/home')}}">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
-                <span class="badge badge-primary">NEW</span>
+                <i class="nav-icon icon-speedometer"></i> @lang("Tableau de Bord")
+
             </a>
         </li>
-        <li class="nav-title">Theme</li>
+        <li class="nav-title">@lang("Biens ")</li>
         <li class="nav-item">
-            <a class="nav-link" href="colors.html">
-                <i class="nav-icon icon-drop"></i> Colors</a>
+            <a class="nav-link" href="{{url('/property')}}">
+                <i class="nav-icon icon-drop"></i> @lang("Récents")
+                <span class="badge badge-primary">NEW</span>
+            </a>
+
+
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="typography.html">
-                <i class="nav-icon icon-pencil"></i> Typography</a>
+            <a class="nav-link" href="">
+                <i class="nav-icon icon-pencil"></i>@lang("En attente de validation")
+                <span class="badge badge-warning">NEW</span>
+            </a>
         </li>
-        <li class="nav-title">Components</li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <i class="nav-icon icon-pencil"></i>@lang("Publiés")
+                <span class="badge badge-success">NEW</span>
+            </a>
+        </li>
+
+        <li class="nav-title">@lang("Réservations")</li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-puzzle"></i> Base</a>
+                <i class="nav-icon icon-puzzle"></i> @lang("En Cours")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="base/breadcrumb.html">
-                        <i class="nav-icon icon-puzzle"></i> Breadcrumb</a>
+                    <a class="nav-link" href="">
+                        <i class="nav-icon icon-puzzle"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/cards.html">
-                        <i class="nav-icon icon-puzzle"></i> Cards</a>
+                    <a class="nav-link" href="">
+                        <i class="nav-icon icon-puzzle"></i> @lang("")</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/carousel.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-puzzle"></i> Carousel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/collapse.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-puzzle"></i> Collapse</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/forms.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-puzzle"></i> Forms</a>
                 </li>
                 <li class="nav-item">
@@ -88,52 +102,52 @@
         </li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-cursor"></i> Buttons</a>
+                <i class="nav-icon icon-cursor"></i> @lang("Promotions")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="buttons/buttons.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-cursor"></i> Buttons</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="buttons/button-group.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-cursor"></i> Buttons Group</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="buttons/dropdowns.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-cursor"></i> Dropdowns</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="buttons/brand-buttons.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-cursor"></i> Brand Buttons</a>
                 </li>
             </ul>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{url('/charts')}}">
-                <i class="nav-icon icon-pie-chart"></i> Charts</a>
+                <i class="nav-icon icon-pie-chart"></i> @lang("Statistiques")</a>
         </li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-star"></i> Icons</a>
+                <i class="nav-icon icon-star"></i> @lang("Statistques Géographiques")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="icons/coreui-icons.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-star"></i> CoreUI Icons
                         <span class="badge badge-success">NEW</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="icons/flags.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-star"></i> Flags</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="icons/font-awesome.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-star"></i> Font Awesome
                         <span class="badge badge-secondary">4.7</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="icons/simple-line-icons.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-star"></i> Simple Line Icons</a>
                 </li>
             </ul>
@@ -143,7 +157,7 @@
                 <i class="nav-icon icon-bell"></i> Notifications</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="notifications/alerts.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-bell"></i> Alerts</a>
                 </li>
                 <li class="nav-item">
@@ -187,13 +201,13 @@
             </ul>
         </li>
         <li class="nav-item mt-auto">
-            <a class="nav-link nav-link-success" href="https://coreui.io" target="_top">
-                <i class="nav-icon icon-cloud-download"></i> Download CoreUI</a>
+            <a class="nav-link nav-link-success" href="{{url('/user')}}" target="_top">
+                <i class="nav-icon icon-cloud-download"></i> @lang("Gestion des Utilisateurs ")</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link-danger" href="https://coreui.io/pro/" target="_top">
-                <i class="nav-icon icon-layers"></i> Try CoreUI
-                <strong>PRO</strong>
+            <a class="nav-link nav-link-danger" href="" target="_top">
+                <i class="nav-icon icon-layers"></i> @lang("Gestion des Sessions")
+                <strong></strong>
             </a>
         </li>
     </ul>

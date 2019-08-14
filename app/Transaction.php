@@ -9,4 +9,15 @@ class Transaction extends Model
     //
     protected $table ='transaction';
 
+    protected  $fillable = [
+      'property_id',
+        'ammount',
+        'transactiontype_id',
+        'beginDate',
+        'endDate',
+        'visiteDate',
+        'majoration',
+        'intervalMajoration'
+    ];
+
 }

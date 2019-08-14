@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Property;
 use App\standing;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\DB;
@@ -26,9 +27,6 @@ class PropertyController extends Controller
     {
         //
        $properties = Property::all();
-      // $standing = standing::all();
-
-        //return view('propertiesmanagement.show-properties',compact('properties','standing'));
         return view('propertiesmanagement.show-properties',compact('properties'));
     }
 
@@ -52,8 +50,6 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
   //  dd($request->all());
-
-        //
         $validator = Validator::make($request->all(),[
            'name'=>'required|max:255' ,
            'description'=>'nullable|string|max:255' ,
@@ -101,6 +97,8 @@ class PropertyController extends Controller
                     'swimmingpool'=>$request->input('piscine'),
                     'meuble'=>$request->input('meuble'),
                     'standing_id'=>$request->input('standing'),
+                    'created_at'=> Carbon::now(),
+                    'updated_at'=> Carbon::now(),
                     ]
 
             );
@@ -158,5 +156,17 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         //
+    }
+
+    /*
+     * show authenticade user properties
+     */
+
+    public function customerproperty(){
+        $property = Property::where('user_id',Auth::user()->id)
+                        ->get();
+
+        return $property;
+        //return view('guest.customer.user-properties');
     }
 }

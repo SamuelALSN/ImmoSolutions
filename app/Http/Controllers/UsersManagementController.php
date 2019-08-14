@@ -81,8 +81,8 @@ class UsersManagementController extends Controller
                 'country_id' => $request->$request->country_id,
                 'activated' => 0,
                 'signup_ip_address' => $request->$ipAdress->getClientIp(),
-                'created_at'=> Carbon::now(),
-                'updated_at'=> Carbon::now(),
+                //'created_at'=> Carbon::now(),
+               // 'updated_at'=> Carbon::now(),
             ]);
 
             $user->assignRole($request->role);

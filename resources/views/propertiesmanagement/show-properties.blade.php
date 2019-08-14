@@ -157,5 +157,5 @@
     <script src="{{asset('datatables/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.bootstrap4.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.js')}}"></script>
-    <script src = "{{asset('important/scripts/datatables-manip.js')}}"></script>
+    <script src = "{{asset('important/scripts/datatableproperty-manip.js')}}"></script>
 @endsection

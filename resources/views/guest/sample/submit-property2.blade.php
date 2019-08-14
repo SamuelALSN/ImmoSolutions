@@ -181,6 +181,7 @@
                                     <label for="propertytpe">@lang("Categorie")<span></span></label>
                                     <p>
                                         <select class="form-control" name="propertytype_id" id="propertytype_id">
+
                                         </select>
                                     </p>
 
@@ -256,7 +257,7 @@
             <div class="col-sm-10 offset-sm-1">
                 <h2 class="page-heading">Charger vos Images <span id="counter"></span></h2>
                 <form method="post" action="{{ url('/images') }}"
-                      enctype="multipart/form-data" class="dropzone" id="my-dropzone">
+                      enctype="multipart/form-data" class="dropzone" id="my-dropzone" hidden>
                     {{ csrf_field() }}
                     <input type="hidden" id="propertyadd_id" name="propertyadd_id" value="">
                     <div class="dz-message">
@@ -331,7 +332,7 @@
             {{--Fin de  la zone  de chargement d'image --}}
         </div>
 
-        <form id="TransactionForm" action="" method="POST" enctype="multipart/form-data">
+        <form id="TransactionForm" action="" method="POST" hidden>
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -341,15 +342,22 @@
 
                             <div class="row">
                                 <div class="col-md-12">
+                                    <input id="Insertproperty" type="text" value="">
                                     <p id="section_type">
                                         <label for="type">@lang("Type de Transaction ")</label>
-                                        <input type="text" id="Insertproperty" hidden>
+                                        <select class="form-control" id="typetransaction" name="typetransaction">
+                                        </select>
                                     </p>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="">@lang("Montant du Bien ")</label>
+                                    <label for="">@lang("Montant du Bien")</label>
                                     <p id="section_amount">
+                                        <span> CFA
+                                            <input id="amount" type="number" min="0" max="">
+
+                                        </span>
+
                                     </p>
                                 </div>
                             </div>
@@ -358,26 +366,31 @@
                                     <label for="">@lang("Date Debut Transaction ")</label>
 
                                     <p id="section_datedeb">
+                                        <input id="datedeb" type="date">
                                     </p>
                                     <label for="">@lang("Date Fin de Transaction " )</label>
                                     <p id="section_datefin">
-                                       </p>
+                                        <input id="datefin" type="date">
+                                    </p>
                                     <label for="">@lang("Date Autorisation Visite")</label>
                                     <p id="section_datevisite">
+                                        <input id="datevisite" type="date">
                                     </p>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <label for="type">@lang(" Majoration / Minoration ")</label>
-                                    <p id="section_maj_min">
-                                    </p>
-                                </div>
+{{--                                <div class="col-md-12">--}}
+{{--                                    <label for="type">@lang(" Majoration / Minoration ")</label>--}}
+{{--                                    <p id="section_maj_min">--}}
+{{--                                        <input id="percentage" type="number" min="-100" max="100">--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-12">
-                                    <label for="type">@lang(" Interval de temps ")</label>
-                                    <p id="section_interval">
-                                    </p>
-                                </div>
+{{--                                <div class="col-md-12">--}}
+{{--                                    <label for="type">@lang(" Interval de temps ")</label>--}}
+{{--                                    <p id="section_interval">--}}
+{{--                                        <input id="interval" type="number" min="0" max="100">--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -459,11 +472,9 @@
 <script>
     $(document).ready(function () {
         $('.page-heading').hide();
-        $('#my-dropzone').hide();
         $("input[type='number']").hide();
         $('#surface').show();
         $('#label_meuble').hide();
-     //   $('#TransactionForm').hide();
     });
 </script>
 
@@ -498,7 +509,7 @@
             .then(response => {
                 if (response.ok) {
                     response.json().then(propertytype => {
-                        var proptype = "<option disabled>@lang("Choisir")</option>";
+                        var proptype = "<option disabled >@lang("Choisir")</option>";
                         for (let i = 0; i < propertytype.length; i++) {
                             proptype += "<option value =" + propertytype[i].id + ">" + propertytype[i].name + "</option>";
                             $('#propertytype_id').html(proptype);
@@ -523,22 +534,6 @@
                 $("input[type='number']").fadeIn("slow");
                 $('#standing_id').fadeIn("slow");
             }
-
-            {{--fetch('{{url('/property-type')}}' + '/' + sub)--}}
-            {{--    .then(response => {--}}
-            {{--        if (response.ok) {--}}
-            {{--            response.json().then(subproptype => {--}}
-            {{--                var subP;--}}
-            {{--                for (let i = 0; i <subproptype.length; i++) {--}}
-            {{--                    subP += "<option value =" + subproptype[i].id + ">" + subproptype[i].name + "</option>";--}}
-            {{--                    $('#subpropertyType_id').html(subP);--}}
-            {{--                }--}}
-            {{--            })--}}
-            {{--        } else {--}}
-            {{--            console.error(' Reponse serveur : ' + response.status);--}}
-            {{--        }--}}
-
-            {{--    })--}}
         });
 
         /*
@@ -610,6 +605,7 @@
                             if ($.isEmptyObject(validation.error)) {
                                 document.getElementById("propertyForm").reset();
                                 $('#propertyForm').slideUp("slow");
+                                $('#my-dropzone').removeAttr("hidden");
                                 $('#my-dropzone').slideUp(2000).slideDown(2000);
                                 $('.page-heading').show();
 
@@ -634,7 +630,6 @@
         function printErrorMsg(msg) {
 
             //$(".print-error-msg").find("ul").html('');
-
             // $(".print-error-msg").css('display','block');
 
             $.each(msg, function (key, value) {
@@ -658,61 +653,18 @@
             .then(response => {
                 if (response.ok) {
                     response.json().then(typetransaction => {
-                     var chekbox  ="<label> </label>";
-                     var input_amount="";
-                     var input_datedeb="";
-                     var input_datefin="";
-                     var input_datevisite="";
-                     var input_maj_min ="";
-                     var input_interval="";
 
+                        var type_trans = '<option disabled> @lang("Choisir ")</option>';
                         for (let i = 0; i < typetransaction.length; i++) {
-                            chekbox += "<label> " +typetransaction[i].name+ " <input id=" +'type-'+typetransaction[i].id +" type=checkbox name= type[] value="+typetransaction[i].id +">  </label>";
-                            input_amount +='<input id="amount-'+typetransaction[i].id+'"  type="number" name="amount" min="0">';
-                            input_datedeb +='<input id="datedeb-'+typetransaction[i].id+'" type="date" name="datedeb">';
-                            input_datefin+='<input id="datefin-'+typetransaction[i].id+'" type="date" name="datefin" >';
-                            input_datevisite+= '<input id="datevisite-'+typetransaction[i].id+'" type="date" name="datevisite">';
-                            input_maj_min+=' <input id="percentage-'+typetransaction[i].id+'" type="number" name="percentage" min="-100" max="100">';
-                            input_interval+='  <input id="interval-'+typetransaction[i].id+'" type="number" name="interval" min="0">';
 
-                            $('#section_type').html(chekbox);
-                            $('#section_amount').html(input_amount);
-                          //  $('#amount-'+typetransaction[i].id).hide();
-                            $('#section_datedeb').html(input_datedeb);
-                            $('#section_datefin').html(input_datefin);
-                            $('#section_datevisite').html(input_datevisite);
-                            $('#section_maj_min').html(input_maj_min);
-                            $('#section_interval').html(input_interval);
+                            type_trans += "<option value =" + typetransaction[i].id + ">" + typetransaction[i].name + "</option>";
+                            $('#typetransaction').html(type_trans);
+
+
                         }
-
-                        for (let i=0;i<typetransaction.length;i++){
-
-                            $('#amount-'+typetransaction[i].id).hide();
-                            $('#datedeb-'+typetransaction[i].id).hide();
-                            $('#datefin-'+typetransaction[i].id).hide();
-                            $('#datevisite-'+typetransaction[i].id).hide();
-                            $('#percentage-'+typetransaction[i].id).hide();
-                            $('#interval-'+typetransaction[i].id).hide();
-
-                            $('#type-'+typetransaction[i].id).on('change',function (e) {
-
-                               $('#amount-'+typetransaction[i].id).fadeToggle(1000);
-                               $('#datedeb-'+typetransaction[i].id).fadeToggle(1000);
-                               $('#datefin-'+typetransaction[i].id).fadeToggle(1000);
-                               $('#datevisite-'+typetransaction[i].id).fadeToggle(1000);
-                               $('#percentage-'+typetransaction[i].id).fadeToggle(1000);
-                               $('#interval-'+typetransaction[i].id).fadeToggle(1000);
-
-
-                               //alert($('#amount-'+typetransaction[i].id).val());
-                            });
-                        }
-
-
-
-                        // for(let i=0 ;i<typetransaction.length;i++){
-                        //
-                        // }
+                        $('#amount').fadeToggle(1000);
+                        $('#percentage').fadeToggle(1000);
+                        $('#interval').fadeToggle(1000);
                     })
                 } else {
                     console.error(' Reponse serveur : ' + response.status);
@@ -720,12 +672,43 @@
 
             });
 
-        // var checbox =[];
-        // $("input:checked").each(function(){
-        //     alert(1);
-        //     data['checkbox[]'].push($(this).val());
-        //     //console.log(checbox);
-        // });
+        // verification date
+        $('#datedeb').on('change', function (e) {
+            var datedeb = $('#datedeb').val();
+            var currentDate = new Date();
+            var deb = new Date(datedeb);
+
+            if (deb < currentDate) {
+                $('#datedeb').focus();
+                alertify.alert("Date Invalide ","la date de debut doit etre superieure à la date du jour ");
+            }
+        });
+      // verification datefin
+        $('#datefin').on('change', function (e) {
+            var datefin = $('#datefin').val();
+            var datedeb = $('#datedeb').val();
+            var fin = new Date(datefin);
+            var debt = new Date(datedeb);
+            if(fin<debt){
+                alertify.alert("Date Invalide","la date de fin doit etre superieure à la date debut ");
+            }
+
+        });
+
+        $('#datevisite').on('change',function (e) {
+            var getCurrentDate = new Date();
+            var dateviste = $('#datevisite').val();
+            var datedebut = $('#datedeb').val();
+
+            var visite = new  Date(dateviste);
+            var datedeb = new Date(datedebut);
+
+            if(visite<getCurrentDate || visite>datedeb){
+                alertify.alert("Date Invalide"," la date de visite doit etre superieure à la date du jour ou   etre inferieure à la date de debut ")
+            }
+
+        });
+
 
         // FETCH POST
         $('#enregistrer').on('click', function () {
@@ -744,13 +727,11 @@
                 credentials: "same-origin",
                 body: JSON.stringify({
                     typetransaction: $('#typetransaction').val(),
-                    amount: $('#amount').val(),
-                    datedeb: $('#datedeb').val(),
-                    datefin: $('#datefin').val(),
-                    datevisite: $('#datevisite').val(),
-                    percentage: $('#percentage').val(),
-                    interval: $('#interval').val(),
-                    property:$('#Insertproperty').val(),
+                    ammount: $('#amount').val(),
+                    beginDate: $('#datedeb').val(),
+                    endDate: $('#datefin').val(),
+                    visiteDate: $('#datevisite').val(),
+                    property: $('#Insertproperty').val(),
                 })
             })
                 .then((data) => {
@@ -760,6 +741,7 @@
                                 document.getElementById("TransactionForm").reset();
                                 alertify.success(' ' + validation.success);
                                 console.log(validation.success);
+                                window.open('/welcome');
                             } else {
                                 printErrorMsg(validation.error);
                                 console.log(validation);
@@ -773,6 +755,15 @@
                     console.log(error);
                 });
         });
+
+
+        function printErrorMsg(msg) {
+            $.each(msg, function (key, value) {
+                alertify.error('Renseignez les champs :' + value);
+
+            });
+
+        }
 
     });
 

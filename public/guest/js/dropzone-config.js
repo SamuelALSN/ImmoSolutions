@@ -34,6 +34,8 @@ Dropzone.options.myDropzone = {
         file["customName"] = name;
         $('.page-heading').slideUp("500");
         $('#my-dropzone').slideUp("500");
+
+        $('#TransactionForm').removeAttr("hidden");
         $('#TransactionForm').slideDown("3000");
             //.slideDown("3000");
         alertify.success(' '+done.message);

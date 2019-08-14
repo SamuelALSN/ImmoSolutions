@@ -26,4 +26,11 @@ class Property extends Model
     public  function propertytype(){
         return $this->belongsTo('App\propertytype');
     }
+
+    public function typetransactions(){
+        return $this->belongsToMany('App\typeTransaction',
+            'Transaction',
+            'property_id',
+            'transactiontype_id');
+    }
 }

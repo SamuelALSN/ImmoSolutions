@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Http\Request;
+use Validator;
 
 class TransactionController extends Controller
 {
@@ -35,8 +36,32 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        dd($request->all());
+        //dd($request->all());
+
+        $validator = Validator::make($request->all(),[
+           'beginDate'=>'required|date|after:tomorrow',
+            'endDate'=>'required|date|after:beginDate',
+            'visiteDate'=>'required|date|before:beginDate',
+            'ammount'=>'required|integer',
+        ]);
+
+        if($validator->passes()){
+            $propertyTransaction = Transaction::create([
+                'property_id'=>$request->property,
+                'transactiontype_id'=>$request->typetransaction,
+                'beginDate'=>$request->beginDate,
+                'endDate'=>$request->endDate,
+                'visiteDate'=>$request->visiteDate,
+                'ammount'=>$request->ammount,
+                'activated'=>0,
+            ]);
+            $propertyTransaction->save();
+            return response()->json([
+                'success'=>'Enregistrement Effectué'
+            ]);
+        }
+
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
     /**
@@ -48,6 +73,7 @@ class TransactionController extends Controller
     public function show(Transaction $transaction)
     {
         //
+
     }
 
     /**

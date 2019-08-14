@@ -48,6 +48,7 @@ Route::get('/welcome', function () {
     return view('guest.home');
 });
 
+
 //Route::get('/submit',function(){
 //    return view('guest.sample.submit-property');
 //});
@@ -104,3 +105,8 @@ Route::resources([
 Route::resources([
     'transaction' => 'TransactionController'
 ]);
+
+
+// user properties
+
+Route::get('/properties-all','PropertyController@customerproperty' );

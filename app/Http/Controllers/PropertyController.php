@@ -163,10 +163,11 @@ class PropertyController extends Controller
      */
 
     public function customerproperty(){
-        $property = Property::where('user_id',Auth::user()->id)
+        $properties = Property::where(
+            'user_id',Auth::user()->id)
+                        ->where('activated',0)
                         ->get();
 
-        return $property;
-        //return view('guest.customer.user-properties');
+        return view('guest.customer.user-properties',compact('properties'));
     }
 }

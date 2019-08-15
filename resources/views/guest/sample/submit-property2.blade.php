@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -377,20 +377,6 @@
                                         <input id="datevisite" type="date">
                                     </p>
                                 </div>
-
-{{--                                <div class="col-md-12">--}}
-{{--                                    <label for="type">@lang(" Majoration / Minoration ")</label>--}}
-{{--                                    <p id="section_maj_min">--}}
-{{--                                        <input id="percentage" type="number" min="-100" max="100">--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-md-12">--}}
-{{--                                    <label for="type">@lang(" Interval de temps ")</label>--}}
-{{--                                    <p id="section_interval">--}}
-{{--                                        <input id="interval" type="number" min="0" max="100">--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
                             </div>
                         </div>
                     </div>

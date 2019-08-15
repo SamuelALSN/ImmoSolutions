@@ -6,6 +6,8 @@ use App\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Intervention\Image\Facades\Image as InterventionImage;
+use Intervention\Image\Size;
+use Intervention\Image\Image as Img;
 use Illuminate\Support\Str;
 class ImagesController extends Controller
 {
@@ -65,9 +67,12 @@ class ImagesController extends Controller
             $resize_name = $name . Str::random(2) . '.' . $photo->getClientOriginalExtension();
 
             InterventionImage::make($photo)
-                ->resize(250, null, function ($constraints) {
-                    $constraints->aspectRatio();
-                })
+                ->encode('jpg',75)
+                ->resize(1000, 750)
+//                ->resize(1000, 750, function ($constraints) {
+//                    $constraints->aspectRatio();
+//                })
+                ->crop(1000,750)
                 ->save($this->photos_path . '/' . $resize_name);
 
             $photo->move($this->photos_path, $save_name);

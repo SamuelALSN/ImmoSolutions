@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"
+                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer table-responsive"
                              style="font-size: 12px;">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -103,7 +103,7 @@
                                             <tbody id="properties_table">
                                             @foreach($properties as $property)
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1">{{$property->id}}</td>
+                                                    <td class="sorting_1"> <a href="{{url('/property-details/'.$property->id)}}">{{$property->id}}</a></td>
                                                     <td class="sorting_1">{{$property->name}}</td>
                                                     <td>{{$property->adresse}}</td>
                                                     <td>{{$property->longitudeposition}} / {{$property->longitudeposition}}</td>
@@ -114,20 +114,20 @@
                                                     <td>
                                                         <a class="btn btn-success" data-toggle="modal"
                                                            data-target="#largeModal"
-                                                           id="show-user"
-                                                           data-info="">
+                                                           id="show-property"
+                                                           data-info="{{$property->id}}">
                                                             <i class="fa fa-search-plus"></i>
                                                         </a>
                                                         <a class="btn btn-info" data-toggle="modal"
                                                            data-target="#primaryModal"
-                                                           id="edit-user"
-                                                           data-info=" ">
+                                                           id="edit-property"
+                                                           data-info="{{$property->id}}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         <a class="btn btn-danger" data-toggle="modal"
                                                            data-target="#dangerModal"
-                                                           id="delete-user" data-id=""
-                                                           data-info=" ">
+                                                           id="delete-property" data-id=""
+                                                           data-info="{{$property->id}} ">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
                                                     </td>
@@ -145,7 +145,6 @@
 
 
                 <!-- /.modal add -->
-            @include('usersmanagement.user-modale')
             <!-- /.modal-end-->
 
             </div>

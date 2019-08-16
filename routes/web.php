@@ -110,3 +110,9 @@ Route::resources([
 // user properties
 
 Route::get('/properties-all','PropertyController@customerproperty' );
+Route::get('/user-properties-detail/{id}','PropertyController@showcustomerproperty' );
+
+Route::get('/property-details/{id}','PropertyController@showcustomerproperty');
+
+Route::get('/user-agents','UsersManagementController@showAgents');
+

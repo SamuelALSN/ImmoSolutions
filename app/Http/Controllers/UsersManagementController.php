@@ -218,4 +218,11 @@ class UsersManagementController extends Controller
          return response()->json([ 'errors' => 'suppression impossible']);
 
     }
+
+    // show user related to agents role
+
+    public function  showAgents(){
+        $userAgents = User::role('Agents')->get();
+        return response()->json($userAgents);
+    }
 }

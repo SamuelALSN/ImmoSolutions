@@ -45,20 +45,22 @@
                     <div class="project-single">
                         <div class="project-inner project-head">
                             <div class="project-bottom">
-                                <h4><a href="properties-details.html">@lang("Voir Bien ")</a><span class="category">{{$property->propertytype['name']}}</span></h4>
+                                <h4><a href="{{url('/user-properties-detail/'.$property->id)}}">@lang("Voir Bien ")</a><span class="category">{{$property->propertytype['name']}}</span></h4>
                             </div>
                             <div class="button-effect">
-                                <a href="properties-details.html" class="btn"><i class="fa fa-link"></i></a>
-                                <a href="../../www.youtube.com/watch.htm" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                <a class="img-poppu btn" href="{{asset('guest/images/feature-properties/fp-3.jpg')}}" data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
+                                <a href="{{url('/user-properties-detail/'.$property->id)}}" class="btn"><i class="fa fa-link"></i></a>
+                                <a href="" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                <a class="img-poppu btn" href="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
                             </div>
                             <div class="homes">
                                 <!-- homes img -->
-                                <a href="properties-details.html" class="homes-img">
-                                    <div class="homes-tag button alt featured">Featured</div>
-                                    <div class="homes-tag button alt sale">For Sale</div>
+                                <a href="{{url('/user-properties-detail/'.$property->id)}}" class="homes-img">
+                                    <div class="homes-tag button alt featured">@lang("Tendances")</div>
+                                    @foreach($property->typetransactions as $typetrans)
+                                    <div class="homes-tag button alt sale">{{$typetrans->name}}</div>
+                                    @endforeach
                                     <div class="homes-price">Family Home  </div>
-                                    <img src="{{asset('storage/images/'.$property->images[0]->file)}}" alt="home-1" class="img-responsive"
+                                    <img src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" alt="home-1" class="img-responsive"
                                     height="750" width="1000">
                                 </a>
                             </div>
@@ -68,7 +70,7 @@
                             <!-- homes address -->
                             <h3>{{$property->name}}</h3>
                             <p class="homes-address mb-3">
-                                <a href="properties-details.html">
+                                <a href="{{url('/user-properties-detail/'.$property->id)}}">
                                     <i class="fa fa-map-marker"></i><span>{{$property->adresse}}</span>
                                 </a>
                             </p>
@@ -95,29 +97,30 @@
                             @foreach($property->typetransactions as $typetrans)
                             <div class="price-properties">
                                 <h3 class="title mt-3">
-                                    <a href="properties-details.html">{{$typetrans->pivot->ammount}} CFA</a>
+                                    <a href="">{{$typetrans->pivot->ammount}} CFA</a>
                                 </h3>
                                 <div class="compare">
-                                    <a href="properties-full-grid.html#" title="Compare">
+                                    <a href="" title="Compare">
                                         <i class="fas fa-exchange-alt"></i>
                                     </a>
-                                    <a href="properties-full-grid.html#" title="Share">
+                                    <a href="" title="Share">
                                         <i class="fas fa-share-alt"></i>
                                     </a>
-                                    <a href="properties-full-grid.html#" title="Favorites">
+                                    <a href="" title="Favorites">
                                         <i class="fa fa-heart-o"></i>
                                     </a>
                                 </div>
                             </div>
-                            @endforeach
+
                             <div class="footer">
-                                <a href="agent-details.html">
+                                <a href="">
                                     <i class="fa fa-user"></i>
                                 </a>
                                 <span>
-                                <i class="fa fa-calendar"></i> 2 months ago
+                                <i class="fa fa-calendar"></i> {{$typetrans->pivot->created_at}}
                             </span>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -127,19 +130,7 @@
 
             <nav aria-label="..." class="pt-3">
                 <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="properties-full-list.html#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="properties-full-list.html#">1 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="properties-full-list.html#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="properties-full-list.html#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="properties-full-list.html#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="properties-full-list.html#">5</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="properties-full-list.html#">Next</a>
-                    </li>
+                    {{$properties->links()}}
                 </ul>
             </nav>
         </div>

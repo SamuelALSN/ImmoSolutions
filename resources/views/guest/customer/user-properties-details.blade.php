@@ -57,13 +57,13 @@
                             <span class="heading-icon">
                                 <i class="fa fa-map-marker"></i>
                                 </span>
-                                <span class="hidden-sm-down">995 South Park Avenue</span>
+                                <span class="hidden-sm-down">{{$property->adresse}}</span>
                             </h4>
                         </div>
                         <div class="col-lg-6 col-md-6 col-10 cod-pad">
                             <div class="sorting-options">
-                                <h5><span>Price:</span> $28,000</h5>
-                                <h6 class="type"><span>Type:</span> For Sale</h6>
+                                <h5><span>@lang("Prix"):</span>{{$property->ammount}}</h5>
+                                <h6 class="type"><span> @lang("Type de Baille"):</span> {{$property->typetransactions[0]->name}}</h6>
                             </div>
                         </div>
                     </div>
@@ -108,41 +108,41 @@
                                 <ul class="homes-list clearfix">
                                     <li>
                                         <i class="fa fa-bed" aria-hidden="true"></i>
-                                        <span>Beds 6</span>
+                                        <span>{{$property->rooms}} @lang("Chambre")</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-bath" aria-hidden="true"></i>
-                                        <span>Baths 3</span>
+                                        <span>{{$property->bathRooms}} @lang("Douche")</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-object-group" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
+                                        <span>{{$property->area}} m<sup>2</sup></span>
                                     </li>
                                     <li>
                                         <i class="fa fa-car" aria-hidden="true"></i>
-                                        <span>Garages 2</span>
+                                        <span>{{$property->garages}} @lang("Garages")</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-columns" aria-hidden="true"></i>
-                                        <span>Kitchen 2</span>
+                                        <span>@lang("Cusine")</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-clone" aria-hidden="true"></i>
-                                        <span>Balcony 2</span>
+                                        <span>@lang("Balcon")</span>
                                     </li>
                                 </ul>
                             </div>
-                            <h5 class="mb-4">GENERAL INFORMATION</h5>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
+                            <h5 class="mb-4">@lang("Description")</h5>
+                            <p class="mb-3">
+                               {{$property->description}}   </p>
+
                         </div>
                     </div>
                 </div>
                 <!-- cars content -->
                 <div class="homes-content details mb-5">
                     <!-- title -->
-                    <h5 class="mb-4">Amenities</h5>
+                    <h5 class="mb-4">@lang("Caracteristiques")</h5>
                     <!-- cars List -->
                     <ul class="homes-list clearfix">
                         <li>
@@ -153,34 +153,7 @@
                             <i class="fa fa-check-square" aria-hidden="true"></i>
                             <span>Balcony</span>
                         </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>Internet</span>
-                        </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>Dishwasher</span>
-                        </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>Bedding</span>
-                        </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>Cable TV</span>
-                        </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>Parking</span>
-                        </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>Pool</span>
-                        </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>Fridge</span>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="property-location mb-5">
@@ -191,7 +164,7 @@
                 <!-- START SECTION ASSIGNED AGENTS -->
                 <section class="team assigned">
                     <div class="container">
-                        <h5>Assigned Agents</h5>
+                        <h5>@lang("Agents Assignés")</h5>
                         <div class="row team-all">
                             <div class="col-lg-4 col-md-6 team-pro hover-effect">
                                 <div class="team-wrap">

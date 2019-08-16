@@ -9,19 +9,26 @@ $(document).ready(function () {
     //     $('#role').val(selecteddata[4]);
     // }
 
-    // /*
-    // showing update modal
-    //  */
+    /*
+    showing update modal
+     */
+
+    // $(document).on('click', '#edit-property', function () {
+    //     var data = $(this).data('info');
+    //     fetch('/property/'+data)
+    //         .then(response => {
+    //         if (response.ok) {
+    //             response.json().then(property => {
     //
-    // $(document).on('click', '#edit-user', function () {
-    //     $('.modal-titleEdit').text("Modifier un Utilisateur ");
-    //     $('#save_user').attr("id", "update_user");
-    //     var alldata = $(this).data('info').split(',');
-    //     var trim = $.trim(alldata)
-    //     console.log(alldata)
-    //     $.trim(parsedata(alldata));
+    //                 //window.location.href="/property-details?property="+property;//console.log(property);
+    //             })
+    //         } else {
+    //             console.error(' Reponse serveur : ' + response.status);
+    //         }
+    //
+    //     });
     // });
-    //
+
     // /*
     // Showing delete modal
     //  */
@@ -150,4 +157,6 @@ $(document).ready(function () {
     //         }
     //     });
     // });
+
+
 });

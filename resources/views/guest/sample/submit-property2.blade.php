@@ -727,7 +727,7 @@
                                 document.getElementById("TransactionForm").reset();
                                 alertify.success(' ' + validation.success);
                                 console.log(validation.success);
-                                window.open('/welcome');
+                                window.location.href ="{{url('/properties-all')}}";
                             } else {
                                 printErrorMsg(validation.error);
                                 console.log(validation);

@@ -37,6 +37,7 @@ class Property extends Model
             'Transaction',
             'property_id',
             'transactiontype_id')
-            ->withPivot('ammount', 'beginDate', 'endDate', 'visiteDate');
+            ->withPivot('ammount', 'beginDate', 'endDate', 'visiteDate')
+            ->withTimestamps();
     }
 }

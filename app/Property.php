@@ -40,4 +40,13 @@ class Property extends Model
             ->withPivot('ammount', 'beginDate', 'endDate', 'visiteDate')
             ->withTimestamps();
     }
+
+    public function  assignment(){
+        return $this->belongsToMany('App\User',
+            'assignment',
+            'property_id',
+            'user_id')
+            ->withPivot('comment','status','verification_begin','verification_ended')
+            ->withTimestamps();
+    }
 }

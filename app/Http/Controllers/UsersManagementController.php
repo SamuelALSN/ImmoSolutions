@@ -82,18 +82,12 @@ class UsersManagementController extends Controller
                 'activated' => 0,
                 'signup_ip_address' => $request->$ipAdress->getClientIp(),
                 //'created_at'=> Carbon::now(),
-               // 'updated_at'=> Carbon::now(),
+                // 'updated_at'=> Carbon::now(),
             ]);
 
             $user->assignRole($request->role);
             $user->save();
             return response()->json($user);
-//
-//            $data = new Data();
-//            $data->name = $request->name;
-//            $data->save();
-            //return response()->json($data);
-
         }
     }
 
@@ -141,13 +135,13 @@ class UsersManagementController extends Controller
 
         if ($emailCheck) {
             $validator = Validator::make($request->all(), [
-                'name'     => 'required|max:255|unique:users',
-                'email'    => 'email|max:255|unique:users',
+                'name' => 'required|max:255|unique:users',
+                'email' => 'email|max:255|unique:users',
                 'password' => 'present|confirmed|min:6',
             ]);
         } else {
             $validator = Validator::make($request->all(), [
-                'name'     => 'required|max:255|unique:users,name,'.$id,
+                'name' => 'required|max:255|unique:users,name,' . $id,
                 'password' => 'nullable|confirmed|min:6',
             ]);
         }
@@ -191,7 +185,6 @@ class UsersManagementController extends Controller
         return back()->with('success', trans('usersmanagement.updateSuccess'));
 
 
-
     }
 
     /**
@@ -208,21 +201,39 @@ class UsersManagementController extends Controller
         $currentUser = Auth::user();
         $user = User::findorFail($id);
         $ipAdress = new CaptureIpTrait();
-        if($user->id!= $currentUser->id){
+        if ($user->id != $currentUser->id) {
             //$user->deleted_ip_adress = $ipAdress->getClientIp();
             $user->save();
             $user->delete();
             return response()->json($user->id);
         }
 
-         return response()->json([ 'errors' => 'suppression impossible']);
+        return response()->json(['errors' => 'suppression impossible']);
 
     }
 
     // show user related to agents role
 
-    public function  showAgents(){
+    public function showAgents()
+    {
         $userAgents = User::role('Agents')->get();
         return response()->json($userAgents);
+    }
+
+    /*
+     * assign property to user with role agents
+     */
+    public function assignProperty($user_id, $property_id)
+    {
+
+        $agents = User::find($user_id);
+
+        if ($agents->assignproperty->contains($property_id)) {
+            $agents->assignproperty()->detach($property_id);
+        } else {
+            $agents->assignproperty()->attach($property_id);
+        }
+
+        return response()->json(['array' => 'succes']);
     }
 }

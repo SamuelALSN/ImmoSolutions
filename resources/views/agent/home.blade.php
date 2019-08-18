@@ -3,7 +3,7 @@
     @include('common.header')
     <div class="app-body">
         <div class="sidebar">
-            @include('common.sidebar')
+            @include('common.sidebar_agent')
             <button class="sidebar-minimizer brand-minimizer" type="button"></button>
         </div>
         <main class="main">

@@ -32,7 +32,7 @@ class HomeController extends Controller
         if ($user->hasrole('Admin')) {
             return view('home');
         } elseif ($user->hasrole('Agents')) {
-            return view('moderator.home');
+            return view('agent.home');
         }
 
         return view('guest.home');

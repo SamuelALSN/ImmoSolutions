@@ -13,6 +13,6 @@ class country extends Model
     }
 
     public  function users(){
-        return $this->hasMany('App\Model\Countries\User');
+        return $this->hasMany('App\User');
     }
 }

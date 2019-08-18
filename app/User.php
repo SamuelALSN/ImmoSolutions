@@ -53,8 +53,16 @@ class User extends Authenticatable implements  MustVerifyEmail
 
 
     /**
-     *  Build  User PRelationaships
+     *  Build  User Relationaships
      */
+
+    /*
+     * country Relatinaships
+     */
+
+    public  function country(){
+        return $this->belongsTo('App\Model\Countries\country');
+    }
 
     /*
      * profile Relationships
@@ -67,4 +75,13 @@ class User extends Authenticatable implements  MustVerifyEmail
     public  function properties(){
         return $this->hasMany('App\Property');
     }
+
+    public function assignproperty(){
+        return $this->belongsToMany(
+            'App\Property','assignment',
+            'user_id',
+            'property_id'
+        )->withPivot('comment','status','verification_begin','verification_ended')->withTimestamps();
+    }
+
 }

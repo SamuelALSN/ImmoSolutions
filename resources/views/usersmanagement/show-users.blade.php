@@ -123,7 +123,6 @@
                                                            {{$user->name}},
                                                            {{$user->last_name}},
                                                            {{$user->email}},
-                                                           {{$user->password}},
                                                            {{$user_role->name}},
                                                            {{$user->country_id}},
                                                             {{$user->email_verified_at}}">
@@ -175,11 +174,10 @@
             </div>
         </main>
     </div>
-    @include('common.footer')
 @endsection
 @section('script')
     <script src="{{asset('datatables/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.bootstrap4.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.js')}}"></script>
-   <script src = "{{asset('important/scripts/datatables-manip.js')}}"></script>
+   <script src = "{{asset('important/scripts/datatableproperty-manip.js')}}"></script>
 @endsection

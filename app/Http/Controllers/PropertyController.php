@@ -29,8 +29,16 @@ class PropertyController extends Controller
     public function index()
     {
         //
-        $properties = Property::all();
-        return view('propertiesmanagement.show-properties', compact('properties'));
+        if (Auth::user()->hasrole('Admin')) {
+            $properties = Property::all();
+            return view('propertiesmanagement.show-properties', compact('properties'));
+        } elseif (Auth::user()->hasrole('Agents')) {
+            $agent_id = Auth::user()->id;
+            $users_agent = User::find($agent_id);
+            return view('agent.propertiesmanagement.show-properties', compact('users_agent'));
+        }
+
+
     }
 
     /**
@@ -179,13 +187,23 @@ class PropertyController extends Controller
         return view('guest.customer.user-properties', compact('properties'));
     }
 
+    /*
+    * show a customer property detail and user with agent role for the admin to assignment
+    */
 
     public function showcustomerproperty($id)
     {
+        if (Auth::user()->hasrole('Admin')) {
 
-        $userAgents = User::role('Agents')->get();
-        $property = Property::find($id);
-        return view('propertiesmanagement.one-property', compact('property', 'userAgents'));
+            $userAgents = User::role('Agents')->get();
+            $property = Property::find($id);
+            return view('propertiesmanagement.one-property', compact('property', 'userAgents'));
+
+        } elseif (Auth::user()->hasrole('Agents')) {
+            $property = Property::find($id);
+            return view('agent.propertiesmanagement.one-property', compact('property'));
+        }
+
 
     }
 }

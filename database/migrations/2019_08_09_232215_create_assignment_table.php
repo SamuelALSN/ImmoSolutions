@@ -15,6 +15,23 @@ class CreateAssignmentTable extends Migration
     {
         Schema::create('assignment', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('property_id')->unsigned();
+            $table->foreign('property_id')
+                ->on('property')
+                ->references('id')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->on('users')
+                ->references('id')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('comment')->nullable();
+            $table->date('verification_begin')->nullable();
+            $table->date('verification_ended')->nullable();
+            $table->boolean('status')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

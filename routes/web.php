@@ -116,3 +116,11 @@ Route::get('/property-details/{id}','PropertyController@showcustomerproperty');
 
 Route::get('/user-agents','UsersManagementController@showAgents');
 
+
+// assign property
+
+Route::get('/assign-property/{user_id}/{property_id}','UsersManagementController@assignProperty');
+
+Route::get('/test',function (){
+    return view('agent.home');
+});

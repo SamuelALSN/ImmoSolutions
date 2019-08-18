@@ -9,7 +9,7 @@
         <li class="nav-title">@lang("Biens ")</li>
         <li class="nav-item">
             <a class="nav-link" href="{{url('/property')}}">
-                <i class="nav-icon icon-drop"></i> @lang("Récents")
+                <i class="nav-icon icon-drop"></i> @lang("Nouveaux")
                 <span class="badge badge-primary">NEW</span>
             </a>
 
@@ -33,7 +33,7 @@
         <li class="nav-title">@lang("Réservations")</li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-puzzle"></i> @lang("En Cours")</a>
+                <i class="nav-icon icon-puzzle"></i> @lang("Demande recues")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
                     <a class="nav-link" href="">
@@ -103,7 +103,7 @@
         </li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-cursor"></i> @lang("Promotions")</a>
+                <i class="nav-icon icon-cursor"></i> @lang("Demande conclues")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
                     <a class="nav-link" href="">
@@ -162,17 +162,17 @@
                         <i class="nav-icon icon-bell"></i> Alerts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="notifications/badge.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-bell"></i> Badge</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="notifications/modals.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-bell"></i> Modals</a>
                 </li>
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="widgets.html">
+            <a class="nav-link" href="">
                 <i class="nav-icon icon-calculator"></i> Widgets
                 <span class="badge badge-primary">NEW</span>
             </a>
@@ -181,35 +181,25 @@
         <li class="nav-title">Extras</li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-star"></i> Pages</a>
+                <i class="nav-icon icon-star"></i>@lang("Performances")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html" target="_top">
+                    <a class="nav-link" href="" target="_top">
                         <i class="nav-icon icon-star"></i> Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.html" target="_top">
+                    <a class="nav-link" href="" target="_top">
                         <i class="nav-icon icon-star"></i> Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="404.html" target="_top">
+                    <a class="nav-link" href="" target="_top">
                         <i class="nav-icon icon-star"></i> Error 404</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="500.html" target="_top">
+                    <a class="nav-link" href="" target="_top">
                         <i class="nav-icon icon-star"></i> Error 500</a>
                 </li>
             </ul>
-        </li>
-        <li class="nav-item mt-auto">
-            <a class="nav-link nav-link-success" href="{{url('/user')}}" target="_top">
-                <i class="nav-icon icon-cloud-download"></i> @lang("Gestion des Utilisateurs ")</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link-danger" href="" target="_top">
-                <i class="nav-icon icon-layers"></i> @lang("Gestion des Sessions")
-                <strong></strong>
-            </a>
         </li>
     </ul>
 </nav>

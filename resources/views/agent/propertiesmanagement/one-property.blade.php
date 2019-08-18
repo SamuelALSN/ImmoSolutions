@@ -7,17 +7,17 @@
     @include('common.header')
     <div class="app-body">
         <div class="sidebar">
-            @include('common.sidebar')
+            @include('common.sidebar_agent')
             <button class="sidebar-minimizer brand-minimizer" type="button"></button>
         </div>
         <main class="main">
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">@lang("Accueil")</li>
                 <li class="breadcrumb-item">
-                    <a href="#">Admin</a>
+                    <a href="#">@lang("Agent")</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">@lang("Tableau de Bord")</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -25,9 +25,9 @@
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
-                            <i class="icon-graph"></i>  Dashboard</a>
+                            <i class="icon-graph"></i>  @lang("Tableau de Bord")</a>
                         <a class="btn" href="#">
-                            <i class="icon-settings"></i>  Settings</a>
+                            <i class="icon-settings"></i>  @lang("Paramètres")</a>
                     </div>
                 </li>
             </ol>
@@ -252,44 +252,18 @@
                             <table class="table table-hover table-striped table-align-middle mb-0">
                                 <thead>
                                 <tr>
-                                    <th>@lang("Attribuer des Agents")</th>
-                                    <th>@lang("Modifer")</th>
-                                    <th>@lang("Desactiver")</th>
+                                    <th>@lang("Operation")</th>
+                                    <th>@lang("Valider/Invalider le bien")</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>@lang("Attribuer des Agents")</td>
+                                    <td>@lang("Validation d'un bien ")</td>
                                     <td>
                                         <label class="switch switch-label switch-pill switch-success">
                                             <input class="switch-input" type="checkbox">
                                             <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                                         </label>
-                                    </td>
-                                    <td>
-                                        @lang("Attribuer des agents")
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>@lang("Modifer")</td>
-                                    <td>
-                                        <label class="switch switch-label switch-pill switch-warning">
-                                            <input class="switch-input" type="checkbox">
-                                            <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                                        </label>
-                                    </td>
-                                    <td>Modifier</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang("Desactiver")</td>
-                                    <td>
-                                        <label class="switch switch-label switch-pill switch-danger">
-                                            <input class="switch-input" type="checkbox">
-                                            <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                                        </label>
-                                    </td>
-                                    <td>
-                                        Desactiver
                                     </td>
                                 </tr>
                                 </tbody>
@@ -300,7 +274,7 @@
 
                     <!-- card agents  -->
                     <div class="card">
-                        <div class="card-header"> @lang("Liste des Agents Immobiliers ")</div>
+                        <div class="card-header"> @lang("Liste des Agents Immobiliers affectés a ce bien")</div>
                         <div class="card-body">
                             <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footera table-responsive">
                                 <div class="row">
@@ -315,12 +289,17 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="Username: activate to sort column descending"
-                                                    style="width: 235px;">Username
+                                                    style="width: 235px;">@lang("Nom")
+                                                </th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Username: activate to sort column descending"
+                                                    style="width: 235px;">@lang("Email")
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Date registered: activate to sort column ascending"
-                                                    style="width: 201px;">Date registered
+                                                    style="width: 201px;">@lang("Pays")
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
@@ -329,25 +308,20 @@
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
-                                                    aria-label="Status: activate to sort column ascending"
-                                                    style="width: 98px;">Status
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                    rowspan="1" colspan="1"
                                                     aria-label="Actions: activate to sort column ascending"
-                                                    style="width: 209px;">Actions
-                                                </th>
-                                                <th>
-                                                    @lang("Attribuer /Dissocier")
+                                                    style="width: 209px;">@lang("Contacter")
                                                 </th>
                                             </tr>
                                             </thead>
                                             <tbody id="users_table">
-                                            @foreach($userAgents as $user)
+                                            @foreach($property->assignment as $user)
                                                 <tr role="row" class="odd">
                                                     <td class="sorting_1"><a id="lien" href="#">{{$user->id}}</a> </td>
-                                                    <td class="sorting_1">{{$user->name .'  '.$user->last_name}}</td>
-                                                    <td>{{$user->created_at}}</td>
+                                                    <td class="sorting_1">{{$user->name}} {{$user->last_name}}</td>
+                                                    <td>{{$user->email}}</td>
+                                                     <td>
+                                                         {{$user->country['name']}}
+                                                     </td>
                                                     <td>
                                                         @foreach($user->roles as $user_role)
 
@@ -362,34 +336,7 @@
                                                                 class="badge badge-{{$badgeClass}}">{{$user_role->name}}</span>
                                                         @endforeach
                                                     </td>
-
                                                     <td>
-                                                        @if($user->email_verified_at === null)
-                                                            @php $badgeclasss ='danger'@endphp
-                                                            @php $info ='Non Active' @endphp
-                                                        @else
-                                                            @php $badgeclasss ='success' @endphp
-                                                            @php $info ='Active' @endphp
-                                                        @endif
-                                                        <span class="badge badge-{{$badgeclasss}}"> {{$info}} </span>
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn btn-success" data-toggle="modal"
-                                                           data-target="#largeModal"
-                                                           id="show-user"
-                                                           data-info="{{$user->id}},
-                                                           {{$user->name}},
-                                                           {{$user->last_name}},
-                                                           {{$user->email}},
-                                                           {{$user_role->name}},
-                                                           {{$user->country_id}},
-                                                            {{$user->email_verified_at}}
-                                                           @foreach($user->assignproperty as $key=>$myproperty)
-                                                           {{$myproperty->id}}
-                                                           {{$myproperty->name}}
-                                                           @endforeach">
-                                                            <i class="fa fa-search-plus"></i>
-                                                        </a>
                                                         <a class="btn btn-info" data-toggle="modal"
                                                            data-target="#primaryModal"
                                                            id="edit-user"
@@ -405,24 +352,6 @@
                                                                ">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a class="btn btn-danger" data-toggle="modal"
-                                                           data-target="#dangerModal"
-                                                           id="delete-user" data-id="{{$user->id}}"
-                                                           data-info="
-                                                           {{$user->id}},
-                                                           {{$user->email}},
-
-                                                            {{$user_role->name}},
-                                                           ">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <label class="switch switch-label switch-pill switch-success">
-                                                            <input id="assign" class="switch-input"
-                                                                   type="checkbox" data-id="{{$user->id}},{{$property->id}}">
-                                                            <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                                                        </label>
                                                     </td>
 
                                                 </tr>
@@ -436,7 +365,7 @@
                     </div>
                     <!-- end agents -->
                 </div>
-                @include('propertiesmanagement.agents-modale')
+{{--                @include('propertiesmanagement.agents-modale')--}}
             </div>
         </main>
 

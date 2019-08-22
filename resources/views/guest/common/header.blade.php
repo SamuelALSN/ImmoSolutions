@@ -13,12 +13,24 @@
                 </div>
             </div>
             <div class="top-social hidden-sm-down">
+                @if(\Illuminate\Support\Facades\Auth::check())
                 <div class="login-wrap">
                     <ul class="d-flex">
-                        <li><a href="{{url('/guest-login')}}"><i class="fa fa-user"></i> @lang('Se connecter')</a></li>
-                        <li><a href="{{url('/guest-register')}}"><i class="fa fa-sign-in"></i>@lang('S\'enregistrer')</a></li>
+                        <li><a href="{{url('/guest-login')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
+                        <li><a href="{{url('/properties-all')}}"><i class="fa fa-sign-in"></i>@lang('Mes Biens')</a></li>
+
+{{--                        <li><a href="{{Auth::logout()}}"><i class="fa fa-sign-in"></i>@lang('Se deconnecter')</a></li>--}}
+
                     </ul>
                 </div>
+                    @else
+                    <div class="login-wrap">
+                        <ul class="d-flex">
+                            <li><a href="{{url('/guest-login')}}"><i class="fa fa-user"></i> @lang('Se connecter')</a></li>
+                            <li><a href="{{url('/guest-register')}}"><i class="fa fa-sign-in"></i>@lang('S\'enregistrer')</a></li>
+                        </ul>
+                    </div>
+                @endif
                 <div class="social-icons-header">
                     <div class="social-icons">
                         <a href="index.html#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -47,7 +59,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </button>
             <div class="get-quote hidden-lg-down">
-                <a href="{{url('/submit')}}">
+                <a href="{{route('property.create')}}">
                     <p>@lang("Soumettre un bien ")</p>
                 </a>
             </div>
@@ -67,24 +79,24 @@
                     <!-- STAR COLLAPSE MOBILE MENU -->
                     <li class="hidden-lg-up">
                         <div class="po">
-                            <a data-toggle="collapse" href="{{url('/home')}}" aria-expanded="false">@lang("Accueil")</a>
+                            <a data-toggle="collapse" href="{{url('/welcome')}}" aria-expanded="false">@lang("Accueil")</a>
                         </div>
                         <div class="collapse" id="home">
                             <div class="card card-block">
-                                <a class="dropdown-item" href="">@lang("Accueil")</a>
-                                <a class="dropdown-item" href="">@lang("Accueil")</a>
-                                <a class="dropdown-item" href="">@lang("Accueil")</a>
+{{--                                <a class="dropdown-item" href="">@lang("Accueil")</a>--}}
+{{--                                <a class="dropdown-item" href="">@lang("Accueil")</a>--}}
+{{--                                <a class="dropdown-item" href="">@lang("Accueil")</a>--}}
 
                             </div>
                         </div>
                     </li>
                     <!-- END COLLAPSE MOBILE MENU -->
                     <li class="dropdown hidden-md-down">
-                        <a class="active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="index.html#">Home</a>
+                        <a class="active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{url('/welcome')}}">@lang("Accueil")</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">@lang("Accueil")</a>
-                            <a class="dropdown-item" href="">@lang("Accueil")</a>
-                            <a class="dropdown-item" href="">@lang("Accueil")</a>
+                            <a class="dropdown-item" href="{{url('/welcome')}}">@lang("Accueil")</a>
+{{--                            <a class="dropdown-item" href="">@lang("Accueil")</a>--}}
+{{--                            <a class="dropdown-item" href="">@lang("Accueil")</a>--}}
                         </div>
                     </li>
                     <!-- STAR COLLAPSE MOBILE MENU -->
@@ -102,12 +114,12 @@
                     </li>
                     <!-- END COLLAPSE MOBILE MENU -->
                     <li class="dropdown hidden-md-down">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="index.html#">Properties</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="index.html#">@lang("Biens")</a>
                         <div class="dropdown-menu">
 
-                            <a class="dropdown-item" href="">@lang("Liste des Proprietés") </a>
+                            <a class="dropdown-item" href="">@lang("Liste des Biens") </a>
                             <a class="dropdown-item" href=""> Map</a>
-                            <a class="dropdown-item" href="">@lang("Details des Propriétés ")</a>
+                            <a class="dropdown-item" href="">@lang("Details des Biens")</a>
                         </div>
                     </li>
                     <!-- STAR COLLAPSE MOBILE MENU -->
@@ -142,8 +154,8 @@
                                 <a class="dropdown-item" href="faq.html">Faq</a>
                                 <a class="dropdown-item" href="pricing-table.html">@lang('Nos Tarifs')</a>
 
-                                <a class="dropdown-item" href="{{url('/guest-login')}}">@lang('Se Connecter')</a>
-                                <a class="dropdown-item" href="{{url('/guest-register')}}">@lang('S\'enregistrer ')</a>
+{{--                                <a class="dropdown-item" href="{{url('/guest-login')}}">@lang('Se Connecter')</a>--}}
+{{--                                <a class="dropdown-item" href="{{url('/guest-register')}}">@lang('S\'enregistrer ')</a>--}}
                             </div>
                         </div>
                     </li>
@@ -154,8 +166,8 @@
                             <a class="dropdown-item" href="">@lang('A props de nous')</a>
                             <a class="dropdown-item" href="">Faq</a>
                             <a class="dropdown-item" href="">@lang('Nos Tarifs')</a>
-                            <a class="dropdown-item" href="">@lang('Se Connecter')</a>
-                            <a class="dropdown-item" href="">@lang('S\'enregistrer ')</a>
+{{--                            <a class="dropdown-item" href="">@lang('Se Connecter')</a>--}}
+{{--                            <a class="dropdown-item" href="">@lang('S\'enregistrer ')</a>--}}
                         </div>
                     </li>
                     <!-- STAR COLLAPSE MOBILE MENU -->

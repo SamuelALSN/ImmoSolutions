@@ -1,4 +1,11 @@
 <!-- START SECTION RECENTLY PROPERTIES -->
+@foreach($properties as $property)
+    @foreach($property->assignment as $assign)
+        @if($assign->pivot->status==1)
+            {{dd($property->name )}}
+        @endif
+    @endforeach
+@endforeach
 <section class="recently portfolio">
     <div class="container-fluid">
         <div class="section-title">

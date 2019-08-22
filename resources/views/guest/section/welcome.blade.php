@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="welcome-title">
-                    <h2>WELCOME TO <span>FIND HOUSES</span></h2>
-                    <h4>THE BEST PLACE TO FIND THE HOUSE YOU WANT.</h4>
+                    <h2>@lang("Bienvenue") <span>ImmoSolutions</span></h2>
+                    <h4>@lang("Le meilleur endroit pour trouver votre Logement")</h4>
                 </div>
                 <div class="welcome-content">
                     <p>The best place for elit, sed do eiusmod tempor dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et lorna aliquatd minimam, quis nostrud exercitation oris nisi ut aliquip ex ea.</p>

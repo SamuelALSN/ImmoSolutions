@@ -17,7 +17,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Icons-->
-    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link rel="icon" type="image/ico" href="{{asset('favicon.ico')}}" sizes="any"/>
     <link href="{{asset('js/@coreui/icons/css/coreui-icons.min.css')}}" rel="stylesheet">
     <link href="{{asset('flag-icon-css/css/flag-icon.min.css')}}" rel="stylesheet">
     <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -46,7 +46,10 @@
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 
 @yield('content')
+@include('flashy::message')
 @include('common.footer')
+<!--FOR FLASHY-->
+<script src="//code.jquery.com/jquery.js"></script>
 <!-- CoreUI and necessary plugins-->
 <script src="{{asset('js/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('js/popper.js/dist/umd/popper.min.js')}}"></script>

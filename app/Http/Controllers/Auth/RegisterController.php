@@ -96,7 +96,8 @@ class RegisterController extends Controller
         $user = Auth::user();
         Log::info('User Logged Out. ', [$user]);
         Auth::logout();
-        Session::flush();
+        flashy()->success('Vous etes deconnecté.', 'avec succes');
+        //Session::flush();
 
         return redirect('/');
     }

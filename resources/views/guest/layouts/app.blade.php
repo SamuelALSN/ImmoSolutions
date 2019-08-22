@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{asset('guest/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" id="color" href="{{asset('guest/css/default.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
     @yield('my_css')
 </head>
 <body class="">
@@ -89,5 +91,9 @@
 <script src="{{asset('guest/js/color-switcher.js')}}"></script>
 <script src="{{asset('guest/js/ajaxchimp.min.js')}}"></script>
 <script src="{{asset('guest/js/newsletter.js')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
 @yield('my_scripts')
 </body>

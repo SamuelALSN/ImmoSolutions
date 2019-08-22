@@ -2,8 +2,9 @@
 <section class="team">
     <div class="container">
         <div class="section-title col-md-5">
-            <h3>Meet Our</h3>
-            <h2>Agents</h2>
+            <h3>@lang("Rencontrer nos")</h3>
+            <h2>@lang("Agents")</h2>
+
         </div>
         <div class="row team-all">
             <div class="col-lg-3 col-md-6 team-pro hover-effect">

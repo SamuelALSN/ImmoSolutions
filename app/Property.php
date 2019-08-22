@@ -49,4 +49,13 @@ class Property extends Model
             ->withPivot('comment','status','verification_begin','verification_ended')
             ->withTimestamps();
     }
+
+    public function  reservation(){
+        return $this->belongsToMany('App\User',
+            'reserver',
+            'property_id',
+            'user_id')
+            ->withPivot('comment','status','coming_at','going_at')
+            ->withTimestamps();
+    }
 }

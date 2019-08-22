@@ -17,7 +17,11 @@
                 <li class="breadcrumb-item">
                     <a href="#">@lang("Agent")</a>
                 </li>
-                <li class="breadcrumb-item active">@lang("Tableau de Bord")</li>
+                <li class="breadcrumb-item active">
+                    <a href="{{url('/property')}}" >
+                        @lang("Tableau de Bord")
+                    </a>
+                   </li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -34,7 +38,7 @@
             <div class="container-fluid">
                 <div class="animated fadeIn">
                     <div class="card" style="">
-                        <div class="card-header"> @lang("Bien") : {{$property->id}}</div>
+                        <div class="card-header"> @lang("Bien № ") : {{$property->id}}</div>
                         <div class="card-body">
                             <table class="table">
 
@@ -261,7 +265,8 @@
                                     <td>@lang("Validation d'un bien ")</td>
                                     <td>
                                         <label class="switch switch-label switch-pill switch-success">
-                                            <input class="switch-input" type="checkbox">
+                                            <input id="validate" class="switch-input" type="checkbox"
+                                                   data-info="{{$property->id}}">
                                             <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                                         </label>
                                     </td>

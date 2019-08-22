@@ -153,7 +153,10 @@ $(document).ready(function () {
         });
     });
 
-    // assigner un agent
+ /*
+ =================================================================NEW ===================================================
+    Assingnation des agents a une propriete
+  */
 
     $(document).on('change', '#assign', function () {
         var user = $(this).data('id').split(',');
@@ -180,6 +183,55 @@ $(document).ready(function () {
                    $('#assign').prop("checked", false);
                     alertify.error('Annuler')
             });
+
+
+    })
+
+
+    /*
+    ===============================================VALIDATE A PROPERTY BY USER
+     */
+
+    $(document).on('change', '#validate', function () {
+        var prop = $(this).data('info');
+         // alert(prop);
+        alertify.confirm('Validation du bien', 'Voulez vous Vraiment valider ce bien  ?',
+            function () {
+
+                fetch('/validate-property/' +prop)
+                    .then(response => {
+                        if (response.ok) {
+                            response.json().then(user_prop => {
+                                console.log(user_prop);
+                            })
+                        } else {
+                            console.error(' Reponse serveur : ' + response.status);
+                        }
+
+                    });
+
+                alertify.success('Ok')
+
+            }
+            , function () {
+
+                //$('input[type=checkbox]').prop('checked', false);
+                $('#validate').prop("checked", false);
+                alertify.error('Annuler')
+            });
+
+
+    })
+
+    /*
+    ===============================UPDATE A PROPERTY
+     */
+
+
+    $(document).on('change', '#update', function () {
+        $('#show-col').removeClass("col-sm-12").addClass("col-sm-6");
+      $('#update-col').removeAttr("hidden");
+        $('#update-col').fadeToggle("slow").fadeIn("slow");
 
 
     })

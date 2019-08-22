@@ -2,8 +2,8 @@
 <section class="blog-section">
     <div class="container">
         <div class="section-title">
-            <h3>Latest</h3>
-            <h2>News</h2>
+            <h3>@lang("Dernier")</h3>
+            <h2>@lang("Articles")</h2>
         </div>
         <div class="news-wrap">
             <div class="row">

@@ -25,6 +25,9 @@
 
     <link rel="stylesheet" href="{{asset('css/alertify/alertify.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/alertify/default.min.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
+          type="text/css"/>
+
 
 </head>
 
@@ -61,7 +64,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <label for="title">@lang("Titre de la propriete")</label>
+                                        <label for="title">@lang("Titre du bien")</label>
                                         <input type="text" name="name" id="name"
                                                placeholder="@lang("Entrer le titre de la propriete")">
                                     </p>
@@ -70,7 +73,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <label for="description">@lang("Description de la propriete")</label>
+                                        <label for="description">@lang("Description du bien")</label>
                                         <textarea id="description" name="description"
                                                   placeholder="@lang("Breve Description de votre propriete ")"></textarea>
                                     </p>
@@ -223,8 +226,7 @@
                             <div class="row">
                                 <p class="col-lg-6 col-md-12">
                                     <label for="date">@lang("Date de Construction ")<span> </span></label>
-                                    <input class="form-control"
-                                           type="date" name="buildingdate" id="buildingdate">
+                                    <input class="form-control" type="date" name="buildingdate" id="buildingdate">
 
                                 </p>
                                 <div class="col-lg-6 col-md-12">
@@ -334,7 +336,7 @@
 
         <form id="TransactionForm" action="" method="POST" hidden>
             @csrf
-            <div class="row">
+        -    <div class="row">
                 <div class="col-md-12">
                     <div class="single-add-property">
                         <h3>@lang("Details de la Transaction ")</h3>
@@ -461,6 +463,30 @@
         $("input[type='number']").hide();
         $('#surface').show();
         $('#label_meuble').hide();
+
+        // $(function () {
+        //     var date = new Date();
+        //     date.setDate(date.getDate());
+        //     $("#datepicker").datepicker({
+        //         autoclose: true,
+        //         todayHighlight: true,
+        //         endDate: date
+        //     }).datepicker('update', new Date());
+        // });
+
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+        $('#buildingdate').attr('max', maxDate);
+
+
     });
 </script>
 
@@ -634,7 +660,6 @@
 <script>
     // traitement du formulaire d'enregistrement de la transaction
     window.addEventListener('DOMContentLoaded', (e) => {
-
         fetch('{{url('/typetransaction')}}')
             .then(response => {
                 if (response.ok) {
@@ -666,31 +691,31 @@
 
             if (deb < currentDate) {
                 $('#datedeb').focus();
-                alertify.alert("Date Invalide ","la date de debut doit etre superieure à la date du jour ");
+                alertify.alert("Date Invalide ", "la date de debut doit etre superieure à la date du jour ");
             }
         });
-      // verification datefin
+        // verification datefin
         $('#datefin').on('change', function (e) {
             var datefin = $('#datefin').val();
             var datedeb = $('#datedeb').val();
             var fin = new Date(datefin);
             var debt = new Date(datedeb);
-            if(fin<debt){
-                alertify.alert("Date Invalide","la date de fin doit etre superieure à la date debut ");
+            if (fin < debt) {
+                alertify.alert("Date Invalide", "la date de fin doit etre superieure à la date debut ");
             }
 
         });
 
-        $('#datevisite').on('change',function (e) {
+        $('#datevisite').on('change', function (e) {
             var getCurrentDate = new Date();
             var dateviste = $('#datevisite').val();
             var datedebut = $('#datedeb').val();
 
-            var visite = new  Date(dateviste);
+            var visite = new Date(dateviste);
             var datedeb = new Date(datedebut);
 
-            if(visite<getCurrentDate || visite>datedeb){
-                alertify.alert("Date Invalide"," la date de visite doit etre superieure à la date du jour ou   etre inferieure à la date de debut ")
+            if (visite < getCurrentDate || visite > datedeb) {
+                alertify.alert("Date Invalide", " la date de visite doit etre superieure à la date du jour ou   etre inferieure à la date de debut ")
             }
 
         });
@@ -727,7 +752,7 @@
                                 document.getElementById("TransactionForm").reset();
                                 alertify.success(' ' + validation.success);
                                 console.log(validation.success);
-                                window.location.href ="{{url('/properties-all')}}";
+                                window.location.href = "{{url('/properties-all')}}";
                             } else {
                                 printErrorMsg(validation.error);
                                 console.log(validation);
@@ -756,7 +781,9 @@
 </script>
 <script src="{{asset('js/alertify/alertify.min.js')}}"></script>
 <script src="{{asset('guest/js/dropzone-config.js')}}"></script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 </body>
 
 </html>

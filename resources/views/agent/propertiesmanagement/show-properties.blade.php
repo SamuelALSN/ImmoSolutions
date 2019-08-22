@@ -157,11 +157,8 @@
                     </div>
                 </div>
                 <!--table end -->
-
-
                 <!-- /.modal add -->
             <!-- /.modal-end-->
-
             </div>
         </main>
     </div>

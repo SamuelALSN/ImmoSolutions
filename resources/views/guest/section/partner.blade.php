@@ -2,8 +2,8 @@
 <div class="partners">
     <div class="container">
         <div class="section-title">
-            <h3>Our</h3>
-            <h2>Partners</h2>
+            <h3>@lang("Nos")</h3>
+            <h2>@lang("Partenaires")</h2>
         </div>
         <div class="owl-carousel style2">
             <div class="owl-item"><img src="{{asset('guest/images/partners/1.png')}}" alt=""></div>

@@ -43,7 +43,7 @@
                 <label>@lang("Prenom")</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                        value="{{ old('name') }}"
-                       required autocomplete="name" autofocus>
+                       required autocomplete="name" autofocus style="padding: .50rem;">
                 <i class="ti-user"></i>
                 @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
             <div class="form-group">
                 <label>@lang("Nom")</label>
                 <input id="last_name" type="text" class="form-control @error('name') is-invalid @enderror"
-                       name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+                       name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus style="padding: .50rem;">
                 @error('last_name')
                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
 {{--                <input class="form-control" type="email">--}}
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                        name="email" value="{{ old('email') }}" required autocomplete="email"
-                       placeholder="Email">
+                       placeholder="Email" style="padding: .50rem;">
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -80,7 +80,7 @@
 {{--                <input class="form-control" type="password" id="password1">--}}
                 <input id="password" type="password"
                        class="form-control @error('password') is-invalid @enderror" name="password"
-                       required autocomplete="new-password">
+                       required autocomplete="new-password" style="padding: .50rem;">
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -92,14 +92,14 @@
                 <label>@lang("Mot de Passe ")</label>
                 <input id="password-confirm" type="password" class="form-control"
                        name="password_confirmation" required autocomplete="new-password"
-                       placeholder="@lang("Repeter le mot de passe")">
+                       placeholder="@lang("Repeter le mot de passe")" style="padding: .50rem;">
 {{--                <input class="form-control" type="password" id="password2">--}}
                 <i class="icon_lock_alt"></i>
             </div>
             <div class="form-group">
                 <label>@lang("Pays")</label>
                 <select name="country_id" class="form-control"
-                        data-live-search="true" id="country_id">
+                        data-live-search="true" id="country_id" style="padding: .50rem;">
                     @foreach  (\App\Helpers\Country\Country::getCountries()  as $ctry)
                         <option class="form-control" value="{{$ctry->id}}">{{$ctry->name}}</option>
                     @endforeach

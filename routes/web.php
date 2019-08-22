@@ -20,19 +20,6 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 
-// sms verification route
-
-Route::get('/phone', function () {
-    return view('phone');
-});
-
-// verification des numeros telephone
-Route::prefix('/verify/')->group(function () {
-    Route::post('start', 'Auth\PhoneVerificationController@startVerification');
-    Route::post('verify', 'Auth\PhoneVerificationController@verifyCode');
-});
-
-// front-end test
 Route::get('/admin', function () {
     return view('admin.home');
 });
@@ -40,18 +27,21 @@ Route::get('/charts', function () {
     return view('admin.charts');
 });
 
-Route::resources([
-    'user' => 'UsersManagementController'
-]);
 
-Route::get('/welcome', function () {
-    return view('guest.home');
+
+
+#guest middleware
+Route::get('/welcome','WelcomeController@index');
+
+Route::get('/guest-login', function () {
+    return view('guest.auth.login');
+})->name('guest.login');
+
+Route::get('/guest-register', function () {
+    return view('guest.auth.register');
 });
+#endGuest middleware
 
-
-//Route::get('/submit',function(){
-//    return view('guest.sample.submit-property');
-//});
 
 Route::get('/properties-detail', function () {
     return view('guest.sample.properties-detail');
@@ -64,15 +54,11 @@ Route::get('/properties-map', function () {
     return view('guest.sample.properties-map');
 });
 
-Route::get('/guest-login', function () {
-    return view('guest.auth.login');
-});
+#begin ressources
+Route::resources([
+    'user' => 'UsersManagementController'
+]);
 
-Route::get('/guest-register', function () {
-    return view('guest.auth.register');
-});
-
-// submit property
 Route::resources([
     'property' => 'PropertyController'
 ]);
@@ -106,21 +92,31 @@ Route::resources([
     'transaction' => 'TransactionController'
 ]);
 
-
-// user properties
+Route::resources([
+    'reserver'=>'ReserverController'
+]);
+#endRessources
 
 Route::get('/properties-all','PropertyController@customerproperty' );
-Route::get('/user-properties-detail/{id}','PropertyController@showcustomerproperty' );
+Route::get('/user-properties-detail/{id}','PropertyController@details' );
 
 Route::get('/property-details/{id}','PropertyController@showcustomerproperty');
 
 Route::get('/user-agents','UsersManagementController@showAgents');
 
 
-// assign property
-
+// assign property and validate
 Route::get('/assign-property/{user_id}/{property_id}','UsersManagementController@assignProperty');
 
-Route::get('/test',function (){
-    return view('agent.home');
+Route::get('/validate-property/{property_id}','PropertyController@validateproperty');
+
+Route::get('/tester',function (){
+    return view('reservemanagement.reserver');
+});
+
+// STRIPE PAYMENTS
+
+Route::group(['middleware' => 'auth'], function() {
+   // Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/plans', 'PlanController@index')->name('plans.index');
 });

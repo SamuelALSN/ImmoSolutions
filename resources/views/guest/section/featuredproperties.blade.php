@@ -3,8 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="section-title col-md-5">
-                <h3>Featured</h3>
-                <h2>Properties</h2>
+                <h3>@lang("Liste de tous les  Biens ")</h3>
+                <h2>@lang("Biens")</h2>
             </div>
         </div>
         <div class="row portfolio-items">

@@ -41,28 +41,29 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="access_social">
-                <a href="#0" class="social_bt facebook">Login with Facebook</a>
-                <a href="#0" class="social_bt google">Login with Google</a>
-                <a href="#0" class="social_bt linkedin">Login with Linkedin</a>
+                <a href="#0" class="social_bt facebook">@lang("Se connecter avec Facebook")</a>
+                <a href="#0" class="social_bt google">@lang("Se conecter avec Google")e</a>
+                <a href="#0" class="social_bt linkedin">@lang("Se connecter avec Linkedin")</a>
             </div>
             <div class="divider"><span>Or</span></div>
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email"
-                       value="{{old('email')}}" required autocomplete="email" autofocus>
+                       value="{{old('email')}}" required autocomplete="email" autofocus
+                style="padding: .50rem;">
 
                 @error('email')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                    <strong>{{ $message }}</strong>
                     </span>
                 @enderror
                 <i class="icon_mail_alt"></i>
             </div>
             <div class="form-group">
-                <label>Password</label>
+                <label>@lang("Mot de Passe")</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror"
                        name="password" id="password" value=""
-                       required autocomplete="current-password">
+                       required autocomplete="current-password"  style="padding: .50rem;">
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

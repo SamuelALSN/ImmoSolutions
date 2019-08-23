@@ -85,7 +85,7 @@
 
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
-                                    <img class="d-block img-fluid" src="{{asset('guest/images/slider/home-slider-1.jpg')}}" alt="First slide">
+                                    <img class="d-block img-fluid" src="{{asset('storage/images/'.$property->images['0']->resizedfilename)}}" alt="First slide">
                                 </div>
                                 @foreach($property->images as $img)
                                 <div class="carousel-item">

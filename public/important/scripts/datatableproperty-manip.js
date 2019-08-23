@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     function parsedata(selecteddata) {
         $('#user_id').val(selecteddata[0]);
-        $('#name').val(selecteddata[1]);
+        $('#name-user').val(selecteddata[1])
         $('#last_name').val(selecteddata[2]);
         $('#email').val(selecteddata[3]);
         $('#role').val(selecteddata[4]);
@@ -153,39 +153,48 @@ $(document).ready(function () {
         });
     });
 
- /*
- =================================================================NEW ===================================================
-    Assingnation des agents a une propriete
-  */
+    /*
+    =================================================================NEW ===================================================
+       Assingnation des agents a une propriete
+     */
 
     $(document).on('change', '#assign', function () {
-        var user = $(this).data('id').split(',');
-        alertify.confirm('Assignation', 'Voulez vous l\'attribuer ce bien  ?',
-            function () {
-                fetch('/assign-property/' + user[0] + '/' + user[1])
-                    .then(response => {
-                        if (response.ok) {
-                            response.json().then(user_prop => {
-                                console.log(user_prop);
-                            })
-                        } else {
-                            console.error(' Reponse serveur : ' + response.status);
-                        }
+        //if ($('#assign').is(':checked')) {
+            var user = $(this).data('id').split(',');
+            alertify.confirm('Assignation', 'Voulez vous l\'attribuer ce bien  ?',
+                function () {
+                    fetch('/assign-property/' + user[0] + '/' + user[1])
+                        .then(response => {
+                            if (response.ok) {
+                                response.json().then(user_prop => {
 
-                    });
+                                    if(user_prop.array=="error"){
+                                        alertify.error("Vous ne pouvez pas attribué un meme bien a pluisieurs agents");
+                                    }else if(user_prop.array=="success"){
+                                        alertify.success("Bien attribué")
+                                    }else if(user_prop="detach"){
+                                        alertify.success(("bien détaché"))
+                                    }
+                                })
+                            } else {
+                                console.error(' Reponse serveur : ' + response.status);
+                            }
 
-                alertify.success('Ok')
-
-            }
-            , function () {
-
-                //$('input[type=checkbox]').prop('checked', false);
-                   $('#assign').prop("checked", false);
-                    alertify.error('Annuler')
-            });
+                        });
 
 
-    })
+
+                }
+                , function () {
+
+                    //$('input[type=checkbox]').prop('checked', false);
+                    $('#assign').prop("checked", false);
+                    alertify.error('Bien non attribué')
+                });
+
+      // }
+
+    });
 
 
     /*
@@ -194,11 +203,11 @@ $(document).ready(function () {
 
     $(document).on('change', '#validate', function () {
         var prop = $(this).data('info');
-         // alert(prop);
+        // alert(prop);
         alertify.confirm('Validation du bien', 'Voulez vous Vraiment valider ce bien  ?',
             function () {
 
-                fetch('/validate-property/' +prop)
+                fetch('/validate-property/' + prop)
                     .then(response => {
                         if (response.ok) {
                             response.json().then(user_prop => {
@@ -229,10 +238,46 @@ $(document).ready(function () {
 
 
     $(document).on('change', '#update', function () {
-        $('#show-col').removeClass("col-sm-12").addClass("col-sm-6");
-      $('#update-col').removeAttr("hidden");
-        $('#update-col').fadeToggle("slow").fadeIn("slow");
+        if ($('#update').is(':checked')) {
+            $('#show-col').removeClass("col-sm-12").addClass("col-sm-6");
+            $('#update-col').removeAttr("hidden");
+            $('#update-col').fadeToggle("slow").fadeIn("slow");
+            scrollTo( $("#update-col") );
+
+        } else {
+            $('#show-col').removeClass("col-sm-6").addClass("col-sm-12");
+            $('#update-col').fadeToggle("slow").fadeOut("slow");
+        }
+
+    });
+    //
+    $(document).on('change', '#assign-agent', function () {
+        if ($('#assign-agent').is(':checked')) {
+
+            $('#card-agent').removeAttr("hidden");
+            $('#card-agent').fadeToggle("slow").fadeIn("slow");
+            scrollTo( $("#card-agent") );
+        } else {
+            $('#card-agent').hide();
+        }
 
 
-    })
+    });
+
+    $(document).on('change', '#assign-agent', function () {
+        if ($('#assign-agent').is(':checked')) {
+            $('#card-agent').removeAttr("hidden");
+            $('#card-agent').fadeToggle("slow").fadeIn("slow");
+        } else {
+            $('#card-agent').hide();
+        }
+
+
+    });
+
+    function scrollTo( target ) {
+        if( target.length ) {
+            $("html, body").stop().animate( { scrollTop: target.offset().top }, 1500);
+        }
+    }
 });

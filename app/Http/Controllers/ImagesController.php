@@ -9,6 +9,8 @@ use Intervention\Image\Facades\Image as InterventionImage;
 use Intervention\Image\Size;
 use Intervention\Image\Image as Img;
 use Illuminate\Support\Str;
+use Validate;
+
 class ImagesController extends Controller
 {
     private $photos_path;
@@ -43,13 +45,11 @@ class ImagesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-//        dd($request->all());
         $photos = $request->file('file');
 
         if (!is_array($photos)) {
@@ -67,12 +67,12 @@ class ImagesController extends Controller
             $resize_name = $name . Str::random(2) . '.' . $photo->getClientOriginalExtension();
 
             InterventionImage::make($photo)
-                ->encode('jpg',75)
+                ->encode('jpg', 75)
                 ->resize(1000, 750)
 //                ->resize(1000, 750, function ($constraints) {
 //                    $constraints->aspectRatio();
 //                })
-                ->crop(1000,750)
+                ->crop(1000, 750)
                 ->save($this->photos_path . '/' . $resize_name);
 
             $photo->move($this->photos_path, $save_name);
@@ -92,7 +92,7 @@ class ImagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Image  $image
+     * @param \App\Image $image
      * @return \Illuminate\Http\Response
      */
     public function show(Image $image)
@@ -103,7 +103,7 @@ class ImagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Image  $image
+     * @param \App\Image $image
      * @return \Illuminate\Http\Response
      */
     public function edit(Image $image)
@@ -114,19 +114,65 @@ class ImagesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Image  $image
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Image $image
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Image $image)
     {
         //
+        dd($request->all());
+
+
+        $this->validate($request, [
+
+            'filename' => 'required',
+            'filename.*' => 'mimes:jpg,png,jpeg'
+
+        ]);
+
+        $photos = $request->file('file');
+        if (!is_array($photos)) {
+            $photos = [$photos];
+        }
+
+        if (!is_dir($this->photos_path)) {
+            mkdir($this->photos_path, 0777);
+        }
+
+        for ($i = 0; $i < count($photos); $i++) {
+            $photo = $photos[$i];
+            $name = sha1(date('YmdHis') . Str::random(30));
+            $save_name = $name . '.' . $photo->getClientOriginalExtension();
+            $resize_name = $name . Str::random(2) . '.' . $photo->getClientOriginalExtension();
+
+            InterventionImage::make($photo)
+                ->encode('jpg', 75)
+                ->resize(1000, 750)
+//                ->resize(1000, 750, function ($constraints) {
+//                    $constraints->aspectRatio();
+//                })
+                ->crop(1000, 750)
+                ->save($this->photos_path . '/' . $resize_name);
+
+            $photo->move($this->photos_path, $save_name);
+
+            $deleteImages = Image::where('property_id', $request->input('property_id'))->delete();
+
+            $upload = new Image();
+            $upload->file = $save_name;
+            $upload->resizedfilename = $resize_name;
+            $upload->originalfilename = basename($photo->getClientOriginalName());
+            $upload->property_id = $request->input('property_id');
+            $upload->save();
+        }
+//
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Image  $image
+     * @param \App\Image $image
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)

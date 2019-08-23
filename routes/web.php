@@ -62,8 +62,7 @@ Route::resources([
 Route::resources([
     'property' => 'PropertyController'
 ]);
-
-// load country wiith ajax
+Route::post('/property-update','PropertyController@edit');
 
 Route::resources([
     'country' => 'CountryController'
@@ -91,6 +90,8 @@ Route::resources([
 Route::resources([
     'transaction' => 'TransactionController'
 ]);
+Route::post('/transaction-update','TransactionController@update');
+
 
 Route::resources([
     'reserver'=>'ReserverController'

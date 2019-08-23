@@ -2,49 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="757d18d1-709b-4e55-baae-d919b47e9fe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/customer/properties-details.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/plans/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/reservemanagement/reserver.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/immo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/immo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Property.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_082459_create_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_02_082459_create_properties_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersManagementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersManagementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/guest/js/dropzone-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/guest/js/dropzone-config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/important/scripts/datatableproperty-manip.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/important/scripts/datatableproperty-manip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/agent/propertiesmanagement/one-property.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/agent/propertiesmanagement/one-property.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/agent/propertiesmanagement/show-properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/agent/propertiesmanagement/show-properties.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/common/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/common/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/guest/customer/user-properties-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/customer/user-properties-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/guest/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/guest/sample/submit-property2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/sample/submit-property2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/sample/submit-property3.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/agents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/agents.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/featuredproperties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/featuredproperties.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/partner.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/partner.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/popular-places.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/popular-places.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/recentlyproperties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/recentlyproperties.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/services.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/services.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/testimonials.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/testimonials.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/section/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/section/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/propertiesmanagement/agents-modale.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/propertiesmanagement/agents-modale.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/propertiesmanagement/one-property.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/propertiesmanagement/one-property.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -79,42 +48,101 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PropertyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="107" column="62" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
+            <state relative-caret-position="221">
+              <caret line="40" column="44" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
               <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
+                <element signature="e#40#54#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="103" column="24" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImagesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="123" column="28" selection-start-line="123" selection-start-column="28" selection-end-line="123" selection-end-column="28" />
+              <folding>
+                <element signature="e#40#54#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsersManagementController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-57">
+              <caret line="226" column="7" selection-start-line="226" selection-start-column="7" selection-end-line="226" selection-end-column="7" />
+              <folding>
+                <element signature="e#40#53#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+              <folding>
+                <element signature="e#41#58#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/guest/js/dropzone-config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/guest/sample/submit-property2.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="260" column="59" selection-start-line="260" selection-start-column="59" selection-end-line="260" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/guest/home.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4675">
+              <caret line="275" column="44" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Property.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="33" column="36" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/guest/sample/submit-property2.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="782" selection-start-line="782" selection-end-line="782" selection-end-column="64" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/guest/section/featuredproperties.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/propertiesmanagement/one-property.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-373">
-              <caret line="764" column="42" selection-start-line="764" selection-start-column="42" selection-end-line="764" selection-end-column="42" />
+            <state relative-caret-position="120">
+              <caret line="706" column="80" selection-start-line="706" selection-start-column="80" selection-end-line="706" selection-end-column="80" />
               <folding>
                 <element signature="e#9852#14304#0#HTML" />
                 <element signature="e#11262#11942#0#HTML" expanded="true" />
@@ -124,18 +152,8 @@
                 <element signature="e#20186#20206#0#HTML" expanded="true" />
                 <element signature="e#20657#20677#0#HTML" expanded="true" />
                 <element signature="e#21131#21152#0#HTML" expanded="true" />
-                <element signature="e#48300#49252#0#HTML" />
-                <element signature="e#49261#53764#0#HTML" />
+                <element signature="e#60725#62001#0#HTML" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_08_02_082459_create_properties_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -152,36 +170,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>datepicker</find>
-      <find>Date de con</find>
-      <find>Flash</find>
-      <find>guest</find>
-      <find>Voir bien</find>
-      <find>Agent</find>
-      <find>welcome</find>
-      <find>typetransa</find>
-      <find>Location</find>
-      <find>Caracter</find>
-      <find>localisation</find>
-      <find>div id=&quot;map</find>
-      <find>Search</find>
-      <find>Modifier</find>
-      <find>date</find>
-      <find>placeholder=&quot;text</find>
-      <find>adresse</find>
-      <find>pays</find>
-      <find>modifier</find>
-      <find>update</find>
-      <find>placeholder</find>
-      <find>description</find>
-      <find>country</find>
-      <find>property-&gt;id</find>
-      <find>date cons</find>
-      <find>Nombre de</find>
-      <find>@if</find>
-      <find>carous</find>
       <find>standing</find>
       <find>mettre</find>
+      <find>adresse</find>
+      <find>titre</find>
+      <find>country</find>
+      <find>modifier le ty</find>
+      <find>meuble</find>
+      <find>buildingdate</find>
+      <find>attribuer</find>
+      <find>a</find>
+      <find>assign</find>
+      <find>name</find>
+      <find>id=&quot;name</find>
+      <find>area</find>
+      <find>surface</find>
+      <find>docfile</find>
+      <find>submit_bail</find>
+      <find>property-update</find>
+      <find>select2</find>
+      <find>transaction-update</find>
+      <find>properties</find>
+      <find>RESIZED</find>
+      <find>ammount</find>
+      <find>image</find>
+      <find>images</find>
+      <find>mise</find>
+      <find>TRANS</find>
+      <find>property-de</find>
+      <find>showcu</find>
+      <find>trans</find>
     </findStrings>
     <replaceStrings>
       <replace>#5cb85c</replace>
@@ -198,11 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Model/Countries/country.php" />
-        <option value="$PROJECT_DIR$/resources/views/propertiesmanagement/show-properties.blade.php" />
-        <option value="$PROJECT_DIR$/public/important/scripts/datatables-manip.js" />
-        <option value="$PROJECT_DIR$/resources/views/agent/propertiesmanagement/show-properties.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/agent/propertiesmanagement/one-property.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/section/recentlyproperties.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_08_19_195833_create_reservation_table.php" />
         <option value="$PROJECT_DIR$/resources/views/reservemanagement/reserver. blade.php" />
@@ -212,7 +225,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/PlanController.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/plans/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_08_20_145059_create_subscriptions_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/guest/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Property.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Notifications/Reservation.php" />
@@ -226,16 +238,12 @@
         <option value="$PROJECT_DIR$/resources/views/guest/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/common/header.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/customer/user-properties.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
-        <option value="$PROJECT_DIR$/resources/views/guest/customer/user-properties-details.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/section/welcome.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/section/services.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/section/featuredproperties.blade.php" />
@@ -244,11 +252,21 @@
         <option value="$PROJECT_DIR$/resources/views/guest/section/popular-places.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/section/testimonials.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/section/blog.blade.php" />
-        <option value="$PROJECT_DIR$/public/important/scripts/datatableproperty-manip.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PropertyController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_08_02_082459_create_properties_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/propertiesmanagement/one-property.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/guest/sample/submit-property2.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/propertiesmanagement/agents-modale.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UsersManagementController.php" />
+        <option value="$PROJECT_DIR$/public/important/scripts/datatableproperty-manip.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" />
+        <option value="$PROJECT_DIR$/resources/views/guest/home.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/guest/customer/user-properties-details.blade.php" />
+        <option value="$PROJECT_DIR$/public/guest/js/dropzone-config.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PropertyController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ImagesController.php" />
+        <option value="$PROJECT_DIR$/resources/views/propertiesmanagement/one-property.blade.php" />
       </list>
     </option>
   </component>
@@ -381,28 +399,6 @@
               <item name="immo" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="immo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="immo" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="immo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="immo" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="immo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="immo" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="immo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="immo" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -472,12 +468,12 @@
       <workItem from="1564990859857" duration="183991000" />
       <workItem from="1565800819206" duration="93797000" />
       <workItem from="1566153375638" duration="36177000" />
-      <workItem from="1566289031463" duration="75455000" />
+      <workItem from="1566289031463" duration="118431000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="699822000" />
+    <option name="totallyTimeSpent" value="742798000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -496,7 +492,7 @@
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2559524" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.3325893" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="0" weight="0.32767403" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32767403" />
@@ -535,65 +531,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="121" column="18" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/common/header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/guestUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#38#96#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reservemanagement/reserver.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="45" column="50" selection-start-line="41" selection-start-column="45" selection-end-line="45" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/guest/auth/register.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="101" column="88" selection-start-line="101" selection-start-column="88" selection-end-line="101" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AccountSecurityController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1802">
@@ -657,13 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="233" column="10" selection-start-line="233" selection-start-column="10" selection-end-line="233" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -731,30 +661,6 @@
         <state relative-caret-position="-2108" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/propertiesmanagement/show-properties.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -767,17 +673,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/guest/customer/properties-details.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/guest/customer/user-properties-details.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="293" column="45" selection-start-line="293" selection-start-column="45" selection-end-line="293" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#11219#16346#0#HTML" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/guest/section/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -831,23 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/important/scripts/datatableproperty-manip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="233" column="50" selection-start-line="233" selection-start-column="50" selection-end-line="233" selection-end-column="50" />
-          <folding>
-            <element signature="e#5779#6689#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Property.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/agent/propertiesmanagement/one-property.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -869,16 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PropertyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="107" column="62" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
-          <folding>
-            <element signature="e#40#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_08_02_082459_create_properties_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -886,10 +754,141 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/propertiesmanagement/agents-modale.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/important/scripts/datatableproperty-manip.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="175" column="71" selection-start-line="175" selection-start-column="71" selection-end-line="175" selection-end-column="71" />
+          <folding>
+            <element signature="e#5779#6689#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="28" column="99" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/guest/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/guest/js/dropzone.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TransactionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/guest/customer/user-properties-details.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="85" column="71" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/guest/sample/submit-property2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="260" column="59" selection-start-line="260" selection-start-column="59" selection-end-line="260" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/guest/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4675">
+          <caret line="275" column="44" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/guest/js/dropzone-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+          <folding>
+            <element signature="e#41#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsersManagementController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="226" column="7" selection-start-line="226" selection-start-column="7" selection-end-line="226" selection-end-column="7" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="103" column="24" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Property.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PropertyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="40" column="44" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
+          <folding>
+            <element signature="e#40#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="123" column="28" selection-start-line="123" selection-start-column="28" selection-end-line="123" selection-end-column="28" />
+          <folding>
+            <element signature="e#40#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/propertiesmanagement/one-property.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-373">
-          <caret line="764" column="42" selection-start-line="764" selection-start-column="42" selection-end-line="764" selection-end-column="42" />
+        <state relative-caret-position="120">
+          <caret line="706" column="80" selection-start-line="706" selection-start-column="80" selection-end-line="706" selection-end-column="80" />
           <folding>
             <element signature="e#9852#14304#0#HTML" />
             <element signature="e#11262#11942#0#HTML" expanded="true" />
@@ -899,19 +898,7 @@
             <element signature="e#20186#20206#0#HTML" expanded="true" />
             <element signature="e#20657#20677#0#HTML" expanded="true" />
             <element signature="e#21131#21152#0#HTML" expanded="true" />
-            <element signature="e#48300#49252#0#HTML" />
-            <element signature="e#49261#53764#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/guest/sample/submit-property2.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="782" selection-start-line="782" selection-end-line="782" selection-end-column="64" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#60725#62001#0#HTML" />
           </folding>
         </state>
       </provider>

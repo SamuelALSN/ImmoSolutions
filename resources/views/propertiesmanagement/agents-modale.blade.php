@@ -13,14 +13,14 @@
                     @csrf
 
                     <div class="input-group mb-3" id="div_id">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                            <i class="flag-icon-ke"></i>
-                            </span>
-                        </div>
+{{--                        <div class="input-group-prepend">--}}
+{{--                            <span class="input-group-text">--}}
+{{--                            <i class="flag-icon-ke"></i>--}}
+{{--                            </span>--}}
+{{--                        </div>--}}
                         <input id="user_id" type="text" class="form-control @error('id') is-invalid @enderror"
                                name="user_id" value="{{ old('user_id') }}" required autocomplete="name" autofocus
-                               placeholder="Name" disabled="">
+                               placeholder="Name" hidden>
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@
                             <i class="icon-user"></i>
                             </span>
                         </div>
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                        <input id="name-user" type="text" class="form-control @error('name') is-invalid @enderror"
                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
                                placeholder="Name">
                         @error('name')

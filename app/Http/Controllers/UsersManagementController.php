@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\user;
+use App\Property;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,7 @@ use  Spatie\Permission\Models\Role;
 use App\Traits\CaptureIpTrait;
 use Validator;
 use Response;
+use Illuminate\Support\Facades\DB;
 
 class UsersManagementController extends Controller
 {
@@ -228,12 +230,26 @@ class UsersManagementController extends Controller
 
         $agents = User::find($user_id);
 
-        if ($agents->assignproperty->contains($property_id)) {
-            $agents->assignproperty()->detach($property_id);
+        $property = DB::table('assignment')
+            ->where('property_id', $property_id)->get();
+        if ($property->isEmpty()) {
+            if ($agents->assignproperty->contains($property_id)) {
+                $agents->assignproperty()->detach($property_id);
+                return response()->json(['array' => 'error']);
+            } else {
+                $agents->assignproperty()->attach($property_id);
+            }
         } else {
-            $agents->assignproperty()->attach($property_id);
+            if ($agents->assignproperty->contains($property_id)) {
+                $agents->assignproperty()->detach($property_id);
+                return response()->json(['array' => 'detach']);
+            }
+//            else {
+//                $agents->assignproperty()->attach($property_id);
+//            }
+            return response()->json(['array' => 'error']);
         }
 
-        return response()->json(['array' => 'succes']);
+        return response()->json(['array' => 'success']);
     }
 }

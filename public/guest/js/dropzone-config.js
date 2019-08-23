@@ -4,11 +4,12 @@ var name = "";
 Dropzone.options.myDropzone = {
     uploadMultiple: true,
     parallelUploads: 2,
-    maxFilesize: 16,
+    maxFilesize: 10,
     previewTemplate: document.querySelector('#preview').innerHTML,
     addRemoveLinks: true,
-    dictRemoveFile: 'Supprimer Le Fichier',
-    dictFileTooBig: 'Fichier supperieur à 16 MB',
+    dictRemoveFile: ' <button class="btn btn-sm btn-danger" type="reset">\n' +
+        '                                                <i class="fa fa-ban"></i>Supprimer</button>',
+    dictFileTooBig: 'Fichier supperieur à 10 MB',
     timeout: 10000,
     renameFile: function (file) {
         name = new Date().getTime() + Math.floor((Math.random() * 100) + 1) + '_' + file.name;

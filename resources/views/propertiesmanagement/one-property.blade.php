@@ -2,6 +2,9 @@
 @section('style')
     <link href="{{asset('datatables/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <link href="{{asset('datatables/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <!--dropzone file-->
+    {{--    <link rel="stylesheet" href="{{asset('guest/css/dropzone.css')}}">--}}
+    {{--    <link rel="stylesheet" href="{{asset('guest/css/dropzonecustom.css')}}">--}}
 @endsection
 @section('content')
     @include('common.header')
@@ -267,7 +270,7 @@
                                             <td>@lang("Attribuer des Agents")</td>
                                             <td>
                                                 <label class="switch switch-label switch-pill switch-success">
-                                                    <input class="switch-input" type="checkbox">
+                                                    <input id="assign-agent" class="switch-input" type="checkbox">
                                                     <span class="switch-slider" data-checked="On"
                                                           data-unchecked="Off"></span>
                                                 </label>
@@ -291,7 +294,7 @@
                                             <td>@lang("Desactiver")</td>
                                             <td>
                                                 <label class="switch switch-label switch-pill switch-danger">
-                                                    <input class="switch-input" type="checkbox">
+                                                    <input id="disable" class="switch-input" type="checkbox">
                                                     <span class="switch-slider" data-checked="On"
                                                           data-unchecked="Off"></span>
                                                 </label>
@@ -307,7 +310,7 @@
                             <!--end Modif-->
 
                             <!-- card agents  -->
-                            <div class="card">
+                            <div id="card-agent" class="card" hidden>
                                 <div class="card-header"> @lang("Liste des Agents Immobiliers ")</div>
                                 <div class="card-body">
                                     <div id="DataTables_Table_0_wrapper"
@@ -459,45 +462,58 @@
                         <div id="update-col" class="col-sm-6" hidden>
                             <div class="card">
                                 <div class="card-header">
-                                    <strong>Modifier</strong> Bien</div>
+                                    <strong>Modifier</strong> Bien
+                                </div>
                                 <div class="card-body">
-                                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                    <form id="propertyModifForm" class="form-horizontal" action="" method="post"
+                                          enctype="multipart/form-data">
+                                        @csrf
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Titre du bien")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Titre du bien")</label>
                                             <div class="col-md-9">
-                                                <input class="" id="property_id" type="text" value="{{$property->id}}" hidden>
-                                                <input class="form-control" id="text-input" type="text" name="text-input"
+                                                <input class="" id="property_id" type="text" value="{{$property->id}}"
+                                                       hidden>
+                                                <input class="form-control" id="name" type="text" name="text-input"
                                                        value="{{$property->name}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="textarea-input">@lang("Description du bien")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="textarea-input">@lang("Description du bien")</label>
                                             <div class="col-md-9">
-                                                <textarea class="form-control" id="textarea-input" name="textarea-input" rows="9"
-                                                          placeholder="Description.." value="{{$property->description}}"> {{$property->description}}
+                                                <textarea class="form-control" id="description" name="textarea-input"
+                                                          rows="9"
+                                                          placeholder="Description.."
+                                                          value="{{$property->description}}"> {{$property->description}}
 
                                                 </textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="file-input">@lang("Document du bien")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="file-input">@lang("Document du bien")</label>
                                             <div class="col-md-9">
-                                                <input id="file-input" type="file" name="file-input">
+                                                <input id="docfile" type="file" name="file-input">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Adresse")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Adresse")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->adresse}}">
+                                                <input class="form-control" id="autocomplete" type="text"
+                                                       name="text-input" value="{{$property->adresse}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("route")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->street_number}}">
+                                                <input class="form-control" id="street_number" type="text"
+                                                       name="text-input" value="{{$property->street_number}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
@@ -505,74 +521,93 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">@lang("Rue")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->route}}">
+                                                <input class="form-control" id="route" type="text" name="text-input"
+                                                       value="{{$property->route}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Ville")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Ville")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->locality}}">
+                                                <input class="form-control" id="locality" type="text" name="text-input"
+                                                       value="{{$property->locality}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Région")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Région")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->administrative_area_level_1}}">
+                                                <input class="form-control" id="administrative_area_level_1" type="text"
+                                                       name="text-input"
+                                                       value="{{$property->administrative_area_level_1}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Code Postal")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Code Postal")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->postal_code}}">
+                                                <input class="form-control" id="postal_code" type="text"
+                                                       name="text-input" value="{{$property->postal_code}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Pays")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Pays")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->country}}">
+                                                <input class="form-control" id="country" type="text" name="text-input"
+                                                       value="{{$property->country}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Latitude ")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Latitude ")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->latitudeposition}}">
+                                                <input class="form-control" id="latitude" type="text" name="text-input"
+                                                       value="{{$property->latitudeposition}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Longitude")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Longitude")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->longitudeposition}}">
+                                                <input class="form-control" id="longitude" type="text" name="text-input"
+                                                       value="{{$property->longitudeposition}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="select1">@lang("Catégorie")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="select1">@lang("Catégorie")</label>
                                             <div class="col-md-9">
                                                 <select class="form-control" id="propertytype_id" name="select1">
-                                                    <option value="{{$property->propertytype['name']}}"> {{$property->propertytype['name']}}</option>
+                                                    <option
+                                                        value="{{$property->propertytype['name']}}"> {{$property->propertytype['name']}}</option>
                                                 </select>
                                             </div>
                                         </div>
 
-                                        @if($property->propertytype['name']!="Terrain")
+                                        {{--                                        @if($property->propertytype['name']!="Terrain")--}}
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">@lang("meublé")</label>
+                                            <label id="label_meuble"
+                                                   class="col-md-3 col-form-label">@lang("meublé")</label>
                                             <div class="col-md-9 col-form-label">
                                                 @if($property->meuble=="yes")
                                                     <div class="form-check">
-                                                        <input class="form-check-input" id="check1" type="checkbox" value="" checked>
+                                                        <input class="form-check-input" id="meuble" type="checkbox"
+                                                               value="" checked>
                                                         <label class="form-check-label" for="radio1"></label>
                                                     </div>
-                                                    @else
+                                                @else
                                                     <div class="form-check">
-                                                        <input class="form-check-input" id="check1" type="checkbox" value="">
+                                                        <input class="form-check-input" id="meuble" type="checkbox"
+                                                               value="">
                                                         <label class="form-check-label" for="radio1"></label>
                                                     </div>
                                                 @endif
@@ -580,97 +615,79 @@
                                         </div>
                                         <!--caracteristiques-->
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Nombre de Chambre")</label>
+                                            <label class="col-md-3 col-form-label" id="label_rooms"
+                                                   for="text-input">@lang("Nombre de Chambre")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->rooms}}">
+                                                <input class="form-control" id="room" type="number" name="text-input"
+                                                       min="0"
+                                                       value="{{$property->rooms}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Nombre de Douche")</label>
+                                            <label id="label_douche" class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Nombre de Douche")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->bathRooms}}">
+                                                <input class="form-control" id="bathroom" type="number"
+                                                       name="text-input"
+                                                       value="{{$property->bathRooms}}" min="0">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Nombre de Garages")</label>
+                                            <label id="label_garages" class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Nombre de Garages")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->garages}}">
+                                                <input class="form-control" id="garage" type="number" name="text-input"
+                                                       value="{{$property->garages}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Nombre de Piscine")</label>
+                                            <label id="label_piscine" class="col-md-3 col-form-label"
+                                                   for="text-input">@lang("Nombre de Piscine")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="text" name="text-input" value="{{$property->swimmingpool}}">
+                                                <input class="form-control" id="piscine" type="number" name="text-input"
+                                                       value="{{$property->swimmingpool}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <!--fin caracteristiques -->
 
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="select2">@lang("Modifier le Standing")</label>
+                                            <label id="label_standing" class="col-md-3 col-form-label"
+                                                   for="select2">@lang("Modifier le Standing")</label>
                                             <div class="col-md-9">
-                                                <select class="form-control form-control-lg" id="standing_id" name="select2">
-                                                    <option value="{{$property->standing['stanging_name']}}">{{$property->standing['standing_name']}}</option>
+                                                <select class="form-control form-control-lg" id="standing_id"
+                                                        name="select2">
+                                                    <option
+                                                        value="{{$property->standing['stanging_name']}}">{{$property->standing['standing_name']}}</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        @endif
+                                        {{--                                        @endif--}}
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="date-input">@lang("Date Construction")</label>
+                                            <label class="col-md-3 col-form-label"
+                                                   for="date-input">@lang("Date Construction")</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="date-input" type="date" name="date-input" value="{{$property->buildingdate}}">
+                                                <input class="form-control" id="buildingdate" type="date"
+                                                       name="date-input" value="{{$property->buildingdate}}">
                                                 <span class="help-block">@lang("Svp une date valide ")</span>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Surface") m<sup>2</sup></label>
+                                            <label class="col-md-3 col-form-label" for="text-input">@lang("Surface")
+                                                m<sup>2</sup></label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="text-input" type="number" min="0" value="{{$property->area}}">
+                                                <input class="form-control" id="area" type="number" min="0"
+                                                       value="{{$property->area}}">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
-                                        @foreach($property->typetransactions as $trans)
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="select2">@lang("Modifier le type de transaction")</label>
-                                            <div class="col-md-9">
-                                                <select class="form-control form-control-lg" id="select2" name="select2">
-                                                    <option value="0">{{$trans->name}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="date-input">@lang("Date Visite")</label>
-                                            <div class="col-md-9">
-                                                <input class="form-control" id="date-input" type="date" name="date-input" value="{{$trans->pivot->visiteDate}}">
-                                                <span class="help-block">@lang("Svp une date valide ")</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="date-input">@lang("Date Début")</label>
-                                            <div class="col-md-9">
-                                                <input class="form-control" id="date-input" type="date" name="date-input" value="{{$trans->pivot->beginDate}}">
-                                                <span class="help-block">@lang("Svp une date valide ")</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label" for="date-input">@lang("Date Fin")</label>
-                                            <div class="col-md-9">
-                                                <input class="form-control" id="date-input" type="date" name="date-input" value="{{$trans->pivot->endDate}}">
-                                                <span class="help-block">@lang("Svp une date valide ")</span>
-                                            </div>
-                                        </div>
-                                            @endforeach
                                         <div class="card-footer">
-                                            <button class="btn btn-sm btn-primary" type="submit">
+                                            <button id="soumettre" class="btn btn-sm btn-primary" type="submit">
                                                 <i class="fa fa-dot-circle-o"></i> @lang("Modifier")</button>
                                             <button class="btn btn-sm btn-danger" type="reset">
                                                 <i class="fa fa-ban"></i>@lang("Supprimer")</button>
@@ -679,90 +696,105 @@
                                 </div>
 
                             </div>
+
                             <div class="card">
                                 <div class="card-header">
-                                    <i class="fa fa-align-justify"></i> @lang("Mettre à jour")
-                                    <small>Images</small>
+                                    <i class="fa fa-align-justify">
+                                        @lang("Mettre a jour les Images")
+                                    </i>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-10 offset-sm-1">
-                                            <h2 class="page-heading">Charger vos Images <span id="counter"></span></h2>
-                                            <form method="post" action="{{ url('/images') }}"
-                                                  enctype="multipart/form-data" class="dropzone" id="my-dropzone" hidden>
-                                                {{ csrf_field() }}
-                                                <input type="hidden" id="propertyadd_id" name="propertyadd_id" value="">
-                                                <div class="dz-message">
-                                                    <div class="col-xs-8">
-                                                        <div class="message">
-                                                            <p> Chargez toutes les images du bien </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="fallback">
-                                                    <input type="file" name="file" multiple>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        {{--Dropzone Preview Template--}}
-                                        <div id="preview" style="display: none;">
-
-                                            <div class="dz-preview dz-file-preview">
-                                                <div class="dz-image"><img data-dz-thumbnail/></div>
-
-                                                <div class="dz-details">
-                                                    <div class="dz-size"><span data-dz-size></span></div>
-                                                    <div class="dz-filename"><span data-dz-name></span></div>
-                                                </div>
-                                                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-                                                <div class="dz-error-message"><span data-dz-errormessage></span></div>
-
-
-                                                <div class="dz-success-mark">
-                                                    <!-- SVG balise pour des contenues graphiques -->
-                                                    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1"
-                                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                         xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-
-                                                        <title>Correct </title>
-                                                        <desc></desc>
-                                                        <defs></defs>
-                                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                                           sketch:type="MSPage">
-                                                            <path
-                                                                d="M23.5,31.8431458 L17.5852419,25.9283877 C16.0248253,24.3679711 13.4910294,24.366835 11.9289322,25.9289322 C10.3700136,27.4878508 10.3665912,30.0234455 11.9283877,31.5852419 L20.4147581,40.0716123 C20.5133999,40.1702541 20.6159315,40.2626649 20.7218615,40.3488435 C22.2835669,41.8725651 24.794234,41.8626202 26.3461564,40.3106978 L43.3106978,23.3461564 C44.8771021,21.7797521 44.8758057,19.2483887 43.3137085,17.6862915 C41.7547899,16.1273729 39.2176035,16.1255422 37.6538436,17.6893022 L23.5,31.8431458 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z"
-                                                                id="Oval-2" stroke-opacity="0.198794158" stroke="#747474" fill-opacity="0.816519475"
-                                                                fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-                                                        </g>
-                                                    </svg>
-
-                                                </div>
-
-                                                <div class="dz-error-mark">
-
-                                                    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1"
-                                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                         xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                                                        <title>error</title>
-                                                        <desc></desc>
-                                                        <defs></defs>
-                                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                                           sketch:type="MSPage">
-                                                            <g id="Check-+-Oval-2" sketch:type="MSLayerGroup" stroke="#747474"
-                                                               stroke-opacity="0.198794158" fill="#FFFFFF" fill-opacity="0.816519475">
-                                                                <path
-                                                                    d="M32.6568542,29 L38.3106978,23.3461564 C39.8771021,21.7797521 39.8758057,19.2483887 38.3137085,17.6862915 C36.7547899,16.1273729 34.2176035,16.1255422 32.6538436,17.6893022 L27,23.3431458 L21.3461564,17.6893022 C19.7823965,16.1255422 17.2452101,16.1273729 15.6862915,17.6862915 C14.1241943,19.2483887 14.1228979,21.7797521 15.6893022,23.3461564 L21.3431458,29 L15.6893022,34.6538436 C14.1228979,36.2202479 14.1241943,38.7516113 15.6862915,40.3137085 C17.2452101,41.8726271 19.7823965,41.8744578 21.3461564,40.3106978 L27,34.6568542 L32.6538436,40.3106978 C34.2176035,41.8744578 36.7547899,41.8726271 38.3137085,40.3137085 C39.8758057,38.7516113 39.8771021,36.2202479 38.3106978,34.6538436 L32.6568542,29 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z"
-                                                                    id="Oval-2" sketch:type="MSShapeGroup"></path>
-                                                            </g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
+                                    <form method="POST" action="" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group row">
+                                            <label class="col-md-6 col-form-label"
+                                                   for="file-multiple-input">@lang("Mettre a jour les Images")</label>
+                                            <div class="col-md-9">
+                                                <input type="text" value="{{$property->id}}" hidden>
+                                                <input id="file-multiple-input" type="file" name="file-multiple-input"
+                                                       multiple="">
                                             </div>
                                         </div>
-                                        {{--Fin de  la zone  de chargement d'image --}}
-                                    </div>
+                                        <div class="card-footer">
+                                            <button id="soumettre_img" class="btn btn-sm btn-primary" type="submit">
+                                                <i class="fa fa-dot-circle-o"></i> @lang("Mise A jour")</button>
+                                            <button class="btn btn-sm btn-danger" type="reset">
+                                                <i class="fa fa-ban"></i>@lang("Supprimer")</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <i class="fa fa-align-justify"></i> @lang("Mettre à jour les détails du Bail")
+                                    <small></small>
+                                </div>
+                                <div class="card-body">
+                                    <form action="" method="post">
+                                        @csrf
+                                        @foreach($property->typetransactions as $trans)
+                                            <div class="form-group row">
+                                                <input class="" id="property_id" type="text" value="{{$property->id}}"
+                                                       hidden>
+                                                <label class="col-md-3 col-form-label"
+                                                       for="select2">@lang("Modifier le type de baille")</label>
+                                                <div class="col-md-9">
+                                                    <select class="form-control form-control-lg" id="typetransaction"
+                                                            name="select2">
+                                                        {{--                                                        <option value="0">{{$trans->name}}</option>--}}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 col-form-label" id="label_rooms"
+                                                       for="text-input">@lang("Montant")</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" id="ammount" type="number" name="text-input"
+                                                           min="0"
+                                                           value="{{$trans->pivot->ammount}}">
+                                                    <span class="help-block"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 col-form-label"
+                                                       for="date-input">@lang("Date Visite")</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" id="date-visite" type="date"
+                                                           name="date-input" value="{{$trans->pivot->visiteDate}}">
+                                                    <span class="help-block">@lang("Svp une date valide ")</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 col-form-label"
+                                                       for="date-input">@lang("Date Début")</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" id="date-begin" type="date"
+                                                           name="date-input" value="{{$trans->pivot->beginDate}}">
+                                                    <span class="help-block">@lang("Svp une date valide ")</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 col-form-label"
+                                                       for="date-input">@lang("Date Fin")</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" id="date-end" type="date"
+                                                           name="date-input" value="{{$trans->pivot->endDate}}">
+                                                    <span class="help-block">@lang("Svp une date valide ")</span>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div class="card-footer">
+                                            <button id="submit_bail" class="btn btn-sm btn-primary" type="submit">
+                                                <i class="fa fa-dot-circle-o"></i> @lang("Modifier")</button>
+                                            <button class="btn btn-sm btn-danger" type="reset">
+                                                <i class="fa fa-ban"></i>@lang("Supprimer")</button>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -777,17 +809,40 @@
     </div>
 
     <script>
-        // fetch API USING
+
+
         window.addEventListener('DOMContentLoaded', (e) => {
-            /**
-             * propertyTypeData
+            /*
+            *
+            * */
+
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#buildingdate').attr('max', maxDate);
+            $('#date-visite').attr('min', maxDate);
+            $('#date-begin').attr('min', maxDate);
+            $('#date-end').attr('min', maxDate);
+
+
+            //end date input
+
+
+            /*
+            STANDING
              */
-            //getStanding
             fetch('{{url('/standing')}}')
                 .then(response => {
                     if (response.ok) {
                         response.json().then(standing => {
-                            var stand = "<option disabled>@lang("Choisir")</option>";
+                            var stand = "<option disabled style='color:blue' ><?php echo $property->standing['standing_name'] ?></option>";
                             for (let i = 0; i < standing.length; i++) {
                                 stand += "<option value =" + standing[i].id + ">" + standing[i].standing_name + "</option>";
                                 $('#standing_id').html(stand);
@@ -805,9 +860,9 @@
                 .then(response => {
                     if (response.ok) {
                         response.json().then(propertytype => {
-                            var proptype = "<option disabled >@lang("Choisir")</option>";
+                            var proptype = "<option disabled style='color:blue' > <?php echo $property->propertytype['name'] ?></option>";
                             for (let i = 0; i < propertytype.length; i++) {
-                                proptype += "<option value =" + propertytype[i].id + ">" + propertytype[i].name + "</option>";
+                                proptype += "<option value  =" + propertytype[i].id + ">" + propertytype[i].name + "</option>";
                                 $('#propertytype_id').html(proptype);
                             }
                         })
@@ -817,25 +872,56 @@
 
                 });
 
+            fetch('{{url('/typetransaction')}}')
+                .then(response => {
+                    if (response.ok) {
+                        response.json().then(typetransaction => {
 
+                            var type_trans = '<option disabled style=\'color:blue\'> <?php echo $trans->name ?></option>';
+                            for (let i = 0; i < typetransaction.length; i++) {
+
+                                type_trans += "<option value =" + typetransaction[i].id + ">" + typetransaction[i].name + "</option>";
+                                $('#typetransaction').html(type_trans);
+
+
+                            }
+                        })
+                    } else {
+
+                        console.error(' Reponse serveur : ' + response.status);
+                    }
+
+                });
             // get subpropertyTYPE
             $('#propertytype_id').on('change', function () {
-                $('#label_meuble').hide();
+                $('#meuble').hide();
                 $("input[type='number']").hide();
+                // hide label
+                $('#label_meuble').hide();
+                $('#label_rooms').hide();
+                $('#label_garages').hide();
+                $('#label_piscine').hide();
+                $('#label_standing').hide();
+                $('#label_douche').hide();
+                //end hiding
                 $('#standing_id').hide();
                 $('#surface').show();
-                //alert ($('#propertytype_id option:selected').text());
                 if ($('#propertytype_id option:selected').text() !== 'Terrain') {
-                    $('#label_meuble').fadeIn("slow");
+                    $('#meuble').fadeIn("slow");
                     $("input[type='number']").fadeIn("slow");
                     $('#standing_id').fadeIn("slow");
+                    $('#label_meuble').fadeIn("slow");
+                    $('#label_rooms').fadeIn("slow");
+                    $('#label_garages').fadeIn("slow");
+                    $('#label_piscine').fadeIn("slow");
+                    $('#label_standing').fadeIn("slow");
+                    $('#label_douche').fadeIn("slow");
                 }
             });
 
             /*
              end PropertyTypeData
              */
-            // if ($('input.checkbox_check').is(':checked')) {
 
             $('#docfile').on('change', function (e) {
                 val = $('#docfile').val();
@@ -846,6 +932,7 @@
                 } else {
                     $('#docfile').autofocus;
                     alert(' Veuillez choisir un fichier .PDF');
+                    $('#docfile').val('');
                 }
             });
 
@@ -860,9 +947,9 @@
                 if ($('#propertytype_id option:selected').text() == 'Terrain') {
                     $('#standing_id').val(0);
                 }
-                var form = $('#propertyForm');
+                var form = $('#propertyModifForm');
                 var token = $("input[name='_token']").val();
-                fetch('{{url('/property')}}', {
+                fetch('{{url('/property-update')}}', {
                     headers: {
                         "Content-type": "application/json;charset=utf-8",
                         "Accept": "application/json,text-plain",
@@ -874,7 +961,7 @@
                     body: JSON.stringify({
                         name: $('#name').val(),
                         description: $('#description').val(),
-                        area: $('#surface').val(),
+                        area: $('#area').val(),
                         buildingdate: $('#buildingdate').val(),
                         latitudeposition: $('#latitude').val(),
                         longitudeposition: $('#longitude').val(),
@@ -893,22 +980,20 @@
                         piscine: $('#piscine').val(),
                         meuble: $('#meuble').val(),
                         standing: $('#standing_id').val(),
+                        property_id: $('#property_id').val(),
+                        //filename:$('#file-multiple-input').val(),
                     })
                 })
                     .then((data) => {
                         if (data.ok) {
                             data.json().then(validation => {
                                 if ($.isEmptyObject(validation.error)) {
-                                    document.getElementById("propertyForm").reset();
-                                    $('#propertyForm').slideUp("slow");
-                                    $('#my-dropzone').removeAttr("hidden");
-                                    $('#my-dropzone').slideUp(2000).slideDown(2000);
-                                    $('.page-heading').show();
-
+                                    document.getElementById("propertyModifForm").reset();
                                     alertify.success(' ' + validation.success);
                                     console.log(validation.success);
-                                    $('#propertyadd_id').val(validation.id);
-                                    $('#Insertproperty').val(validation.id);
+                                    $("#update").prop("checked", false);
+                                    window.location.reload();
+
                                 } else {
                                     printErrorMsg(validation.error);
                                     console.log(validation);
@@ -923,23 +1008,68 @@
                     });
             });
 
+
+            // modification des détails de la transaction
+            $('#submit_bail').on('click', function () {
+                event.preventDefault();
+                var token = $("input[name='_token']").val();
+                fetch('/transaction-update', {
+                    headers: {
+                        "Content-type": "application/json;charset=utf-8",
+                        "Accept": "application/json,text-plain",
+                        "X-Requested-Width": "XMLHttpRequest",
+                        "X-CSRF-TOKEN": token
+                    },
+                    method: 'POST',
+                    credentials: "same-origin",
+                    body: JSON.stringify({
+                        typetransaction: $('#typetransaction').val(),
+                        beginDate: $('#date-begin').val(),
+                        endDate: $('#date-end').val(),
+                        visiteDate: $('#date-visite').val(),
+                        property: $('#property_id').val(),
+                        ammount: $('#ammount').val(),
+
+                    })
+                })
+                    .then((data) => {
+                        if (data.ok) {
+                            data.json().then(validation => {
+                                if ($.isEmptyObject(validation.error)) {
+                                    alertify.success(' ' + validation.success);
+                                    console.log(validation.success);
+                                    $("#update").prop("checked", false);
+                                    window.location.reload();
+
+                                } else {
+                                    printErrorMsg(validation.error);
+                                    console.log(validation);
+                                }
+                            })
+                        } else {
+                            console.error('Reponse serveur : ' + data.status);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+                // modifier la photo
+            });
+
+               //
             function printErrorMsg(msg) {
-
-                //$(".print-error-msg").find("ul").html('');
-                // $(".print-error-msg").css('display','block');
-
                 $.each(msg, function (key, value) {
                     alertify.error('Renseignez les champs :' + value);
-                    // $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-
                 });
 
             }
-
         });
-
-
     </script>
+
+
+
+
 @endsection
 @section('script')
     <script src="{{asset('datatables/js/jquery.dataTables.js')}}"></script>

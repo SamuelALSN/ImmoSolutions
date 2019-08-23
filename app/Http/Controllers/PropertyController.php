@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use App\Property;
 use App\standing;
 use App\User;
@@ -33,13 +34,13 @@ class PropertyController extends Controller
     {
         //
         if (Auth::user()->hasrole('Admin')) {
-            $properties = Property::all();
+            $properties = Property::whereHas('typetransactions')->get();
             return view('propertiesmanagement.show-properties', compact('properties'));
         } elseif (Auth::user()->hasrole('Agents')) {
             $agent_id = Auth::user()->id;
             $users_agent = User::find($agent_id);
             return view('agent.propertiesmanagement.show-properties', compact('users_agent'));
-        }elseif(Auth::user()->hasrole('customer')){
+        } elseif (Auth::user()->hasrole('customer')) {
 
         }
 
@@ -105,7 +106,7 @@ class PropertyController extends Controller
                         'route' => $request->input('route'),
                         'locality' => $request->input('locality'),
                         'administrative_area_level_1' => $request->input('administrative_area_level_1'),
-                        'country'=>$request->input('country'),
+                        'country' => $request->input('country'),
                         'postal_code' => $request->input('postal_code'),
                         'docfile' => $request->input('docfile'),
                         'rooms' => $request->input('room'),
@@ -153,8 +154,23 @@ class PropertyController extends Controller
     public function edit(Request $request)
     {
         //
+//        dd($request->hasFile('filename'));
+//        if ($request->hasfile('filename')) {
+//
+//            foreach ($request->file('filename') as $file) {
+//                $name = $file->getClientOriginalName();
+//                $file->move(public_path() . '/files/', $name);
+//                $data[] = $name;
+//            }
+//        }
+//
+//        $file = new Image();
+//        $file->filename = json_encode($data);
+//
+//
+//        $file->save();
 
-        //  dd($request->all());
+        //dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'description' => 'nullable|string|max:255',
@@ -171,16 +187,14 @@ class PropertyController extends Controller
             'postal_code' => 'nullable',
             'country' => 'required',
             'docfile.*' => 'mimes:pdf',
+           // 'filename' => 'required',
+           // 'filename.*' => 'mimes:jpg,png,jpeg'
         ]);
 
         $user_id = Auth::user()->id;
         if ($validator->passes()) {
-//            dd($request->input('docfile'));
-//            $document = $request->input('docfile');
-//
-//            $request->file('docfile')->move($this->destinationPath);
             $id = DB::table('property')
-                ->where('id',$request->input('update_id'))
+                ->where('id', $request->input('property_id'))
                 ->update(
                     ['user_id' => $user_id,
                         'name' => $request->input('name'),
@@ -196,7 +210,7 @@ class PropertyController extends Controller
                         'locality' => $request->input('locality'),
                         'administrative_area_level_1' => $request->input('administrative_area_level_1'),
                         'postal_code' => $request->input('postal_code'),
-                        'country'=>$request->input('country'),
+                        'country' => $request->input('country'),
                         'docfile' => $request->input('docfile'),
                         'rooms' => $request->input('room'),
                         'bathRooms' => $request->input('bathroom'),
@@ -204,14 +218,14 @@ class PropertyController extends Controller
                         'swimmingpool' => $request->input('piscine'),
                         'meuble' => $request->input('meuble'),
                         'standing_id' => $request->input('standing'),
-                        'created_at' => Carbon::now(),
+                        //'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                     ]
 
                 );
             return response()->json([
                 'id' => $id,
-                'success' => 'Bien Créé'
+                'success' => 'Bien Modifié avec success'
             ]);
         }
 
@@ -250,7 +264,7 @@ class PropertyController extends Controller
         $properties = Property::where(
             'user_id', Auth::user()->id)
             ->where('activated', 0)
-            ->paginate(5);
+            ->paginate(6);
 
         return view('guest.customer.user-properties', compact('properties'));
     }
@@ -292,8 +306,9 @@ class PropertyController extends Controller
 
     }
 
-    public function details($property_id){
+    public function details($property_id)
+    {
         $property = Property::find($property_id);
-        return view ('guest.customer.user-properties-details',compact('property'));
+        return view('guest.customer.user-properties-details', compact('property'));
     }
 }

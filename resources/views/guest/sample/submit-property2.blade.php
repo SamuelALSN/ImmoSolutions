@@ -73,7 +73,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <label for="description">@lang("Description du bien")</label>
+                                        <label for="description">@lang("Description de la propriete")</label>
                                         <textarea id="description" name="description"
                                                   placeholder="@lang("Breve Description de votre propriete ")"></textarea>
                                     </p>
@@ -336,17 +336,17 @@
 
         <form id="TransactionForm" action="" method="POST" hidden>
             @csrf
-        -    <div class="row">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="single-add-property">
-                        <h3>@lang("Details de la Transaction ")</h3>
+                        <h3>@lang("Details du bail ")</h3>
                         <div class="property-form-group">
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <input id="Insertproperty" type="text" value="">
                                     <p id="section_type">
-                                        <label for="type">@lang("Type de Transaction ")</label>
+                                        <label for="type">@lang("Type de bail ")</label>
                                         <select class="form-control" id="typetransaction" name="typetransaction">
                                         </select>
                                     </p>
@@ -464,16 +464,7 @@
         $('#surface').show();
         $('#label_meuble').hide();
 
-        // $(function () {
-        //     var date = new Date();
-        //     date.setDate(date.getDate());
-        //     $("#datepicker").datepicker({
-        //         autoclose: true,
-        //         todayHighlight: true,
-        //         endDate: date
-        //     }).datepicker('update', new Date());
-        // });
-
+        // input type date manipulation
         var dtToday = new Date();
         var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
         var day = dtToday.getDate();

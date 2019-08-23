@@ -178,7 +178,6 @@
             <div class="row  portfolio-items">
                 @foreach($properties as $property)
                     @foreach($property->assignment as $assign)
-                        @if($assign->pivot->status==1)
                             <div class="item col-lg-3 col-md-6 col-xs-12 people landscapes">
                                 <div class="project-single">
                                     <div class="project-inner project-head">
@@ -258,14 +257,14 @@
                                                     <i class="fa fa-user"></i>
                                                 </a>
                                                 <span>
-                                <i class="fa fa-calendar"></i> {{$typetrans->pivot->created_at}}
-                            </span>
+                                   <i class="fa fa-calendar"></i> {{$typetrans->pivot->created_at}}
+                                        </span>
                                             </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
-                        @endif
+
                     @endforeach
 
                 @endforeach
@@ -274,7 +273,7 @@
 
             <nav aria-label="..." class="pt-3">
                 <ul class="pagination">
-{{--                    {{$properties->links()}}--}}
+                    {{$properties->links()}}
                 </ul>
             </nav>
         </div>

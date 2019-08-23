@@ -83,6 +83,9 @@ Route::resources([
 Route::resources([
     'images' => 'ImagesController'
 ]);
+
+Route::post('/images-upate','ImagesController@update');
+
 Route::resources([
     'typetransaction' => 'TypeTransactionController'
 ]);
@@ -101,7 +104,7 @@ Route::resources([
 Route::get('/properties-all','PropertyController@customerproperty' );
 Route::get('/user-properties-detail/{id}','PropertyController@details' );
 
-Route::get('/property-details/{id}','PropertyController@showcustomerproperty');
+Route::get('/property-details/{id}','PropertyController@showcustomerproperty')->name('property_details');
 
 Route::get('/user-agents','UsersManagementController@showAgents');
 
@@ -112,7 +115,7 @@ Route::get('/assign-property/{user_id}/{property_id}','UsersManagementController
 Route::get('/validate-property/{property_id}','PropertyController@validateproperty');
 
 Route::get('/tester',function (){
-    return view('reservemanagement.reserver');
+    return view('reservemanagement.reserver-all');
 });
 
 // STRIPE PAYMENTS

@@ -266,6 +266,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @if(Auth::user()->hasrole('Admin'))
                                         <tr>
                                             <td>@lang("Attribuer des Agents")</td>
                                             <td>
@@ -279,6 +280,7 @@
                                                 @lang("Attribuer des agents")
                                             </td>
                                         </tr>
+                                        @endif
                                         <tr>
                                             <td>@lang("Modifer")</td>
                                             <td>
@@ -704,14 +706,14 @@
                                     </i>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="" enctype="multipart/form-data">
+                                    <form method="post" action="{{url('images-upate')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
                                             <label class="col-md-6 col-form-label"
                                                    for="file-multiple-input">@lang("Mettre a jour les Images")</label>
                                             <div class="col-md-9">
-                                                <input type="text" value="{{$property->id}}" hidden>
-                                                <input id="file-multiple-input" type="file" name="file-multiple-input"
+                                                <input type="text" name="property_id" value="{{$property->id}}" hidden>
+                                                <input id="file-multiple-input" type="file" name="file-multiple-input[]"
                                                        multiple="">
                                             </div>
                                         </div>

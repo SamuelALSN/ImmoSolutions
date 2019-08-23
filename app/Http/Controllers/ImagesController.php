@@ -9,10 +9,13 @@ use Intervention\Image\Facades\Image as InterventionImage;
 use Intervention\Image\Size;
 use Intervention\Image\Image as Img;
 use Illuminate\Support\Str;
-use Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Validator;
 
 class ImagesController extends Controller
 {
+    use SoftDeletes;
+    // use Flashy;
     private $photos_path;
 
     public function __construct()
@@ -118,55 +121,52 @@ class ImagesController extends Controller
      * @param \App\Image $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function update(Request $request)
     {
-        //
-        dd($request->all());
 
 
-        $this->validate($request, [
-
-            'filename' => 'required',
-            'filename.*' => 'mimes:jpg,png,jpeg'
+        $validator = Validator::make($request->all(), [
+            'file-multiple-input' => 'required',
+            'file-multiple-input.*' => 'mimes:jpg,png,jpeg'
 
         ]);
+        if ($validator->passes()) {
 
-        $photos = $request->file('file');
-        if (!is_array($photos)) {
-            $photos = [$photos];
+
+            $photos = $request->file('file-multiple-input');
+            if (!is_array($photos)) {
+                $photos = [$photos];
+            }
+
+            if (!is_dir($this->photos_path)) {
+                mkdir($this->photos_path, 0777);
+            }
+            $deleteImages = Image::where('property_id', $request->input('property_id'))
+                ->delete();
+
+            for ($i = 0; $i < count($photos); $i++) {
+                $photo = $photos[$i];
+                $name = sha1(date('YmdHis') . Str::random(30));
+                $save_name = $name . '.' . $photo->getClientOriginalExtension();
+                $resize_name = $name . Str::random(2) . '.' . $photo->getClientOriginalExtension();
+
+                InterventionImage::make($photo)
+                    ->encode('jpg', 75)
+                    ->resize(1000, 750)
+                    ->crop(1000, 750)
+                    ->save($this->photos_path . '/' . $resize_name);
+
+                $photo->move($this->photos_path, $save_name);
+                $upload = new Image();
+                $upload->file = $save_name;
+                $upload->resizedfilename = $resize_name;
+                $upload->originalfilename = basename($photo->getClientOriginalName());
+                $upload->property_id = $request->input('property_id');
+                $upload->save();
+            }
         }
 
-        if (!is_dir($this->photos_path)) {
-            mkdir($this->photos_path, 0777);
-        }
-
-        for ($i = 0; $i < count($photos); $i++) {
-            $photo = $photos[$i];
-            $name = sha1(date('YmdHis') . Str::random(30));
-            $save_name = $name . '.' . $photo->getClientOriginalExtension();
-            $resize_name = $name . Str::random(2) . '.' . $photo->getClientOriginalExtension();
-
-            InterventionImage::make($photo)
-                ->encode('jpg', 75)
-                ->resize(1000, 750)
-//                ->resize(1000, 750, function ($constraints) {
-//                    $constraints->aspectRatio();
-//                })
-                ->crop(1000, 750)
-                ->save($this->photos_path . '/' . $resize_name);
-
-            $photo->move($this->photos_path, $save_name);
-
-            $deleteImages = Image::where('property_id', $request->input('property_id'))->delete();
-
-            $upload = new Image();
-            $upload->file = $save_name;
-            $upload->resizedfilename = $resize_name;
-            $upload->originalfilename = basename($photo->getClientOriginalName());
-            $upload->property_id = $request->input('property_id');
-            $upload->save();
-        }
-//
+        return redirect()->route('property_details', ['id' => $request->input('property_id')]);
     }
 
     /**

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Property;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use Illuminate\Database\Eloquent\Builder;
 
 class ReserverController extends Controller
 {
@@ -19,6 +20,12 @@ class ReserverController extends Controller
     public function index()
     {
         //
+
+        $properties = Property::whereHas('reservation',function (Builder $query){
+            $query->where('user_id','=',Auth::user()->id);
+        })->paginate(4);
+        return view('reservemanagement.reserver-all',compact('properties'));
+
     }
 
     /**
@@ -40,17 +47,14 @@ class ReserverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
         $validator = Validator::make($request->all(), [
-            'beginDate' => 'required|date|after:tomorrow',
+            'beginDate' => 'required|date',
             'endDate' => 'required|date|after:beginDate',
-            'comment' => 'required|string',
+            'comment' => 'string',
         ]);
 
         $property = Property::find($request->property_id);
-        $property->typetransactions()->beginDate;
-        $property->typetransactions()->endDate;
-        $property->typetransactions()->visiteDate;
         if ($validator->passes()) {
             $reservation_id = DB::table('reserver')
                 ->insertGetId(
@@ -67,7 +71,7 @@ class ReserverController extends Controller
             // update property
             if($reservation_id){
                 $update_property = Property::find($request->property_id);
-                $update_property->status=2;
+                $update_property->activated=2;
                 $update_property->save();
             }
             return response()->json([

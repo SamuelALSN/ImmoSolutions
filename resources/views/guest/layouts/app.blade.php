@@ -23,6 +23,8 @@
     <link rel="stylesheet" id="color" href="{{asset('guest/css/default.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('css/alertify/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/alertify/default.min.css')}}">
     @yield('my_css')
 </head>
 <body class="">

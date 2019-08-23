@@ -3,7 +3,7 @@
     <section class="headings">
         <div class="text-heading text-center">
             <div class="container">
-                <h1 id="essai">@lang("ReservationComplete")</h1>
+                <h1 id="essai">@lang("Reservation")</h1>
                 <h2></h2>
             </div>
         </div>
@@ -38,25 +38,33 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <label for="">@lang("Date Visite") : {{$trans->pivot->visiteDate}}</label>
-                                            <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" type="text" readonly/>
-                                                <span class="input-group-addon"><i
-                                                        class="glyphicon glyphicon-calendar"></i></span>
-                                            </div>
-                                            <label>Date Arrivé: {{$trans->pivot->beginDate}} </label>
-                                            <div id="datepicker1" class="input-group date"
-                                                 data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" type="text" readonly/>
-                                                <span class="input-group-addon"><i
-                                                        class="glyphicon glyphicon-calendar"></i></span>
-                                            </div>
-                                            <label>Date Départ:  {{$trans->pivot->endDate}}</label>
-                                            <div id="datepicker2" class="input-group date"
-                                                 data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" type="text" readonly/>
-                                                <span class="input-group-addon"><i
-                                                        class="glyphicon glyphicon-calendar"></i></span>
+                                            <label for=""></label>
+                                            <div class="property-form-group">
+                                                <div class="row">
+                                                    <p class="col-lg-4 col-md-12">
+                                                        <label for="date">@lang("Date Arrivé")
+                                                            <span> {{$trans->pivot->beginDate}} </span></label>
+                                                        <input class="form-control" type="date" name="datedeb"
+                                                               id="datedeb">
+
+                                                    </p>
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <p class="">
+                                                            <label for="surface">@lang("Date Départ")
+                                                                <span> {{$trans->pivot->endDate}}</span> </label>
+                                                            <input class="form-control" type="date" name="datefin"
+                                                                   id="datefin" value="">
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <p class="">
+                                                            <label for="surface">@lang("Date de Visite")
+                                                                <span> {{$trans->pivot->visiteDate}}</span> </label>
+                                                            <input class="form-control" type="date" name="dateviiste"
+                                                                   id="datevisite">
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -79,100 +87,119 @@
         </div>
 
     </section>
+
+
 @endsection
+@section('my_scripts')
+    <script src="{{asset('js/alertify/alertify.min.js')}}"></script>
+    <script>
+        // fetch API USING
+        window.addEventListener('DOMContentLoaded', (e) => {
 
-<script>
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
 
-</script>
 
-<script>
-    // fetch API USING
-    window.addEventListener('DOMContentLoaded', (e) => {
-        var date =" <?php echo $property->id ?>";
-            console.log(date);
-        $(function () {
-            var date = new Date();
-            date.setDate(date.getDate());
-            $("#datepicker").datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                startDate:date
-            }).datepicker('update', new Date());
+            // var maxDate = year + '-' + month + '-' + day;
+            var begin = "<?php echo $trans->pivot->beginDate ?>";
+            var end = "<?php echo $trans->pivot->endDate ?>";
+            var visite = "<?php echo $trans->pivot->visiteDate ?>";
 
-            $("#datepicker1").datepicker({
-                autoclose: true,
-                todayHighlight: true
-            }).datepicker('update', new Date());
+            $('#datedeb').attr('min', begin);
+            $('#datefin').attr('max', end);
+            $('#datevisite').attr('min', visite);
 
-            $("#datepicker2").datepicker({
-                autoclose: true,
-                todayHighlight: true
-            }).datepicker('update', new Date());
-        });
+            // controle date
 
-        // INSERT DATA IN DATABASE HERE
-        $('#enregistrer').on('click', function () {
-            //console.log($("#datepicker1").find("input").val());
-            event.preventDefault();
-
-            var form = $('#ReserverForm');
-            var token = $("input[name='_token']").val();
-            fetch('{{url('/reserver')}}', {
-                headers: {
-                    "Content-type": "application/json;charset=utf-8",
-                    "Accept": "application/json,text-plain",
-                    "X-Requested-Width": "XMLHttpRequest",
-                    "X-CSRF-TOKEN": token
-                },
-                method: 'POST',
-                credentials: "same-origin",
-                body: JSON.stringify({
-                    property_id: $('#property_id').val(),
-                    comment: $('#comment').val(),
-                    visiteDate: $("#datepicker").find("input").val(),
-                    beginDate: $("#datepicker1").find("input").val(),
-                    endDate: $("#datepicker2").find("input").val(),
-                })
-            })
-                .then((data) => {
-                    if (data.ok) {
-                        data.json().then(validation => {
-                            if ($.isEmptyObject(validation.error)) {
-                                document.getElementById("propertyForm").reset();
-
-                                alertify.success(' ' + validation.success);
-                                console.log(validation.success);
-                            } else {
-                                printErrorMsg(validation.error);
-                                console.log(validation);
-                            }
-                        })
-                    } else {
-                        console.error('Reponse serveur : ' + data.status);
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        });
-
-        function printErrorMsg(msg) {
-
-            //$(".print-error-msg").find("ul").html('');
-            // $(".print-error-msg").css('display','block');
-
-            $.each(msg, function (key, value) {
-                alertify.error('Renseignez les champs :' + value);
-                // $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+            $('#datefin').on('change', function (e) {
+                var datefin = $('#datefin').val();
+                var datedeb = $('#datedeb').val();
+                if (datefin < datedeb) {
+                    alertify.alert("Date Invalide", "la date de fin doit etre superieure à la date debut ");
+                    $('#datefin').val('');
+                    $('#datefin').focus();
+                }
 
             });
 
-        }
+            $('#datevisite').on('change', function (e) {
+                var dateviste = $('#datevisite').val();
+                var datedebut = $('#datedeb').val();
 
-    });
+                var visite = new Date(dateviste);
+                var datedeb = new Date(datedebut);
+
+                if (visite > datedeb) {
+                    alertify.alert("Date Invalide", " la date visite doit  etre inferieure à la date de debut ");
+                    $('#datevisite').val('');
+                    $('#datevisite').focus();
+                }
+
+            });
+
+            // INSERT DATA IN DATABASE HERE
+            $('#enregistrer').on('click', function () {
+                event.preventDefault();
+                console.log(visite);
+                var form = $('#ReserverForm');
+                var token = $("input[name='_token']").val();
+                fetch('{{url('/reserver')}}', {
+                    headers: {
+                        "Content-type": "application/json;charset=utf-8",
+                        "Accept": "application/json,text-plain",
+                        "X-Requested-Width": "XMLHttpRequest",
+                        "X-CSRF-TOKEN": token
+                    },
+                    method: 'POST',
+                    credentials: "same-origin",
+                    body: JSON.stringify({
+                        property_id: $('#property_id').val(),
+                        comment: $('#comment').val(),
+                        visiteDate: $("#datevisite").val(),
+                        beginDate: $("#datedeb").val(),
+                        endDate: $("#datefin").val(),
+                    })
+                })
+                    .then((data) => {
+                        if (data.ok) {
+                            data.json().then(validation => {
+                                if ($.isEmptyObject(validation.error)) {
+                                    document.getElementById("ReserverForm").reset();
+                                    alertify.success(' ' + validation.success);
+                                    console.log(validation.success);
+                                } else {
+                                    printErrorMsg(validation.error);
+                                    console.log(validation);
+                                }
+                            })
+                        } else {
+                            console.error('Reponse serveur : ' + data.status);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            });
+
+            function printErrorMsg(msg) {
+                $.each(msg, function (key, value) {
+                    alertify.error('Renseignez les champs :' + value);
+                });
+
+            }
+
+        });
 
 
-</script>
+    </script>
+@endsection
+
 
 {{--<script>--}}
 {{--    // traitement du formulaire d'enregistrement de la transaction--}}

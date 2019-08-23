@@ -17,7 +17,8 @@
                 <div class="login-wrap">
                     <ul class="d-flex">
                         <li><a href="{{url('/guest-login')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
-                        <li><a href="{{url('/properties-all')}}"><i class="fa fa-sign-in"></i>@lang('Mes Biens')</a></li>
+                        <li><a href="{{url('/properties-all')}}"><i class="fa fa-save"></i>@lang('Mes Biens')</a></li>
+                        <li><a href="{{url('/reserver')}}"><i class="fa fa-dollar-sign"></i>@lang('Mes Réservations')</a></li>
 
 {{--                        <li><a href="{{Auth::logout()}}"><i class="fa fa-sign-in"></i>@lang('Se deconnecter')</a></li>--}}
 

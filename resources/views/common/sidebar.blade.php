@@ -32,73 +32,73 @@
 
         <li class="nav-title">@lang("Réservations")</li>
         <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-puzzle"></i> @lang("En Cours")</a>
+            <a class="nav-link nav-dropdown-toggle" href="">
+                <i class="nav-icon icon-puzzle"></i> @lang("Toutes les réservations")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{url('/reserver')}}">
                         <i class="nav-icon icon-puzzle"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
                         <i class="nav-icon icon-puzzle"></i> @lang("")</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Carousel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Collapse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Forms</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Jumbotron</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> List group</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Navs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Pagination</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Popovers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Progress</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Scrollspy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Switches</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Tables</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Tabs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> Tooltips</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Carousel</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Collapse</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Forms</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Jumbotron</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> List group</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Navs</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Pagination</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Popovers</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Progress</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Scrollspy</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Switches</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Tables</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Tabs</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-puzzle"></i> Tooltips</a>--}}
+{{--                </li>--}}
             </ul>
         </li>
         <li class="nav-item nav-dropdown">

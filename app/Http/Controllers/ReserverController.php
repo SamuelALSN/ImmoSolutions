@@ -19,12 +19,26 @@ class ReserverController extends Controller
      */
     public function index()
     {
-        //
+        //$users = App\User::popular()->active()->orderBy('created_at')->get();
 
-        $properties = Property::whereHas('reservation',function (Builder $query){
-            $query->where('user_id','=',Auth::user()->id);
-        })->paginate(4);
-        return view('reservemanagement.reserver-all',compact('properties'));
+        //dd($properties);
+
+        if (Auth::user()->hasrole('Admin')) {
+            $properties = Property::whereHas('reservation')->get();
+            return view('reservemanagement.reservation', compact('properties'));
+
+        } else if (Auth::user()->hasrole('Agents')) {
+            $properties = Property::has('reservation')->whereHas('assignment', function (Builder $query) {
+                $query->where('user_id','=',Auth::user()->id);
+            })->get();
+            return view('agent.reservemanagement.reservation',compact('properties'));
+        } else if(Auth::user()->hasrole('customer')) {
+            $properties = Property::whereHas('reservation', function (Builder $query) {
+                $query->where('user_id', '=', Auth::user()->id);
+            })->paginate(4);
+            return view('reservemanagement.reserver-all', compact('properties'));
+        }
+
 
     }
 
@@ -36,7 +50,7 @@ class ReserverController extends Controller
     public function create(Request $request)
     {
         $property = Property::find($request->property_id);
-        return view('reservemanagement.reserver',compact('property'));
+        return view('reservemanagement.reserver', compact('property'));
     }
 
     /**
@@ -58,20 +72,20 @@ class ReserverController extends Controller
         if ($validator->passes()) {
             $reservation_id = DB::table('reserver')
                 ->insertGetId(
-                    ['user_id'=>Auth::user()->id,
-                        'property_id'=>$request->property_id,
+                    ['user_id' => Auth::user()->id,
+                        'property_id' => $request->property_id,
                         'comment' => $request->comment,
                         'coming_at' => $request->beginDate,
                         'going_at' => $request->endDate,
                         'status' => 0,
-                        'created_at'=>Carbon::now()
+                        'created_at' => Carbon::now()
                     ]
                 );
 
             // update property
-            if($reservation_id){
+            if ($reservation_id) {
                 $update_property = Property::find($request->property_id);
-                $update_property->activated=2;
+                $update_property->activated = 2;
                 $update_property->save();
             }
             return response()->json([

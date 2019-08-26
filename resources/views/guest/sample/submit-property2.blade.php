@@ -167,7 +167,10 @@
                     </div>
                     <div class="single-add-property">
                         <h3>@lang(" Inidiquez  les coordonnées géographique depuis la carte  ")</h3>
-                        <div id="map" style=" height: 350px; width: 1050px;"></div>
+                        <div class="container-fluid">
+                            <div id="map" style=" height: 350px; width: 1050px;"></div>
+                        </div>
+
                         <h4> @lang("Ou Saisissez directement la latitude et la longitude ")</h4>
                         <p>
                             <input type="text" class="" id="latitude" placeholder="latitude"/>

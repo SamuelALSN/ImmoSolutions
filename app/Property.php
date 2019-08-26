@@ -3,13 +3,29 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Property extends Model
 {
     //
+
+    use Searchable;
     public $timestamps = true;
     protected $table = 'property';
 
+    public function searchableAs()
+    {
+        return 'properties_index';
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return $array;
+    }
 
     public function images()
     {

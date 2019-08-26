@@ -3,14 +3,31 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Transaction extends Model
 {
     //
-    protected $table ='transaction';
+    use Searchable;
 
-    protected  $fillable = [
-      'property_id',
+    public function searchableAs()
+    {
+        return 'transactions_index';
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return $array;
+    }
+
+    protected $table = 'transaction';
+
+    protected $fillable = [
+        'property_id',
         'ammount',
         'transactiontype_id',
         'beginDate',

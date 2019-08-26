@@ -99,6 +99,10 @@ Route::post('/transaction-update','TransactionController@update');
 Route::resources([
     'reserver'=>'ReserverController'
 ]);
+
+Route:Resources([
+   'Search'=>'searchController'
+]);
 #endRessources
 
 Route::get('/properties-all','PropertyController@customerproperty' );
@@ -124,3 +128,7 @@ Route::group(['middleware' => 'auth'], function() {
    // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/plans', 'PlanController@index')->name('plans.index');
 });
+
+// SCOUT SEARCH
+
+Route::get('/search','WelcomeController@search');

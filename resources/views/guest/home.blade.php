@@ -18,14 +18,17 @@
         /* Always set the map height explicitly to define the size of the div
     * element that contains the map. */
         #map {
-            height: 100%;
+            height: 500px;
+            width: 100%;
         }
+
         /* Optional: Makes the sample page fill the window. */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
+
         #description {
             font-family: Roboto;
             font-size: 15px;
@@ -93,6 +96,7 @@
             font-weight: 500;
             padding: 6px 12px;
         }
+
         #target {
             width: 345px;
         }
@@ -100,73 +104,94 @@
 
     <!-- STAR HEADER GOOGLE MAP -->
 
-    <section class="header-map google-maps pull-top map-leaflet-wrapper">
-        <input id="pac-input" class="controls" type="text" placeholder="Rechercher">
-        <div id="map"></div>
-
-{{--        <div class="container">--}}
-{{--            <div class="filter">--}}
-{{--                <div class="filter-toggle hidden-md-up"><i class="fa fa-search"></i>--}}
-{{--                    <h6>@lang("Rechercher Un Bien")</h6></div>--}}
-{{--                <form method="get">--}}
-{{--                    <div class="filter-item">--}}
-{{--                        <label>--}}
-{{--                            @lang("Status de la propriété")--}}
-{{--                        </label>--}}
-{{--                        <select name="property-status">--}}
-{{--                            <option value=""></option>--}}
-{{--                            <option value="for-sale"></option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <div class="filter-item">--}}
-{{--                        <label>@lang("Catégorie du Bien ")</label>--}}
-{{--                        <select name="property-type">--}}
-{{--                            <option value=""></option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <div class="filter-item">--}}
-{{--                        <label>@lang("Location")</label>--}}
-{{--                        <select name="property-type">--}}
-{{--                            <option value="">Any Location</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <div class="filter-item mb-5 mt-3">--}}
-{{--                        <input type="text" disabled class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10 mb-3">--}}
-{{--                        <div class="slider-range"></div>--}}
-{{--                    </div>--}}
-{{--                    <div class="filter-item filter-half">--}}
-{{--                        <label>@lang("Chambre")</label>--}}
-{{--                        <select name="beds" id="property-beds">--}}
-{{--                            <option value="">Any</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <div class="filter-item filter-half filter-half-last">--}}
-{{--                        <label>@lang("Salle de bain")</label>--}}
-{{--                        <select name="baths" id="property-baths">--}}
-{{--                            <option value="">Any</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <div class="clear"></div>--}}
-{{--                    <div class="filter-item">--}}
-{{--                        <label>@lang("Surface") m<sup>2</sup></label>--}}
-{{--                        <input type="number" name="areaMin" class="area-filter filter-1" placeholder="Min"/>--}}
-{{--                        <input type="number" name="areaMax" class="area-filter" placeholder="Max"/>--}}
-{{--                        <div class="clear"></div>--}}
-{{--                    </div>--}}
-{{--                    <div class="filter-item">--}}
-{{--                        <label class="label-submit">@lang("Rechercher")</label>--}}
-{{--                        <br/>--}}
-{{--                        <input type="submit" class="button alt" value="SEARCH PROPERTY"/>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+    <section class="">
+        <div class="container-fluid">
+            <div id="map"></div>
+        </div>
     </section>
     <!-- END HEADER GOOGLE MAP -->
 
-
+    <section class="main-search-field">
+        <div class="container">
+            <h3>@lang("Trouvez votre Maison de rève")</h3>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="at-col-default-mar">
+                        <div id="locationField">
+                            <input id="autocomplete"
+                                   placeholder="Enter your address"
+                                   onFocus="geolocate()"
+                                   type="text"/>
+                        </div>
+                    </div>
+                </div>
+                <div id="address" hidden>
+                    <input class="" id="street_number" disabled="true" placeholder="Numero Rue" hidden/>
+                    <input class="" id="route" disabled="true" placeholder="rue" hidden/>
+                    <input class="field" id="locality" disabled="true" hidden=""/>
+                    <input class="field" id="administrative_area_level_1" disabled="true" hidden/>
+                    <input class="field" id="postal_code" disabled="true" hidden/>
+                    <input class="" id="country" disabled="true" hidden/>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="at-col-default-mar">
+                        <select class="div-toggle" data-target=".my-info-1">
+                            <option value="0" data-show=".acitveon" selected="">@lang("Status de la propriété")</option>
+                            @foreach($typetrans as $status)
+                            <option value="{{$status->id}}" data-show=".sale">{{$status->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="at-col-default-mar">
+                        <div class="at-col-default-mar">
+                            <select>
+                                <option value="0" selected="">@lang('Catégorie du Bien')</option>
+                                @foreach($typebiens as $categ)
+                                <option value="{{$categ->id}}">{{$categ->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="at-col-default-mar no-mb">
+                            <input type="number" id="rooms" min="0" max="" placeholder="@lang("Nombre de Chambre")">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="at-col-default-mar no-mb">
+                        <input id="bathromms" type="number" min="0" max="" placeholder=" @lang("Nombre de Salle d'eau")">
+                    </div>
+                </div>
+                <div class="col-lg-3 no-pds">
+                    <div class="at-col-default-mar no-mb">
+                        <input id="area" class="at-input" type="number" name="min-area" placeholder="@lang("superficie m²")">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 b-search__main-form label">
+                    <input type="text" disabled="" class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
+                    <div class="slider-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                        <div class="ui-slider-range ui-corner-all ui-widget-header"
+                             style="left: 28.2051%; width: 35.8974%;"></div>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+                              style="left: 28.2051%;"></span><span tabindex="0"
+                                                                   class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                   style="left: 64.1026%;"></span></div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="at-col-default-mar no-mb">
+                        <button id="rechercher" class="btn btn-default hvr-bounce-to-right" type="submit">@lang("Rechercher")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- START SECTION RECENTLY PROPERTIES -->
-{{--    @include('guest.section.recentlyproperties')--}}
+    {{--    @include('guest.section.recentlyproperties')--}}
     <section class="recently portfolio">
         <div class="container-fluid">
             <!-- Block heading Start-->
@@ -178,92 +203,99 @@
             <div class="row  portfolio-items">
                 @foreach($properties as $property)
                     @foreach($property->assignment as $assign)
-                            <div class="item col-lg-3 col-md-6 col-xs-12 people landscapes">
-                                <div class="project-single">
-                                    <div class="project-inner project-head">
-                                        <div class="project-bottom">
-                                            <h4><a href="{{route('reserver.create',
+                        <div class="item col-lg-3 col-md-6 col-xs-12 people landscapes">
+                            <div class="project-single">
+                                <div class="project-inner project-head">
+                                    <div class="project-bottom">
+                                        <h4><a href="{{route('reserver.create',
                                             ['property_id'=>$property->id,
                                              'property_name'=>$property->name
-                                            ])}}">@lang("Voir Bien ")</a><span class="category">{{$property->propertytype['name']}}</span></h4>
-                                        </div>
-                                        <div class="button-effect">
-                                            <a href="{{url('/user-properties-detail/'.$property->id)}}" class="btn"><i class="fa fa-link"></i></a>
-                                            <a href="" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                            <a class="img-poppu btn" href="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
-                                        </div>
-                                        <div class="homes">
-                                            <!-- homes img -->
-                                            <a href="{{url('/user-properties-detail/'.$property->id)}}" class="homes-img">
-                                                <div class="homes-tag button alt featured">@lang("Tendances")</div>
-                                                @foreach($property->typetransactions as $typetrans)
-                                                    <div class="homes-tag button alt sale">{{$typetrans->name}}</div>
-                                                @endforeach
-                                                <div class="homes-price">  @lang("Info") </div>
-                                                <img src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" alt="home-1" class="img-responsive"
-                                                     height="750" width="1000">
-                                            </a>
-                                        </div>
+                                            ])}}">@lang("Voir Bien ")</a><span
+                                                class="category">{{$property->propertytype['name']}}</span></h4>
                                     </div>
-                                    <!-- homes content -->
-                                    <div class="homes-content">
-                                        <!-- homes address -->
-                                        <h3>{{$property->name}}</h3>
-                                        <p class="homes-address mb-3">
-                                            <a href="{{url('/user-properties-detail/'.$property->id)}}">
-                                                <i class="fa fa-map-marker"></i><span>{{$property->adresse}}</span>
-                                            </a>
-                                        </p>
-                                        <!-- homes List -->
-                                        <ul class="homes-list clearfix">
-                                            <li>
-                                                <i class="fa fa-bed" aria-hidden="true"></i>
-                                                <span>{{$property->rooms}} @lang("Chambre")</span>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-bath" aria-hidden="true"></i>
-                                                <span> {{$property->bathRooms}} @lang("Douche")</span>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-object-group" aria-hidden="true"></i>
-                                                <span>{{$property->area}} m<sup>2</sup> </span>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                                <span> {{$property->garages}} @lang("Garage") </span>
-                                            </li>
-                                        </ul>
-                                        <!-- Price -->
-                                        @foreach($property->typetransactions as $typetrans)
-                                            <div class="price-properties">
-                                                <h3 class="title mt-3">
-                                                    <a href="">{{$typetrans->pivot->ammount}} CFA</a>
-                                                </h3>
-                                                <div class="compare">
-                                                    <a href="" title="Compare">
-                                                        <i class="fas fa-exchange-alt"></i>
-                                                    </a>
-                                                    <a href="" title="Share">
-                                                        <i class="fas fa-share-alt"></i>
-                                                    </a>
-                                                    <a href="" title="Favorites">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="footer">
-                                                <a href="">
-                                                    <i class="fa fa-user"></i>
-                                                </a>
-                                                <span>
-                                   <i class="fa fa-calendar"></i> {{$typetrans->pivot->created_at}}
-                                        </span>
-                                            </div>
-                                        @endforeach
+                                    <div class="button-effect">
+                                        <a href="{{url('/user-properties-detail/'.$property->id)}}" class="btn"><i
+                                                class="fa fa-link"></i></a>
+                                        <a href="" class="btn popup-video popup-youtube"><i
+                                                class="fas fa-video"></i></a>
+                                        <a class="img-poppu btn"
+                                           href="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}"
+                                           data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
+                                    </div>
+                                    <div class="homes">
+                                        <!-- homes img -->
+                                        <a href="{{url('/user-properties-detail/'.$property->id)}}" class="homes-img">
+                                            <div class="homes-tag button alt featured">@lang("Tendances")</div>
+                                            @foreach($property->typetransactions as $typetrans)
+                                                <div class="homes-tag button alt sale">{{$typetrans->name}}</div>
+                                            @endforeach
+                                            <div class="homes-price">  @lang("Info") </div>
+                                            <img
+                                                src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}"
+                                                alt="home-1" class="img-responsive"
+                                                height="750" width="1000">
+                                        </a>
                                     </div>
                                 </div>
+                                <!-- homes content -->
+                                <div class="homes-content">
+                                    <!-- homes address -->
+                                    <h3>{{$property->name}}</h3>
+                                    <p class="homes-address mb-3">
+                                        <a href="{{url('/user-properties-detail/'.$property->id)}}">
+                                            <i class="fa fa-map-marker"></i><span>{{$property->adresse}}</span>
+                                        </a>
+                                    </p>
+                                    <!-- homes List -->
+                                    <ul class="homes-list clearfix">
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i>
+                                            <span>{{$property->rooms}} @lang("Chambre")</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bath" aria-hidden="true"></i>
+                                            <span> {{$property->bathRooms}} @lang("Douche")</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-object-group" aria-hidden="true"></i>
+                                            <span>{{$property->area}} m<sup>2</sup> </span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
+                                            <span> {{$property->garages}} @lang("Garage") </span>
+                                        </li>
+                                    </ul>
+                                    <!-- Price -->
+                                    @foreach($property->typetransactions as $typetrans)
+                                        <div class="price-properties">
+                                            <h3 class="title mt-3">
+                                                <a href="">{{$typetrans->pivot->ammount}} CFA</a>
+                                            </h3>
+                                            <div class="compare">
+                                                <a href="" title="Compare">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                </a>
+                                                <a href="" title="Share">
+                                                    <i class="fas fa-share-alt"></i>
+                                                </a>
+                                                <a href="" title="Favorites">
+                                                    <i class="fa fa-heart-o"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="footer">
+                                            <a href="">
+                                                <i class="fa fa-user"></i>
+                                            </a>
+                                            <span>
+                                   <i class="fa fa-calendar"></i> {{$typetrans->pivot->created_at}}
+                                        </span>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
+                        </div>
 
                     @endforeach
 
@@ -281,7 +313,7 @@
     <!-- END SECTION RECENTLY PROPERTIES -->
 
     <!-- STAR SECTION WELCOME -->
-     @include('guest.section.welcome')
+    @include('guest.section.welcome')
     <!-- END SECTION WELCOME -->
 
     <!-- START SECTION SERVICES -->
@@ -365,80 +397,18 @@
     <script src="{{asset('guest/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
     <script src="{{asset('guest/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
     <script src="{{asset('guest/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
-
     <!-- MAIN JS -->
     <script src="{{asset('guest/js/script.js')}}"></script>
-    <!--GOOGLE MAPS-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfBd0U878Rqo7dw5hywSOuk1MQRJ6oGv0&libraries=places&callback=initAutocomplete"
-            async defer></script>
+    @include('guest.myscripts.locate-search')
+    <script>
+        /*
+        rechercher un logement
+         */
+        window.addEventListener('DOMContentLoaded', (e) => {
+        $('#rechercher').on('click',function (e) {
+            fetch('{{url}}')
+        });
 
-  <script>
-
-      function initAutocomplete() {
-          var map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: -33.8688, lng: 151.2195},
-              zoom: 13,
-              mapTypeId: 'roadmap'
-          });
-
-          // Create the search box and link it to the UI element.
-          var input = document.getElementById('pac-input');
-          var searchBox = new google.maps.places.SearchBox(input);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-          // Bias the SearchBox results towards current map's viewport.
-          map.addListener('bounds_changed', function() {
-              searchBox.setBounds(map.getBounds());
-          });
-
-          var markers = [];
-          // Listen for the event fired when the user selects a prediction and retrieve
-          // more details for that place.
-          searchBox.addListener('places_changed', function() {
-              var places = searchBox.getPlaces();
-
-              if (places.length == 0) {
-                  return;
-              }
-
-              // Clear out the old markers.
-              markers.forEach(function(marker) {
-                  marker.setMap(null);
-              });
-              markers = [];
-
-              // For each place, get the icon, name and location.
-              var bounds = new google.maps.LatLngBounds();
-              places.forEach(function(place) {
-                  if (!place.geometry) {
-                      console.log("Returned place contains no geometry");
-                      return;
-                  }
-                  var icon = {
-                      url: place.icon,
-                      size: new google.maps.Size(71, 71),
-                      origin: new google.maps.Point(0, 0),
-                      anchor: new google.maps.Point(17, 34),
-                      scaledSize: new google.maps.Size(25, 25)
-                  };
-
-                  // Create a marker for each place.
-                  markers.push(new google.maps.Marker({
-                      map: map,
-                      icon: icon,
-                      title: place.name,
-                      position: place.geometry.location
-                  }));
-
-                  if (place.geometry.viewport) {
-                      // Only geocodes have viewport.
-                      bounds.union(place.geometry.viewport);
-                  } else {
-                      bounds.extend(place.geometry.location);
-                  }
-              });
-              map.fitBounds(bounds);
-          });
-      }
-  </script>
+        });
+    </script>
 @endsection

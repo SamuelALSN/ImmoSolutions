@@ -7,8 +7,7 @@ Dropzone.options.myDropzone = {
     maxFilesize: 10,
     previewTemplate: document.querySelector('#preview').innerHTML,
     addRemoveLinks: true,
-    dictRemoveFile: ' <button class="btn btn-sm btn-danger" type="reset">\n' +
-        '                                                <i class="fa fa-ban"></i>Supprimer</button>',
+    dictRemoveFile: 'Supprimer Le Fichier',
     dictFileTooBig: 'Fichier supperieur à 10 MB',
     timeout: 10000,
     renameFile: function (file) {

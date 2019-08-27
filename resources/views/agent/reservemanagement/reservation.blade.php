@@ -13,11 +13,11 @@
         <main class="main">
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">@lang("Accueil")</li>
                 <li class="breadcrumb-item">
                     <a href="#">Admin</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">@lang("Tableau de Bord")</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -25,7 +25,7 @@
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
-                            <i class="icon-graph"></i>  Dashboard</a>
+                            <i class="icon-graph"></i>  @lang("Tableau de Bord")</a>
                         <a class="btn" href="#">
                             <i class="icon-settings"></i>  @lang("Parameters")</a>
                     </div>
@@ -58,7 +58,8 @@
                                                style="border-collapse: collapse !important">
                                             <thead>
                                             <tr role="row">
-                                                <th> @lang('ID')</th>
+                                                <th> @lang('ID RESERVATION')</th>
+                                                <th> @lang('ID BIEN')</th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="name: activate to sort column descending"
@@ -77,28 +78,34 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="name: activate to sort column descending"
-                                                    style="width: 235px;">@lang("bail")
+                                                    style="width: 235px;">@lang("Status Bien")
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Posteur : activate to sort column ascending"
                                                     style="width: 201px;"> @lang("Posteur")
                                                 </th>
-{{--                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"--}}
-{{--                                                    rowspan="1" colspan="1"--}}
-{{--                                                    aria-label="Date registered: activate to sort column ascending"--}}
-{{--                                                    style="width: 201px;"> @lang("Agent Supperviseur")--}}
-{{--                                                </th>--}}
+                                                {{--                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"--}}
+                                                {{--                                                    rowspan="1" colspan="1"--}}
+                                                {{--                                                    aria-label="Date registered: activate to sort column ascending"--}}
+                                                {{--                                                    style="width: 201px;"> @lang("Agent Supperviseur")--}}
+                                                {{--                                                </th>--}}
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
-                                                    aria-label="Date registered: activate to sort column ascending"
-                                                    style="width: 201px;"> @lang("Postulant")
+                                                    aria-label="Postulant: activate to sort column ascending"
+                                                    style="width: 201px;"> @lang("Postulants")
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
-                                                    aria-label="Date registered: activate to sort column ascending"
+                                                    aria-label="Status: activate to sort column ascending"
                                                     style="width: 201px;"> @lang("Status")
                                                 </th>
+                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Date registered: activate to sort column ascending"
+                                                    style="width: 201px;"> @lang("Date Demande")
+                                                </th>
+                                                <th> @lang("Date Visite")</th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Actions: activate to sort column ascending"
@@ -108,75 +115,102 @@
                                             </thead>
                                             <tbody id="properties_table">
                                             @foreach($properties as $property)
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1"><a
-                                                            href="{{url('/property-details/'.$property->id)}}">{{$property->id}}</a>
-                                                    </td>
-                                                    <td class="sorting_1">{{$property->name}}</td>
-                                                    <td>{{$property->adresse}}</td>
-                                                    <td>
+                                                @foreach($property->reservation as $reservation)
+                                                    <tr role="row" class="odd">
+                                                        <td class="">{{$reservation->pivot->id}}</td>
+                                                        <td class="sorting_1"><a
+                                                                href="{{url('/reservation-details/'.$property->id)}}">{{$property->id}}</a>
+                                                        </td>
+                                                        <td class="sorting_1">{{$property->name}}</td>
+                                                        <td>{{$property->adresse}}</td>
+                                                        <td>
                                                         <span
                                                             class="badge badge-dark"> {{$property->propertytype['name']}}</span>
-                                                    </td>
-                                                    <td>
-                                                        @foreach($property->typetransactions as $typetrans)
-                                                            @if($typetrans->name =='LOCATION')
-                                                                @php $badgeClass ='primary' @endphp
-                                                            @elseif($typetrans->name =='VENTE')
-                                                                @php $badgeClass='warning' @endphp
-                                                            @elseif($typetrans->name =='BAILLE')
-                                                                @php $badgeClass='success' @endphp
-                                                            @endif
-                                                            <span
-                                                                class="badge badge-{{$badgeClass}}">{{$typetrans->name}}</span>
+                                                        </td>
+                                                        <td>
+                                                            @foreach($property->typetransactions as $typetrans)
+                                                                @if($typetrans->name =='LOCATION')
+                                                                    @php $badgeClass ='primary' @endphp
+                                                                @elseif($typetrans->name =='VENTE')
+                                                                    @php $badgeClass='warning' @endphp
+                                                                @elseif($typetrans->name =='BAILLE')
+                                                                    @php $badgeClass='success' @endphp
+                                                                @endif
+                                                                <span
+                                                                    class="badge badge-{{$badgeClass}}">{{$typetrans->name}}</span>
 
-                                                        @endforeach
-                                                    </td>
-                                                    <td> {{$property->user['email']}} </td>
-{{--                                                    <td>@foreach($property->assignment as $agents)--}}
-{{--                                                            {{$agents->email}}--}}
-{{--                                                        @endforeach--}}
-{{--                                                    </td>--}}
-                                                    <td>
-                                                        @foreach($property->reservation as $acheteur)
-                                                            {{$acheteur->email}}
-                                                        @endforeach
-                                                    </td>
+                                                            @endforeach
+                                                        </td>
+                                                        <td> {{$property->user['email']}} </td>
+                                                        {{--                                                    <td>@foreach($property->assignment as $agents)--}}
+                                                        {{--                                                            {{$agents->email}}--}}
+                                                        {{--                                                        @endforeach--}}
+                                                        {{--                                                    </td>--}}
 
-                                                    <td>
-                                                        @foreach($property->reservation as $reservation)
+                                                        <td>
+
+                                                            {{$reservation->email}}
+
+                                                        </td>
+
+                                                        <td>
+
                                                             @if($reservation->pivot->status==1)
                                                                 @php $badgeClass='success' @endphp
-                                                                <?php $status_p ="Payé" ?>
+                                                                <?php $status_p = "Payé" ?>
                                                             @elseif($reservation->pivot->status==0)
                                                                 @php $badgeClass='warning' @endphp
-                                                                <?php $status_p ="Non Payé" ?>
+                                                                <?php $status_p = "Non Payé" ?>
                                                             @endif
-                                                                <span
-                                                                    class="badge badge-{{$badgeClass}}">{{$status_p}}</span>
-                                                        @endforeach
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn btn-success" data-toggle="modal"
-                                                           data-target="#largeModal"
-                                                           id="show-property"
-                                                           data-info="{{$property->id}}">
-                                                            <i class="fa fa-search-plus"></i>
-                                                        </a>
-                                                        <a class="btn btn-info" data-toggle="modal"
-                                                           data-target="#primaryModal"
-                                                           id="edit-property"
-                                                           data-info="{{$property->id}}">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a class="btn btn-danger" data-toggle="modal"
-                                                           data-target="#dangerModal"
-                                                           id="delete-property" data-id=""
-                                                           data-info="{{$property->id}} ">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                            <span
+                                                                class="badge badge-{{$badgeClass}}">{{$status_p}}</span>
+
+                                                        </td>
+
+                                                        <td>
+                                                            {{--                                                        @foreach($property->reservation as $reservDate)--}}
+                                                            {{$reservation->pivot->created_at}}
+                                                            {{--                                                            @endforeach--}}
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge badge-danger">
+                                                               {{$reservation->pivot->visite_at}}
+                                                            </span>
+                                                            {{--                                                        @foreach($property->reservation as $reservDate)--}}
+
+                                                            {{--                                                        @endforeach--}}
+                                                        </td>
+
+                                                        <td>
+                                                            <a class="btn btn-success" data-toggle="modal"
+                                                               data-target="#largeModal"
+                                                               id="show-reservation"
+                                                               data-info="{{$property->id}},
+{{--                                                                @foreach($property->reservation as $reservDate)--}}
+                                                                        {{$reservation->pivot->coming_at}},
+                                                                        {{$reservation->pivot->going_at}},
+                                                                        {{$reservation->pivot->id}}
+
+                                                               {{--                                                               @endforeach--}}
+                                                                   ">
+                                                                <i class="fa fa-search-plus"></i>
+                                                            </a>
+                                                            <a class="btn btn-info" data-toggle="modal"
+                                                               data-target="#primaryModal"
+                                                               id="edit-reservation"
+                                                               data-info="{{$property->id}}">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a class="btn btn-danger" data-toggle="modal"
+                                                               data-target="#dangerModal"
+                                                               id="delete-reservation" data-id=""
+                                                               data-info="{{$property->id}} ">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -191,7 +225,7 @@
 
                 <!-- /.modal add -->
                 <!-- /.modal-end-->
-
+                @include('agent.reservemanagement.reservation-modale')
             </div>
         </main>
     </div>
@@ -200,5 +234,5 @@
     <script src="{{asset('datatables/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.bootstrap4.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.js')}}"></script>
-    <script src="{{asset('important/scripts/datatableproperty-manip.js')}}"></script>
+    <script src="{{asset('important/scripts/datatables-agent-property.js')}}"></script>
 @endsection

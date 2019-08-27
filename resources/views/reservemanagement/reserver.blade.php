@@ -56,14 +56,14 @@
                                                                    id="datefin" value="">
                                                         </p>
                                                     </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <p class="">
-                                                            <label for="surface">@lang("Date de Visite")
-                                                                <span> {{$trans->pivot->visiteDate}}</span> </label>
-                                                            <input class="form-control" type="date" name="dateviiste"
-                                                                   id="datevisite">
-                                                        </p>
-                                                    </div>
+{{--                                                    <div class="col-lg-4 col-md-12">--}}
+{{--                                                        <p class="">--}}
+{{--                                                            <label for="surface">@lang("Date de Visite")--}}
+{{--                                                                <span> {{$trans->pivot->visiteDate}}</span> </label>--}}
+{{--                                                            <input class="form-control" type="date" name="dateviiste"--}}
+{{--                                                                   id="datevisite">--}}
+{{--                                                        </p>--}}
+{{--                                                    </div>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -109,11 +109,11 @@
             // var maxDate = year + '-' + month + '-' + day;
             var begin = "<?php echo $trans->pivot->beginDate ?>";
             var end = "<?php echo $trans->pivot->endDate ?>";
-            var visite = "<?php echo $trans->pivot->visiteDate ?>";
+           // var visite = "<?php echo $trans->pivot->visiteDate ?>";
 
             $('#datedeb').attr('min', begin);
             $('#datefin').attr('max', end);
-            $('#datevisite').attr('min', visite);
+           // $('#datevisite').attr('min', visite);
 
             // controle date
 
@@ -128,25 +128,25 @@
 
             });
 
-            $('#datevisite').on('change', function (e) {
-                var dateviste = $('#datevisite').val();
-                var datedebut = $('#datedeb').val();
-
-                var visite = new Date(dateviste);
-                var datedeb = new Date(datedebut);
-
-                if (visite > datedeb) {
-                    alertify.alert("Date Invalide", " la date visite doit  etre inferieure à la date de debut ");
-                    $('#datevisite').val('');
-                    $('#datevisite').focus();
-                }
-
-            });
+            // $('#datevisite').on('change', function (e) {
+            //     var dateviste = $('#datevisite').val();
+            //     var datedebut = $('#datedeb').val();
+            //
+            //     var visite = new Date(dateviste);
+            //     var datedeb = new Date(datedebut);
+            //
+            //     if (visite > datedeb) {
+            //         alertify.alert("Date Invalide", " la date visite doit  etre inferieure à la date de debut ");
+            //         $('#datevisite').val('');
+            //         $('#datevisite').focus();
+            //     }
+            //
+            // });
 
             // INSERT DATA IN DATABASE HERE
             $('#enregistrer').on('click', function () {
                 event.preventDefault();
-                console.log(visite);
+                //console.log(visite);
                 var form = $('#ReserverForm');
                 var token = $("input[name='_token']").val();
                 fetch('{{url('/reserver')}}', {
@@ -161,7 +161,7 @@
                     body: JSON.stringify({
                         property_id: $('#property_id').val(),
                         comment: $('#comment').val(),
-                        visiteDate: $("#datevisite").val(),
+                        //visiteDate: $("#datevisite").val(),
                         beginDate: $("#datedeb").val(),
                         endDate: $("#datefin").val(),
                     })
@@ -173,6 +173,7 @@
                                     document.getElementById("ReserverForm").reset();
                                     alertify.success(' ' + validation.success);
                                     console.log(validation.success);
+                                    window.location.href = "{{url('/reserver')}}";
                                 } else {
                                     printErrorMsg(validation.error);
                                     console.log(validation);

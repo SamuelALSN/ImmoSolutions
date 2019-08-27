@@ -13,11 +13,11 @@
         <main class="main">
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">@lang("Accueil")</li>
                 <li class="breadcrumb-item">
                     <a href="#">Admin</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">@lang("Tableau de Bord")</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -25,9 +25,9 @@
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
-                            <i class="icon-graph"></i>  Dashboard</a>
+                            <i class="icon-graph"></i> @lang("Tableau de Bord")</a>
                         <a class="btn" href="#">
-                            <i class="icon-settings"></i>  Settings</a>
+                            <i class="icon-settings"></i>  @lang("Paramètres")</a>
                     </div>
                 </li>
             </ol>
@@ -42,7 +42,7 @@
                                     <small class="text-muted">@lang('Lists')</small>
                                 </a>
                                 <button class="btn btn-primary mb-1" type="button" data-toggle="modal" id="create-user"
-                                        data-target="#primaryModal">@lang('create user')
+                                        data-target="#primaryModal">@lang('créer un utilisateur')
                                 </button>
                             </div>
                         </div>

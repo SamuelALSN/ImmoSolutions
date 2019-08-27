@@ -40,8 +40,8 @@
                         <i class="nav-icon icon-puzzle"></i> @lang("Récentes")</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-puzzle"></i> @lang("")</a>
+                    <a class="nav-link" href="{{url('/reserver-payer')}}">
+                        <i class="nav-icon icon-puzzle"></i> @lang("Conclues")</a>
                 </li>
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link" href="">--}}

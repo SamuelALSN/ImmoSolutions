@@ -159,6 +159,7 @@
                 <!--table end -->
                 <!-- /.modal add -->
             <!-- /.modal-end-->
+{{--                @include('agents-modale')--}}
             </div>
         </main>
     </div>

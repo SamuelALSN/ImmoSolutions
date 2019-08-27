@@ -15,17 +15,17 @@ class Property extends Model
 
     public function searchableAs()
     {
-        return 'properties_index';
+        return 'propertys_index';
     }
 
-    public function toSearchableArray()
-    {
-        $array = $this->toArray();
-
-        // Customize array...
-
-        return $array;
-    }
+//    public function toSearchableArray()
+//    {
+//        $array = $this->toArray();
+//
+//        // Customize array...
+//
+//        return $array;
+//    }
 
     public function images()
     {
@@ -71,7 +71,7 @@ class Property extends Model
             'reserver',
             'property_id',
             'user_id')
-            ->withPivot('comment','status','coming_at','going_at')
+            ->withPivot('id','comment','status','coming_at','going_at','visite_at')
             ->withTimestamps();
     }
 }

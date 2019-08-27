@@ -19,7 +19,15 @@
                 <!-- plan start -->
                     <div class="col-lg-3 col-md-6 col-xs-12">
                         @foreach($property->typetransactions as $trans)
-                            <div class="plan text-center">
+                            @foreach($property->reservation as $reserv)
+                                @if($reserv->pivot->status ==0)
+
+                                    @php $class ='featured no-mgb yes-mgb' @endphp
+                                @elseif($reserv->pivot->status==1)
+                                    @php $class ='' @endphp
+                                @endif
+                                    {{$reserv->pivot->status}}
+                            <div class="plan text-center {{$class}}">
                                 <span class="plan-name">{{$property->name}} </span>
                                 <p class="plan-price"><sup
                                         class="currency"></sup><strong>{{$trans->pivot->ammount}}</strong><sub>CFA</sub>
@@ -35,9 +43,10 @@
                                 </ul>
                                 <a class="btn btn-primary" href="">@lang("Détails")</a>
                             </div>
+                            @endforeach
                         @endforeach
                     </div>
-            @endforeach
+                @endforeach
             </div>
             <nav aria-label="..." class="pt-3">
                 <ul class="pagination">

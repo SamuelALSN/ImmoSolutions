@@ -187,8 +187,8 @@ class PropertyController extends Controller
             'postal_code' => 'nullable',
             'country' => 'required',
             'docfile.*' => 'mimes:pdf',
-           // 'filename' => 'required',
-           // 'filename.*' => 'mimes:jpg,png,jpeg'
+            // 'filename' => 'required',
+            // 'filename.*' => 'mimes:jpg,png,jpeg'
         ]);
 
         $user_id = Auth::user()->id;
@@ -311,4 +311,13 @@ class PropertyController extends Controller
         $property = Property::find($property_id);
         return view('guest.customer.user-properties-details', compact('property'));
     }
+
+    public function visiteNotify($reservation_id, $visite_at)
+    {
+        return DB::table('reserver')
+            ->where('id', $reservation_id)
+            ->update(['visite_at' => $visite_at]);
+    }
+
+
 }

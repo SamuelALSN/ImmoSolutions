@@ -12,10 +12,16 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ReserverController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guestUser', ['only' => ['create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
     public function index()
     {
@@ -29,17 +35,17 @@ class ReserverController extends Controller
 
         } else if (Auth::user()->hasrole('Agents')) {
             $properties = Property::has('reservation')->whereHas('assignment', function (Builder $query) {
-                $query->where('user_id','=',Auth::user()->id);
+                $query->where('user_id', '=', Auth::user()->id);
             })->get();
-            return view('agent.reservemanagement.reservation',compact('properties'));
-        } else if(Auth::user()->hasrole('customer')) {
+            return view('agent.reservemanagement.reservation', compact('properties'));
+        } else if (Auth::user()->hasrole('customer')) {
             $properties = Property::whereHas('reservation', function (Builder $query) {
                 $query->where('user_id', '=', Auth::user()->id);
+
             })->paginate(4);
+            //dd($properties);
             return view('reservemanagement.reserver-all', compact('properties'));
         }
-
-
     }
 
     /**
@@ -140,5 +146,43 @@ class ReserverController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function reserverPayer()
+    {
+        if (Auth::user()->hasrole('Admin')) {
+            $properties = Property::whereHas('reservation', function (Builder $query) {
+                $query->where('stauts', '=', 1);
+            })->get();
+            return view('reservemanagement.reservation', compact('properties'));
+
+        } else if (Auth::user()->hasrole('Agents')) {
+            $properties = Property::has('reservation')->whereHas('assignment', function (Builder $query) {
+                $query->where('user_id', '=', Auth::user()->id);
+                $query->where('status', '=', 1);
+            })->get();
+            return view('agent.reservemanagement.reservation', compact('properties'));
+        } else if (Auth::user()->hasrole('customer')) {
+            $properties = Property::whereHas('reservation', function (Builder $query) {
+                $query->where('user_id', '=', Auth::user()->id);
+            })->paginate(4);
+            return view('reservemanagement.reserver-all', compact('properties'));
+        }
+    }
+
+    /*
+     * view for uncompleted reservations
+     */
+
+    public function uncompleteReservation()
+    {
+        $properties = Property::whereHas('reservation',function(Builder $query){
+            $query->where('user_id','=',Auth::user()->id);
+            $query->whereNotNull('visite_at');
+            $query->where('status','=',0);
+
+        })->get();
+       // dd($properties);
+        return view('reservemanagement.reservation-ask',compact('properties'));
     }
 }

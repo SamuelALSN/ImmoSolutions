@@ -31,6 +31,7 @@ class CreateReservationTable extends Migration
             $table->string('comment')->nullable();
             $table->date('coming_at')->nullable();
             $table->date('going_at')->nullable();
+            $table->date('visite_at')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
             $table->softDeletes();

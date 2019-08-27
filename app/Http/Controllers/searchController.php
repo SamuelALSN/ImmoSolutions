@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Property;
 use Illuminate\Http\Request;
 
 class searchController extends Controller
@@ -35,7 +36,10 @@ class searchController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+        //dd($request->adresse);
+       $properties =Property::search('name','diieieioeioee')->get();
+
+        dd($properties);
     }
 
     /**

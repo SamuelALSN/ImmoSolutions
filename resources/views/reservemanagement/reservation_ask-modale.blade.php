@@ -12,7 +12,7 @@
                 <form id="postform" method="POST" action="">
                     @csrf
 
-                    <div class="input-group mb-3" id="div_id" hidden>
+                    <div class="input-group mb-3" id="div_id">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
                             <i class="flag-icon-ke"></i>
@@ -34,7 +34,7 @@
                             <i class="icon-user"></i>
                             </span>
                         </div>
-                        <input id="name-user" type="text" class="form-control @error('name') is-invalid @enderror"
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
                                placeholder="Name">
                         @error('name')
@@ -122,15 +122,16 @@
                         <select name="country_id" class="form-control" data-show-subtext="false"
                                 data-live-search="true" id="country_id">
                             <option value="" hidden disabled selected>@lang('country')</option>
-                                                                    @foreach  (\App\Helpers\Country\Country::getCountries()  as $ctry)
-                                                                        <option value="{{$ctry->id}}">{{$ctry->name}}</option>
-                                                                    @endforeach
+                            @foreach  (\App\Helpers\Country\Country::getCountries()  as $ctry)
+                                <option value="{{$ctry->id}}">{{$ctry->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     {{--                                    <button class="btn btn-block btn-success" type="submit">{{ __('Register') }}</button>--}}
                     <div class="modal-footer">
-                        <button id="" class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                        <button  id="save_user" class="btn btn-primary" type="button">@lang('Enregistrer')</button>
+                        <button id="" class="btn btn-secondary" type="button"
+                                data-dismiss="modal">@lang("Fermer")</button>
+                        <button id="save_user" class="btn btn-primary" type="button">@lang('Enregistrer')</button>
                     </div>
                 </form>
             </div>
@@ -152,10 +153,41 @@
             </div>
             <div class="modal-body">
                 <p class="showparagraph">One fine body…</p>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>
+                            @lang("Date arrivé du Postulant")
+                        </td>
+                        <td>
+                            @lang("Date Départ du Postulant")
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td id="comming_at">
+                        </td>
+                        <td id="going_at">
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <label>@lang("Définir une date de visite")</label>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                                     <span class="input-group-text">
+                                    <i class="icon-calendar"></i>
+                                    </span>
+                    </div>
+                    <input id="visite-confirm" type="date" class="form-control"
+                           name="visite-confirm">
+                </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="button">Save changes</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">@lang("Fermer")</button>
+                <button id="notify" class="btn btn-primary" type="button">@lang("Notifier")</button>
             </div>
         </div>
     </div>

@@ -55,72 +55,81 @@ Route::get('/properties-map', function () {
 });
 
 #begin ressources
-Route::resources([
-    'user' => 'UsersManagementController'
-]);
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::resources([
+        'user' => 'UsersManagementController'
+    ]);
+
+    Route::resources([
+        'property' => 'PropertyController'
+    ]);
+    Route::post('/property-update','PropertyController@edit');
+
+    Route::resources([
+        'country' => 'CountryController'
+    ]);
+
+    Route::resources([
+        'state' => 'StateController'
+    ]);
+
+    Route::resources([
+        'property-type' => 'PropertyTypeController'
+    ]);
+
+    Route::resources([
+        'standing' => 'standingController'
+    ]);
+
+    Route::resources([
+        'images' => 'ImagesController'
+    ]);
+
+    Route::post('/images-upate','ImagesController@update');
+
+    Route::resources([
+        'typetransaction' => 'TypeTransactionController'
+    ]);
+
+    Route::resources([
+        'transaction' => 'TransactionController'
+    ]);
+    Route::post('/transaction-update','TransactionController@update');
+
+
+    Route::resources([
+        'reserver'=>'ReserverController'
+    ]);
+    Route::get('/reserver-payer','ReserverController@reserverPayer');
+    // assign property and validate
+    Route::get('/assign-property/{user_id}/{property_id}','UsersManagementController@assignProperty');
+
+    Route::get('/validate-property/{property_id}','PropertyController@validateproperty');
+
+    Route::get('/properties-all','PropertyController@customerproperty' );
+    Route::get('/user-properties-detail/{id}','PropertyController@details' );
+
+    Route::get('/property-details/{id}','PropertyController@showcustomerproperty')->name('property_details');
+
+    Route::get('/user-agents','UsersManagementController@showAgents');
+
+});
+
 
 Route::resources([
-    'property' => 'PropertyController'
-]);
-Route::post('/property-update','PropertyController@edit');
-
-Route::resources([
-    'country' => 'CountryController'
-]);
-
-Route::resources([
-    'state' => 'StateController'
-]);
-
-Route::resources([
-    'property-type' => 'PropertyTypeController'
-]);
-
-Route::resources([
-    'standing' => 'standingController'
-]);
-
-Route::resources([
-    'images' => 'ImagesController'
-]);
-
-Route::post('/images-upate','ImagesController@update');
-
-Route::resources([
-    'typetransaction' => 'TypeTransactionController'
-]);
-
-Route::resources([
-    'transaction' => 'TransactionController'
-]);
-Route::post('/transaction-update','TransactionController@update');
-
-
-Route::resources([
-    'reserver'=>'ReserverController'
-]);
-
-Route:Resources([
    'Search'=>'searchController'
 ]);
 #endRessources
-
-Route::get('/properties-all','PropertyController@customerproperty' );
-Route::get('/user-properties-detail/{id}','PropertyController@details' );
-
-Route::get('/property-details/{id}','PropertyController@showcustomerproperty')->name('property_details');
-
-Route::get('/user-agents','UsersManagementController@showAgents');
+#notifiy user for visite date
+Route::get('/visite-notify/{id}/{visite_at}','PropertyController@visiteNotify');
+#endnotify
 
 
-// assign property and validate
-Route::get('/assign-property/{user_id}/{property_id}','UsersManagementController@assignProperty');
+Route::get('/reservation-uncomplete','ReserverController@uncompleteReservation')
+->middleware('guestUser');
 
-Route::get('/validate-property/{property_id}','PropertyController@validateproperty');
-
-Route::get('/tester',function (){
-    return view('reservemanagement.reserver-all');
-});
+//Route::get('/tester','ReserverController@uncompleteReservation');
 
 // STRIPE PAYMENTS
 
@@ -130,5 +139,3 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 // SCOUT SEARCH
-
-Route::get('/search','WelcomeController@search');

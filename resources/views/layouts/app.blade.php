@@ -49,7 +49,7 @@
 @include('flashy::message')
 @include('common.footer')
 <!--FOR FLASHY-->
-<script src="//code.jquery.com/jquery.js"></script>
+{{--<script src="//code.jquery.com/jquery.js"></script>--}}
 <!-- CoreUI and necessary plugins-->
 <script src="{{asset('js/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('js/popper.js/dist/umd/popper.min.js')}}"></script>

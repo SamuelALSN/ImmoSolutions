@@ -1,5 +1,20 @@
 $(document).ready(function () {
     var myTable = $('#DataTables_Table_0').DataTable();
+    var reservation_id; // to get reservation id
+    // input type date manipulation
+    var dtToday = new Date();
+    var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if (month < 10)
+        month = '0' + month.toString();
+    if (day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;
+    $('#visite-confirm').attr('min', maxDate);
+
+    // end date manipulation
 
     function parsedata(selecteddata) {
         $('#user_id').val(selecteddata[0]);
@@ -14,11 +29,11 @@ $(document).ready(function () {
     showing update modal
      */
 
-    $(document).on('click', '#edit-user', function () {
-        $('.modal-titleEdit').text("Modifier un Utilisateur ");
+    $(document).on('click', '#edit-reservation', function () {
+        $('.modal-titleEdit').text("Modifier les Informations ");
         $('#save_user').attr("id", "update_user");
         var alldata = $(this).data('info').split(',');
-        var trim = $.trim(alldata)
+        var trim = $.trim(alldata);
         console.log(alldata)
         $.trim(parsedata(alldata));
     });
@@ -26,27 +41,58 @@ $(document).ready(function () {
     /*
     Showing delete modal
      */
-    $(document).on('click', '#delete-user', function () {
+    $(document).on('click', '#delete-reservation', function () {
 
         $('.modal-titleDelete').text("@lang('Voulez vous supprimer ?')");
-        var deletingdata = $(this).data('info').split(',');
+        var reservationdata = $(this).data('info').split(',');
 
-        $('.deleteparagraph').html('l\'utilisateur => ' + deletingdata[0] + ", email=> " +
-            deletingdata[1] + ", role => " + deletingdata[2]);
+        $('.deleteparagraph').html('l\'utilisateur => ' + reservationdata[0] + ", email=> " +
+            reservationdata[1] + ", role => " + reservationdata[2]);
         $('.did').text(deletingdata[0]);
     });
 
     /*
-    showing show modal
+    showing show modal for defining visite
      */
-    $(document).on('click', '#show-user', function () {
-        $('.modal-titleShow').text("Informations");
+
+    $(document).on('click', '#show-reservation', function () {
+        $('.modal-titleShow').text("Notification de date de Visite");
 
         var showdata = $(this).data('info').split(',');
-        console.log(showdata[6]);
+        console.log(showdata);
+        reservation_id=showdata[3];
+        $('.showparagraph').html(" <h4> Veuillez Notiifer le postulant de la date de visite </h4>")
+        $('#comming_at').html(showdata[1]);
+        $('#going_at').html(showdata[2]);
+    });
 
-        $('.showparagraph').html('l\'Agent ' + showdata[1] + ' est affecté au bien ' + '<br>'
-            + ' [ ' + showdata[6] + ' ]');
+    /*
+    Notify user visite date
+     */
+
+    $(document).on('click', '#notify', function () {
+        //console.log($.trim(reservation_id));
+        if($('#visite-confirm').val()!=""){
+            var visite = $('#visite-confirm').val();
+            fetch('/visite-notify/'+$.trim(reservation_id)+'/'+visite)
+                .then((data) => {
+                    if (data.ok) {
+                        alertify.success("date de visite notifié");
+                        data.json().then(visite => {
+                            console.log(visite);
+                        })
+                    } else {
+                        console.error('Reponse serveur : ' + data.status);
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }else{
+            alertify.alert("Date Invalide ","Veuillez renseigner la date");
+        }
+
+
     });
 
     /*
@@ -161,39 +207,38 @@ $(document).ready(function () {
 
     $(document).on('change', '#assign', function () {
         //if ($('#assign').is(':checked')) {
-            var user = $(this).data('id').split(',');
-            alertify.confirm('Assignation', 'Voulez vous l\'attribuer ce bien  ?',
-                function () {
-                    fetch('/assign-property/' + user[0] + '/' + user[1])
-                        .then(response => {
-                            if (response.ok) {
-                                response.json().then(user_prop => {
+        var user = $(this).data('id').split(',');
+        alertify.confirm('Assignation', 'Voulez vous l\'attribuer ce bien  ?',
+            function () {
+                fetch('/assign-property/' + user[0] + '/' + user[1])
+                    .then(response => {
+                        if (response.ok) {
+                            response.json().then(user_prop => {
 
-                                    if(user_prop.array=="error"){
-                                        alertify.error("Vous ne pouvez pas attribué un meme bien a pluisieurs agents");
-                                    }else if(user_prop.array=="success"){
-                                        alertify.success("Bien attribué")
-                                    }else if(user_prop="detach"){
-                                        alertify.success(("bien détaché"))
-                                    }
-                                })
-                            } else {
-                                console.error(' Reponse serveur : ' + response.status);
-                            }
+                                if (user_prop.array == "error") {
+                                    alertify.error("Vous ne pouvez pas attribué un meme bien a pluisieurs agents");
+                                } else if (user_prop.array == "success") {
+                                    alertify.success("Bien attribué")
+                                } else if (user_prop = "detach") {
+                                    alertify.success(("bien détaché"))
+                                }
+                            })
+                        } else {
+                            console.error(' Reponse serveur : ' + response.status);
+                        }
 
-                        });
+                    });
 
 
+            }
+            , function () {
 
-                }
-                , function () {
+                //$('input[type=checkbox]').prop('checked', false);
+                $('#assign').prop("checked", false);
+                alertify.error('Bien non attribué')
+            });
 
-                    //$('input[type=checkbox]').prop('checked', false);
-                    $('#assign').prop("checked", false);
-                    alertify.error('Bien non attribué')
-                });
-
-      // }
+        // }
 
     });
 
@@ -243,7 +288,7 @@ $(document).ready(function () {
             $('#show-col').removeClass("col-sm-12").addClass("col-sm-6");
             $('#update-col').removeAttr("hidden");
             $('#update-col').fadeToggle("slow").fadeIn("slow");
-            scrollTo( $("#update-col") );
+            scrollTo($("#update-col"));
 
         } else {
             $('#show-col').removeClass("col-sm-6").addClass("col-sm-12");
@@ -257,7 +302,7 @@ $(document).ready(function () {
 
             $('#card-agent').removeAttr("hidden");
             $('#card-agent').fadeToggle("slow").fadeIn("slow");
-            scrollTo( $("#card-agent") );
+            scrollTo($("#card-agent"));
         } else {
             $('#card-agent').hide();
         }
@@ -276,9 +321,9 @@ $(document).ready(function () {
 
     });
 
-    function scrollTo( target ) {
-        if( target.length ) {
-            $("html, body").stop().animate( { scrollTop: target.offset().top }, 1500);
+    function scrollTo(target) {
+        if (target.length) {
+            $("html, body").stop().animate({scrollTop: target.offset().top}, 1500);
         }
     }
 });

@@ -112,83 +112,91 @@
     <!-- END HEADER GOOGLE MAP -->
 
     <section class="main-search-field">
-        <div class="container">
-            <h3>@lang("Trouvez votre Maison de rève")</h3>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="at-col-default-mar">
-                        <div id="locationField">
-                            <input id="autocomplete"
-                                   placeholder="Enter your address"
-                                   onFocus="geolocate()"
-                                   type="text"/>
+        <form action="" method="POST">
+            @csrf
+            <div class="container">
+                <h3>@lang("Trouvez votre Maison de rève")</h3>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="at-col-default-mar">
+                            <div id="locationField">
+                                <input id="autocomplete"
+                                       placeholder="Enter your address"
+                                       onFocus="geolocate()"
+                                       type="text"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="address" hidden>
-                    <input class="" id="street_number" disabled="true" placeholder="Numero Rue" hidden/>
-                    <input class="" id="route" disabled="true" placeholder="rue" hidden/>
-                    <input class="field" id="locality" disabled="true" hidden=""/>
-                    <input class="field" id="administrative_area_level_1" disabled="true" hidden/>
-                    <input class="field" id="postal_code" disabled="true" hidden/>
-                    <input class="" id="country" disabled="true" hidden/>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="at-col-default-mar">
-                        <select class="div-toggle" data-target=".my-info-1">
-                            <option value="0" data-show=".acitveon" selected="">@lang("Status de la propriété")</option>
-                            @foreach($typetrans as $status)
-                            <option value="{{$status->id}}" data-show=".sale">{{$status->name}}</option>
-                            @endforeach
-                        </select>
+                    <div id="address" hidden>
+                        <input class="" id="street_number" disabled="true" placeholder="Numero Rue" hidden/>
+                        <input class="" id="route" disabled="true" placeholder="rue" hidden/>
+                        <input class="field" id="locality" disabled="true" hidden=""/>
+                        <input class="field" id="administrative_area_level_1" disabled="true" hidden/>
+                        <input class="field" id="postal_code" disabled="true" hidden/>
+                        <input class="" id="country" disabled="true" hidden/>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="at-col-default-mar">
+                    <div class="col-lg-3 col-md-6">
                         <div class="at-col-default-mar">
-                            <select>
-                                <option value="0" selected="">@lang('Catégorie du Bien')</option>
-                                @foreach($typebiens as $categ)
-                                <option value="{{$categ->id}}">{{$categ->name}}</option>
+                            <select id="trans" class="div-toggle" data-target=".my-info-1">
+                                <option value="0" data-show=".acitveon"
+                                        selected="">@lang("Status de la propriété")</option>
+                                @foreach($typetrans as $status)
+                                    <option value="{{$status->id}}" data-show=".sale">{{$status->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="at-col-default-mar no-mb">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="at-col-default-mar">
+                            <div class="at-col-default-mar">
+                                <select id="categorie">
+                                    <option value="0" selected="">@lang('Catégorie du Bien')</option>
+                                    @foreach($typebiens as $categ)
+                                        <option value="{{$categ->id}}">{{$categ->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="at-col-default-mar no-mb">
                             <input type="number" id="rooms" min="0" max="" placeholder="@lang("Nombre de Chambre")">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="at-col-default-mar no-mb">
+                            <input id="bathromms" type="number" min="0" max=""
+                                   placeholder=" @lang("Nombre de Salle d'eau")">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 no-pds">
+                        <div class="at-col-default-mar no-mb">
+                            <input id="area" class="at-input" type="number" name="min-area"
+                                   placeholder="@lang("superficie m²")">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 b-search__main-form label">
+                        <input type="text" disabled="" class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
+                        <div
+                            class="slider-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                            <div class="ui-slider-range ui-corner-all ui-widget-header"
+                                 style="left: 28.2051%; width: 35.8974%;"></div>
+                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+                                  style="left: 28.2051%;"></span><span tabindex="0"
+                                                                       class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                       style="left: 64.1026%;"></span></div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="at-col-default-mar no-mb">
+                            <button id="rechercher" class="btn btn-default hvr-bounce-to-right"
+                                    type="submit">@lang("Rechercher")</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="at-col-default-mar no-mb">
-                        <input id="bathromms" type="number" min="0" max="" placeholder=" @lang("Nombre de Salle d'eau")">
-                    </div>
-                </div>
-                <div class="col-lg-3 no-pds">
-                    <div class="at-col-default-mar no-mb">
-                        <input id="area" class="at-input" type="number" name="min-area" placeholder="@lang("superficie m²")">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 b-search__main-form label">
-                    <input type="text" disabled="" class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
-                    <div class="slider-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                        <div class="ui-slider-range ui-corner-all ui-widget-header"
-                             style="left: 28.2051%; width: 35.8974%;"></div>
-                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
-                              style="left: 28.2051%;"></span><span tabindex="0"
-                                                                   class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                   style="left: 64.1026%;"></span></div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="at-col-default-mar no-mb">
-                        <button id="rechercher" class="btn btn-default hvr-bounce-to-right" type="submit">@lang("Rechercher")</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
     </section>
     <!-- START SECTION RECENTLY PROPERTIES -->
     {{--    @include('guest.section.recentlyproperties')--}}
@@ -405,9 +413,42 @@
         rechercher un logement
          */
         window.addEventListener('DOMContentLoaded', (e) => {
-        $('#rechercher').on('click',function (e) {
-            fetch('{{url}}')
-        });
+            $('#rechercher').on('click', function (e) {
+                event.preventDefault();
+                var token = $("input[name='_token']").val();
+                var prix = $('.slider_amount').val().replace("cfa","");
+                fetch('{{url('/Search')}}',{
+                    headers: {
+                        "Content-type": "application/json;charset=utf-8",
+                        "Accept": "application/json,text-plain",
+                        "X-Requested-Width": "XMLHttpRequest",
+                        "X-CSRF-TOKEN": token
+                    },
+                    method: 'POST',
+                    credentials: "same-origin",
+                    body:JSON.stringify({
+                        adresse:$('#autocomplete').val(),
+                        locality:$('#locality').val(),
+                        region:$('#administrative_area_level_1').val(),
+                        country:$('#country').val(),
+                        route:$('#route').val(),
+                        street_number:$('#street_number').val(),
+                        postal_code:$('#postal_code').val(),
+                        status :$('#trans').val(),
+                        categorie:$('#categorie').val(),
+                        rooms:$('#rooms').val(),
+                        bathrooms:$('#bathromms').val(),
+                        area:$('#area').val(),
+                        price:prix.replace("Prix:","").split('-'),
+                    })
+                }).then((data)=>{
+                    if(data.ok){
+                        data.json().then(results =>{
+                            console.log(results)
+                        })
+                    }
+                })
+            });
 
         });
     </script>

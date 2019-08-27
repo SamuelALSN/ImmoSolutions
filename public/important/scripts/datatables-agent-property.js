@@ -276,7 +276,7 @@ $(document).ready(function () {
             });
 
 
-    })
+    });
 
     /*
     ===============================UPDATE A PROPERTY

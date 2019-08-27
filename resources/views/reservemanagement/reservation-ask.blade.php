@@ -89,82 +89,84 @@
                                 </thead>
                                 <tbody id="properties_table">
                                 @foreach($properties as $property)
-                                    <tr role="row" class="odd">
-                                        <td class="sorting_1"><a
-                                                href="{{url(''.$property->id)}}">{{$property->id}}</a>
-                                        </td>
-                                        <td class="sorting_1">{{$property->name}}</td>
-                                        <td>{{$property->adresse}}</td>
-                                        <td>
+                                    @foreach($property->reservation as $reserv)
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1"><a
+                                                    href="{{url(''.$property->id)}}">{{$property->id}}</a>
+                                            </td>
+                                            <td class="sorting_1">{{$property->name}}</td>
+                                            <td>{{$property->adresse}}</td>
+                                            <td>
                                                         <span
                                                             class="badge badge-default"> {{$property->propertytype['name']}}</span>
-                                        </td>
-                                        <td>
-                                            @foreach($property->typetransactions as $typetrans)
-                                                @if($typetrans->name =='LOCATION')
-                                                    @php $badgeClass ='primary' @endphp
-                                                @elseif($typetrans->name =='VENTE')
-                                                    @php $badgeClass='warning' @endphp
-                                                @elseif($typetrans->name =='BAILLE')
-                                                    @php $badgeClass='success' @endphp
-                                                @endif
-                                                <span
-                                                    class="badge badge-{{$badgeClass}}">{{$typetrans->name}}</span>
+                                            </td>
+                                            <td>
+                                                @foreach($property->typetransactions as $typetrans)
+                                                    @if($typetrans->name =='LOCATION')
+                                                        @php $badgeClass ='primary' @endphp
+                                                    @elseif($typetrans->name =='VENTE')
+                                                        @php $badgeClass='warning' @endphp
+                                                    @elseif($typetrans->name =='BAILLE')
+                                                        @php $badgeClass='success' @endphp
+                                                    @endif
+                                                    <span
+                                                        class="badge badge-{{$badgeClass}}">{{$typetrans->name}}</span>
 
-                                            @endforeach
-                                        </td>
-                                        {{--                                        <td> {{$property->user['email']}} </td>--}}
-                                        <td>@foreach($property->assignment as $agents)
-                                                {{$agents->email}}
-                                            @endforeach
-                                        </td>
-                                        {{--                                        <td>--}}
-                                        {{--                                            @foreach($property->reservation as $acheteur)--}}
-                                        {{--                                                {{$acheteur->email}}--}}
-                                        {{--                                            @endforeach--}}
-                                        {{--                                        </td>--}}
+                                                @endforeach
+                                            </td>
+                                            {{--                                        <td> {{$property->user['email']}} </td>--}}
+                                            <td>@foreach($property->assignment as $agents)
+                                                    {{$agents->email}}
+                                                @endforeach
+                                            </td>
+                                            {{--                                        <td>--}}
+                                            {{--                                            @foreach($property->reservation as $acheteur)--}}
+                                            {{--                                                {{$acheteur->email}}--}}
+                                            {{--                                            @endforeach--}}
+                                            {{--                                        </td>--}}
 
-                                        <td>
-                                            @foreach($property->reservation as $reservation)
-                                                @if($reservation->pivot->status==1)
-                                                    @php $badgeClass='success' @endphp
-                                                    <?php $status_p = "reservé" ?>
-                                                @elseif($reservation->pivot->status==0)
-                                                    @php $badgeClass='warning' @endphp
-                                                    <?php $status_p = "Pas reservé" ?>
-                                                @endif
-                                                <span
-                                                    class="badge badge-{{$badgeClass}}">{{$status_p}}</span>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach($property->reservation as $visite)
-                                              <span class="badge badge-info">
+                                            <td>
+                                                @foreach($property->reservation as $reservation)
+                                                    @if($reservation->pivot->status==1)
+                                                        @php $badgeClass='success' @endphp
+                                                        <?php $status_p = "reservé" ?>
+                                                    @elseif($reservation->pivot->status==0)
+                                                        @php $badgeClass='warning' @endphp
+                                                        <?php $status_p = "Pas reservé" ?>
+                                                    @endif
+                                                    <span
+                                                        class="badge badge-{{$badgeClass}}">{{$status_p}}</span>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($property->reservation as $visite)
+                                                    <span class="badge badge-info">
                                                   {{$visite->pivot->visite_at}}
                                               </span>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" data-toggle="modal"
-                                               data-target="#largeModal"
-                                               id="show-reservation"
-                                               data-info="{{$property->id}}">
-                                                <i class="fa fa-search-plus"></i>
-                                            </a>
-{{--                                            <a class="btn btn-info" data-toggle="modal"--}}
-{{--                                               data-target="#primaryModal"--}}
-{{--                                               id="edit-reservation"--}}
-{{--                                               data-info="{{$property->id}}">--}}
-{{--                                                <i class="fa fa-edit"></i>--}}
-{{--                                            </a>--}}
-                                            <a class="btn btn-danger" data-toggle="modal"
-                                               data-target="#dangerModal"
-                                               id="delete-reservation" data-id=""
-                                               data-info="{{$property->id}} ">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success" data-toggle="modal"
+                                                   data-target="#largeModal"
+                                                   id="show-reservation"
+                                                   data-info="{{$reserv->pivot->id}}">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </a>
+                                                {{--                                            <a class="btn btn-info" data-toggle="modal"--}}
+                                                {{--                                               data-target="#primaryModal"--}}
+                                                {{--                                               id="edit-reservation"--}}
+                                                {{--                                               data-info="{{$property->id}}">--}}
+                                                {{--                                                <i class="fa fa-edit"></i>--}}
+                                                {{--                                            </a>--}}
+                                                <a class="btn btn-danger" data-toggle="modal"
+                                                   data-target="#dangerModal"
+                                                   id="delete-reservation"
+                                                   data-info="{{$property->id}}">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -188,45 +190,79 @@
         $(document).ready(function () {
             var myTable = $('#DataTables_Table_0').DataTable();
 
-            $(document).on('click', '#show-reservation', function () {
-                $('.modal-titleShow').text("Notification de date de Visite");
-
-                var showdata = $(this).data('info').split(',');
-                console.log(showdata);
-                reservation_id=showdata[3];
-                $('.showparagraph').html(" <h4> Veuillez Notiifer le postulant de la date de visite </h4>")
-                $('#comming_at').html(showdata[1]);
-                $('#going_at').html(showdata[2]);
-            });
-
             /*
-            Notify user visite date
+            showing update modal
              */
 
-            $(document).on('click', '#notify', function () {
-                //console.log($.trim(reservation_id));
-                if($('#visite-confirm').val()!=""){
-                    var visite = $('#visite-confirm').val();
-                    fetch('/visite-notify/'+$.trim(reservation_id)+'/'+visite)
-                        .then((data) => {
-                            if (data.ok) {
-                                alertify.success("date de visite notifié");
-                                data.json().then(visite => {
-                                    console.log(visite);
-                                })
-                            } else {
-                                console.error('Reponse serveur : ' + data.status);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                }else{
-                    alertify.alert("Date Invalide ","Veuillez renseigner la date");
-                }
+            /*
+            showing show modal for defining visite
+             */
+
+            $(document).on('click', '#show-reservation', function () {
+                console.log($(this).data('info'));
+                var reserv_confirm = $(this).data('info');
+                alertify.confirm('Confirmation de la date de visite', 'Confirmer la date de visite ?',
+                    function () {
+
+                        fetch('/confirm-visite/' + reserv_confirm)
+                            .then(response => {
+                                if (response.ok) {
+                                    response.json().then(user_prop => {
+                                        console.log(user_prop);
+                                    })
+                                } else {
+                                    console.error(' Reponse serveur : ' + response.status);
+                                }
+
+                            });
+
+                        alertify.success('Ok')
+
+                    }
+                    , function () {
+
+                        //$('input[type=checkbox]').prop('checked', false);
+                        $('#validate').prop("checked", false);
+                        alertify.error('Annuler')
+                    });
+            });
+
+
+            /*
+            ===============================================VALIDATE A PROPERTY BY USER
+             */
+
+            $(document).on('change', '#validate', function () {
+                var prop = $(this).data('info');
+                // alert(prop);
+                alertify.confirm('Validation du bien', 'Voulez vous Vraiment valider ce bien  ?',
+                    function () {
+
+                        fetch('/validate-property/' + prop)
+                            .then(response => {
+                                if (response.ok) {
+                                    response.json().then(user_prop => {
+                                        console.log(user_prop);
+                                    })
+                                } else {
+                                    console.error(' Reponse serveur : ' + response.status);
+                                }
+
+                            });
+
+                        alertify.success('Ok')
+
+                    }
+                    , function () {
+
+                        //$('input[type=checkbox]').prop('checked', false);
+                        $('#validate').prop("checked", false);
+                        alertify.error('Annuler')
+                    });
 
 
             });
+
         });
     </script>
 @endsection

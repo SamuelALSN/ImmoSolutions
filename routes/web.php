@@ -123,6 +123,7 @@ Route::resources([
 #endRessources
 #notifiy user for visite date
 Route::get('/visite-notify/{id}/{visite_at}','PropertyController@visiteNotify');
+Route::get('/confirm-visite/{id}','ReserverController@ConfirmVisite');
 #endnotify
 
 

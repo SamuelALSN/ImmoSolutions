@@ -93,6 +93,7 @@
 <script src="{{asset('guest/js/color-switcher.js')}}"></script>
 <script src="{{asset('guest/js/ajaxchimp.min.js')}}"></script>
 <script src="{{asset('guest/js/newsletter.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>

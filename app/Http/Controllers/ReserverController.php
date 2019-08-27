@@ -185,4 +185,10 @@ class ReserverController extends Controller
        // dd($properties);
         return view('reservemanagement.reservation-ask',compact('properties'));
     }
+
+    public function ConfirmVisite($reservation_id){
+        return DB::table('reserver')
+            ->where('id', $reservation_id)
+            ->update(['status' =>2]);
+    }
 }

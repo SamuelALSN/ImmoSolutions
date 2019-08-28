@@ -21,96 +21,105 @@
             height: 500px;
             width: 100%;
         }
-
-        /* Optional: Makes the sample page fill the window. */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        #description {
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-        }
-
-        #infowindow-content .title {
-            font-weight: bold;
-        }
-
-        #infowindow-content {
-            display: none;
-        }
-
-        #map #infowindow-content {
-            display: inline;
-        }
-
-        .pac-card {
-            margin: 10px 10px 0 0;
-            border-radius: 2px 0 0 2px;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            outline: none;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-            background-color: #fff;
-            font-family: Roboto;
-        }
-
-        #pac-container {
-            padding-bottom: 12px;
-            margin-right: 12px;
-        }
-
-        .pac-controls {
-            display: inline-block;
-            padding: 5px 11px;
-        }
-
-        .pac-controls label {
-            font-family: Roboto;
-            font-size: 13px;
-            font-weight: 300;
-        }
-
-        #pac-input {
-            background-color: #fff;
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-            margin-left: 12px;
-            padding: 13px 12px 0 13px;
-            text-overflow: ellipsis;
-            width: 400px;
-        }
-
-        #pac-input:focus {
-            border-color: #4d90fe;
-        }
-
-        #title {
-            color: #fff;
-            background-color: #4d90fe;
-            font-size: 25px;
-            font-weight: 500;
-            padding: 6px 12px;
-        }
-
-        #target {
-            width: 345px;
-        }
     </style>
+    @include('guest.section.slider');
+    {{--    <!-- STAR HEADER GOOGLE MAP -->--}}
 
-    <!-- STAR HEADER GOOGLE MAP -->
+    {{--    <section class="">--}}
+    {{--        <div class="container-fluid">--}}
+    {{--            <div id="map"></div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
+    {{--    <!-- END HEADER GOOGLE MAP -->--}}
 
-    <section class="">
-        <div class="container-fluid">
-            <div id="map"></div>
-        </div>
-    </section>
-    <!-- END HEADER GOOGLE MAP -->
-
+    {{--    <section class="main-search-field">--}}
+    {{--        <form action="" method="POST">--}}
+    {{--            @csrf--}}
+    {{--            <div class="container">--}}
+    {{--                <h3>@lang("Trouvez votre Maison de rève")</h3>--}}
+    {{--                <div class="row">--}}
+    {{--                    <div class="col-lg-3 col-md-6">--}}
+    {{--                        <div class="at-col-default-mar">--}}
+    {{--                            <div id="locationField">--}}
+    {{--                                <input id="autocomplete"--}}
+    {{--                                       placeholder="Enter your address"--}}
+    {{--                                       onFocus="geolocate()"--}}
+    {{--                                       type="text"/>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div id="address" hidden>--}}
+    {{--                        <input class="" id="street_number" disabled="true" placeholder="Numero Rue" hidden/>--}}
+    {{--                        <input class="" id="route" disabled="true" placeholder="rue" hidden/>--}}
+    {{--                        <input class="field" id="locality" disabled="true" hidden=""/>--}}
+    {{--                        <input class="field" id="administrative_area_level_1" disabled="true" hidden/>--}}
+    {{--                        <input class="field" id="postal_code" disabled="true" hidden/>--}}
+    {{--                        <input class="" id="country" disabled="true" hidden/>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-lg-3 col-md-6">--}}
+    {{--                        <div class="at-col-default-mar">--}}
+    {{--                            <select id="trans" class="div-toggle" data-target=".my-info-1">--}}
+    {{--                                <option value="0" data-show=".acitveon"--}}
+    {{--                                        selected="">@lang("Status de la propriété")</option>--}}
+    {{--                                @foreach($typetrans as $status)--}}
+    {{--                                    <option value="{{$status->id}}" data-show=".sale">{{$status->name}}</option>--}}
+    {{--                                @endforeach--}}
+    {{--                            </select>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-lg-3 col-md-6">--}}
+    {{--                        <div class="at-col-default-mar">--}}
+    {{--                            <div class="at-col-default-mar">--}}
+    {{--                                <select id="categorie">--}}
+    {{--                                    <option value="0" selected="">@lang('Catégorie du Bien')</option>--}}
+    {{--                                    @foreach($typebiens as $categ)--}}
+    {{--                                        <option value="{{$categ->id}}">{{$categ->name}}</option>--}}
+    {{--                                    @endforeach--}}
+    {{--                                </select>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-lg-3 col-md-6">--}}
+    {{--                        <div class="at-col-default-mar no-mb">--}}
+    {{--                            <input type="number" id="rooms" min="0" max="" placeholder="@lang("Nombre de Chambre")">--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="row">--}}
+    {{--                    <div class="col-lg-3 col-md-6">--}}
+    {{--                        <div class="at-col-default-mar no-mb">--}}
+    {{--                            <input id="bathromms" type="number" min="0" max=""--}}
+    {{--                                   placeholder=" @lang("Nombre de Salle d'eau")">--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-lg-3 no-pds">--}}
+    {{--                        <div class="at-col-default-mar no-mb">--}}
+    {{--                            <input id="area" class="at-input" type="number" name="min-area"--}}
+    {{--                                   placeholder="@lang("superficie m²")">--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-lg-3 col-md-6 b-search__main-form label">--}}
+    {{--                        <input type="text" disabled="" class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">--}}
+    {{--                        <div--}}
+    {{--                            class="slider-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">--}}
+    {{--                            <div class="ui-slider-range ui-corner-all ui-widget-header"--}}
+    {{--                                 style="left: 28.2051%; width: 35.8974%;"></div>--}}
+    {{--                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"--}}
+    {{--                                  style="left: 28.2051%;"></span><span tabindex="0"--}}
+    {{--                                                                       class="ui-slider-handle ui-corner-all ui-state-default"--}}
+    {{--                                                                       style="left: 64.1026%;"></span></div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-lg-3 col-md-6">--}}
+    {{--                        <div class="at-col-default-mar no-mb">--}}
+    {{--                            <button id="rechercher" class="btn btn-default hvr-bounce-to-right"--}}
+    {{--                                    type="submit">@lang("Rechercher")</button>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </form>--}}
+    {{--    </section>--}}
+    <!-- START SECTION SEARCH AREA -->
     <section class="main-search-field">
         <form action="" method="POST">
             @csrf
@@ -197,7 +206,17 @@
                 </div>
             </div>
         </form>
+
     </section>
+    <!-- END SECTION SEARCH AREA -->
+    <!-- STAR HEADER GOOGLE MAP -->
+
+    <section class="">
+        <div class="container-fluid">
+            <div id="map"></div>
+        </div>
+    </section>
+    <!-- END HEADER GOOGLE MAP -->
     <!-- START SECTION RECENTLY PROPERTIES -->
     {{--    @include('guest.section.recentlyproperties')--}}
     <section class="recently portfolio">
@@ -406,50 +425,106 @@
     <script src="{{asset('guest/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
     <script src="{{asset('guest/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
     <!-- MAIN JS -->
+    <script>
+        var tpj = jQuery;
+        var revapi34;
+        if (tpj("#rev_slider_home").revolution === undefined) {
+            revslider_showDoubleJqueryError("#rev_slider_home");
+        } else {
+            revapi34 = tpj("#rev_slider_home").show().revolution({
+                sliderType: "standard",
+                jsFileLocation: "js/revolution-slider/js/",
+                sliderLayout: "fullwidth",
+                dottedOverlay: "none",
+                delay: 9000,
+                navigation: {
+                    keyboardNavigation: "on",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "on",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "horizontal",
+                        drag_block_vertical: false
+                    },
+                    arrows: {
+                        style: "zeus",
+                        enable: true,
+                        hide_onmobile: true,
+                        hide_under: 600,
+                        hide_onleave: true,
+                        hide_delay: 200,
+                        hide_delay_mobile: 1200,
+                        tmp: '<div class="tp-title-wrap">    <div class="tp-arr-imgholder"></div> </div>',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 30,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 30,
+                            v_offset: 0
+                        }
+                    },
+                    bullets: {
+                        enable: true,
+                        hide_onmobile: true,
+                        hide_under: 600,
+                        style: "metis",
+                        hide_onleave: true,
+                        hide_delay: 200,
+                        hide_delay_mobile: 1200,
+                        direction: "horizontal",
+                        h_align: "center",
+                        v_align: "bottom",
+                        h_offset: 0,
+                        v_offset: 30,
+                        space: 5,
+                        tmp: '<span class="tp-bullet-img-wrap"><span class="tp-bullet-image"></span></span>'
+                    }
+                },
+                viewPort: {
+                    enable: true,
+                    outof: "pause",
+                    visible_area: "80%"
+                },
+                responsiveLevels: [1240, 1024, 778, 480],
+                gridwidth: [1240, 1024, 778, 480],
+                gridheight: [600, 550, 500, 450],
+                lazyType: "none",
+                parallax: {
+                    type: "scroll",
+                    origo: "enterpoint",
+                    speed: 400,
+                    levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                },
+                shadow: 0,
+                spinner: "off",
+                stopLoop: "off",
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+                shuffle: "off",
+                autoHeight: "off",
+                hideThumbsOnMobile: "off",
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                debugMode: false,
+                fallbacks: {
+                    simplifyAll: "off",
+                    nextSlideOnWindowFocus: "off",
+                    disableFocusListener: false,
+                }
+            });
+        }
+
+    </script>
     <script src="{{asset('guest/js/script.js')}}"></script>
     @include('guest.myscripts.locate-search')
-    <script>
-        /*
-        rechercher un logement
-         */
-        window.addEventListener('DOMContentLoaded', (e) => {
-            $('#rechercher').on('click', function (e) {
-                event.preventDefault();
-                var token = $("input[name='_token']").val();
-                var prix = $('.slider_amount').val().replace("cfa","");
-                fetch('{{url('/Search')}}',{
-                    headers: {
-                        "Content-type": "application/json;charset=utf-8",
-                        "Accept": "application/json,text-plain",
-                        "X-Requested-Width": "XMLHttpRequest",
-                        "X-CSRF-TOKEN": token
-                    },
-                    method: 'POST',
-                    credentials: "same-origin",
-                    body:JSON.stringify({
-                        adresse:$('#autocomplete').val(),
-                        locality:$('#locality').val(),
-                        region:$('#administrative_area_level_1').val(),
-                        country:$('#country').val(),
-                        route:$('#route').val(),
-                        street_number:$('#street_number').val(),
-                        postal_code:$('#postal_code').val(),
-                        status :$('#trans').val(),
-                        categorie:$('#categorie').val(),
-                        rooms:$('#rooms').val(),
-                        bathrooms:$('#bathromms').val(),
-                        area:$('#area').val(),
-                        price:prix.replace("Prix:","").split('-'),
-                    })
-                }).then((data)=>{
-                    if(data.ok){
-                        data.json().then(results =>{
-                            console.log(results)
-                        })
-                    }
-                })
-            });
 
-        });
-    </script>
 @endsection

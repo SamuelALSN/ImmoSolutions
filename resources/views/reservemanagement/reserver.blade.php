@@ -41,14 +41,14 @@
                                             <label for=""></label>
                                             <div class="property-form-group">
                                                 <div class="row">
-                                                    <p class="col-lg-4 col-md-12">
+                                                    <p class="col-lg-6 col-md-12">
                                                         <label for="date">@lang("Date Arrivé")
                                                             <span> {{$trans->pivot->beginDate}} </span></label>
                                                         <input class="form-control" type="date" name="datedeb"
                                                                id="datedeb">
 
                                                     </p>
-                                                    <div class="col-lg-4 col-md-12">
+                                                    <div class="col-lg-6 col-md-12">
                                                         <p class="">
                                                             <label for="surface">@lang("Date Départ")
                                                                 <span> {{$trans->pivot->endDate}}</span> </label>

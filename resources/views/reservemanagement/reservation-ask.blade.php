@@ -216,7 +216,7 @@
 
                             });
 
-                        alertify.success('Ok')
+                        alertify.success('Visite Confirmé')
 
                     }
                     , function () {

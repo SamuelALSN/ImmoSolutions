@@ -51,7 +51,7 @@
     </div>
     <div class="header-bottom heading sticky-header" id="heading">
         <div class="container">
-            <a href="index.html" class="logo">
+            <a href="" class="logo">
                 <img src="{{asset('guest/images/logo.svg')}}" alt="realhome">
             </a>
             <button type="button" class="search-button" data-toggle="collapse" data-target="#bloq-search" aria-expanded="false">
@@ -68,7 +68,7 @@
 
             <form action="#" id="bloq-search" class="collapse">
                 <div class="bloq-search">
-                    <input type="text" placeholder="search...">
+                    <input type="text" placeholder="Rechercher...">
                     <input type="submit" value="Search">
                 </div>
             </form>
@@ -101,13 +101,13 @@
                     <!-- STAR COLLAPSE MOBILE MENU -->
                     <li class="hidden-lg-up">
                         <div class="po">
-                            <a data-toggle="collapse" href=" listing" aria-expanded="false">@lang("Proprietes")</a>
+                            <a data-toggle="collapse" href="#listing" aria-expanded="false">@lang("Biens /Réservations")</a>
                         </div>
                         <div class="collapse" id="listing">
                             <div class="card card-block">
-                                <a class="dropdown-item" href="">@lang("Liste des Proprietés") </a>
-                                <a class="dropdown-item" href=""> Map</a>
-                                <a class="dropdown-item" href="">@lang("Details des Propriétés ")</a>
+                                <a class="dropdown-item" href="{{url('/reservation-uncomplete')}}">@lang("Demandes de Réservations") </a>
+                                <a class="dropdown-item" href="{{url('/reserver')}}"> @lang(" Réservation Effecutés ")</a>
+                                <a class="dropdown-item" href="">@lang("Details des Transactions ")</a>
                             </div>
                         </div>
                     </li>
@@ -116,42 +116,42 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href=" ">@lang("Biens")</a>
                         <div class="dropdown-menu">
 
-                            <a class="dropdown-item" href="">@lang("Liste des Biens") </a>
-                            <a class="dropdown-item" href=""> Map</a>
-                            <a class="dropdown-item" href="">@lang("Details des Biens")</a>
+                            <a class="dropdown-item" href="{{url('/reservation-uncomplete')}}">@lang("Demandes de Réservations") </a>
+                            <a class="dropdown-item" href="{{url('/reserver')}}"> @lang(" Réservation Effecutés ")</a>
+                            <a class="dropdown-item" href="">@lang("Details des Transactions ")</a>
                         </div>
                     </li>
                     <!-- STAR COLLAPSE MOBILE MENU -->
                     <li class="hidden-lg-up">
                         <div class="po">
-                            <a data-toggle="collapse" href="" aria-expanded="false">@lang("Agents")</a>
+                            <a data-toggle="collapse" href="" aria-expanded="false">@lang("Biens publiés")</a>
                         </div>
                         <div class="collapse" id="services">
                             <div class="card card-block">
 
-                                <a class="dropdown-item" href="">@lang("Liste des agents")</a>
-                                <a class="dropdown-item" href="">@lang("Details des agents")</a>
+                                <a class="dropdown-item" href="">@lang("Liste des Biens")</a>
+                                <a class="dropdown-item" href="">@lang("")</a>
                             </div>
                         </div>
                     </li>
                     <!-- END COLLAPSE MOBILE MENU -->
                     <li class="dropdown hidden-md-down">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href=" ">Agents</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href=" ">@lang("Biens publiés")</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">@lang("Liste des agents")</a>
-                            <a class="dropdown-item" href="">@lang("Details des agents")</a>
+                            <a class="dropdown-item" href="{{url('/properties-all')}}">@lang("Liste des Biens")</a>
+                            <a class="dropdown-item" href="">@lang("")</a>
                         </div>
                     </li>
                     <!-- STAR COLLAPSE MOBILE MENU -->
                     <li class="hidden-lg-up">
                         <div class="po">
-                            <a data-toggle="collapse" href=" about" aria-expanded="false">Pages</a>
+                            <a data-toggle="collapse" href=" about" aria-expanded="false">@lang("Autres")</a>
                         </div>
                         <div class="collapse" id="about">
                             <div class="card card-block">
-                                <a class="dropdown-item" href="about.html">@lang('A props de nous')</a>
-                                <a class="dropdown-item" href="faq.html">Faq</a>
-                                <a class="dropdown-item" href="pricing-table.html">@lang('Nos Tarifs')</a>
+                                <a class="dropdown-item" href="">@lang('Paiements')</a>
+                                <a class="dropdown-item" href="">@lang('Promotions')</a>
+                                <a class="dropdown-item" href="">@lang('Nos Tarifs')</a>
 
                                 {{--                                <a class="dropdown-item" href="{{url('/guest-login')}}">@lang('Se Connecter')</a>--}}
                                 {{--                                <a class="dropdown-item" href="{{url('/guest-register')}}">@lang('S\'enregistrer ')</a>--}}
@@ -160,10 +160,10 @@
                     </li>
                     <!-- END COLLAPSE MOBILE MENU -->
                     <li class="dropdown hidden-md-down">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href=" ">Pages</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Autre</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">@lang('A props de nous')</a>
-                            <a class="dropdown-item" href="">Faq</a>
+                            <a class="dropdown-item" href="">@lang('Paiements')</a>
+                            <a class="dropdown-item" href="">@lang('Promotions')</a>
                             <a class="dropdown-item" href="">@lang('Nos Tarifs')</a>
                             {{--                            <a class="dropdown-item" href="">@lang('Se Connecter')</a>--}}
                             {{--                            <a class="dropdown-item" href="">@lang('S\'enregistrer ')</a>--}}

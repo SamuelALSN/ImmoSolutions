@@ -29,23 +29,28 @@ class ReserverController extends Controller
 
         //dd($properties);
 
-        if (Auth::user()->hasrole('Admin')) {
-            $properties = Property::whereHas('reservation')->get();
-            return view('reservemanagement.reservation', compact('properties'));
+        if(Auth::check()){
+            if (Auth::user()->hasrole('Admin')) {
+                $properties = Property::whereHas('reservation')->get();
+                return view('reservemanagement.reservation', compact('properties'));
 
-        } else if (Auth::user()->hasrole('Agents')) {
-            $properties = Property::has('reservation')->whereHas('assignment', function (Builder $query) {
-                $query->where('user_id', '=', Auth::user()->id);
-            })->get();
-            return view('agent.reservemanagement.reservation', compact('properties'));
-        } else if (Auth::user()->hasrole('customer')) {
-            $properties = Property::whereHas('reservation', function (Builder $query) {
-                $query->where('user_id', '=', Auth::user()->id);
+            } else if (Auth::user()->hasrole('Agents')) {
+                $properties = Property::has('reservation')->whereHas('assignment', function (Builder $query) {
+                    $query->where('user_id', '=', Auth::user()->id);
+                })->get();
+                return view('agent.reservemanagement.reservation', compact('properties'));
+            } else if (Auth::user()->hasrole('customer')) {
+                $properties = Property::whereHas('reservation', function (Builder $query) {
+                    $query->where('user_id', '=', Auth::user()->id);
 
-            })->paginate(4);
-            //dd($properties);
-            return view('reservemanagement.reserver-all', compact('properties'));
+                })->paginate(4);
+                //dd($properties);
+                return view('reservemanagement.reserver-all', compact('properties'));
+            }
+        }else{
+            return redirect()->route('login');
         }
+
     }
 
     /**
@@ -56,7 +61,14 @@ class ReserverController extends Controller
     public function create(Request $request)
     {
         $property = Property::find($request->property_id);
+        return view('guest.customer.properties-details', compact('property'));
+    }
+
+    public function create_reservation(Request $request)
+    {
+        $property = Property::find($request->property_id);
         return view('reservemanagement.reserver', compact('property'));
+
     }
 
     /**
@@ -176,19 +188,20 @@ class ReserverController extends Controller
 
     public function uncompleteReservation()
     {
-        $properties = Property::whereHas('reservation',function(Builder $query){
-            $query->where('user_id','=',Auth::user()->id);
+        $properties = Property::whereHas('reservation', function (Builder $query) {
+            $query->where('user_id', '=', Auth::user()->id);
             $query->whereNotNull('visite_at');
-            $query->where('status','=',0);
+            $query->where('status', '=', 0);
 
         })->get();
-       // dd($properties);
-        return view('reservemanagement.reservation-ask',compact('properties'));
+        // dd($properties);
+        return view('reservemanagement.reservation-ask', compact('properties'));
     }
 
-    public function ConfirmVisite($reservation_id){
+    public function ConfirmVisite($reservation_id)
+    {
         return DB::table('reserver')
             ->where('id', $reservation_id)
-            ->update(['status' =>2]);
+            ->update(['status' => 2]);
     }
 }

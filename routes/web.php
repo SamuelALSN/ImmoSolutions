@@ -28,10 +28,8 @@ Route::get('/charts', function () {
 });
 
 
-
-
 #guest middleware
-Route::get('/welcome','WelcomeController@index');
+Route::get('/welcome', 'WelcomeController@index');
 
 Route::get('/guest-login', function () {
     return view('guest.auth.login');
@@ -56,7 +54,7 @@ Route::get('/properties-map', function () {
 
 #begin ressources
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::resources([
         'user' => 'UsersManagementController'
     ]);
@@ -64,7 +62,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resources([
         'property' => 'PropertyController'
     ]);
-    Route::post('/property-update','PropertyController@edit');
+    Route::post('/property-update', 'PropertyController@edit');
 
     Route::resources([
         'country' => 'CountryController'
@@ -86,7 +84,7 @@ Route::group(['middleware' => 'auth'], function() {
         'images' => 'ImagesController'
     ]);
 
-    Route::post('/images-upate','ImagesController@update');
+    Route::post('/images-upate', 'ImagesController@update');
 
     Route::resources([
         'typetransaction' => 'TypeTransactionController'
@@ -95,47 +93,47 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resources([
         'transaction' => 'TransactionController'
     ]);
-    Route::post('/transaction-update','TransactionController@update');
+    Route::post('/transaction-update', 'TransactionController@update');
 
-
-    Route::resources([
-        'reserver'=>'ReserverController'
-    ]);
-    Route::get('/reserver-payer','ReserverController@reserverPayer');
+    Route::get('/reserver-payer', 'ReserverController@reserverPayer');
     // assign property and validate
-    Route::get('/assign-property/{user_id}/{property_id}','UsersManagementController@assignProperty');
+    Route::get('/assign-property/{user_id}/{property_id}', 'UsersManagementController@assignProperty');
 
-    Route::get('/validate-property/{property_id}','PropertyController@validateproperty');
+    Route::get('/validate-property/{property_id}', 'PropertyController@validateproperty');
 
-    Route::get('/properties-all','PropertyController@customerproperty' );
-    Route::get('/user-properties-detail/{id}','PropertyController@details' );
+    Route::get('/properties-all', 'PropertyController@customerproperty');
+    Route::get('/user-properties-detail/{id}', 'PropertyController@details');
 
-    Route::get('/property-details/{id}','PropertyController@showcustomerproperty')->name('property_details');
+    Route::get('/property-details/{id}', 'PropertyController@showcustomerproperty')->name('property_details');
 
-    Route::get('/user-agents','UsersManagementController@showAgents');
+    Route::get('/user-agents', 'UsersManagementController@showAgents');
 
 });
 
+Route::resources([
+    'reserver' => 'ReserverController'
+]);
+Route::get('/reserv_bien', 'ReserverController@create_reservation')->name('reservation_bien');
 
 Route::resources([
-   'Search'=>'searchController'
+    'Search' => 'searchController'
 ]);
 #endRessources
 #notifiy user for visite date
-Route::get('/visite-notify/{id}/{visite_at}','PropertyController@visiteNotify');
-Route::get('/confirm-visite/{id}','ReserverController@ConfirmVisite');
+Route::get('/visite-notify/{id}/{visite_at}', 'PropertyController@visiteNotify');
+Route::get('/confirm-visite/{id}', 'ReserverController@ConfirmVisite');
 #endnotify
 
 
-Route::get('/reservation-uncomplete','ReserverController@uncompleteReservation')
-->middleware('guestUser');
+Route::get('/reservation-uncomplete', 'ReserverController@uncompleteReservation')
+    ->middleware('guestUser');
 
 //Route::get('/tester','ReserverController@uncompleteReservation');
 
 // STRIPE PAYMENTS
 
-Route::group(['middleware' => 'auth'], function() {
-   // Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/plans', 'PlanController@index')->name('plans.index');
 });
 

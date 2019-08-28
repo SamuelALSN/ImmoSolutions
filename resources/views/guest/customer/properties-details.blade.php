@@ -14,11 +14,6 @@
     <link href="{{asset('guest/fonts.googleapis.com/css.css')}}" rel="stylesheet">
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="{{asset('guest/css/font-awesome.min.css')}}">
-    <!-- LEAFLET MAP -->
-    <link rel="stylesheet" href="{{asset('guest/css/leaflet.css')}}">
-    <link rel="stylesheet" href="{{asset('guest/css/leaflet-gesture-handling.min.css')}}">
-    <link rel="stylesheet" href="{{asset('guest/css/leaflet.markercluster.css')}}">
-    <link rel="stylesheet" href="{{asset('guest/css/leaflet.markercluster.default.css')}}">
     <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{asset('guest/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/magnific-popup.css')}}">
@@ -37,7 +32,7 @@
 <section class="headings">
     <div class="text-heading text-center">
         <div class="container">
-            <h1>Property Details</h1>
+            <h1>@lang("Détails du Bien")</h1>
             <h2><a href="">   @lang("Accueil") </a> &nbsp;/&nbsp; @lang("Détails du Bien ")</h2>
         </div>
     </div>
@@ -62,12 +57,14 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-10 cod-pad">
                             @foreach ($property->typetransactions as $prop)
-                            <div class="sorting-options">
-                                <h5><span>@lang("Prix"):</span>{{$prop->pivot->ammount}}</h5>
+                                <div class="sorting-options">
+                                    <h5><span>@lang("Prix"):</span>{{$prop->pivot->ammount}}</h5>
 
-                                @endforeach
-                                <h6 class="type"><span> @lang("Type de Baille"):</span> {{$property->typetransactions[0]->name}}</h6>
-                            </div>
+                                    @endforeach
+                                    <h6 class="type">
+                                        <span> @lang("Type de Baille"):</span> {{$property->typetransactions[0]->name}}
+                                    </h6>
+                                </div>
 
                         </div>
                     </div>
@@ -85,12 +82,16 @@
 
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
-                                    <img class="d-block img-fluid" src="{{asset('guest/images/slider/home-slider-1.jpg')}}" alt="First slide">
+                                    <img class="d-block img-fluid"
+                                         src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}"
+                                         alt="First slide">
                                 </div>
                                 @foreach($property->images as $img)
-                                <div class="carousel-item">
-                                    <img class="d-block img-fluid" src="{{asset('storage/images/'.$img->resizedfilename)}}" alt="Second slide">
-                                </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid"
+                                             src="{{asset('storage/images/'.$img->resizedfilename)}}"
+                                             alt="Second slide">
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -127,33 +128,17 @@
                             </div>
                             <h5 class="mb-4">@lang("Description")</h5>
                             <p class="mb-3">
-                               {{$property->description}}   </p>
+                                {{$property->description}}   </p>
 
                         </div>
                     </div>
                 </div>
                 <!-- cars content -->
-                <div class="homes-content details mb-5">
-                    <!-- title -->
-                    <h5 class="mb-4">@lang("Caracteristiques")</h5>
-                    <!-- cars List -->
-                    <ul class="homes-list clearfix">
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>{{$property->rooms}} Chambre</span>
-                        </li>
-                        <li>
-                            <i class="fa fa-check-square" aria-hidden="true"></i>
-                            <span>{{$property->bathRooms}} Douche</span>
-                        </li>
-
-                    </ul>
-                </div>
                 <div class="property-location mb-5">
                     <h5>@lang("Localisation")</h5>
-{{--                    <div class="divider-fade"></div>--}}
+                    {{--                    <div class="divider-fade"></div>--}}
                     <div id="map" style=" height: 350px; width: 750px;"></div>
-{{--                    <div id="map" class="contact-map"></div>--}}
+                    {{--                    <div id="map" class="contact-map"></div>--}}
                 </div>
                 <!-- START SECTION ASSIGNED AGENTS -->
                 <section class="team assigned">
@@ -163,23 +148,26 @@
                             <div class="col-lg-4 col-md-6 team-pro hover-effect">
                                 <div class="team-wrap">
                                     <div class="team-img">
-                                        <img src="{{asset('guest/images/team/t-5.jpg')}}" alt="" />
+                                        <img src="{{asset('guest/images/team/t-5.png')}}" alt=""/>
                                     </div>
                                     <div class="team-content">
-{{--                                        @foreach($property->Assignment as $assign)--}}
+                                        {{--                                        @foreach($property->Assignment as $assign)--}}
                                         <div class="team-info">
                                             @foreach($property->Assignment as $assign)
-                                            <h3>
-                                                {{$assign->name}}
+                                                <h3>
+                                                    {{$assign->name}}
                                                 </h3>
                                             @endforeach
                                             <p>@lang("Contacter")</p>
                                             <div class="team-socials">
                                                 <ul>
                                                     <li>
-                                                        <a href="#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                        <a href="#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                        <a href="#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                        <a href="#" title="facebook"><i class="fa fa-facebook"
+                                                                                        aria-hidden="true"></i></a>
+                                                        <a href="#" title="twitter"><i class="fa fa-twitter"
+                                                                                       aria-hidden="true"></i></a>
+                                                        <a href="#" title="instagran"><i class="fa fa-instagram"
+                                                                                         aria-hidden="true"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -193,6 +181,25 @@
                     </div>
                 </section>
                 <!-- END SECTION ASSIGNED AGENTS -->
+                <div class="homes-content details mb-5">
+                    <!-- title -->
+                    <!-- cars List -->
+                    <ul class="homes-list clearfix">
+                        <li>
+                            <div class="at-col-default-mar">
+                                <a href="{{route('reservation_bien',
+                                ['property_id'=>$property->id,
+                                             'property_name'=>$property->name
+                                            ])}}" class="btn btn-default hvr-bounce-to-right"
+                                   type="submit">@lang("Reserver")</a>
+                            </div>
+                        </li>
+                        <li>
+
+                        </li>
+
+                    </ul>
+                </div>
             </div>
             <aside class="col-lg-3 col-md-12 car">
                 <div class="widget">
@@ -202,82 +209,53 @@
                                 <i class="fa fa-home"></i>
                             </div>
                             <div class="media-body">
-                                <h5>Search Properties</h5>
+                                <h5>@lang("Rechercher un Bien")</h5>
                                 <div class="border"></div>
-                                <p>Search your Properties</p>
+                                <p>@lang("Chercher un Bien")</p>
                             </div>
                         </div>
                     </div>
                     <!-- Search Fields -->
                     <div class="main-search-field">
-                        <h5 class="title">Filter</h5>
+                        <h5 class="title">@lang("Sélectionner")</h5>
                         <form method="GET">
                             <div class="at-col-default-mar">
                                 <select>
                                     <option value="0" selected>Location</option>
-                                    <option value="1">New York</option>
-                                    <option value="2">Los Angeles</option>
-                                    <option value="3">Chicago</option>
-                                    <option value="4">Philadelphia</option>
-                                    <option value="5">San Francisco</option>
                                 </select>
                             </div>
                             <div class="at-col-default-mar">
                                 <select class="div-toggle" data-target=".my-info-1">
-                                    <option value="0" data-show=".acitveon" selected>Property Status</option>
-                                    <option value="1" data-show=".sale">For Sale</option>
-                                    <option value="2" data-show=".rent">For Rent</option>
-                                    <option value="3" data-show=".rent">Sold</option>
+                                    <option value="0" data-show=".acitveon" selected>@lang("Status du Bien")</option>
                                 </select>
                             </div>
                             <div class="at-col-default-mar">
                                 <div class="at-col-default-mar">
                                     <select>
-                                        <option value="0" selected>Property Type</option>
-                                        <option value="1">Family House</option>
-                                        <option value="2">Apartment</option>
-                                        <option value="3">Condo</option>
+                                        <option value="0" selected>
+                                            @lang("Catégorie du Bien")
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="at-col-default-mar">
                                 <select>
-                                    <option value="0" selected>Beds</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                    <option value="0" selected>@lang("Nombre de Chambre")</option>
                                 </select>
                             </div>
                             <div class="at-col-default-mar">
                                 <select>
-                                    <option value="0" selected>Baths</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                    <option value="0" selected>@lang("Nombre de Salle d'eau ")</option>
                                 </select>
                             </div>
                             <div class="col-lg-12 no-pds">
                                 <div class="at-col-default-mar">
-                                    <input class="at-input" type="text" name="min-area" placeholder="Squre Fit Min">
+                                    <input class="at-input" type="text" name="min-area" placeholder="">
                                 </div>
                             </div>
                             <div class="col-lg-12 no-pds my-4">
                                 <div class="at-col-default-mar">
-                                    <input class="at-input" type="text" name="max-area" placeholder="Squre Fit Max">
+                                    <input class="at-input" type="text" name="max-area" placeholder="">
                                 </div>
                             </div>
                         </form>
@@ -291,7 +269,8 @@
                     </div>
                     <div class="col-lg-12 no-pds">
                         <div class="at-col-default-mar">
-                            <button class="btn btn-default hvr-bounce-to-right" type="submit">Search</button>
+                            <button class="btn btn-default hvr-bounce-to-right"
+                                    type="submit">@lang("Rechercher")</button>
                         </div>
                     </div>
                     <div class="recent-post py-5">
@@ -302,7 +281,7 @@
                             </div>
                             <div class="info-img">
                                 <a href=""><h6>Maison 1</h6></a>
-                                <p>CFA 230,000</p>
+                                <p>CFA 230 000</p>
                             </div>
                         </div>
                         <div class="recent-main my-4">
@@ -311,7 +290,7 @@
                             </div>
                             <div class="info-img">
                                 <a href=""><h6>Maison 2</h6></a>
-                                <p>CFA 230,000</p>
+                                <p>CFA 230000</p>
                             </div>
                         </div>
                         <div class="recent-main">
@@ -320,7 +299,7 @@
                             </div>
                             <div class="info-img">
                                 <a href=""><h6>Maison 3</h6></a>
-                                <p>CFA 230,000</p>
+                                <p>CFA 230 000</p>
                             </div>
                         </div>
                     </div>
@@ -331,20 +310,28 @@
                             <span><a href="#" class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href="properties-details.html#"
+                                     class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href="properties-details.html#"
+                                     class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=""
+                                     class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href="properties-details.html#"
+                                     class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href="properties-details.html#"
+                                     class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href="properties-details.html#"
+                                     class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags no-mb">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href="properties-details.html#"
+                                     class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href="properties-details.html#"
+                                     class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                     </div>
                 </div>
@@ -362,7 +349,8 @@
 @include('guest.common.footer')
 <!-- END FOOTER -->
 <!--Style Switcher-->
-<div class="color-switcher" id="choose_color"> <a href="properties-details.html#." class="picker_close"><i class="fa fa-cog fa-spin fa-2x" ></i></a>
+<div class="color-switcher" id="choose_color"><a href="properties-details.html#." class="picker_close"><i
+            class="fa fa-cog fa-spin fa-2x"></i></a>
     <div class="theme-colours">
         <p class="font-italic">@lang("Personnaliser les couleurs")</p>
         <ul>
@@ -410,10 +398,52 @@
 <script src="{{asset('guest/js/smooth-scroll.min.j')}}s"></script>
 <script src="{{asset('guest/js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('guest/js/popup.js')}}"></script>
-<script src="{{asset('guest/js/ajaxchimp.min.js')}}"></script>
-<script src="{{asset('guest/js/color-switcher.js')}}"></script>
 <script src="{{asset('guest/js/inner.js')}}"></script>
-@include("guest.myscripts.locate")
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfBd0U878Rqo7dw5hywSOuk1MQRJ6oGv0&libraries=places&callback=initialize"
+    async defer>
+
+</script>
+<script>
+    function initialize() {
+        initMap();
+    }
+
+    var map;
+    var locations = <?php print_r(json_encode($property)) ?>;
+    var contentString = 'Localisation précise du Bien';
+    var coords1 = locations.longitudeposition;
+    var coords2 = locations.latitudeposition;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 2,
+            center: new google.maps.LatLng(-0.250868, -7.396322),
+            mapTypeId: 'terrain'
+        });
+
+        //var infoWindow = new google.maps.InfoWindow;
+        // console.log(coords1);
+        var latLng = new google.maps.LatLng(coords1, coords2);
+        let marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            label: locations.locality.charAt(0),
+        });
+
+
+        //
+        let infowindow = new google.maps.InfoWindow({
+            content:
+            contentString,
+            maxWidth: 500
+        });
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+
+        });
+    }
+</script>
 </body>
 
 </html>

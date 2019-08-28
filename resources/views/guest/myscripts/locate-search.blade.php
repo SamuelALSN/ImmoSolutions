@@ -197,7 +197,59 @@
         }
     }
 </script>
+<script>
+    /*
+    rechercher un logement
+     */
+    window.addEventListener('DOMContentLoaded', (e) => {
+        $('#categorie').on('change', function (e) {
+            $('#rooms').hide();
+            $('#bathromms').hide();
+            if ($('#categorie option:selected').text() !== 'Terrain') {
+                $('#rooms').fadeIn("slow");
+                $('#bathromms').fadeIn("slow");
+            }
+        });
 
+        $('#rechercher').on('click', function (e) {
+            event.preventDefault();
+            var token = $("input[name='_token']").val();
+            var prix = $('.slider_amount').val().replace("cfa", "");
+            fetch('{{url('/Search')}}', {
+                headers: {
+                    "Content-type": "application/json;charset=utf-8",
+                    "Accept": "application/json,text-plain",
+                    "X-Requested-Width": "XMLHttpRequest",
+                    "X-CSRF-TOKEN": token
+                },
+                method: 'POST',
+                credentials: "same-origin",
+                body: JSON.stringify({
+                    adresse: $('#autocomplete').val(),
+                    locality: $('#locality').val(),
+                    region: $('#administrative_area_level_1').val(),
+                    country: $('#country').val(),
+                    route: $('#route').val(),
+                    street_number: $('#street_number').val(),
+                    postal_code: $('#postal_code').val(),
+                    status: $('#trans').val(),
+                    categorie: $('#categorie').val(),
+                    rooms: $('#rooms').val(),
+                    bathrooms: $('#bathromms').val(),
+                    area: $('#area').val(),
+                    price: prix.replace("Prix:", "").split('-'),
+                })
+            }).then((data) => {
+                if (data.ok) {
+                    data.json().then(results => {
+                        console.log(results)
+                    })
+                }
+            })
+        });
+
+    });
+</script>
 
 {{--<script>--}}
 

@@ -10,7 +10,7 @@
             <div class="col-lg-3 col-md-6 team-pro hover-effect">
                 <div class="team-wrap">
                     <div class="team-img">
-                        <img src="{{asset('guest/images/team/t-5.jpg')}}" alt="" />
+                        <img src="{{asset('guest/images/team/t-1.png')}}" alt="" />
                     </div>
                     <div class="team-content">
                         <div class="team-info">
@@ -19,13 +19,13 @@
                             <div class="team-socials">
                                 <ul>
                                     <li>
-                                        <a href="index.html#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        <a href="" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a href="" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a href="" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
                             </div>
-                            <span><a href="agent-details.html">View Profile</a></span>
+                            <span><a href="">View Profile</a></span>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
             <div class="col-lg-3 col-md-6 team-pro hover-effect">
                 <div class="team-wrap">
                     <div class="team-img">
-                        <img src="{{asset('guest/images/team/t-6.jpg')}}" alt="" />
+                        <img src="{{asset('guest/images/team/t-2.png')}}" alt="" />
                     </div>
                     <div class="team-content">
                         <div class="team-info">
@@ -42,13 +42,13 @@
                             <div class="team-socials">
                                 <ul>
                                     <li>
-                                        <a href="index.html#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        <a href="  #" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a href="  #" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a href="  #" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
                             </div>
-                            <span><a href="agent-details.html">View Profile</a></span>
+                            <span><a href="">View Profile</a></span>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
             <div class="col-lg-3 col-md-6 team-pro pb-none hover-effect">
                 <div class="team-wrap">
                     <div class="team-img">
-                        <img src="{{asset('guest/images/team/t-7.jpg')}}" alt="" />
+                        <img src="{{asset('guest/images/team/t-3.png')}}" alt="" />
                     </div>
                     <div class="team-content">
                         <div class="team-info">
@@ -65,13 +65,13 @@
                             <div class="team-socials">
                                 <ul>
                                     <li>
-                                        <a href="index.html#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        <a href="  #" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a href="  #" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a href="  #" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
                             </div>
-                            <span><a href="agent-details.html">View Profile</a></span>
+                            <span><a href="">View Profile</a></span>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
             <div class="col-lg-3 col-md-6 team-pro hover-effect">
                 <div class="team-wrap">
                     <div class="team-img">
-                        <img src="{{asset('guest/images/team/t-8.jpg')}}" alt="" />
+                        <img src="{{asset('guest/images/team/t-5.png')}}" alt="" />
                     </div>
                     <div class="team-content">
                         <div class="team-info">
@@ -88,13 +88,13 @@
                             <div class="team-socials">
                                 <ul>
                                     <li>
-                                        <a href="index.html#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                        <a href="index.html#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        <a href="  #" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a href="  #" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a href="  #" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
                             </div>
-                            <span><a href="agent-details.html">View Profile</a></span>
+                            <span><a href="">View Profile</a></span>
                         </div>
                     </div>
                 </div>

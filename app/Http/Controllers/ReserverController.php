@@ -38,6 +38,7 @@ class ReserverController extends Controller
                 $properties = Property::has('reservation')->whereHas('assignment', function (Builder $query) {
                     $query->where('user_id', '=', Auth::user()->id);
                 })->get();
+              //  dd($properties);
                 return view('agent.reservemanagement.reservation', compact('properties'));
             } else if (Auth::user()->hasrole('customer')) {
                 $properties = Property::whereHas('reservation', function (Builder $query) {
@@ -190,11 +191,11 @@ class ReserverController extends Controller
     {
         $properties = Property::whereHas('reservation', function (Builder $query) {
             $query->where('user_id', '=', Auth::user()->id);
-            $query->whereNotNull('visite_at');
+            $query->orWhereNull('visite_at');
             $query->where('status', '=', 0);
 
         })->get();
-        // dd($properties);
+       // dd($properties);
         return view('reservemanagement.reservation-ask', compact('properties'));
     }
 

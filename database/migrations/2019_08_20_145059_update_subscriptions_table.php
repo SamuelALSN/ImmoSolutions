@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubscriptionsTable extends Migration
+class UpdateSubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::table('subscriptions', function (Blueprint $table) {
+            //$table->bigIncrements('id');
             $table->unsignedBigInteger('reserver_id')->unsigned();
             $table->foreign('reserver_id')
                 ->on('reserver')
                 ->references('id')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('name');
-            $table->string('stripe_id')->collation('utf8mb4_bin');
-            $table->string('stripe_plan');
-            $table->integer('quantity');
-            $table->timestamp('trial_ends_at')->nullable();
-            $table->timestamp('ends_at')->nullable();
-            $table->timestamps();
+           // $table->string('name');
+//            $table->string('stripe_id')->collation('utf8mb4_bin');
+//            $table->string('stripe_plan');
+//            $table->integer('quantity');
+//            $table->timestamp('trial_ends_at')->nullable();
+//            $table->timestamp('ends_at')->nullable();
+           //$table->timestamps();
             $table->softDeletes();
         });
     }
@@ -39,6 +39,6 @@ class CreateSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscriptions');
+      Schema::dropIfExists('subscriptions');
     }
 }

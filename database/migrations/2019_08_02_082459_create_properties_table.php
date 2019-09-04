@@ -20,8 +20,8 @@ class CreatePropertiesTable extends Migration
             $table->integer('area')->nullable();
             $table->date('buildingdate')->nullable();
             $table->boolean('activated')->default(false);
-            $table->float('latitudeposition')->nullable();
-            $table->float('longitudeposition')->nullable();
+            $table->double('latitudeposition')->nullable();
+            $table->double('longitudeposition')->nullable();
             $table->string('adresse')->nullable();
             $table->decimal('street_number')->nullable();
             $table->string('route')->nullable();

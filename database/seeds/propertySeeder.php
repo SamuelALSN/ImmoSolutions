@@ -20,14 +20,12 @@ class propertySeeder extends Seeder
             array('id'=>4, 'name'=>'Immeuble'),
             array('id'=>5, 'name'=>'Terrain'),
             array('id'=>6, 'name'=>'Studio'),
-            array('id'=>7, 'name'=>'ChambreEtudiant'),
-            array('id'=>8, 'name'=>'Hotel'),
-            array('id'=>9, 'name'=>'Commerce'),
-            array('id'=>10, 'name'=>'Loft ,Atelier '),
-            array('id'=>11, 'name'=>'Bureaux'),
-            array('id'=>12, 'name'=>'Magasin'),
-            array('id'=>13, 'name'=>'Entrepots et Locaux d\'activités'),
-            array('id'=>14, 'name'=>'Boutique'),
+            array('id'=>7, 'name'=>'Commerce'),
+            array('id'=>8, 'name'=>'Loft ,Atelier '),
+            array('id'=>9, 'name'=>'Bureaux'),
+            array('id'=>10, 'name'=>'Magasin'),
+            array('id'=>11, 'name'=>'Entrepots et Locaux d\'activités'),
+            array('id'=>12, 'name'=>'Boutique'),
 
         );
         DB::table('propertyType')->insert($propertiestype);

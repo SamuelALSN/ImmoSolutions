@@ -16,7 +16,7 @@ class PlanController extends Controller
     {
         //
         $plans = Plan::all();
-        return view('plans.index',compact('plans'));
+        return view('guest.plans.index',compact('plans'));
     }
 
     /**
@@ -46,9 +46,10 @@ class PlanController extends Controller
      * @param  \App\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function show(Plan $plan)
+    public function show(Plan $plan , Request $request)
     {
         //
+        return view('guest.plans.show', compact('plan'));
     }
 
     /**

@@ -31,6 +31,7 @@
                     </div>
                     <div class="col-lg-6 col-md-7 col-10 cod-pad">
                         <div class="sorting-options">
+                            <p> Rechercher:</p>
                             <select class="sorting">
                                 <option></option>
                             </select>

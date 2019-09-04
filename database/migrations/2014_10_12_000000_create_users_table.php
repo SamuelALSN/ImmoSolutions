@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -31,10 +30,10 @@ class CreateUsersTable extends Migration
             $table->ipAddress('deleted_ip_address')->nullable();
             // payment information
 
-            $table->string('stripe_id')->nullable()->collation('utf8mb4_bin');
-            $table->string('card_brand')->nullable();
-            $table->string('card_last_four', 4)->nullable();
-            $table->timestamp('trial_ends_at')->nullable();
+//            $table->string('stripe_id')->nullable()->collation('utf8mb4_bin');
+//            $table->string('card_brand')->nullable();
+//            $table->string('card_last_four', 4)->nullable();
+//            $table->timestamp('trial_ends_at')->nullable();
             //end payment information
             $table->rememberToken();
             $table->timestamps();
@@ -42,7 +41,6 @@ class CreateUsersTable extends Migration
 
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -9,11 +9,11 @@
         <main class="main">
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">@lang("Accueil")</li>
                 <li class="breadcrumb-item">
                     <a href="#">Admin</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">@lang("Tableau de Bord")</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -21,9 +21,9 @@
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
-                            <i class="icon-graph"></i>  Dashboard</a>
+                            <i class="icon-graph"></i> @lang("Tableau de Bord")</a>
                         <a class="btn" href="#">
-                            <i class="icon-settings"></i>  Settings</a>
+                            <i class="icon-settings"></i> @lang("Paramètres")</a>
                     </div>
                 </li>
             </ol>
@@ -44,8 +44,8 @@
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
                                     </div>
-                                    <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div class="text-value">{{$propertycount}}</div>
+                                    <div>@lang("Bien Publiés")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart1" height="70"></canvas>
@@ -59,8 +59,8 @@
                                     <button class="btn btn-transparent p-0 float-right" type="button">
                                         <i class="icon-location-pin"></i>
                                     </button>
-                                    <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div class="text-value">{{$reservationcount}}</div>
+                                    <div>@lang("Réservations")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart2" height="70"></canvas>
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div>@lang("Supervisions")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart3" height="70"></canvas>
@@ -105,8 +105,8 @@
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
                                     </div>
-                                    <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div class="text-value">{{$usercount}}</div>
+                                    <div>@lang("Utilisateurs")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart4" height="70"></canvas>
@@ -120,7 +120,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <h4 class="card-title mb-0">Traffic</h4>
+                                    <h4 class="card-title mb-0">@lang("Suivi des réservations")</h4>
                                     <div class="small text-muted">November 2017</div>
                                 </div>
                                 <!-- /.col-->
@@ -1152,4 +1152,43 @@
     <script src="{{asset('js/chart.js/dist/Chart.min.js')}}"></script>
     <script src="{{asset('js/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <script>
+        var ctx = document.getElementById('main-chart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 @endsection

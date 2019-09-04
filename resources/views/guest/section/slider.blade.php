@@ -49,8 +49,8 @@
                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
                      data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;"
                      data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on"
-                     style="z-index: 7; white-space: nowrap;"> @lang("Nous fournissons toujours à nos clients un service de qualité")
-                    <br> @lang("Nous Essayons d'obtenir la confiance et la sastifaction de nos clients").
+                     style="z-index: 7; white-space: nowrap;">
+                    <br>
                 </div>
                 <!-- LAYER NR. 4 -->
                 <div class="tp-caption tp-resizeme text-white rs-parallaxlevel-0" id="slide-1-layer-4"
@@ -181,10 +181,10 @@
                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
                      data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;"
                      data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on"
-                     style="z-index: 6; min-width: 600px; max-width: 600px; white-space: normal;">@lang("Nous vous aidons à trouver")
+                     style="z-index: 6; min-width: 600px; max-width: 600px; white-space: normal;">@lang(" Trouvez Votre Logement ")
                     <span
-                        class="text-theme-colored2">@lang("Votre Logement ")@lang("Avec le meilleur rapport qualité Prix")</span>
-                </div>
+                        class="text-theme-colored2">@lang( "à un rapport qualité Prix Exceptionnel")</span>
+                </div><br>
                 <!-- LAYER NR. 3 -->
                 <div class="tp-caption tp-resizeme text-white rs-parallaxlevel-0 font-p" id="slide-3-layer-3"
                      data-x="['center','center','center','center']" data-hoffset="['310','200','100','0']"
@@ -197,7 +197,7 @@
                      data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;"
                      data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on"
                      style="z-index: 7; white-space: nowrap;"> <br><br><br>
-                    <br> @lang("Nous Essayons d'obtenir la confiance et la sastifaction de nos clients").
+                    <br>
                 </div>
                 <!-- LAYER NR. 3 -->
                 <div class="tp-caption tp-resizeme text-white rs-parallaxlevel-0" id="slide-3-layer-4"

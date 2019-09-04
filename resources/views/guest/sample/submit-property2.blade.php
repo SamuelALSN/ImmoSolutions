@@ -100,83 +100,91 @@
 
                     <div class="single-add-property">
                         <h3>@lang("Localisation de la propriété")</h3>
-                        <div class="property-form-group">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div id="locationField">
-                                        <p>
-                                            <input id="autocomplete"
-                                                   placeholder="Entrez votre adresse"
-                                                   onFocus="geolocate()"
-                                                   type="text"/>
-                                        </p>
+{{--                        <div class="property-form-group">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-lg-12 col-md-12">--}}
+{{--                                    <div id="locationField">--}}
+{{--                                        <p>--}}
+{{--                                            <input id="autocomplete"--}}
+{{--                                                   placeholder="Entrez votre adresse"--}}
+{{--                                                   onFocus="geolocate()"--}}
+{{--                                                   type="text"/>--}}
+{{--                                        </p>--}}
 
-                                    </div>
-                                </div>
-                            </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="row">
+{{--                            <div class="row">--}}
 
-                                <div id="address">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-12">
-                                            <label for=""> @lang("Adresse")</label>
-                                            <p>
-                                                <input class="" id="street_number" disabled="true"
-                                                       placeholder="Numero Rue"/>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-4 col-md-12">
-                                            <label for=""> @lang("Rue")</label>
-                                            <p>
-                                                <input class="" id="route" disabled="true" placeholder="rue"/>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-4 col-md-12">
-                                            <p>
-                                                <label for="">@lang("ville") </label>
-                                                <input class="field" id="locality" disabled="true"/>
-                                            </p>
+{{--                                <div id="address">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-lg-4 col-md-12">--}}
+{{--                                            <label for=""> @lang("Adresse")</label>--}}
+{{--                                            <p>--}}
+{{--                                                <input class="" id="street_number" disabled="true"--}}
+{{--                                                       placeholder="Numero Rue"/>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-4 col-md-12">--}}
+{{--                                            <label for=""> @lang("Rue")</label>--}}
+{{--                                            <p>--}}
+{{--                                                <input class="" id="route" disabled="true" placeholder="rue"/>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-4 col-md-12">--}}
+{{--                                            <p>--}}
+{{--                                                <label for="">@lang("ville") </label>--}}
+{{--                                                <input class="field" id="locality" disabled="true"/>--}}
+{{--                                            </p>--}}
 
-                                        </div>
-                                        <div class=" col-lg-4  col-md-12">
-                                            <p>
-                                                <label for=""> @lang("region")</label>
-                                                <input class="field" id="administrative_area_level_1" disabled="true"/>
-                                            </p>
+{{--                                        </div>--}}
+{{--                                        <div class=" col-lg-4  col-md-12">--}}
+{{--                                            <p>--}}
+{{--                                                <label for=""> @lang("region")</label>--}}
+{{--                                                <input class="field" id="administrative_area_level_1" disabled="true"/>--}}
+{{--                                            </p>--}}
 
-                                        </div>
-                                        <div class=" col-lg-4 col-md-12">
-                                            <p>
-                                                <label for=""> @lang("Code postal") </label>
-                                                <input class="field" id="postal_code" disabled="true"/>
-                                            </p>
+{{--                                        </div>--}}
+{{--                                        <div class=" col-lg-4 col-md-12">--}}
+{{--                                            <p>--}}
+{{--                                                <label for=""> @lang("Code postal") </label>--}}
+{{--                                                <input class="field" id="postal_code" disabled="true"/>--}}
+{{--                                            </p>--}}
 
-                                        </div>
-                                        <div class=" col-lg-4 col-md-12">
-                                            <p>
-                                                <label for=""> @lang("Pays") </label>
-                                                <input class="" id="country" disabled="true"/>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                        </div>--}}
+{{--                                        <div class=" col-lg-4 col-md-12">--}}
+{{--                                            <p>--}}
+{{--                                                <label for=""> @lang("Pays") </label>--}}
+{{--                                                <input class="" id="country" disabled="true"/>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                            </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+                        <!--test -->
+                        <div class="form-group">
+                            <label for="address_address">Addresse Complete</label>
+                            <input type="text" id="address-input" name="address_address" class="form-control map-input">
+                            <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
+                            <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+                            <!-- exact data -->
+                            <input type="hidden" id="street_number" name=""/>
+                            <input type="hidden" id="route" name=""/>
+                            <input type="hidden" id="locality" name=""/>
+                            <input type="hidden" id="administrative_area_level_1" name=""/>
+                            <input type="hidden" id="postal_code" name=""/>
+                            <input type="hidden" id="country" name="country"/>
+                            <!--end exact data -->
+
                         </div>
-                    </div>
-                    <div class="single-add-property">
-                        <h3>@lang(" Inidiquez  les coordonnées géographique depuis la carte  ")</h3>
-                        <div class="container-fluid">
-                            <div id="map" style=" height: 350px; width: 1050px;"></div>
+                        <div id="address-map-container" style="width:100%;height:400px; ">
+                            <div style="width: 100%; height: 100%" id="address-map"></div>
                         </div>
-
-                        <h4> @lang("Ou Saisissez directement la latitude et la longitude ")</h4>
-                        <p>
-                            <input type="text" class="" id="latitude" placeholder="latitude"/>
-                            <input type="text" class="" id="longitude" placeholder="longitude"/>
-                        </p>
-
+                        <!--endtest-->
                     </div>
 
                     <div class="single-add-property">
@@ -347,7 +355,7 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input id="Insertproperty" type="text" value="">
+                                    <input id="Insertproperty" type="text" value="" hidden>
                                     <p id="section_type">
                                         <label for="type">@lang("Type de bail ")</label>
                                         <select class="form-control" id="typetransaction" name="typetransaction">
@@ -362,7 +370,6 @@
                                             <input id="amount" type="number" min="0" max="">
 
                                         </span>
-
                                     </p>
                                 </div>
                             </div>
@@ -459,7 +466,8 @@
 <script src="{{asset('guest/js/color-switcher.js')}}"></script>
 <script src="{{asset('guest/js/inner.js')}}"></script>
 
-@include("guest.myscripts.locate")
+{{--@include("guest.myscripts.locate")--}}
+@include('guest.sample.newlocation')
 <script>
     $(document).ready(function () {
         $('.page-heading').hide();
@@ -479,6 +487,9 @@
 
         var maxDate = year + '-' + month + '-' + day;
         $('#buildingdate').attr('max', maxDate);
+        $('#datedeb').attr('min',maxDate);
+        $('#datefin').attr('min',maxDate);
+        $('#datevisite').attr('min',maxDate);
 
 
     });
@@ -586,11 +597,11 @@
                     description: $('#description').val(),
                     area: $('#surface').val(),
                     buildingdate: $('#buildingdate').val(),
-                    latitudeposition: $('#latitude').val(),
-                    longitudeposition: $('#longitude').val(),
+                    latitudeposition: $('#address-latitude').val(),
+                    longitudeposition: $('#address-longitude').val(),
                     propertytype_id: $('#propertytype_id').val(),
                     street_number: $('#street_number').val(),
-                    adresse: $('#autocomplete').val(),
+                    adresse: $('#address-input').val(),
                     route: $('#route').val(),
                     locality: $('#locality').val(),
                     administrative_area_level_1: $('#administrative_area_level_1').val(),

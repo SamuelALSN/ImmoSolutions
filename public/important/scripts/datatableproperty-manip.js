@@ -162,7 +162,7 @@ $(document).ready(function () {
     $(document).on('change', '#assign', function () {
         //if ($('#assign').is(':checked')) {
             var user = $(this).data('id').split(',');
-            alertify.confirm('Assignation', 'Voulez vous l\'attribuer ce bien  ?',
+            alertify.confirm('Assignation', 'Voulez vous l\'attribuer ce bien ou rétirer ce  bien ?',
                 function () {
                     fetch('/assign-property/' + user[0] + '/' + user[1])
                         .then(response => {

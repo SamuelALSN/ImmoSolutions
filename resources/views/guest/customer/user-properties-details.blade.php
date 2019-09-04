@@ -150,10 +150,13 @@
                     </ul>
                 </div>
                 <div class="property-location mb-5">
-                    <h5>@lang("Localisation")</h5>
-{{--                    <div class="divider-fade"></div>--}}
-                    <div id="map" style=" height: 350px; width: 750px;"></div>
-{{--                    <div id="map" class="contact-map"></div>--}}
+                    <div class="container-fluid">
+                        <h5>@lang("Localisation")</h5>
+                                            <div class="divider-fade"></div>
+                        <div id="map" style=" height: 350px; width: 750px;"></div>
+
+                    </div>
+
                 </div>
                 <!-- START SECTION ASSIGNED AGENTS -->
                 <section class="team assigned">
@@ -163,7 +166,7 @@
                             <div class="col-lg-4 col-md-6 team-pro hover-effect">
                                 <div class="team-wrap">
                                     <div class="team-img">
-                                        <img src="{{asset('guest/images/team/t-5.jpg')}}" alt="" />
+                                        <img src="{{asset('guest/images/team/t-5.png')}}" alt="" />
                                     </div>
                                     <div class="team-content">
 {{--                                        @foreach($property->Assignment as $assign)--}}
@@ -291,7 +294,7 @@
 {{--                    </div>--}}
                     <div class="col-lg-12 no-pds">
                         <div class="at-col-default-mar">
-                            <button class="btn btn-default hvr-bounce-to-right" type="submit">@lang("Modifier les Informations")</button>
+                            <a href="{{url('/property-details/'.$property->id)}}" class="btn btn-default hvr-bounce-to-right" type="submit">@lang("Modifier les Informations")</a>
                         </div>
                     </div>
                     <div class="recent-post py-5">
@@ -331,20 +334,20 @@
                             <span><a href="#" class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                         <div class="tags no-mb">
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
-                            <span><a href="properties-details.html#" class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
+                            <span><a href=" " class="btn btn-outline-primary">@lang("")</a></span>
                         </div>
                     </div>
                 </div>
@@ -362,39 +365,39 @@
 @include('guest.common.footer')
 <!-- END FOOTER -->
 <!--Style Switcher-->
-<div class="color-switcher" id="choose_color"> <a href="properties-details.html#." class="picker_close"><i class="fa fa-cog fa-spin fa-2x" ></i></a>
+<div class="color-switcher" id="choose_color"> <a href=" ." class="picker_close"><i class="fa fa-cog fa-spin fa-2x" ></i></a>
     <div class="theme-colours">
         <p class="font-italic">@lang("Personnaliser les couleurs")</p>
         <ul>
             <li>
-                <a href="properties-details.html#." class="blue" id="blue"></a>
+                <a href=" ." class="blue" id="blue"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="pink" id="pink"></a>
+                <a href=" ." class="pink" id="pink"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="orange" id="orange"></a>
+                <a href=" ." class="orange" id="orange"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="purple" id="purple"></a>
+                <a href=" ." class="purple" id="purple"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="green" id="green"></a>
+                <a href=" ." class="green" id="green"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="red" id="red"></a>
+                <a href=" ." class="red" id="red"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="cyan" id="cyan"></a>
+                <a href=" ." class="cyan" id="cyan"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="sky-blue" id="sky-blue"></a>
+                <a href=" ." class="sky-blue" id="sky-blue"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="gray" id="gray"></a>
+                <a href=" ." class="gray" id="gray"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="brown" id="brown"></a>
+                <a href=" ." class="brown" id="brown"></a>
             </li>
         </ul>
     </div>
@@ -410,10 +413,53 @@
 <script src="{{asset('guest/js/smooth-scroll.min.j')}}s"></script>
 <script src="{{asset('guest/js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('guest/js/popup.js')}}"></script>
-<script src="{{asset('guest/js/ajaxchimp.min.js')}}"></script>
 <script src="{{asset('guest/js/color-switcher.js')}}"></script>
 <script src="{{asset('guest/js/inner.js')}}"></script>
-@include("guest.myscripts.locate")
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfBd0U878Rqo7dw5hywSOuk1MQRJ6oGv0&libraries=places&callback=initialize"
+    async defer>
+
+</script>
+<script>
+    function initialize() {
+        initMap();
+    }
+
+    var map;
+    var locations = <?php print_r(json_encode($property)) ?>;
+    var contentString = 'Localisation précise du Bien';
+    var coords1 = locations.longitudeposition;
+    var coords2 = locations.latitudeposition;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 2,
+            center: new google.maps.LatLng(-0.250868, -7.396322),
+            mapTypeId: 'terrain'
+        });
+
+        //var infoWindow = new google.maps.InfoWindow;
+        // console.log(coords1);
+        var latLng = new google.maps.LatLng(coords1, coords2);
+        let marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            label: locations.locality.charAt(0),
+        });
+
+
+        //
+        let infowindow = new google.maps.InfoWindow({
+            content:
+            contentString,
+            maxWidth: 500
+        });
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+
+        });
+    }
+</script>
 </body>
 
 </html>

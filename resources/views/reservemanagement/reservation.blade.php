@@ -27,7 +27,7 @@
                         <a class="btn" href="./">
                             <i class="icon-graph"></i>  Dashboard</a>
                         <a class="btn" href="#">
-                            <i class="icon-settings"></i>  @lang("Parameters")</a>
+                            <i class="icon-settings"></i>  @lang("Parametres")</a>
                     </div>
                 </li>
             </ol>
@@ -83,7 +83,7 @@
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Posteur : activate to sort column ascending"
-                                                        style="width: 201px;"> @lang("Posteur")
+                                                        style="width: 201px;"> @lang("Vendeur")
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
@@ -93,7 +93,7 @@
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Date registered: activate to sort column ascending"
-                                                        style="width: 201px;"> @lang("Postulant")
+                                                        style="width: 201px;"> @lang("Acheteur")
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
@@ -121,11 +121,11 @@
                                                         </td>
                                                         <td>
                                                             @foreach($property->typetransactions as $typetrans)
-                                                                @if($typetrans->name =='LOCATION')
+                                                                @if($typetrans->name =='Location')
                                                                     @php $badgeClass ='primary' @endphp
-                                                                @elseif($typetrans->name =='VENTE')
+                                                                @elseif($typetrans->name =='Vente')
                                                                     @php $badgeClass='warning' @endphp
-                                                                @elseif($typetrans->name =='BAILLE')
+                                                                @elseif($typetrans->name =='Bail')
                                                                     @php $badgeClass='success' @endphp
                                                                 @endif
                                                                 <span

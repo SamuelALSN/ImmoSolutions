@@ -18,8 +18,8 @@ class usersTableSeeder extends Seeder
     {
         $this->call([
             countriesTableSeeder::class,
-            stateTableSeeder::class,
-            citiesTableSeeder::class,
+           // stateTableSeeder::class,
+           // citiesTableSeeder::class,
             RolesAndPermissionsSeeder::class,
 
         ]);

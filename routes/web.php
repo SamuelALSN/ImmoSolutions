@@ -29,7 +29,7 @@ Route::get('/charts', function () {
 
 
 #guest middleware
-Route::get('/welcome', 'WelcomeController@index');
+Route::get('/welcome', 'WelcomeController@index')->name('bienvenue');
 
 Route::get('/guest-login', function () {
     return view('guest.auth.login');
@@ -59,9 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         'user' => 'UsersManagementController'
     ]);
 
-    Route::resources([
-        'property' => 'PropertyController'
-    ]);
+
     Route::post('/property-update', 'PropertyController@edit');
 
     Route::resources([
@@ -108,8 +106,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/user-agents', 'UsersManagementController@showAgents');
 
+    Route::get('/property-valid','PropertyController@ShowValidProperty');
+
 });
 
+Route::resources([
+    'property' => 'PropertyController'
+]);
 Route::resources([
     'reserver' => 'ReserverController'
 ]);
@@ -135,6 +138,8 @@ Route::get('/reservation-uncomplete', 'ReserverController@uncompleteReservation'
 Route::group(['middleware' => 'auth'], function () {
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/plans', 'PlanController@index')->name('plans.index');
+    Route::get('/plan/{plan}', 'PlanController@show')->name('plans.show');
+    Route::post('/subscription', 'SubscriptionController@create')->name('subscription.create');
 });
-
-// SCOUT SEARCH
+Route::get('/payment/{id}/{montant}','PaiementController@Process');
+Route::post('/charge','PaiementController@Charge')->name('payment.process');

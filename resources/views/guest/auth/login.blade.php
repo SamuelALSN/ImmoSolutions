@@ -45,7 +45,7 @@
                 <a href="#0" class="social_bt google">@lang("Se conecter avec Google")e</a>
                 <a href="#0" class="social_bt linkedin">@lang("Se connecter avec Linkedin")</a>
             </div>
-            <div class="divider"><span>Or</span></div>
+            <div class="divider"><span>@lang("Ou")</span></div>
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email"

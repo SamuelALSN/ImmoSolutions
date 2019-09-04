@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Image;
 use App\Property;
-use App\standing;
 use App\User;
 use Carbon\Carbon;
-use http\Env\Response;
 use Illuminate\Http\Request;
-use function Sodium\compare;
-use Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Validator;
 
 class PropertyController extends Controller
 {
@@ -33,15 +29,19 @@ class PropertyController extends Controller
     public function index()
     {
         //
-        if (Auth::user()->hasrole('Admin')) {
-            $properties = Property::whereHas('typetransactions')->get();
-            return view('propertiesmanagement.show-properties', compact('properties'));
-        } elseif (Auth::user()->hasrole('Agents')) {
-            $agent_id = Auth::user()->id;
-            $users_agent = User::find($agent_id);
-            return view('agent.propertiesmanagement.show-properties', compact('users_agent'));
-        } elseif (Auth::user()->hasrole('customer')) {
+        if (Auth::check()) {
+            if (Auth::user()->hasrole('Admin')) {
+                $properties = Property::has('images')->whereHas('typetransactions')->get();
+                return view('propertiesmanagement.show-properties', compact('properties'));
+            } elseif (Auth::user()->hasrole('Agents')) {
+                $agent_id = Auth::user()->id;
+                $users_agent = User::find($agent_id);
+                return view('agent.propertiesmanagement.show-properties', compact('users_agent'));
+            } elseif (Auth::user()->hasrole('customer')) {
 
+            }
+        } else {
+            return redirect()->route('login');
         }
 
 
@@ -259,13 +259,21 @@ class PropertyController extends Controller
      * show authenticade user properties
      */
 
+    public function ShowValidProperty()
+    {
+        $properties = Property::has('typetransactions')->whereHas('assignment')->get();
+        //dd($properties);
+        return view('propertiesmanagement.show-valid-properties', compact('properties'));
+
+    }
+
     public function customerproperty()
     {
         $properties = Property::where(
             'user_id', Auth::user()->id)
-            ->where('activated', 0)
+            //->where('activated', 0)
             ->paginate(6);
-
+        //dd($properties);
         return view('guest.customer.user-properties', compact('properties'));
     }
 
@@ -276,7 +284,6 @@ class PropertyController extends Controller
     public function showcustomerproperty($id)
     {
         if (Auth::user()->hasrole('Admin')) {
-
             $userAgents = User::role('Agents')->get();
             $property = Property::find($id);
             return view('propertiesmanagement.one-property', compact('property', 'userAgents'));
@@ -284,6 +291,10 @@ class PropertyController extends Controller
         } elseif (Auth::user()->hasrole('Agents')) {
             $property = Property::find($id);
             return view('agent.propertiesmanagement.one-property', compact('property'));
+        } elseif (Auth::user()->hasrole('customer')) {
+            $userAgents = User::role('Agents')->get();
+            $property = Property::find($id);
+            return view('propertiesmanagement.one-property', compact('property', 'userAgents'));
         }
 
     }

@@ -122,15 +122,15 @@
                         <select name="country_id" class="form-control" data-show-subtext="false"
                                 data-live-search="true" id="country_id">
                             <option value="" hidden disabled selected>@lang('country')</option>
-                                                                    @foreach  (\App\Helpers\Country\Country::getCountries()  as $ctry)
-                                                                        <option value="{{$ctry->id}}">{{$ctry->name}}</option>
-                                                                    @endforeach
+                            @foreach  (\App\Helpers\Country\Country::getCountries()  as $ctry)
+                                <option value="{{$ctry->id}}">{{$ctry->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     {{--                                    <button class="btn btn-block btn-success" type="submit">{{ __('Register') }}</button>--}}
                     <div class="modal-footer">
                         <button id="" class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                        <button  id="save_user" class="btn btn-primary" type="button">@lang('Enregistrer')</button>
+                        <button id="save_user" class="btn btn-primary" type="button">@lang('Enregistrer')</button>
                     </div>
                 </form>
             </div>

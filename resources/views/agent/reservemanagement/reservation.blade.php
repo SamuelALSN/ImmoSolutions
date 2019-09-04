@@ -83,7 +83,7 @@
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Posteur : activate to sort column ascending"
-                                                    style="width: 201px;"> @lang("Posteur")
+                                                    style="width: 201px;"> @lang("Vendeur")
                                                 </th>
                                                 {{--                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"--}}
                                                 {{--                                                    rowspan="1" colspan="1"--}}
@@ -93,7 +93,7 @@
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Postulant: activate to sort column ascending"
-                                                    style="width: 201px;"> @lang("Postulants")
+                                                    style="width: 201px;"> @lang("Acheteur")
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
@@ -129,11 +129,11 @@
                                                         </td>
                                                         <td>
                                                             @foreach($property->typetransactions as $typetrans)
-                                                                @if($typetrans->name =='LOCATION')
+                                                                @if($typetrans->name =='Location')
                                                                     @php $badgeClass ='primary' @endphp
-                                                                @elseif($typetrans->name =='VENTE')
+                                                                @elseif($typetrans->name =='Vente')
                                                                     @php $badgeClass='warning' @endphp
-                                                                @elseif($typetrans->name =='BAILLE')
+                                                                @elseif($typetrans->name =='Bail')
                                                                     @php $badgeClass='success' @endphp
                                                                 @endif
                                                                 <span
@@ -164,7 +164,6 @@
                                                             @endif
                                                             <span
                                                                 class="badge badge-{{$badgeClass}}">{{$status_p}}</span>
-
                                                         </td>
 
                                                         <td>
@@ -174,7 +173,11 @@
                                                         </td>
                                                         <td>
                                                             <span class="badge badge-danger">
+                                                                @if($reservation->pivot->visite_at==null)
+                                                                    Non défini
+                                                                @else
                                                                {{$reservation->pivot->visite_at}}
+                                                                @endif
                                                             </span>
                                                             {{--                                                        @foreach($property->reservation as $reservDate)--}}
 

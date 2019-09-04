@@ -812,7 +812,6 @@
 
     <script>
 
-
         window.addEventListener('DOMContentLoaded', (e) => {
             /*
             *

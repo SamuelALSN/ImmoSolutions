@@ -5,6 +5,12 @@
             <div class="container">
                 <h1>@lang("Mes Réservations")</h1>
             </div>
+            @if (Session::has('success'))
+                <div class="alert alert-success text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <p>{{ Session::get('success') }}</p>
+                </div>
+            @endif
         </div>
     </section>
     <section class="pricing-table">
@@ -41,7 +47,7 @@
                                     <li>@lang("Status") ||</li>
                                     <li>@lang("Agents") ||</li>
                                 </ul>
-                                <a class="btn btn-primary" href="">@lang("Détails")</a>
+                                <a class="btn btn-primary" href="{{url('/payment/'.$reserv->pivot->id.'/'.$trans->pivot->ammount)}}">@lang("Payer")</a>
                             </div>
                             @endforeach
                         @endforeach

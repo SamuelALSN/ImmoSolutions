@@ -102,11 +102,11 @@
                                             </td>
                                             <td>
                                                 @foreach($property->typetransactions as $typetrans)
-                                                    @if($typetrans->name =='LOCATION')
+                                                    @if($typetrans->name =='Location')
                                                         @php $badgeClass ='primary' @endphp
-                                                    @elseif($typetrans->name =='VENTE')
+                                                    @elseif($typetrans->name =='Vente')
                                                         @php $badgeClass='warning' @endphp
-                                                    @elseif($typetrans->name =='BAILLE')
+                                                    @elseif($typetrans->name =='Bail')
                                                         @php $badgeClass='success' @endphp
                                                     @endif
                                                     <span
@@ -140,10 +140,14 @@
                                             </td>
                                             <td>
                                                 @foreach($property->reservation as $visite)
-                                                    <span class="badge badge-info">
-                                                  {{$visite->pivot->visite_at}}
+                                                    @if($visite==null)
+                                                        <span class="badge badge-info">
+                                                            {{$visite->pivot->visite_at}}
+                                                            @else
+                                                                En attente de Notification
+                                                            @endif
                                               </span>
-                                                @endforeach
+                                                        @endforeach
                                             </td>
                                             <td>
                                                 <a class="btn btn-success" data-toggle="modal"

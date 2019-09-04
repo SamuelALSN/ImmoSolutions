@@ -33,7 +33,7 @@
                                     <li>@lang("Status") ||</li>
                                     <li>@lang("Agents") ||</li>
                                 </ul>
-                                <a class="btn btn-primary" href="">@lang("Détails")</a>
+                                <a class="btn btn-primary" href="{{url('')}}">@lang("Payer")</a>
                             </div>
                         @endforeach
                     </div>

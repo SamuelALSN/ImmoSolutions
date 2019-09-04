@@ -16,12 +16,12 @@
 
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="nav-icon icon-pencil"></i>@lang("En attente de validation")
-                <span class="badge badge-warning">NEW</span>
-            </a>
-        </li>
+{{--        <li class="nav-item">--}}
+{{--            <a class="nav-link" href="">--}}
+{{--                <i class="nav-icon icon-pencil"></i>@lang("En attente de validation")--}}
+{{--                <span class="badge badge-warning">NEW</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
 
         <li class="nav-item">
             <a class="nav-link" href="">
@@ -107,20 +107,20 @@
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="nav-icon icon-cursor"></i> Buttons</a>
+                        <i class="nav-icon icon-cursor"></i>@lang("Réservations conclues")</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-cursor"></i> Buttons Group</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-cursor"></i> Dropdowns</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-cursor"></i> Brand Buttons</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-cursor"></i> Buttons Group</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-cursor"></i> Dropdowns</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-cursor"></i> Brand Buttons</a>--}}
+{{--                </li>--}}
             </ul>
         </li>
         <li class="nav-item">
@@ -133,73 +133,73 @@
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="nav-icon icon-star"></i> CoreUI Icons
+                        <i class="nav-icon icon-star"></i> @lang("Biens sur Carte")
                         <span class="badge badge-success">NEW</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-star"></i> Flags</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-star"></i> Font Awesome
-                        <span class="badge badge-secondary">4.7</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-star"></i> Simple Line Icons</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-star"></i> Flags</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-star"></i> Font Awesome--}}
+{{--                        <span class="badge badge-secondary">4.7</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-star"></i> Simple Line Icons</a>--}}
+{{--                </li>--}}
             </ul>
         </li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="nav-icon icon-bell"></i> Notifications</a>
-            <ul class="nav-dropdown-items">
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-bell"></i> Alerts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-bell"></i> Badge</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-bell"></i> Modals</a>
-                </li>
-            </ul>
+{{--            <ul class="nav-dropdown-items">--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-bell"></i> Alerts</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-bell"></i> Badge</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="">--}}
+{{--                        <i class="nav-icon icon-bell"></i> Modals</a>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="nav-icon icon-calculator"></i> Widgets
-                <span class="badge badge-primary">NEW</span>
-            </a>
-        </li>
+{{--        <li class="nav-item">--}}
+{{--            <a class="nav-link" href="">--}}
+{{--                <i class="nav-icon icon-calculator"></i> Widgets--}}
+{{--                <span class="badge badge-primary">NEW</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
         <li class="divider"></li>
         <li class="nav-title">Extras</li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="nav-icon icon-star"></i>@lang("Performances")</a>
-            <ul class="nav-dropdown-items">
-                <li class="nav-item">
-                    <a class="nav-link" href="" target="_top">
-                        <i class="nav-icon icon-star"></i> Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="" target="_top">
-                        <i class="nav-icon icon-star"></i> Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="" target="_top">
-                        <i class="nav-icon icon-star"></i> Error 404</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="" target="_top">
-                        <i class="nav-icon icon-star"></i> Error 500</a>
-                </li>
-            </ul>
+{{--            <ul class="nav-dropdown-items">--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="" target="_top">--}}
+{{--                        <i class="nav-icon icon-star"></i> Login</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="" target="_top">--}}
+{{--                        <i class="nav-icon icon-star"></i> Register</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="" target="_top">--}}
+{{--                        <i class="nav-icon icon-star"></i> Error 404</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="" target="_top">--}}
+{{--                        <i class="nav-icon icon-star"></i> Error 500</a>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
         </li>
     </ul>
 </nav>

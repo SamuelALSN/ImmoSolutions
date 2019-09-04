@@ -47,8 +47,9 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer table-responsive"
-                             style="font-size: 12px;">
+                            <div id="DataTables_Table_0_wrapper"
+                                 class="dataTables_wrapper dt-bootstrap4 no-footer table-responsive"
+                                 style="font-size: 12px;">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <table class="table table-striped table-bordered" id="DataTables_Table_0"
@@ -86,12 +87,12 @@
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Date registered: activate to sort column ascending"
-                                                    style="width: 201px;"> @lang("DateAjout")
+                                                    style="width: 201px;"> @lang("Vendeur")
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Date registered: activate to sort column ascending"
-                                                    style="width: 201px;"> @lang("Posteur")
+                                                    style="width: 201px;"> @lang("Validé")
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                     rowspan="1" colspan="1"
@@ -103,20 +104,25 @@
                                             <tbody id="properties_table">
 
 
-                                                @foreach($users_agent->assignproperty as $property)
+                                            @foreach($users_agent->assignproperty as $property)
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"> <a href="{{url('/property-details/'.$property->id)}}">{{$property->id}}</a></td>
+                                                    <td class="sorting_1"><a
+                                                            href="{{url('/property-details/'.$property->id)}}">{{$property->id}}</a>
+                                                    </td>
                                                     <td class="sorting_1">{{$property->name}}</td>
                                                     <td>{{$property->adresse}}</td>
-                                                    <td>{{$property->longitudeposition}} / {{$property->longitudeposition}}</td>
-                                                    <td> <span class="badge badge-dark"> {{$property->propertytype['name']}}</span> </td>
+                                                    <td>{{$property->longitudeposition}}
+                                                        / {{$property->longitudeposition}}</td>
+                                                    <td><span
+                                                            class="badge badge-dark"> {{$property->propertytype['name']}}</span>
+                                                    </td>
                                                     <td>
                                                         @foreach($property->typetransactions as $typetrans)
-                                                            @if($typetrans->name =='LOCATION')
+                                                            @if($typetrans->name ==='Location')
                                                                 @php $badgeClass ='primary' @endphp
-                                                            @elseif($typetrans->name =='VENTE')
+                                                            @elseif($typetrans->name ==='Vente')
                                                                 @php $badgeClass='warning' @endphp
-                                                            @elseif($typetrans->name =='BAILLE')
+                                                            @elseif($typetrans->name ==='Bail')
                                                                 @php $badgeClass='success' @endphp
                                                             @endif
                                                             <span
@@ -124,8 +130,19 @@
 
                                                         @endforeach
                                                     </td>
-                                                    <td>{{$property->created_at}}</td>
                                                     <td> {{$property->user['email']}} </td>
+                                                    <td>
+                                                        @foreach($property->assignment as $assign)
+                                                            @if($assign->pivot->status==1)
+                                                                @php $badgeClass='success' @endphp
+                                                                @php $info ="Oui" @endphp
+                                                            @else
+                                                                @php $badgeClass='warning' @endphp
+                                                                @php $info="Non" @endphp
+                                                            @endif
+                                                        @endforeach
+                                                        <span class="badge badge-{{$badgeClass}}">{{$info}} </span>
+                                                    </td>
                                                     <td>
                                                         <a class="btn btn-success" data-toggle="modal"
                                                            data-target="#largeModal"
@@ -147,7 +164,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                    @endforeach
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -158,8 +175,8 @@
                 </div>
                 <!--table end -->
                 <!-- /.modal add -->
-            <!-- /.modal-end-->
-{{--                @include('agents-modale')--}}
+                <!-- /.modal-end-->
+                {{--                @include('agents-modale')--}}
             </div>
         </main>
     </div>
@@ -168,5 +185,5 @@
     <script src="{{asset('datatables/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.bootstrap4.js')}}"></script>
     <script src="{{asset('datatables/js/dataTables.js')}}"></script>
-    <script src = "{{asset('important/scripts/datatableproperty-manip.js')}}"></script>
+    <script src="{{asset('important/scripts/datatableproperty-manip.js')}}"></script>
 @endsection

@@ -349,40 +349,40 @@
 @include('guest.common.footer')
 <!-- END FOOTER -->
 <!--Style Switcher-->
-<div class="color-switcher" id="choose_color"><a href="properties-details.html#." class="picker_close"><i
+<div class="color-switcher" id="choose_color"><a href="   " class="picker_close"><i
             class="fa fa-cog fa-spin fa-2x"></i></a>
     <div class="theme-colours">
         <p class="font-italic">@lang("Personnaliser les couleurs")</p>
         <ul>
             <li>
-                <a href="properties-details.html#." class="blue" id="blue"></a>
+                <a href="   " class="blue" id="blue"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="pink" id="pink"></a>
+                <a href="   " class="pink" id="pink"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="orange" id="orange"></a>
+                <a href="   " class="orange" id="orange"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="purple" id="purple"></a>
+                <a href="   " class="purple" id="purple"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="green" id="green"></a>
+                <a href="   " class="green" id="green"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="red" id="red"></a>
+                <a href="   " class="red" id="red"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="cyan" id="cyan"></a>
+                <a href="   " class="cyan" id="cyan"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="sky-blue" id="sky-blue"></a>
+                <a href="   " class="sky-blue" id="sky-blue"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="gray" id="gray"></a>
+                <a href="   " class="gray" id="gray"></a>
             </li>
             <li>
-                <a href="properties-details.html#." class="brown" id="brown"></a>
+                <a href="   " class="brown" id="brown"></a>
             </li>
         </ul>
     </div>

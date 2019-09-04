@@ -7,7 +7,7 @@
                 <div class="card-group">
                     <div class="card p-4">
                         <div class="card-body">
-                            <h1>Login</h1>
+                            <h1>@lang("Connexion")</h1>
                             <p class="text-muted"> @lang("Connecter vous ")</p>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
@@ -34,7 +34,7 @@
                                     </div>
                                     <input id="password" class="form-control @error('password') is-invalid @enderror"
                                            type="password" name="password" required autocomplete="current-password"
-                                           placeholder="Password">
+                                           placeholder="@lang("Mot de Passe")">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -48,19 +48,20 @@
                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                             <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
+{{--                                                {{ __('Remember Me') }}--}}
+                                                @lang("Se souvenir de moi")
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
+                                        <button class="btn btn-primary px-4" type="submit">@lang("Se connecter")</button>
                                     </div>
                                     @if (Route::has('password.request'))
                                         <div class="col-6 text-right">
                                             <a class="btn btn-link px-0"
-                                               href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                                               href="{{ route('password.request') }}">@lang("Mot de passe oublié ?")</a>
                                         </div>
                                     @endif
                                 </div>
@@ -71,7 +72,7 @@
                         <div class="card-body text-center">
                             <div>
                                 <h2>ImmoSolutions</h2>
-                                <p>Nous nous chargeons de vos soucis immobiliers .</p>
+                                <p>@lang("Connectez vous en tant que Administrateur ou Agent Immobilier ")</p>
                                 <button class="btn btn-primary active mt-3" type="button">@lang("S'inscire")</button>
                             </div>
                         </div>

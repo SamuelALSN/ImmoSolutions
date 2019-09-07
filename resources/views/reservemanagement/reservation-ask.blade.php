@@ -96,9 +96,7 @@
                                             </td>
                                             <td class="sorting_1">{{$property->name}}</td>
                                             <td>{{$property->adresse}}</td>
-                                            <td>
-                                                        <span
-                                                            class="badge badge-default"> {{$property->propertytype['name']}}</span>
+                                            <td><span class="badge badge-default"> {{$property->propertytype['name']}}</span>
                                             </td>
                                             <td>
                                                 @foreach($property->typetransactions as $typetrans)
@@ -109,38 +107,37 @@
                                                     @elseif($typetrans->name =='Bail')
                                                         @php $badgeClass='success' @endphp
                                                     @endif
-                                                    <span
-                                                        class="badge badge-{{$badgeClass}}">{{$typetrans->name}}</span>
-
+                                                    <span class="badge badge-{{$badgeClass}}">{{$typetrans->name}}</span>
                                                 @endforeach
                                             </td>
-                                            {{--                                        <td> {{$property->user['email']}} </td>--}}
                                             <td>@foreach($property->assignment as $agents)
                                                     {{$agents->email}}
                                                 @endforeach
                                             </td>
-                                            {{--                                        <td>--}}
-                                            {{--                                            @foreach($property->reservation as $acheteur)--}}
-                                            {{--                                                {{$acheteur->email}}--}}
-                                            {{--                                            @endforeach--}}
-                                            {{--                                        </td>--}}
-
                                             <td>
                                                 @foreach($property->reservation as $reservation)
+                                                    {{$reservation->pivot->status}}
                                                     @if($reservation->pivot->status==1)
-                                                        @php $badgeClass='success' @endphp
-                                                        <?php $status_p = "reservé" ?>
+                                                        <span class="badge badge-success">
+                                                            Visité || Reservé
+                                                    </span>
+
                                                     @elseif($reservation->pivot->status==0)
-                                                        @php $badgeClass='warning' @endphp
-                                                        <?php $status_p = "Pas reservé" ?>
+                                                        <span class="badge badge-danger">
+                                                            Non Visité
+                                                    </span>
+
+                                                    @elseif($reservation->pivot->status==2)
+                                                        <span class="badge badge-warning">
+                                                            Visite Confirmé
+                                                    </span>
                                                     @endif
-                                                    <span
-                                                        class="badge badge-{{$badgeClass}}">{{$status_p}}</span>
+
                                                 @endforeach
                                             </td>
                                             <td>
                                                 @foreach($property->reservation as $visite)
-                                                    @if($visite==null)
+                                                    @if(!empty($visite))
                                                         <span class="badge badge-info">
                                                             {{$visite->pivot->visite_at}}
                                                             @else
@@ -150,18 +147,17 @@
                                                         @endforeach
                                             </td>
                                             <td>
+                                                @foreach($property->typetransactions as $trans )
+                                                    @if($reservation->pivot->status ==2)
+                                                        <a class="btn btn-primary" href="{{url('/payment/'.$reserv->pivot->id.'/'.$trans->pivot->ammount)}}">@lang("Payer")</a>
+                                                        @endif
+                                                    @endforeach
                                                 <a class="btn btn-success" data-toggle="modal"
                                                    data-target="#largeModal"
                                                    id="show-reservation"
                                                    data-info="{{$reserv->pivot->id}}">
                                                     <i class="fa fa-search-plus"></i>
                                                 </a>
-                                                {{--                                            <a class="btn btn-info" data-toggle="modal"--}}
-                                                {{--                                               data-target="#primaryModal"--}}
-                                                {{--                                               id="edit-reservation"--}}
-                                                {{--                                               data-info="{{$property->id}}">--}}
-                                                {{--                                                <i class="fa fa-edit"></i>--}}
-                                                {{--                                            </a>--}}
                                                 <a class="btn btn-danger" data-toggle="modal"
                                                    data-target="#dangerModal"
                                                    id="delete-reservation"

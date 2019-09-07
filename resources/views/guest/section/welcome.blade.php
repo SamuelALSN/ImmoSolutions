@@ -8,7 +8,7 @@
                     <h4>@lang("Le meilleur endroit pour trouver votre Logement")</h4>
                 </div>
                 <div class="welcome-content">
-                    <p>The best place for elit, sed do eiusmod tempor dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et lorna aliquatd minimam, quis nostrud exercitation oris nisi ut aliquip ex ea.</p>
+                    <p>@lang("Trouvez votre logement de la maniere la plus simple possible ")</p>
                 </div>
                 <div class="welcome-services">
                     <div class="row">
@@ -18,9 +18,9 @@
                                     <img src="{{asset('guest/images/1.png')}}" width="32" alt="">
                                 </div>
                                 <div class="services-desc">
-                                    <h6>Buy Property</h6>
-                                    <p>We have the best properties
-                                        <br> elit, sed do eiusmod tempe</p>
+                                    <h6>@lang("Vendre Un Bien")</h6>
+                                    <p>@lang("Nous avons les meilleurs biens")
+                                        <br> Biens idéal</p>
                                 </div>
                             </div>
                         </div>
@@ -30,9 +30,9 @@
                                     <img src="{{asset('guest/images/2.png')}}" width="32" alt="">
                                 </div>
                                 <div class="services-desc">
-                                    <h6>Rent Property</h6>
-                                    <p>We have the best properties
-                                        <br> elit, sed do eiusmod tempe</p>
+                                    <h6>@lang("Louer Un Bien")</h6>
+                                    <p>@lang("Nous avons les meilleurs biens")
+                                        <br>Biens idéal</p>
                                 </div>
                             </div>
                         </div>
@@ -42,9 +42,9 @@
                                     <img src="{{asset('guest/images/3.png')}}" width="32" alt="">
                                 </div>
                                 <div class="services-desc">
-                                    <h6>Real Estate Kit</h6>
-                                    <p>We have the best properties
-                                        <br> elit, sed do eiusmod tempe</p>
+                                    <h6>@lang("Kit Immobilier")</h6>
+                                    <p>
+                                        <br> Biens idéal</p>
                                 </div>
                             </div>
                         </div>
@@ -54,9 +54,9 @@
                                     <img src="{{asset('guest/images/4.png')}}" width="32" alt="">
                                 </div>
                                 <div class="services-desc">
-                                    <h6>Sell Property</h6>
-                                    <p>We have the best properties
-                                        <br> elit, sed do eiusmod tempe</p>
+                                    <h6>@lang("Vendre Un Bien")</h6>
+                                    <p>@lang("Nous avons les meilleurs biens")
+                                        <br>Biens idéal</p>
                                 </div>
                             </div>
                         </div>

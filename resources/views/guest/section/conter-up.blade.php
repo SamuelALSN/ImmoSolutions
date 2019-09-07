@@ -7,7 +7,7 @@
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <div class="count-me">
                         <p class="counter text-left">300</p>
-                        <h3>Sold Houses</h3>
+                        <h3>@lang("Maisons Vendues")</h3>
                     </div>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                 <div class="countr">
                     <i class="fa fa-list" aria-hidden="true"></i>
                     <div class="count-me">
-                        <p class="counter text-left">400</p>
-                        <h3>Daily Listings</h3>
+                        <p class="counter text-left">{{count($properties)}}</p>
+                        <h3>@lang("Biens publiés")</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <div class="count-me">
                         <p class="counter text-left">250</p>
-                        <h3>Expert Agents</h3>
+                        <h3>@lang("Agents")</h3>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     <i class="fa fa-trophy" aria-hidden="true"></i>
                     <div class="count-me">
                         <p class="counter text-left">200</p>
-                        <h3>Won Awars</h3>
+                        <h3>@lang("Taux de confiance")</h3>
                     </div>
                 </div>
             </div>

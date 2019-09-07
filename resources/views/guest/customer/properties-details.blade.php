@@ -417,14 +417,14 @@
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 2,
+            zoom: 20,
             center: new google.maps.LatLng(-0.250868, -7.396322),
-            mapTypeId: 'terrain'
+            mapTypeId: 'roadmap'
         });
 
         //var infoWindow = new google.maps.InfoWindow;
         // console.log(coords1);
-        var latLng = new google.maps.LatLng(coords1, coords2);
+        var latLng = new google.maps.LatLng(coords1,coords2);
         let marker = new google.maps.Marker({
             position: latLng,
             map: map,

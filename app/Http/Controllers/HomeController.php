@@ -33,8 +33,9 @@ class HomeController extends Controller
             $propertycount = Property::all()->count();
             $usercount = User::all()->count();
             $reservationcount = DB::table('reserver')
-                ->where('status', '=', 1)->count();
-            return view('home', compact('propertycount', 'usercount', 'reservationcount'));
+                ->where('status', '=', 1)->get();
+            $supervise = DB::table('assignment')->get();
+            return view('home', compact('propertycount', 'usercount', 'reservationcount','supervise'));
         } elseif ($user->hasrole('Agents')) {
             return view('agent.home');
         }
@@ -42,5 +43,16 @@ class HomeController extends Controller
         //return view('guest.home');
         return redirect()->route('bienvenue');
 
+    }
+
+
+    /*
+     * Static Section
+     */
+
+    public function  Charts(){
+        $reservation =   $reservationcount = DB::table('reserver')
+            ->where('status', '=', 1)->get();
+        return response()->json($reservation);
     }
 }

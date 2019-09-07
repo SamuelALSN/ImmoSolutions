@@ -360,19 +360,19 @@
     <!-- END SECTION AGENTS -->
 
     <!-- START SECTION TOP LOCATION -->
-    @include('guest.section.top-location')
+{{--    @include('guest.section.top-location')--}}
     <!-- END SECTION TOP LOCATION -->
 
     <!-- START SECTION BLOG -->
-    @include('guest.section.blog')
+{{--    @include('guest.section.blog')--}}
     <!-- END SECTION BLOG -->
 
     <!-- START SECTION TESTIMONIALS -->
-    @include('guest.section.testimonials')
+{{--    @include('guest.section.testimonials')--}}
     <!-- END SECTION TESTIMONIALS -->
 
     <!-- STAR SECTION PARTNERS -->
-    @include('guest.section.partner')
+{{--    @include('guest.section.partner')--}}
     <!-- END SECTION PARTNERS -->
 
     <!-- START SECTION COUNTER UP -->
@@ -525,6 +525,6 @@
 
     </script>
     <script src="{{asset('guest/js/script.js')}}"></script>
-    @include('guest.myscripts.locate-search')
+    @include('guest.myscripts.locate')
 
 @endsection

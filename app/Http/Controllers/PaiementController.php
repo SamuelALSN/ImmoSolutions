@@ -22,7 +22,7 @@ class PaiementController extends Controller
 
     public function Charge(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         $properties = Property::whereHas('reservation', function (Builder $query) {
             $query->where('user_id', '=', Auth::user()->id);
 //            $query->where('status', '=', 1);
@@ -40,14 +40,19 @@ class PaiementController extends Controller
         );
         if ($charge) {
             DB::table('reserver')
-                ->where('id', $request->id)
+                ->where('id', $request->reserv_id)
                 ->update(['status' => 1]);
         }
+        $property_id = DB::table('reserver')
+            ->where('id', $request->reserv_id)->select('property_id')->get();
+        // update property reserved and put out from list
+        Property::where('id', $property_id[0]->property_id)
+            ->update(['activated' => 1]);
         //Session::flash('success', 'Payment éffecté avec succès !');
 //        Auth::user()->newSubscription('plan name', 'plan-id')->create($request->stripeToken, [
 //            'email' => Auth::user()->email,
 //        ]);
 
-        return redirect()->route('/reserver')->with('success', 'Paiement Effectué avec succès');
+        return redirect('/reserver')->with('success', 'Paiement Effectué avec succès');
     }
 }

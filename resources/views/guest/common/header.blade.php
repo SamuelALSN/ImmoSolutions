@@ -17,7 +17,7 @@
                     <div class="login-wrap">
                         <ul class="d-flex">
                             <li><a href="{{url('/guest-login')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
-                            <li><a href="{{url('/guest-login')}}"><i class="fa fa-sign-out"></i> @lang('Se Déconnecter')</a></li>
+                            <li><a href="{{url('/deconnect')}}"><i class="fa fa-sign-out"></i> @lang('Se Déconnecter')</a></li>
 {{--                            <li><a href="{{url('/guest-register')}}"><i class="fa fa-sign-in"></i>@lang('S\'enregistrer')</a></li>--}}
 
                             {{--                        <li><a href="{{Auth::logout()}}"><i class="fa fa-sign-in"></i>@lang('Se deconnecter')</a></li>--}}

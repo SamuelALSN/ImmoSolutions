@@ -7,6 +7,7 @@ use App\Property;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use  Spatie\Permission\Models\Role;
 use App\Traits\CaptureIpTrait;
 use Validator;
@@ -251,5 +252,16 @@ class UsersManagementController extends Controller
         }
 
         return response()->json(['array' => 'success']);
+    }
+
+
+    public function logout(){
+        $user = Auth::user();
+        Log::info('User Logged Out. ', [$user]);
+        Auth::logout();
+        flashy()->success('Vous etes deconnecté.', 'avec succes');
+        //Session::flush();
+
+        return redirect('/login');
     }
 }

@@ -21,19 +21,20 @@
 
             </div>
             <div class="row">
+                @if(count($properties)>0)
             @foreach($properties as $property)
                 <!-- plan start -->
                     <div class="col-lg-3 col-md-6 col-xs-12">
                         @foreach($property->typetransactions as $trans)
                             @foreach($property->reservation as $reserv)
-                                @if($reserv->pivot->status ==0)
+{{--                                @if($reserv->pivot->status ==0)--}}
 
-                                    @php $class ='featured no-mgb yes-mgb' @endphp
-                                @elseif($reserv->pivot->status==1)
-                                    @php $class ='' @endphp
-                                @endif
-                                    {{$reserv->pivot->status}}
-                            <div class="plan text-center {{$class}}">
+{{--                                    @php $class ='featured no-mgb yes-mgb' @endphp--}}
+{{--                                @elseif($reserv->pivot->status==1)--}}
+{{--                                    @php $class ='' @endphp--}}
+{{--                                @endif--}}
+{{--                                    {{$reserv->pivot->status}}--}}
+                            <div class="plan text-center">
                                 <span class="plan-name">{{$property->name}} </span>
                                 <p class="plan-price"><sup
                                         class="currency"></sup><strong>{{$trans->pivot->ammount}}</strong><sub>CFA</sub>
@@ -47,12 +48,16 @@
                                     <li>@lang("Status") ||</li>
                                     <li>@lang("Agents") ||</li>
                                 </ul>
-                                <a class="btn btn-primary" href="{{url('/payment/'.$reserv->pivot->id.'/'.$trans->pivot->ammount)}}">@lang("Payer")</a>
+                                <a class="btn btn-primary" href="{{url('/payment/'.$reserv->pivot->id.'/'.$trans->pivot->ammount)}}">@lang("Détails")</a>
                             </div>
                             @endforeach
                         @endforeach
                     </div>
                 @endforeach
+
+                    @else
+                    <h3> Aucne réservation payé </h3>
+                    @endif
             </div>
             <nav aria-label="..." class="pt-3">
                 <ul class="pagination">

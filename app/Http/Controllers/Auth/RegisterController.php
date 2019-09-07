@@ -99,6 +99,6 @@ class RegisterController extends Controller
         flashy()->success('Vous etes deconnecté.', 'avec succes');
         //Session::flush();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

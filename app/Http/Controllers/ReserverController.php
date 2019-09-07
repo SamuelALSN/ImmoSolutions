@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Property;
+use App\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Property;
 use Illuminate\Support\Facades\DB;
+use Notifications;
 use Validator;
-use Illuminate\Database\Eloquent\Builder;
 
 class ReserverController extends Controller
 {
@@ -29,7 +31,7 @@ class ReserverController extends Controller
 
         //dd($properties);
 
-        if(Auth::check()){
+        if (Auth::check()) {
             if (Auth::user()->hasrole('Admin')) {
                 $properties = Property::whereHas('reservation')->get();
                 return view('reservemanagement.reservation', compact('properties'));
@@ -38,17 +40,18 @@ class ReserverController extends Controller
                 $properties = Property::has('reservation')->whereHas('assignment', function (Builder $query) {
                     $query->where('user_id', '=', Auth::user()->id);
                 })->get();
-              //  dd($properties);
+                //  dd($properties);
                 return view('agent.reservemanagement.reservation', compact('properties'));
             } else if (Auth::user()->hasrole('customer')) {
                 $properties = Property::whereHas('reservation', function (Builder $query) {
                     $query->where('user_id', '=', Auth::user()->id);
+                    $query->where('reserver.status','=',1);
 
                 })->paginate(4);
                 //dd($properties);
                 return view('reservemanagement.reserver-all', compact('properties'));
             }
-        }else{
+        } else {
             return redirect()->route('login');
         }
 
@@ -191,18 +194,54 @@ class ReserverController extends Controller
     {
         $properties = Property::whereHas('reservation', function (Builder $query) {
             $query->where('user_id', '=', Auth::user()->id);
-            $query->orWhereNull('visite_at');
-            $query->where('status', '=', 0);
+            //$query->orWhereNotNull('visite_at');
+            //$query->where('status', '=', 0);
 
         })->get();
-       // dd($properties);
+        //dd($properties);
         return view('reservemanagement.reservation-ask', compact('properties'));
     }
 
     public function ConfirmVisite($reservation_id)
     {
-        return DB::table('reserver')
+        $confirm_visite = DB::table('reserver')
             ->where('id', $reservation_id)
-            ->update(['status' => 2]);
+            ->update([
+                'status' => 2,
+                'confirm_at' => Carbon::now()]);
+        if ($confirm_visite) {
+            $user = DB::table('reserver')
+                ->where('id', $reservation_id)->select('user_id')->get();
+            $usermail = User::find($user[0]->user_id);
+            // confirm that the user read and mark the notification
+            $usermail->notification->markAsRead();
+        }
+
+    }
+
+
+    /*
+     * Verify if a visite is not confirm until 2 day
+     */
+    public function UnConfirmVisite()
+    {
+        $user = User::find(4);
+        $notify = DB::table('notifications')
+            ->where('data', 'like', '%{"order_id":101}%')->select('data')->get();
+        dd(($user->notifications->contains($notify)));
+        if ($user->notifications->contains($notify)) {
+
+        } else {
+        }
+
+        $senddate = User::find(4)->notifications[0]->created_at;
+        $receivedate = User::find(4)->notifications[0]->read_at;
+        $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $senddate);
+        $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $receivedate);
+        $diff_in_days = $to->diffInDays($from);
+        dd($diff_in_days);
+//        $difference = date_diff($receivedate-$senddate);
+//        dd($difference);
+
     }
 }

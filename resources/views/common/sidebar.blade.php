@@ -155,27 +155,22 @@
         </li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-bell"></i> Notifications</a>
+                <i class="nav-icon icon-bell"></i> Notifications  <span class="badge badge-primary">NEW</span></a>
+
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="nav-icon icon-bell"></i> Alerts</a>
+                        <i class="nav-icon icon-bell"></i> @lang("Alerte")</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="nav-icon icon-bell"></i> Badge</a>
+                        <i class="nav-icon icon-bell"></i>@lang("Messages")</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="notifications/modals.html">
+                    <a class="nav-link" href="">
                         <i class="nav-icon icon-bell"></i> Modals</a>
                 </li>
             </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="widgets.html">
-                <i class="nav-icon icon-calculator"></i> Widgets
-                <span class="badge badge-primary">NEW</span>
-            </a>
         </li>
         <li class="divider"></li>
         <li class="nav-title">Extras</li>

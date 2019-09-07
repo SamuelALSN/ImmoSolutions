@@ -100,7 +100,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/validate-property/{property_id}', 'PropertyController@validateproperty');
 
     Route::get('/properties-all', 'PropertyController@customerproperty');
-    Route::get('/user-properties-detail/{id}', 'PropertyController@details');
 
     Route::get('/property-details/{id}', 'PropertyController@showcustomerproperty')->name('property_details');
 
@@ -110,6 +109,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
+Route::get('/deconnect','UsersManagementController@logout');
+Route::get('/user-properties-detail/{id}', 'PropertyController@details');
 Route::resources([
     'property' => 'PropertyController'
 ]);
@@ -143,3 +144,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/payment/{id}/{montant}','PaiementController@Process');
 Route::post('/charge','PaiementController@Charge')->name('payment.process');
+
+#Static Session
+Route::get('/show-charts','HomeController@Charts');
+
+#Notifications for user
+
+Route::get('send','NotificationsController@sendNotification');
+Route::get('/test','ReserverController@UnConfirmVisite');

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\UsersNotification;
 use App\Property;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Notification;
 use Validator;
 
+//use PhpParser\Builder;
 class PropertyController extends Controller
 {
     /**
@@ -31,7 +34,7 @@ class PropertyController extends Controller
         //
         if (Auth::check()) {
             if (Auth::user()->hasrole('Admin')) {
-                $properties = Property::has('images')->whereHas('typetransactions')->get();
+                $properties = Property::has('typetransactions')->whereDoesntHave('assignment')->get();
                 return view('propertiesmanagement.show-properties', compact('properties'));
             } elseif (Auth::user()->hasrole('Agents')) {
                 $agent_id = Auth::user()->id;
@@ -325,9 +328,27 @@ class PropertyController extends Controller
 
     public function visiteNotify($reservation_id, $visite_at)
     {
-        return DB::table('reserver')
+        // get user  object  who demands for property
+        $user = DB::table('reserver')
+            ->where('id', $reservation_id)->select('user_id')->get();
+        $usermail = User::find($user[0]->user_id);
+        // define visitedate
+        $defineVisite = DB::table('reserver')
             ->where('id', $reservation_id)
-            ->update(['visite_at' => $visite_at]);
+            ->update([
+                'visite_at' => $visite_at,
+                'notification_at'=>Carbon::now(),
+            ]);
+        $details = [
+            'greeting' => 'Mail Envoyé par ImmoSolutions ',
+            'body' => 'Voici Votre Date de Visite ===>' . $visite_at . '<=====',
+            'thanks' => 'Merci pour votre Confiance ',
+            'actionText' => 'Veuillez confirmer la date afin d effectuer la visite',
+            'actionURL' => url('reservation-uncomplete'),
+            'order_id' => 101
+        ];
+        Notification::send($usermail, new UsersNotification($details));
+        //dd('no');
     }
 
 

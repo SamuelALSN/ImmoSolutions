@@ -11,9 +11,9 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
                 <li class="breadcrumb-item">
-                    <a href="#">Admin</a>
+                    <a href="#">@lang("Agent")</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">@lang("Tableau de Bord")</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -21,9 +21,9 @@
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
-                            <i class="icon-graph"></i>  Dashboard</a>
+                            <i class="icon-graph"></i> @lang("Tableau de Bord")</a>
                         <a class="btn" href="#">
-                            <i class="icon-settings"></i>  Settings</a>
+                            <i class="icon-settings"></i>  @lang("Paramètres")</a>
                     </div>
                 </li>
             </ol>
@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div>@lang("Biens attribueés")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart1" height="70"></canvas>
@@ -60,7 +60,7 @@
                                         <i class="icon-location-pin"></i>
                                     </button>
                                     <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div>@lang("Biens réservés")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart2" height="70"></canvas>
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div>@lang("Demandes de réservations ")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart3" height="70"></canvas>
@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                     <div class="text-value">9.823</div>
-                                    <div>Members online</div>
+                                    <div>@lang("Demande Confirmés")</div>
                                 </div>
                                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
                                     <canvas class="chart" id="card-chart4" height="70"></canvas>
@@ -120,8 +120,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <h4 class="card-title mb-0">Traffic</h4>
-                                    <div class="small text-muted">November 2017</div>
+                                    <h4 class="card-title mb-0">@lang("Suivi des réservations")</h4>
+                                    <div class="small text-muted"></div>
                                 </div>
                                 <!-- /.col-->
                                 <div class="col-sm-7 d-none d-md-block">
@@ -130,14 +130,14 @@
                                     </button>
                                     <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
                                         <label class="btn btn-outline-secondary">
-                                            <input id="option1" type="radio" name="options" autocomplete="off"> Day
+                                            <input id="option1" type="radio" name="options" autocomplete="off"> @lang("Jour")
                                         </label>
                                         <label class="btn btn-outline-secondary active">
                                             <input id="option2" type="radio" name="options" autocomplete="off"
-                                                   checked=""> Month
+                                                   checked=""> @lang("Mois")
                                         </label>
                                         <label class="btn btn-outline-secondary">
-                                            <input id="option3" type="radio" name="options" autocomplete="off"> Year
+                                            <input id="option3" type="radio" name="options" autocomplete="off"> @lang("Annéé")
                                         </label>
                                     </div>
                                 </div>
@@ -1145,11 +1145,11 @@
             </div>
         </aside>
     </div>
-    @include('common.footer')
 @endsection
 @section('script')
     <!-- Plugins and scripts required by this view-->
     <script src="{{asset('js/chart.js/dist/Chart.min.js')}}"></script>
     <script src="{{asset('js/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js')}}"></script>
+
     <script src="{{asset('js/main.js')}}"></script>
 @endsection

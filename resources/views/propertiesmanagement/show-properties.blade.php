@@ -13,11 +13,11 @@
         <main class="main">
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">@lang("Accueil")</li>
                 <li class="breadcrumb-item">
                     <a href="#">Admin</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">@lang("Admin")</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -25,7 +25,7 @@
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
-                            <i class="icon-graph"></i>  Dashboard</a>
+                            <i class="icon-graph"></i> @lang("Tableau de Bord")</a>
                         <a class="btn" href="#">
                             <i class="icon-settings"></i>  @lang("Parameters")</a>
                     </div>
@@ -120,7 +120,7 @@
                                                     <td class="sorting_1">{{$property->name}}</td>
                                                     <td>{{$property->adresse}}</td>
                                                     <td>{{$property->longitudeposition}}
-                                                        / {{$property->longitudeposition}}</td>
+                                                        , {{$property->latitudeposition}}</td>
                                                     <td><span
                                                             class="badge badge-dark"> {{$property->propertytype['name']}}</span>
                                                     </td>

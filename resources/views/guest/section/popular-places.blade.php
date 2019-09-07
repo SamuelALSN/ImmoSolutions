@@ -11,24 +11,24 @@
             <div class="col-lg-4 col-md-6">
                 <!-- Image Box -->
                 <a href="https://code-theme.com/html/findhouses/properties-right-sidebar.html" class="img-box hover-effect">
-                    <img src="{{asset('guest/images/popular-places/1.jpg')}}" class="img-responsive" alt="">
+                    <img src="{{asset('guest/images/popular-places/1.jpeg')}}" class="img-responsive" alt="">
                     <!-- Badge -->
                     <div class="listing-badges">
-                        <span class="featured">Featured</span>
+                        <span class="featured">Villes</span>
                     </div>
                     <div class="img-box-content visible">
-                        <h4>Lomé </h4>
-                        <span>203 @lang("Biens")</span>
+                        <h4>{{$villes[0]->locality}} </h4>
+                        <span> @lang("Biens")</span>
                     </div>
                 </a>
             </div>
             <div class="col-lg-8 col-md-6">
                 <!-- Image Box -->
                 <a href="https://code-theme.com/html/findhouses/properties-right-sidebar.html" class="img-box hover-effect">
-                    <img src="{{asset('guest/images/popular-places/2.jpg')}}" class="img-responsive" alt="">
+                    <img src="{{asset('guest/images/popular-places/22.jpg')}}" class="img-responsive" alt="">
                     <div class="img-box-content visible">
-                        <h4>Kara</h4>
-                        <span>307 @lang("Biens")</span>
+                        <h4>{{$villes[1]->locality}}</h4>
+                        <span> @lang("Biens")</span>
                     </div>
                 </a>
             </div>
@@ -37,22 +37,22 @@
                 <a href="https://code-theme.com/html/findhouses/properties-right-sidebar.html" class="img-box hover-effect no-mb">
                     <img src="{{asset('guest/images/popular-places/3.jpg')}}" class="img-responsive" alt="">
                     <div class="img-box-content visible">
-                        <h4> Aneho </h4>
-                        <span>409 @lang("Biens")</span>
+                        <h4> {{$villes[2]->locality}} </h4>
+                        <span> @lang("Biens")</span>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4 col-md-6">
                 <!-- Image Box -->
                 <a href="https://code-theme.com/html/findhouses/properties-right-sidebar.html" class="img-box hover-effect no-mb x3">
-                    <img src="{{asset('guest/images/popular-places/4.jpg')}}" class="img-responsive" alt="">
+                    <img src="{{asset('guest/images/popular-places/11.jpg')}}" class="img-responsive" alt="">
                     <!-- Badge -->
                     <div class="listing-badges">
-                        <span class="featured">Featured</span>
+                        <span class="featured">Villes</span>
                     </div>
                     <div class="img-box-content visible">
-                        <h4>Cotonou</h4>
-                        <span>507 @lang("Biens")</span>
+                        <h4>{{$villes[3]->locality}}</h4>
+                        <span> @lang("Biens")</span>
                     </div>
                 </a>
             </div>

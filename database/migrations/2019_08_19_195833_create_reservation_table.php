@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateReservationTable extends Migration
 {
@@ -32,7 +32,10 @@ class CreateReservationTable extends Migration
             $table->date('coming_at')->nullable();
             $table->date('going_at')->nullable();
             $table->date('visite_at')->nullable();
+            $table->date('notification_at')->nullable();
+            $table->date('confirm_at')->nullable();
             $table->boolean('status')->default(false);
+            $table->boolean('disalow')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

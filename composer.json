@@ -20,6 +20,7 @@
         "laravel/framework": "5.8.*",
         "laravel/scout": "^7.1",
         "laravel/tinker": "^1.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
         "mercuryseries/flashy": "^1.0",
         "spatie/laravel-permission": "^2.37",
         "twilio/sdk": "^5.34"
@@ -61,7 +62,10 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "php artisan clear-compiled",
+            "php artisan optimize",
+            "chmod -R 777 public/"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

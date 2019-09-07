@@ -6,7 +6,6 @@ use  App\Profile;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
-
 class usersTableSeeder extends Seeder
 {
     /**

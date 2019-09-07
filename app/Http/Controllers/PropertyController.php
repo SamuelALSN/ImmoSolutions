@@ -34,7 +34,11 @@ class PropertyController extends Controller
         //
         if (Auth::check()) {
             if (Auth::user()->hasrole('Admin')) {
-                $properties = Property::has('typetransactions')->whereDoesntHave('assignment')->get();
+                $properties = Property::has('typetransactions')
+                    ->whereDoesntHave('assignment')
+                    ->orderBy('created_at','desc')
+                    ->get();
+                //dd($properties);
                 return view('propertiesmanagement.show-properties', compact('properties'));
             } elseif (Auth::user()->hasrole('Agents')) {
                 $agent_id = Auth::user()->id;

@@ -177,8 +177,6 @@ return [
 
         // countries Providers
 
-        App\Providers\CountryServiceProvider::class,
-        //mercury
         MercurySeries\Flashy\FlashyServiceProvider::class,
     ],
 

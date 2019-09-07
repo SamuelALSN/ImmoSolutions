@@ -122,7 +122,7 @@
                         <select name="country_id" class="form-control" data-show-subtext="false"
                                 data-live-search="true" id="country_id">
                             <option value="" hidden disabled selected>@lang('country')</option>
-                            @foreach  (\App\Helpers\Country\Country::getCountries()  as $ctry)
+                            @foreach  ($country  as $ctry)
                                 <option value="{{$ctry->id}}">{{$ctry->name}}</option>
                             @endforeach
                         </select>

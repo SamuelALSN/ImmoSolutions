@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Countries\country;
 use App\user;
 use App\Property;
 use Carbon\Carbon;
@@ -31,7 +32,8 @@ class UsersManagementController extends Controller
     {
         $users = User::all();
         $roles = Role::all();
-        return view('usersmanagement.show-users', compact('users', "roles"));
+        $country = country::all();
+        return view('usersmanagement.show-users', compact('users', "roles",'country'));
     }
 
     /**

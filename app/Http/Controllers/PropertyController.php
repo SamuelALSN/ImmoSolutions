@@ -6,6 +6,7 @@ use App\Notifications\UsersNotification;
 use App\Property;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -353,6 +354,17 @@ class PropertyController extends Controller
         ];
         Notification::send($usermail, new UsersNotification($details));
         //dd('no');
+    }
+
+
+    public function AdminPublishedProperty(){
+        $properties = Property::has('images')->whereHas('assignment', function (Builder $query) {
+            $query->where('status', '=', 1);
+           // $query->where('property.activated','<>',1);
+            //$query->orderBy('created_at','DESC');
+        })->get();
+        return view('propertiesmanagement.show-published-properties',compact('properties'));
+
     }
 
 

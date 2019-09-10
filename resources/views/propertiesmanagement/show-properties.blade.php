@@ -180,6 +180,7 @@
 
             </div>
         </main>
+        @include('common.aside')
     </div>
 @endsection
 @section('script')

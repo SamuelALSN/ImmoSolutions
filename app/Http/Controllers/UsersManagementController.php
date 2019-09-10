@@ -264,6 +264,6 @@ class UsersManagementController extends Controller
         flashy()->success('Vous etes deconnecté.', 'avec succes');
         //Session::flush();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

@@ -331,13 +331,13 @@
                                                             aria-controls="DataTables_Table_0"
                                                             rowspan="1" colspan="1" aria-sort="ascending"
                                                             aria-label="Username: activate to sort column descending"
-                                                            style="width: 235px;">Username
+                                                            style="width: 235px;">Nom
                                                         </th>
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="DataTables_Table_0"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Date registered: activate to sort column ascending"
-                                                            style="width: 201px;">Date registered
+                                                            style="width: 201px;">@lang("Date d'enregistrement")
                                                         </th>
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="DataTables_Table_0"
@@ -349,7 +349,7 @@
                                                             aria-controls="DataTables_Table_0"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Status: activate to sort column ascending"
-                                                            style="width: 98px;">Status
+                                                            style="width: 98px;">Attribué
                                                         </th>
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="DataTables_Table_0"
@@ -385,15 +385,26 @@
                                                             </td>
 
                                                             <td>
-                                                                @if($user->email_verified_at === null)
-                                                                    @php $badgeclasss ='danger'@endphp
-                                                                    @php $info ='Non Active' @endphp
-                                                                @else
-                                                                    @php $badgeclasss ='success' @endphp
-                                                                    @php $info ='Active' @endphp
-                                                                @endif
-                                                                <span
-                                                                    class="badge badge-{{$badgeclasss}}"> {{$info}} </span>
+                                                                @if($user->assignproperty)
+                                                                    @foreach($user->assignproperty as $prop)
+                                                                        @if($prop->id == $property->id)
+                                                                            <span
+                                                                                class="badge badge-success"> Oui </span>
+                                                                            @endif
+
+                                                                        @endforeach
+
+                                                                    @endif
+{{--                                                                @if($user->email_verified_at === null)--}}
+{{--                                                                    @php $badgeclasss ='danger'@endphp--}}
+{{--                                                                    @php $info ='Non Active' @endphp--}}
+{{--                                                                @else--}}
+{{--                                                                    @php $badgeclasss ='success' @endphp--}}
+{{--                                                                    @php $info ='Active' @endphp--}}
+{{--                                                                @endif--}}
+
+{{--                                                                <span--}}
+{{--                                                                    class="badge badge-{{$badgeclasss}}"> {{$info}} </span>--}}
                                                             </td>
                                                             <td>
                                                                 <a class="btn btn-success" data-toggle="modal"
@@ -405,10 +416,10 @@
                                                            {{$user->email}},
                                                            {{$user_role->name}},
                                                            {{$user->country_id}},
-                                                            {{$user->email_verified_at}}
+{{--                                                            {{$user->email_verified_at}}--}}
                                                                    @foreach($user->assignproperty as $key=>$myproperty)
-                                                                   {{$myproperty->id}}
                                                                    {{$myproperty->name}}
+                                                                   {{$myproperty->adresse}}
                                                                    @endforeach">
                                                                     <i class="fa fa-search-plus"></i>
                                                                 </a>
@@ -807,7 +818,7 @@
                 </div>
             </div>
         </main>
-
+        @include('common.aside')
     </div>
 
     <script>

@@ -241,7 +241,7 @@
                                                 class="category">{{$property->propertytype['name']}}</span></h4>
                                     </div>
                                     <div class="button-effect">
-                                        <a href="{{url('/user-properties-detail/'.$property->id)}}" class="btn"><i
+                                        <a href="" class="btn"><i
                                                 class="fa fa-link"></i></a>
                                         <a href="" class="btn popup-video popup-youtube"><i
                                                 class="fas fa-video"></i></a>
@@ -251,7 +251,7 @@
                                     </div>
                                     <div class="homes">
                                         <!-- homes img -->
-                                        <a href="{{url('/user-properties-detail/'.$property->id)}}" class="homes-img">
+                                        <a href="" class="homes-img">
                                             <div class="homes-tag button alt featured">@lang("Tendances")</div>
                                             @foreach($property->typetransactions as $typetrans)
                                                 <div class="homes-tag button alt sale">{{$typetrans->name}}</div>
@@ -269,7 +269,7 @@
                                     <!-- homes address -->
                                     <h3>{{$property->name}}</h3>
                                     <p class="homes-address mb-3">
-                                        <a href="{{url('/user-properties-detail/'.$property->id)}}">
+                                        <a href="">
                                             <i class="fa fa-map-marker"></i><span>{{$property->adresse}}</span>
                                         </a>
                                     </p>

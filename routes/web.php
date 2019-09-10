@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/', 'WelcomeController@index');
+//    ->name('bienvenue');
 Auth::routes(['verify' => true]);
 //  Homepage Route - Redirect based on user role is in controller.
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
@@ -106,6 +107,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user-agents', 'UsersManagementController@showAgents');
 
     Route::get('/property-valid','PropertyController@ShowValidProperty');
+
+    Route::get('/property-published','PropertyController@AdminPublishedProperty');
 
 });
 

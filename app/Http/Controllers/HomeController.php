@@ -33,9 +33,24 @@ class HomeController extends Controller
             $propertycount = Property::all()->count();
             $usercount = User::all()->count();
             $reservationcount = DB::table('reserver')
-                ->where('status', '=', 1)->get();
+                ->where('status', '=', 1)
+                ->orderBy('updated_at')
+                ->get();
+
+//            $valid_res = DB::table("reserver")
+//                ->select('created_at',DB::raw("COUNT(*) as count_row"))
+//                ->orderBy("created_at")
+//                ->groupBy(DB::raw("created_at"))
+//                ->where('status','=',1)
+//                ->get();
+
+
             $supervise = DB::table('assignment')->get();
-            return view('home', compact('propertycount', 'usercount', 'reservationcount','supervise'));
+            return view('home', compact('propertycount',
+                'usercount', 'reservationcount',
+                'supervise',
+            'valid_res'
+            ));
         } elseif ($user->hasrole('Agents')) {
             return view('agent.home');
         }
@@ -51,8 +66,34 @@ class HomeController extends Controller
      */
 
     public function  Charts(){
-        $reservation =   $reservationcount = DB::table('reserver')
-            ->where('status', '=', 1)->get();
-        return response()->json($reservation);
+        $valid_res = DB::table("reserver")
+            ->select('created_at',DB::raw("COUNT(*) as count_row"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("created_at"))
+            ->where('status','=',1)
+            ->get();
+
+        $ask_res = DB::table("reserver")
+            ->select('created_at',DB::raw("COUNT(*) as count_row"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("created_at"))
+            ->where('status','=',0)
+            ->get();
+
+        $cancel_res = DB::table("reserver")
+            ->select('created_at',DB::raw("COUNT(*) as count_row"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("created_at"))
+            ->where('status','=',1)
+            ->get();
+
+     $locality = DB::table('property')
+         ->select('locality', DB::raw('COUNT(locality) AS occurrences'))
+            ->groupBy('locality')
+            ->orderBy('occurrences', 'DESC')
+            ->limit(10)
+            ->get();
+
+        return response()->json($valid_res);
     }
 }

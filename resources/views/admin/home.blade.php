@@ -130,14 +130,14 @@
                                     </button>
                                     <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
                                         <label class="btn btn-outline-secondary">
-                                            <input id="option1" type="radio" name="options" autocomplete="off"> Day
+                                            <input id="option1" type="radio" name="options" autocomplete="off"> Jour
                                         </label>
                                         <label class="btn btn-outline-secondary active">
                                             <input id="option2" type="radio" name="options" autocomplete="off"
-                                                   checked=""> Month
+                                                   checked=""> Mois
                                         </label>
                                         <label class="btn btn-outline-secondary">
-                                            <input id="option3" type="radio" name="options" autocomplete="off"> Year
+                                            <input id="option3" type="radio" name="options" autocomplete="off"> Annee
                                         </label>
                                     </div>
                                 </div>
@@ -197,375 +197,132 @@
                 </div>
             </div>
         </main>
-        <aside class="aside-menu">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
-                        <i class="icon-list"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
-                        <i class="icon-speech"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
-                        <i class="icon-settings"></i>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="timeline" role="tabpanel">
-                    <div class="list-group list-group-accent">
-                        <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</div>
-                        <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
-                            <div class="avatar float-right">
-                                <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
-                            </div>
-                            <div>Meeting with
-                                <strong>Lucas</strong>
-                            </div>
-                            <small class="text-muted mr-3">
-                                <i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
-                            <small class="text-muted">
-                                <i class="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>
-                        </div>
-                        <div class="list-group-item list-group-item-accent-info">
-                            <div class="avatar float-right">
-                                <img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com">
-                            </div>
-                            <div>Skype with
-                                <strong>Megan</strong>
-                            </div>
-                            <small class="text-muted mr-3">
-                                <i class="icon-calendar"></i>&nbsp; 4 - 5pm</small>
-                            <small class="text-muted">
-                                <i class="icon-social-skype"></i>&nbsp; On-line</small>
-                        </div>
-                        <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Tomorrow</div>
-                        <div class="list-group-item list-group-item-accent-danger list-group-item-divider">
-                            <div>New UI Project -
-                                <strong>deadline</strong>
-                            </div>
-                            <small class="text-muted mr-3">
-                                <i class="icon-calendar"></i>&nbsp; 10 - 11pm</small>
-                            <small class="text-muted">
-                                <i class="icon-home"></i>&nbsp; creativeLabs HQ</small>
-                            <div class="avatars-stack mt-2">
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/2.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/3.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/5.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-group-item list-group-item-accent-success list-group-item-divider">
-                            <div>
-                                <strong>#10 Startups.Garden</strong> Meetup</div>
-                            <small class="text-muted mr-3">
-                                <i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
-                            <small class="text-muted">
-                                <i class="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>
-                        </div>
-                        <div class="list-group-item list-group-item-accent-primary list-group-item-divider">
-                            <div>
-                                <strong>Team meeting</strong>
-                            </div>
-                            <small class="text-muted mr-3">
-                                <i class="icon-calendar"></i>&nbsp; 4 - 6pm</small>
-                            <small class="text-muted">
-                                <i class="icon-home"></i>&nbsp; creativeLabs HQ</small>
-                            <div class="avatars-stack mt-2">
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/2.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/3.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/5.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                                <div class="avatar avatar-xs">
-                                    <img class="img-avatar" src="img/avatars/8.jpg" alt="admin@bootstrapmaster.com">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane p-3" id="messages" role="tabpanel">
-                    <div class="message">
-                        <div class="py-3 pb-5 mr-3 float-left">
-                            <div class="avatar">
-                                <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
-                                <span class="avatar-status badge-success"></span>
-                            </div>
-                        </div>
-                        <div>
-                            <small class="text-muted">Lukasz Holeczek</small>
-                            <small class="text-muted float-right mt-1">1:52 PM</small>
-                        </div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
-                    </div>
-                    <hr>
-                    <div class="message">
-                        <div class="py-3 pb-5 mr-3 float-left">
-                            <div class="avatar">
-                                <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
-                                <span class="avatar-status badge-success"></span>
-                            </div>
-                        </div>
-                        <div>
-                            <small class="text-muted">Lukasz Holeczek</small>
-                            <small class="text-muted float-right mt-1">1:52 PM</small>
-                        </div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
-                    </div>
-                    <hr>
-                    <div class="message">
-                        <div class="py-3 pb-5 mr-3 float-left">
-                            <div class="avatar">
-                                <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
-                                <span class="avatar-status badge-success"></span>
-                            </div>
-                        </div>
-                        <div>
-                            <small class="text-muted">Lukasz Holeczek</small>
-                            <small class="text-muted float-right mt-1">1:52 PM</small>
-                        </div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
-                    </div>
-                    <hr>
-                    <div class="message">
-                        <div class="py-3 pb-5 mr-3 float-left">
-                            <div class="avatar">
-                                <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
-                                <span class="avatar-status badge-success"></span>
-                            </div>
-                        </div>
-                        <div>
-                            <small class="text-muted">Lukasz Holeczek</small>
-                            <small class="text-muted float-right mt-1">1:52 PM</small>
-                        </div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
-                    </div>
-                    <hr>
-                    <div class="message">
-                        <div class="py-3 pb-5 mr-3 float-left">
-                            <div class="avatar">
-                                <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
-                                <span class="avatar-status badge-success"></span>
-                            </div>
-                        </div>
-                        <div>
-                            <small class="text-muted">Lukasz Holeczek</small>
-                            <small class="text-muted float-right mt-1">1:52 PM</small>
-                        </div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
-                    </div>
-                </div>
-                <div class="tab-pane p-3" id="settings" role="tabpanel">
-                    <h6>Settings</h6>
-                    <div class="aside-options">
-                        <div class="clearfix mt-4">
-                            <small>
-                                <b>Option 1</b>
-                            </small>
-                            <label class="switch switch-label switch-pill switch-success switch-sm float-right">
-                                <input class="switch-input" type="checkbox" checked="">
-                                <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
-                        </div>
-                    </div>
-                    <div class="aside-options">
-                        <div class="clearfix mt-3">
-                            <small>
-                                <b>Option 2</b>
-                            </small>
-                            <label class="switch switch-label switch-pill switch-success switch-sm float-right">
-                                <input class="switch-input" type="checkbox">
-                                <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
-                        </div>
-                    </div>
-                    <div class="aside-options">
-                        <div class="clearfix mt-3">
-                            <small>
-                                <b>Option 3</b>
-                            </small>
-                            <label class="switch switch-label switch-pill switch-success switch-sm float-right">
-                                <input class="switch-input" type="checkbox">
-                                <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="aside-options">
-                        <div class="clearfix mt-3">
-                            <small>
-                                <b>Option 4</b>
-                            </small>
-                            <label class="switch switch-label switch-pill switch-success switch-sm float-right">
-                                <input class="switch-input" type="checkbox" checked="">
-                                <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <hr>
-                    <h6>System Utilization</h6>
-                    <div class="text-uppercase mb-1 mt-4">
-                        <small>
-                            <b>CPU Usage</b>
-                        </small>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-muted">348 Processes. 1/4 Cores.</small>
-                    <div class="text-uppercase mb-1 mt-2">
-                        <small>
-                            <b>Memory Usage</b>
-                        </small>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-muted">11444GB/16384MB</small>
-                    <div class="text-uppercase mb-1 mt-2">
-                        <small>
-                            <b>SSD 1 Usage</b>
-                        </small>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-muted">243GB/256GB</small>
-                    <div class="text-uppercase mb-1 mt-2">
-                        <small>
-                            <b>SSD 2 Usage</b>
-                        </small>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-muted">25GB/256GB</small>
-                </div>
-            </div>
-        </aside>
+      @include('common.aside')
     </div>
 @endsection
 @section('script')
     <!-- Plugins and scripts required by this view-->
-    <script src="{{asset('js/chart.js-2.8.0/dist/Chart.min.js')}}"></script>
-{{--    <script src="{{asset('js/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js')}}"></script>--}}
+    <script src="{{asset('js/chart.js/dist/Chart.min.js')}}"></script>
+    <script src="{{asset('js/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+{{--    <script>--}}
+{{--        var url="{{url('/show-charts')}}";--}}
+{{--        var Month = new Array();--}}
+{{--        var Labels = new Array();--}}
 
-{{--    <script src="{{asset('js/main.js')}}"></script>--}}
+{{--       // $(document).ready(function(data){--}}
+{{--           $.get(url,function (response) {--}}
+{{--               response.forEach(function(data){--}}
+{{--                   Month.push(data.created_at);--}}
+{{--                   Labels.push(data.user_id);--}}
+{{--               });--}}
+{{--               console.log(Month);--}}
+{{--               var ctx = document.getElementById('main-chart');--}}
+{{--               var myChart = new Chart(ctx, {--}}
+{{--                   type: 'bar',--}}
+{{--                   data: {--}}
+{{--                       labels: Month ,--}}
+{{--                       backgroundColor: [--}}
+{{--                           'rgba(255, 99, 132, 0.2)'],--}}
+{{--                       datasets: [{--}}
+{{--                           label: '# Réservations',--}}
+{{--                           backgroundColor: [--}}
+{{--                               'rgba(255, 99, 132, 0.2)'],--}}
+{{--                           data: Labels ,--}}
+{{--                           borderWidth: 1--}}
+{{--                       }]--}}
+{{--                   },--}}
+{{--                   options: {--}}
+{{--                       scales: {--}}
+{{--                           yAxes: [{--}}
+{{--                               ticks: {--}}
+{{--                                   beginAtZero: true--}}
+{{--                               }--}}
+{{--                           }]--}}
+{{--                       }--}}
+{{--                   }--}}
+{{--               });--}}
+{{--           });--}}
+{{--        //});--}}
+
+
+{{--    </script>--}}
+
     <script>
-        var url="{{url('/show-charts')}}";
+        // main charts for admin
+        var url = "{{url('/show-charts')}}";
         var Month = new Array();
         var Labels = new Array();
 
+        var Ask_resMonth = new Array();
+        var Ask_resLabels= new Array();
+
        // $(document).ready(function(data){
-           $.get(url,function (response) {
-               response.forEach(function(data){
-                   Month.push(data.created_at);
-                   Labels.push(data.user_id);
-               });
-               console.log(Month);
-               var ctx = document.getElementById('main-chart');
-               var myChart = new Chart(ctx, {
-                   type: 'bar',
-                   data: {
-                       labels: Month ,
-                       backgroundColor: [
-                           'rgba(255, 99, 132, 0.2)'],
-                       datasets: [{
-                           label: '# Réservations',
-                           backgroundColor: [
-                               'rgba(255, 99, 132, 0.2)'],
-                           data: Labels ,
-                           borderWidth: 1
-                       }]
-                   },
-                   options: {
-                       scales: {
-                           yAxes: [{
-                               ticks: {
-                                   beginAtZero: true
-                               }
+               $.get(url,function (response) {
+                   response.forEach(function (data) {
+                       Month.push(data.created_at);
+                       Labels.push(data.count_row);
+                   });
+
+                   var mainChart = new Chart($('#main-chart'), {
+                       type: 'line',
+                       data: {
+                           // labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                           labels: Month,
+                           datasets: [{
+                               label: 'Reservation Complete',
+                               backgroundColor: hexToRgba(getStyle('--info'), 10),
+                               borderColor: getStyle('--info'),
+                               pointHoverBackgroundColor: '#fff',
+                               borderWidth: 3,
+                               data: Labels
+                           }, {
+                               label: 'Demande de réservation',
+                               backgroundColor: 'transparent',
+                               borderColor: getStyle('--success'),
+                               pointHoverBackgroundColor: '#fff',
+                               borderWidth: 2,
+                               data: [92, 97, 80, 100, 86, 97, 83, 98, 87, 98, 93, 83, 87, 98, 96, 84, 91, 97, 88, 86, 94, 86, 95, 91, 98, 91, 92, 80, 83, 82]
+                           }, {
+                               label: 'Demande de réservation non conclue',
+                               backgroundColor: 'transparent',
+                               borderColor: getStyle('--danger'),
+                               pointHoverBackgroundColor: '#fff',
+                               borderWidth: 1,
+                               borderDash: [8, 5],
+                               data: [65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65]
                            }]
+                       },
+                       options: {
+                           maintainAspectRatio: false,
+                           legend: {
+                               display: false
+                           },
+                           scales: {
+                               xAxes: [{
+                                   gridLines: {
+                                       drawOnChartArea: false
+                                   }
+                               }],
+                               yAxes: [{
+                                   ticks: {
+                                       beginAtZero: false,
+                                      // maxTicksLimit: 5,
+                                       //stepSize: Math.ceil(250 / 5),
+                                       //max: 250
+                                   }
+                               }]
+                           },
+                           elements: {
+                               point: {
+                                   radius: 0,
+                                   hitRadius: 10,
+                                   hoverRadius: 4,
+                                   hoverBorderWidth: 3
+                               }
+                           }
                        }
-                   }
-               });
-           });
-        //});
-
-
-    </script>
-{{--    <script>--}}
-{{--        var url = "{{url('stock/chart')}}";--}}
-{{--        var Years = new Array();--}}
-{{--        var Labels = new Array();--}}
-{{--        var Prices = new Array();--}}
-{{--        $(document).ready(function(){--}}
-{{--            $.get(url, function(response){--}}
-{{--                response.forEach(function(data){--}}
-{{--                    Years.push(data.stockYear);--}}
-{{--                    Labels.push(data.stockName);--}}
-{{--                    Prices.push(data.stockPrice);--}}
-{{--                });--}}
-{{--                var ctx = document.getElementById("canvas").getContext('2d');--}}
-{{--                var myChart = new Chart(ctx, {--}}
-{{--                    type: 'bar',--}}
-{{--                    data: {--}}
-{{--                        labels:Years,--}}
-{{--                        datasets: [{--}}
-{{--                            label: 'Infosys Price',--}}
-{{--                            data: Prices,--}}
-{{--                            borderWidth: 1--}}
-{{--                        }]--}}
-{{--                    },--}}
-{{--                    options: {--}}
-{{--                        scales: {--}}
-{{--                            yAxes: [{--}}
-{{--                                ticks: {--}}
-{{--                                    beginAtZero:true--}}
-{{--                                }--}}
-{{--                            }]--}}
-{{--                        }--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
-@endsection
+                   });
+               })
+        </script>
+    @endsection

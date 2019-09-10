@@ -24,7 +24,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{url('/property-published')}}">
                 <i class="nav-icon icon-pencil"></i>@lang("Publiés")
                 <span class="badge badge-success">NEW</span>
             </a>

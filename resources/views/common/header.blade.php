@@ -4,8 +4,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="img/brand/logo.svg" width="100" height="55" alt="ImmoSolu Logo">
-        <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="ImmoSolu Logo">
+        <img class="navbar-brand-full" src="img/brand/logo.svg" width="100" height="55" alt="ImmoSolutions">
+        <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="ImmoSolution Logo">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
@@ -46,44 +46,44 @@
                 <div class="dropdown-header text-center">
                     <strong>{{Auth::user()->name}}</strong>
                 </div>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-bell-o"></i> Updates
-                    <span class="badge badge-info">42</span>
-                </a>
+{{--                <a class="dropdown-item" href="#">--}}
+{{--                    <i class="fa fa-bell-o"></i> Updates--}}
+{{--                    <span class="badge badge-info">42</span>--}}
+{{--                </a>--}}
                 <a class="dropdown-item" href="#">
                     <i class="fa fa-envelope-o"></i> Messages
                     <span class="badge badge-success">42</span>
                 </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-tasks"></i> Tasks
-                    <span class="badge badge-danger">42</span>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-comments"></i> Comments
-                    <span class="badge badge-warning">42</span>
-                </a>
+{{--                <a class="dropdown-item" href="#">--}}
+{{--                    <i class="fa fa-tasks"></i> Tasks--}}
+{{--                    <span class="badge badge-danger">42</span>--}}
+{{--                </a>--}}
+{{--                <a class="dropdown-item" href="#">--}}
+{{--                    <i class="fa fa-comments"></i> Comments--}}
+{{--                    <span class="badge badge-warning">42</span>--}}
+{{--                </a>--}}
                 <div class="dropdown-header text-center">
-                    <strong>Settings</strong>
+                    <strong>@lang("Paramètres")</strong>
                 </div>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-user"></i> Profile</a>
+                    <i class="fa fa-user"></i> @lang("Profile")</a>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-wrench"></i> Settings</a>
+                    <i class="fa fa-wrench"></i> @lang("Paramètres")</a>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-usd"></i> Payments
+                    <i class="fa fa-usd"></i> @lang("Paiement")
                     <span class="badge badge-secondary">42</span>
                 </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-file"></i> Projects
-                    <span class="badge badge-primary">42</span>
-                </a>
+{{--                <a class="dropdown-item" href="#">--}}
+{{--                    <i class="fa fa-file"></i> Projects--}}
+{{--                    <span class="badge badge-primary">42</span>--}}
+{{--                </a>--}}
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-shield"></i> Lock Account</a>
+                    <i class="fa fa-shield"></i> @lang("Gestion de Compte")</a>
                 <a class="dropdown-item" href="{{url('/deconnect')}}
 {{--{{\Illuminate\Support\Facades\Auth::logout()}}--}}
                     ">
-                    <i class="fa fa-lock"></i> Logout</a>
+                    <i class="fa fa-lock"></i> @lang("Se Deconnecter")</a>
             </div>
         </li>
     </ul>

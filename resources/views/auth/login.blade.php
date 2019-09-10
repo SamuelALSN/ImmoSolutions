@@ -8,7 +8,7 @@
                     <div class="card p-4">
                         <div class="card-body">
                             <h1>@lang("Connexion")</h1>
-                            <p class="text-muted"> @lang("Connecter vous ")</p>
+                            <p class="text-muted"> @lang("Connectez vous ")</p>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="input-group mb-3">

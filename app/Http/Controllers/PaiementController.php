@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Property;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,11 @@ class PaiementController extends Controller
         if ($charge) {
             DB::table('reserver')
                 ->where('id', $request->reserv_id)
-                ->update(['status' => 1]);
+                ->update([
+                    'status' => 1,
+                    'updated_at'=>Carbon::now()
+                ]);
+
         }
         $property_id = DB::table('reserver')
             ->where('id', $request->reserv_id)->select('property_id')->get();

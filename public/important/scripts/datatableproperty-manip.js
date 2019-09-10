@@ -46,7 +46,7 @@ $(document).ready(function () {
         console.log(showdata[6]);
 
         $('.showparagraph').html('l\'Agent ' + showdata[1] + ' est affecté au bien ' + '<br>'
-            + ' [ ' + showdata[6] + ' ]');
+            + '<hr>' + showdata[6].split(',') + ' ');
     });
 
     /*
@@ -171,6 +171,8 @@ $(document).ready(function () {
 
                                     if(user_prop.array=="error"){
                                         alertify.error("Vous ne pouvez pas attribué un meme bien a pluisieurs agents");
+                                        $('input[type=checkbox]').prop('checked', false);
+                                        $('#assign').prop('checked', false);
                                     }else if(user_prop.array=="success"){
                                         alertify.success("Bien attribué")
                                     }else if(user_prop="detach"){
@@ -188,8 +190,9 @@ $(document).ready(function () {
                 }
                 , function () {
 
-                    //$('input[type=checkbox]').prop('checked', false);
-                    $('#assign').prop("checked", false);
+                    $('input[type=checkbox]').prop('checked', false);
+                    //console.log($(this))
+                    //$(this).prop("checked", false);
                     alertify.error('Bien non attribué')
                 });
 

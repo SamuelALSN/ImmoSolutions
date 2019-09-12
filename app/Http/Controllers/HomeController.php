@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Property;
 use App\User;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -49,10 +49,49 @@ class HomeController extends Controller
             return view('home', compact('propertycount',
                 'usercount', 'reservationcount',
                 'supervise',
-            'valid_res'
+                'valid_res'
             ));
         } elseif ($user->hasrole('Agents')) {
-            return view('agent.home');
+
+            $agents_properties = Property::has('images')->whereHas('assignment', function (Builder $query) {
+                $query->where('user_id', '=', Auth::user()->id);
+                //$query->orderBy('created_at','DESC');
+            })->get();
+
+            $valid_properties = Property::has('images')->whereHas('assignment', function (Builder $query) {
+                $query->where('user_id', '=', Auth::user()->id);
+                $query->where('status', '=', 1);
+                //$query->orderBy('created_at','DESC');
+            })->get();
+
+
+//            $properties_reserv = Property::has('assignment')->whereHas('reservation', function (Builder $query) {
+//                //$query->where('assignment.user_id', '=', Auth::user()->id);
+//                $query->where('status', '=', 1);
+//                //$query->orderBy('created_at','DESC');
+//            })->where('assignment.user_id','=',Auth::user()->id)
+//                ->get();
+//
+//            dd($properties_reserv);
+
+            $reserv_properties = DB::table('reserver')
+                ->join('assignment', function ($join) {
+                    $join->on('reserver.property_id', '=', 'assignment.property_id')
+                        ->where('reserver.status', '=', 1)
+                        ->where('assignment.user_id', '=', Auth::user()->id);
+                })
+                ->get();
+
+            $ask_properties = DB::table('reserver')
+                ->join('assignment', function ($join) {
+                    $join->on('reserver.property_id', '=', 'assignment.property_id')
+                        ->where('reserver.status', '=', 0)
+                        ->where('assignment.user_id', '=', Auth::user()->id);
+                })
+                ->get();
+
+            // dd($reserv_properties);
+            return view('agent.home', compact('agents_properties', 'valid_properties', 'reserv_properties','ask_properties'));
         }
 
         //return view('guest.home');
@@ -65,30 +104,31 @@ class HomeController extends Controller
      * Static Section
      */
 
-    public function  Charts(){
+    public function Charts()
+    {
         $valid_res = DB::table("reserver")
-            ->select('created_at',DB::raw("COUNT(*) as count_row"))
+            ->select('created_at', DB::raw("COUNT(*) as count_row"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("created_at"))
-            ->where('status','=',1)
+            ->where('status', '=', 1)
             ->get();
 
         $ask_res = DB::table("reserver")
-            ->select('created_at',DB::raw("COUNT(*) as count_row"))
+            ->select('created_at', DB::raw("COUNT(*) as count_row"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("created_at"))
-            ->where('status','=',0)
+            ->where('status', '=', 0)
             ->get();
 
         $cancel_res = DB::table("reserver")
-            ->select('created_at',DB::raw("COUNT(*) as count_row"))
+            ->select('created_at', DB::raw("COUNT(*) as count_row"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("created_at"))
-            ->where('status','=',1)
+            ->where('status', '=', 1)
             ->get();
 
-     $locality = DB::table('property')
-         ->select('locality', DB::raw('COUNT(locality) AS occurrences'))
+        $locality = DB::table('property')
+            ->select('locality', DB::raw('COUNT(locality) AS occurrences'))
             ->groupBy('locality')
             ->orderBy('occurrences', 'DESC')
             ->limit(10)

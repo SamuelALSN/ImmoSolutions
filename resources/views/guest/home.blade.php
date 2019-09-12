@@ -121,7 +121,7 @@
     {{--    </section>--}}
     <!-- START SECTION SEARCH AREA -->
     <section class="main-search-field">
-        <form action="" method="POST">
+        <form action="{{url('/Search')}}" method="POST">
             @csrf
             <div class="container">
                 <h3>@lang("Trouvez votre Maison de rève")</h3>
@@ -523,6 +523,10 @@
             });
         }
 
+    </script>
+
+    <script>
+        // script for search 
     </script>
     <script src="{{asset('guest/js/script.js')}}"></script>
     @include('guest.myscripts.locate')

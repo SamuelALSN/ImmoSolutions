@@ -34,7 +34,7 @@
                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
                      data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;"
                      data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on"
-                     style="z-index: 6; min-width: 600px; max-width: 600px; white-space: normal;">@lang("La Plateforme idéal")
+                     style="z-index: 6; min-width: 600px; max-width: 600px; white-space: normal;">@lang("La Plateforme idéale")
                     <span class="text-theme-colored2"></span>
                     @lang("Pour trouver ")<span class="text-theme-colored2">@lang(" Votre Logement") </span>.
                 </div>

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Property;
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class searchController extends Controller
 {
@@ -37,57 +37,70 @@ class searchController extends Controller
     public function store(Request $request)
     {
 
-        if (!empty($request->adresse)) {
-            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
-                $query->where('adresse', 'like', '%' . $request->adresse . '%');
-            })->get();
+        $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
+            $query->orWhere('adresse', 'like', '%' . $request->adresse . '%');
+            $query->orwhere('route', 'like', '%' . $request->route . '%');
+            $query->orwhere('locality', 'like', '%' . $request->locality . '%');
+            $query->orwhere('administrative_area_level_1', 'like', '%' . $request->region . '%');
+            $query->orwhere('country', 'like', '%' . $request->country . '%');
+            $query->orwhere('propertytype_id', '=', $request->categorie);
+            $query->orwhere('area', '=', $request->area);
+            $query->orwhere('rooms', '=', $request->rooms);
+            $query->orwhere('bathRooms', '=', $request->bathRooms);
+        })->get();
+        return $properties;
 
-            return $properties;
-        } elseif (!empty($request->adresse) && (!empty($request->categorie))
-            && (!empty($request->area)) && (!empty($request->rooms)) && (!empty($request->bathRooms))) {
-            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
-                $query->where('adresse', 'like', '%' . $request->adresse . '%');
-//            $query->where('route', 'like', '%' . $request->route . '%');
-//            $query->where('locality', 'like', '%' . $request->locality . '%');
-//            $query->where('administrative_area_level_1', 'like', '%' . $request->region . '%');
-//            $query->where('country', 'like', '%' . $request->country . '%');
-                $query->where('propertytype_id', '=', $request->categorie);
-                $query->where('area', '=', $request->area);
-                $query->where('rooms', '=', $request->rooms);
-                $query->where('bathRooms', '=', $request->bathRooms);
-            })->get();
-            return $properties;
-        } elseif (!empty($request->status)) {
+//        if (!empty($request->adresse)) {
 //            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
 //                $query->where('adresse', 'like', '%' . $request->adresse . '%');
+//            })->get();
+//
+//            return $properties;
+//        } elseif (!empty($request->adresse) && (!empty($request->categorie))
+//            && (!empty($request->area)) && (!empty($request->rooms)) && (!empty($request->bathRooms))) {
+//            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
+//                $query->where('adresse', 'like', '%' . $request->adresse . '%');
+////            $query->where('route', 'like', '%' . $request->route . '%');
+////            $query->where('locality', 'like', '%' . $request->locality . '%');
+////            $query->where('administrative_area_level_1', 'like', '%' . $request->region . '%');
+////            $query->where('country', 'like', '%' . $request->country . '%');
+//                $query->where('propertytype_id', '=', $request->categorie);
 //                $query->where('area', '=', $request->area);
 //                $query->where('rooms', '=', $request->rooms);
 //                $query->where('bathRooms', '=', $request->bathRooms);
 //            })->get();
-            $properties = Property::whereHas('typetransactions', function (Builder $query) use ($request) {
-                $query->where('transactiontype_id', '=', $request->status);
-            })->get();
-            return $properties;
-        } elseif (empty($request->area)) {
-            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
-                $query->where('adresse', 'like', '%' . $request->adresse . '%');
-                $query->where('propertytype_id', '=', $request->categorie);
-                $query->where('rooms', '=', $request->rooms);
-                $query->where('bathRooms', '=', $request->bathRooms);
-            })->get();
-            return $properties;
-        } elseif (!empty($request->status)) {
-            dd($request->status);
-            $properties = Property::whereHas('typetransactions', function (Builder $query) use ($request) {
-                $query->where('transactiontype_id', '=', $request->status);
-            })->get();
-            return $properties;
-        } elseif (!empty($request->categorie)) {
-            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
-                $query->where('property_id', '=', $request->categorie);
-            })->get();
-            return $properties;
-        }
+//            return $properties;
+//        } elseif (!empty($request->status)) {
+////            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
+////                $query->where('adresse', 'like', '%' . $request->adresse . '%');
+////                $query->where('area', '=', $request->area);
+////                $query->where('rooms', '=', $request->rooms);
+////                $query->where('bathRooms', '=', $request->bathRooms);
+////            })->get();
+//            $properties = Property::whereHas('typetransactions', function (Builder $query) use ($request) {
+//                $query->where('transactiontype_id', '=', $request->status);
+//            })->get();
+//            return $properties;
+//        } elseif (empty($request->area)) {
+//            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
+//                $query->where('adresse', 'like', '%' . $request->adresse . '%');
+//                $query->where('propertytype_id', '=', $request->categorie);
+//                $query->where('rooms', '=', $request->rooms);
+//                $query->where('bathRooms', '=', $request->bathRooms);
+//            })->get();
+//            return $properties;
+//        } elseif (!empty($request->status)) {
+//            dd($request->status);
+//            $properties = Property::whereHas('typetransactions', function (Builder $query) use ($request) {
+//                $query->where('transactiontype_id', '=', $request->status);
+//            })->get();
+//            return $properties;
+//        } elseif (!empty($request->categorie)) {
+//            $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
+//                $query->where('property_id', '=', $request->categorie);
+//            })->get();
+//            return $properties;
+//        }
     }
 
     /**

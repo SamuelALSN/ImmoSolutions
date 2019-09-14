@@ -13,11 +13,11 @@
         <main class="main">
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">@lang("Accueil")</li>
                 <li class="breadcrumb-item">
                     <a href="#">Admin</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">@lang("Tableau de Bord ")</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -25,7 +25,7 @@
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
-                            <i class="icon-graph"></i>  Dashboard</a>
+                            <i class="icon-graph"></i>@lang("Tableau de Bord ")</a>
                         <a class="btn" href="#">
                             <i class="icon-settings"></i>  @lang("Parametres")</a>
                     </div>
@@ -102,6 +102,12 @@
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
+                                                        aria-label="Date registered: activate to sort column ascending"
+                                                        style="width: 201px;"> @lang("Montant") FCFA
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
                                                         aria-label="Actions: activate to sort column ascending"
                                                         style="width: 209px;">Actions
                                                     </th>
@@ -156,6 +162,11 @@
                                                                 <span
                                                                     class="badge badge-{{$badgeClass}}">{{$status_p}}</span>
                                                             @endforeach
+                                                        </td>
+                                                        <td>
+                                                            @foreach($property->typetransactions as $trans)
+                                                                {{$trans->pivot->ammount}}
+                                                                @endforeach
                                                         </td>
                                                         <td>
                                                             <a class="btn btn-success" data-toggle="modal"

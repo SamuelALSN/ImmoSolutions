@@ -33,11 +33,11 @@
         <li class="nav-title">@lang("Réservations")</li>
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="">
-                <i class="nav-icon icon-puzzle"></i> @lang("Toutes les réservations")</a>
+                <i class="nav-icon icon-puzzle"></i> @lang("Réservations")</a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/reserver')}}">
-                        <i class="nav-icon icon-puzzle"></i>@lang("En cours")</a>
+                        <i class="nav-icon icon-puzzle"></i>@lang("Toutes les réservations")</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">

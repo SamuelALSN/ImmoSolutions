@@ -32,7 +32,7 @@ class PaiementController extends Controller
         Stripe::setApiKey('sk_test_KJddUc2VYytgy53PvlPgDCUk00l0l9LzRR');
         $charge = Charge::create(
             array(
-                "amount" => $request->price * 100,
+                "amount" => $request->price,
                 "source" => $request->stripeToken,
                 "currency" => "usd",
                 "description" => 'Paiement réservation',

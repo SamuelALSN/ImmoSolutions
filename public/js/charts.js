@@ -18,30 +18,6 @@ var random = function random() {
 }; // eslint-disable-next-line no-unused-vars
 
 
-var lineChart = new Chart($('#canvas-1'), {
-  type: 'line',
-  data: {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgba(220, 220, 220, 0.2)',
-      borderColor: 'rgba(220, 220, 220, 1)',
-      pointBackgroundColor: 'rgba(220, 220, 220, 1)',
-      pointBorderColor: '#fff',
-      data: [random(), random(), random(), random(), random(), random(), random()]
-    }, {
-      label: 'My Second dataset',
-      backgroundColor: 'rgba(151, 187, 205, 0.2)',
-      borderColor: 'rgba(151, 187, 205, 1)',
-      pointBackgroundColor: 'rgba(151, 187, 205, 1)',
-      pointBorderColor: '#fff',
-      data: [random(), random(), random(), random(), random(), random(), random()]
-    }]
-  },
-  options: {
-    responsive: true
-  }
-}); // eslint-disable-next-line no-unused-vars
 
 var barChart = new Chart($('#canvas-2'), {
   type: 'bar',
@@ -66,20 +42,6 @@ var barChart = new Chart($('#canvas-2'), {
   }
 }); // eslint-disable-next-line no-unused-vars
 
-var doughnutChart = new Chart($('#canvas-3'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Red', 'Green', 'Yellow'],
-    datasets: [{
-      data: [300, 50, 100],
-      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-      hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-    }]
-  },
-  options: {
-    responsive: true
-  }
-}); // eslint-disable-next-line no-unused-vars
 
 var radarChart = new Chart($('#canvas-4'), {
   type: 'radar',
@@ -110,20 +72,6 @@ var radarChart = new Chart($('#canvas-4'), {
   }
 }); // eslint-disable-next-line no-unused-vars
 
-var pieChart = new Chart($('#canvas-5'), {
-  type: 'pie',
-  data: {
-    labels: ['Red', 'Green', 'Yellow'],
-    datasets: [{
-      data: [300, 50, 100],
-      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-      hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-    }]
-  },
-  options: {
-    responsive: true
-  }
-}); // eslint-disable-next-line no-unused-vars
 
 var polarAreaChart = new Chart($('#canvas-6'), {
   type: 'polarArea',

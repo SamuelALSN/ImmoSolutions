@@ -91,7 +91,7 @@ class HomeController extends Controller
                 ->get();
 
             // dd($reserv_properties);
-            return view('agent.home', compact('agents_properties', 'valid_properties', 'reserv_properties','ask_properties'));
+            return view('agent.home', compact('agents_properties', 'valid_properties', 'reserv_properties', 'ask_properties'));
         }
 
         //return view('guest.home');
@@ -127,13 +127,42 @@ class HomeController extends Controller
             ->where('status', '=', 1)
             ->get();
 
+
+        return response()->json($valid_res);
+    }
+
+    public function AllCharts()
+    {
+
         $locality = DB::table('property')
             ->select('locality', DB::raw('COUNT(locality) AS occurrences'))
             ->groupBy('locality')
             ->orderBy('occurrences', 'DESC')
-            ->limit(10)
             ->get();
 
-        return response()->json($valid_res);
+        $Scategories = DB::table('property')
+            ->join('propertytype','property.propertytype_id','=','propertytype.id')
+            ->select('propertytype.name','propertytype_id', DB::raw('COUNT(property.propertytype_id) AS occurrences'))
+            ->groupBy('propertytype_id')
+            ->orderBy('occurrences', 'DESC')
+            ->get();
+        $valid_res = DB::table("reserver")
+            ->select('created_at', DB::raw("COUNT(*) as count_row"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("created_at"))
+            ->where('status', '=', 1)
+            ->get();
+       // dd($categories);
+//        $base_categories = DB::table('propertytype')
+//            ->select('propertytype.name')
+//            ->joinSub($categories,'categories_label',function ($join){
+//                 $join->on('propertytype.id','=','categories_label.propertytype_id');
+//
+//            })->get();
+//        dd($base_categories);
+
+
+        return view('admin.charts', compact('locality','Scategories','valid_res'));
+
     }
 }

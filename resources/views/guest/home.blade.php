@@ -121,7 +121,7 @@
     {{--    </section>--}}
     <!-- START SECTION SEARCH AREA -->
     <section class="main-search-field">
-        <form action="{{url('/Search')}}" method="POST">
+        <form action="" method="POST">
             @csrf
             <div class="container">
                 <h3>@lang("Trouvez votre Maison de rève")</h3>
@@ -187,7 +187,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 b-search__main-form label">
-                        <input type="text" disabled="" class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
+                        <input id="amount" type="text" disabled="" class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
                         <div
                             class="slider-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
                             <div class="ui-slider-range ui-corner-all ui-widget-header"
@@ -270,7 +270,7 @@
                                     <h3>{{$property->name}}</h3>
                                     <p class="homes-address mb-3">
                                         <a href="">
-                                            <i class="fa fa-map-marker"></i><span>{{$property->adresse}}</span>
+                                            <i class="fa fa-map-marker"></i><span>{{substr($property->adresse,0,28)}}...</span>
                                         </a>
                                     </p>
                                     <!-- homes List -->
@@ -526,7 +526,68 @@
     </script>
 
     <script>
-        // script for search 
+        // script for search
+        $('#rechercher').on('click', function () {
+            event.preventDefault();
+            var token = $("input[name='_token']").val();
+            fetch('{{url('/Search')}}', {
+                headers: {
+                    "Content-type": "application/json;charset=utf-8",
+                    "Accept": "application/json,text-plain",
+                    "X-Requested-Width": "XMLHttpRequest",
+                    "X-CSRF-TOKEN": token
+                },
+                method: 'POST',
+                credentials: "same-origin",
+                body: JSON.stringify({
+                    adresse:$("#autocomplete").val(),
+                    route:$("#route").val(),
+                    locality:$("#locality").val(),
+                    region:$("#administrative_area_level_1").val(),
+                    country:$("#country").val(),
+                    status_bail:$("#trans").val(),
+                    categorie:$("#categorie").val(),
+                    area:$("#area").val(),
+                    rooms:$("#rooms").val(),
+                    bathRooms:$("#bathromms").val(),
+                    street_number :$("#street_number").val(),
+                    postal_code:$("#postal_code").val(),
+                    amount:$(".slider_amount").val(),
+                })
+            }).then((data) => {
+                    if (data.ok) {
+                        data.json().then(properties => {
+
+                            for (let i=0;i<= properties.length; i++){
+                                console.log(properties[i]);
+
+                               var section =  '';
+
+                            }
+                            {{--if ($.isEmptyObject(validation.error)) {--}}
+                            {{--    document.getElementById("TransactionForm").reset();--}}
+                            {{--    alertify.success(' ' + validation.success);--}}
+                            {{--    console.log(validation.success);--}}
+                            {{--    window.location.href = "{{url('/properties-all')}}";--}}
+                            {{--} else {--}}
+                            {{--    printErrorMsg(validation.error);--}}
+                            {{--    console.log(validation);--}}
+                            {{--}--}}
+                        })
+
+                    } else {
+                        console.error('Reponse serveur : ' + data.status);
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+        function scrollTo( target ) {
+            if( target.length ) {
+                $("html, body").stop().animate( { scrollTop: target.offset().top }, 1500);
+            }
+        }
     </script>
     <script src="{{asset('guest/js/script.js')}}"></script>
     @include('guest.myscripts.locate')

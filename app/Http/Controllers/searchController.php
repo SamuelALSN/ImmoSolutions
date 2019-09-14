@@ -36,8 +36,10 @@ class searchController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
 
-        $properties = Property::whereHas('assignment', function (Builder $query) use ($request) {
+        $properties = Property::whereHas('assignment',
+        function (Builder $query) use ($request) {
             $query->orWhere('adresse', 'like', '%' . $request->adresse . '%');
             $query->orwhere('route', 'like', '%' . $request->route . '%');
             $query->orwhere('locality', 'like', '%' . $request->locality . '%');

@@ -24,9 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::get('/admin', function () {
     return view('admin.home');
 });
-Route::get('/charts', function () {
-    return view('admin.charts');
-});
 
 
 #guest middleware
@@ -109,6 +106,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/property-valid','PropertyController@ShowValidProperty');
 
     Route::get('/property-published','PropertyController@AdminPublishedProperty');
+
+    Route::get('/charts','HomeController@AllCharts');
+
 
 });
 

@@ -100,77 +100,77 @@
 
                     <div class="single-add-property">
                         <h3>@lang("Localisation de la propriété")</h3>
-{{--                        <div class="property-form-group">--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-lg-12 col-md-12">--}}
-{{--                                    <div id="locationField">--}}
-{{--                                        <p>--}}
-{{--                                            <input id="autocomplete"--}}
-{{--                                                   placeholder="Entrez votre adresse"--}}
-{{--                                                   onFocus="geolocate()"--}}
-{{--                                                   type="text"/>--}}
-{{--                                        </p>--}}
+                    {{--                        <div class="property-form-group">--}}
+                    {{--                            <div class="row">--}}
+                    {{--                                <div class="col-lg-12 col-md-12">--}}
+                    {{--                                    <div id="locationField">--}}
+                    {{--                                        <p>--}}
+                    {{--                                            <input id="autocomplete"--}}
+                    {{--                                                   placeholder="Entrez votre adresse"--}}
+                    {{--                                                   onFocus="geolocate()"--}}
+                    {{--                                                   type="text"/>--}}
+                    {{--                                        </p>--}}
 
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
 
-{{--                            <div class="row">--}}
+                    {{--                            <div class="row">--}}
 
-{{--                                <div id="address">--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-lg-4 col-md-12">--}}
-{{--                                            <label for=""> @lang("Adresse")</label>--}}
-{{--                                            <p>--}}
-{{--                                                <input class="" id="street_number" disabled="true"--}}
-{{--                                                       placeholder="Numero Rue"/>--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-4 col-md-12">--}}
-{{--                                            <label for=""> @lang("Rue")</label>--}}
-{{--                                            <p>--}}
-{{--                                                <input class="" id="route" disabled="true" placeholder="rue"/>--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-4 col-md-12">--}}
-{{--                                            <p>--}}
-{{--                                                <label for="">@lang("ville") </label>--}}
-{{--                                                <input class="field" id="locality" disabled="true"/>--}}
-{{--                                            </p>--}}
+                    {{--                                <div id="address">--}}
+                    {{--                                    <div class="row">--}}
+                    {{--                                        <div class="col-lg-4 col-md-12">--}}
+                    {{--                                            <label for=""> @lang("Adresse")</label>--}}
+                    {{--                                            <p>--}}
+                    {{--                                                <input class="" id="street_number" disabled="true"--}}
+                    {{--                                                       placeholder="Numero Rue"/>--}}
+                    {{--                                            </p>--}}
+                    {{--                                        </div>--}}
+                    {{--                                        <div class="col-lg-4 col-md-12">--}}
+                    {{--                                            <label for=""> @lang("Rue")</label>--}}
+                    {{--                                            <p>--}}
+                    {{--                                                <input class="" id="route" disabled="true" placeholder="rue"/>--}}
+                    {{--                                            </p>--}}
+                    {{--                                        </div>--}}
+                    {{--                                        <div class="col-lg-4 col-md-12">--}}
+                    {{--                                            <p>--}}
+                    {{--                                                <label for="">@lang("ville") </label>--}}
+                    {{--                                                <input class="field" id="locality" disabled="true"/>--}}
+                    {{--                                            </p>--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class=" col-lg-4  col-md-12">--}}
-{{--                                            <p>--}}
-{{--                                                <label for=""> @lang("region")</label>--}}
-{{--                                                <input class="field" id="administrative_area_level_1" disabled="true"/>--}}
-{{--                                            </p>--}}
+                    {{--                                        </div>--}}
+                    {{--                                        <div class=" col-lg-4  col-md-12">--}}
+                    {{--                                            <p>--}}
+                    {{--                                                <label for=""> @lang("region")</label>--}}
+                    {{--                                                <input class="field" id="administrative_area_level_1" disabled="true"/>--}}
+                    {{--                                            </p>--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class=" col-lg-4 col-md-12">--}}
-{{--                                            <p>--}}
-{{--                                                <label for=""> @lang("Code postal") </label>--}}
-{{--                                                <input class="field" id="postal_code" disabled="true"/>--}}
-{{--                                            </p>--}}
+                    {{--                                        </div>--}}
+                    {{--                                        <div class=" col-lg-4 col-md-12">--}}
+                    {{--                                            <p>--}}
+                    {{--                                                <label for=""> @lang("Code postal") </label>--}}
+                    {{--                                                <input class="field" id="postal_code" disabled="true"/>--}}
+                    {{--                                            </p>--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class=" col-lg-4 col-md-12">--}}
-{{--                                            <p>--}}
-{{--                                                <label for=""> @lang("Pays") </label>--}}
-{{--                                                <input class="" id="country" disabled="true"/>--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                    {{--                                        </div>--}}
+                    {{--                                        <div class=" col-lg-4 col-md-12">--}}
+                    {{--                                            <p>--}}
+                    {{--                                                <label for=""> @lang("Pays") </label>--}}
+                    {{--                                                <input class="" id="country" disabled="true"/>--}}
+                    {{--                                            </p>--}}
+                    {{--                                        </div>--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
 
-{{--                            </div>--}}
-{{--                        </div>--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
 
-                        <!--test -->
+                    <!--test -->
                         <div class="form-group">
                             <label for="address_address">Addresse Complete</label>
                             <input type="text" id="address-input" name="address_address" class="form-control map-input">
-                            <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
-                            <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+                            <input type="hidden" name="address_latitude" id="address-latitude" value="0"/>
+                            <input type="hidden" name="address_longitude" id="address-longitude" value="0"/>
                             <!-- exact data -->
                             <input type="hidden" id="street_number" name=""/>
                             <input type="hidden" id="route" name=""/>
@@ -304,7 +304,7 @@
                     <div class="dz-success-mark">
                         <!-- SVG balise pour des contenues graphiques -->
                         <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             xmlns="http://www.w3.org/2000/svg"
                              xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 
                             <title>Correct </title>
@@ -324,7 +324,7 @@
                     <div class="dz-error-mark">
 
                         <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             xmlns="http://www.w3.org/2000/svg"
                              xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                             <title>error</title>
                             <desc></desc>
@@ -343,6 +343,19 @@
                 </div>
             </div>
             {{--Fin de  la zone  de chargement d'image --}}
+        </div>
+        <div>
+            <p></p>
+        </div>
+        <div class="add-property-button">
+            <div class="row text-center">
+                <div class="col-md-12 ">
+                    <div class="prperty-submit-button">
+                        <button class="btn btn-success"
+                                id="soumettre_image">@lang("Soumettre les Images ")</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <form id="TransactionForm" action="" method="POST" hidden>
@@ -375,12 +388,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="">@lang("Date Debut Transaction ")</label>
+                                    <label for="">@lang("Date Debut Bail ")</label>
 
                                     <p id="section_datedeb">
                                         <input id="datedeb" type="date">
                                     </p>
-                                    <label for="">@lang("Date Fin de Transaction " )</label>
+                                    <label id="label_datefin" for="">@lang("Date Fin Bail " )</label>
                                     <p id="section_datefin">
                                         <input id="datefin" type="date">
                                     </p>
@@ -474,7 +487,7 @@
         $("input[type='number']").hide();
         $('#surface').show();
         $('#label_meuble').hide();
-
+        $('#soumettre_image').hide();
         // input type date manipulation
         var dtToday = new Date();
         var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
@@ -487,9 +500,9 @@
 
         var maxDate = year + '-' + month + '-' + day;
         $('#buildingdate').attr('max', maxDate);
-        $('#datedeb').attr('min',maxDate);
-        $('#datefin').attr('min',maxDate);
-        $('#datevisite').attr('min',maxDate);
+        $('#datedeb').attr('min', maxDate);
+        $('#datefin').attr('min', maxDate);
+        $('#datevisite').attr('min', maxDate);
 
 
     });
@@ -624,6 +637,7 @@
                                 $('#propertyForm').slideUp("slow");
                                 $('#my-dropzone').removeAttr("hidden");
                                 $('#my-dropzone').slideUp(2000).slideDown(2000);
+                                $('#soumettre_image').show();
                                 $('.page-heading').show();
 
                                 alertify.success(' ' + validation.success);
@@ -642,6 +656,19 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+        });
+
+        $('#soumettre_image').on('click', function () {
+            $('.page-heading').slideUp("500");
+            $('#my-dropzone').slideUp("500");
+
+            $('#TransactionForm').removeAttr("hidden");
+            $('#TransactionForm').slideDown("3000");
+            //.slideDown("3000");
+            // alertify.success(' '+done.message);
+            $("input[type='number']").show();
+            $('#soumettre_image').hide();
+
         });
 
         function printErrorMsg(msg) {
@@ -688,6 +715,15 @@
 
             });
 
+
+        $('#typetransaction').on('change', function (e) {
+            $('#datefin').hide();
+            $('#label_datefin').hide();
+            if ($('#typetransaction option:selected').text() !== 'Vente') {
+                $('#datefin').fadeIn("slow");
+                $('label_datefin').fadeIn("slow");
+            }
+        });
         // verification date
         $('#datedeb').on('change', function (e) {
             var datedeb = $('#datedeb').val();

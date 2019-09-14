@@ -23,6 +23,7 @@ Dropzone.options.myDropzone = {
                 dataType: 'json',
                 success: function (data) {
                     total_photos_counter--;
+                    // console.log(done.message);
                     $("#counter").text("# " + total_photos_counter);
                 }
             });
@@ -32,13 +33,16 @@ Dropzone.options.myDropzone = {
         total_photos_counter++;
         $("#counter").text("Images: " + total_photos_counter);
         file["customName"] = name;
-        $('.page-heading').slideUp("500");
-        $('#my-dropzone').slideUp("500");
 
-        $('#TransactionForm').removeAttr("hidden");
-        $('#TransactionForm').slideDown("3000");
+        // $('.page-heading').slideUp("500");
+        // $('#my-dropzone').slideUp("500");
+        //
+        // $('#TransactionForm').removeAttr("hidden");
+        // $('#TransactionForm').slideDown("3000");
             //.slideDown("3000");
+        //console.log(done.message);
         alertify.success(' '+done.message);
-        $("input[type='number']").show();
+      //  $("input[type='number']").show();
+        //$('#soumettre_image').show();
     }
 };

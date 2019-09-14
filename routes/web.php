@@ -109,6 +109,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/charts','HomeController@AllCharts');
 
+    Route::get('/properties-update','PropertyController@UserPropertiesUpdate');
 
 });
 

@@ -231,7 +231,7 @@
                                                     <img class="d-block w-100" width="800" height="400"
                                                          data-src="holder.js/800x400?auto=yes&amp;bg=666&amp;fg=444&amp;text="
                                                          alt=""
-                                                         src="{{asset('storage/images/'.$img->resizedfilename)}}"
+                                                         src="https://immobucket.s3.us-east-2.amazonaws.com/{{$img->resizedfilename}}"
                                                          data-holder-rendered="true">
                                                     <div class="carousel-caption d-none d-md-block">
                                                         <h3> Image:{{ $key+1 }}</h3>

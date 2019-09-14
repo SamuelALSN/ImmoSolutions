@@ -130,7 +130,7 @@
                             <div class="card card-block">
 
                                 <a class="dropdown-item" href="">@lang("Liste des Biens")</a>
-                                <a class="dropdown-item" href="">@lang("")</a>
+                                <a class="dropdown-item" href="">@lang("Statistiques")</a>
                             </div>
                         </div>
                     </li>
@@ -139,7 +139,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href=" ">@lang("Biens publiés")</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{url('/properties-all')}}">@lang("Liste des Biens")</a>
-                            <a class="dropdown-item" href="">@lang("")</a>
+                            <a class="dropdown-item" href="{{url('/properties-charts')}}">@lang("Statistiques")</a>
                         </div>
                     </li>
                     <!-- STAR COLLAPSE MOBILE MENU -->
@@ -188,7 +188,7 @@
                             <a class="dropdown-item" href="">@lang("Blog")</a>
                         </div>
                     </li>
-                    <li><a href="contact-us.html">Contact</a></li>
+                    <li><a href="">Contact</a></li>
                 </ul>
             </nav>
         </div>

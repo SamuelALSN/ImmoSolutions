@@ -88,11 +88,11 @@
 
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
-                                    <img class="d-block img-fluid" src="{{asset('storage/images/'.$property->images['0']->resizedfilename)}}" alt="First slide">
+                                    <img class="d-block img-fluid" src=" https://immobucket.s3.us-east-2.amazonaws.com/{{$property->images['0']->resizedfilename}}" alt="First slide">
                                 </div>
                                 @foreach($property->images as $img)
                                 <div class="carousel-item">
-                                    <img class="d-block img-fluid" src="{{asset('storage/images/'.$img->resizedfilename)}}" alt="Second slide">
+                                    <img class="d-block img-fluid" src="https://immobucket.s3.us-east-2.amazonaws.com/{{$img->resizedfilename}}" alt="Second slide">
                                 </div>
                                 @endforeach
                             </div>

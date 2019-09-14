@@ -250,6 +250,8 @@ class PropertyController extends Controller
     public function update(Request $request, Property $property)
     {
         //
+
+
     }
 
     /**
@@ -365,6 +367,11 @@ class PropertyController extends Controller
         })->get();
         return view('propertiesmanagement.show-published-properties',compact('properties'));
 
+    }
+
+    public function  UserPropertiesUpdate(){
+
+        return view('guest.customer.user-properties-update');
     }
 
 

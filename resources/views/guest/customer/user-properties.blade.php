@@ -26,7 +26,7 @@
                             <span class="heading-icon">
                                 <i class="fa fa-th-list"></i>
                                 </span>
-                            <span class="hidden-sm-down">@lang(" Liste des Biens ")</span>
+                            <span class="hidden-sm-down">@lang(" Total Biens") : {{count($properties)}}</span>
                         </h4>
                     </div>
                     <div class="col-lg-6 col-md-7 col-10 cod-pad">
@@ -51,7 +51,7 @@
                             <div class="button-effect">
                                 <a href="{{url('/user-properties-detail/'.$property->id)}}" class="btn"><i class="fa fa-link"></i></a>
                                 <a href="" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                <a class="img-poppu btn" href="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
+                                <a class="img-poppu btn" href="https://immobucket.s3.us-east-2.amazonaws.com/{{$property->images[0]->resizedfilename}}" data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
                             </div>
                             <div class="homes">
                                 <!-- homes img -->
@@ -60,9 +60,11 @@
                                     @foreach($property->typetransactions as $typetrans)
                                     <div class="homes-tag button alt sale">{{$typetrans->name}}</div>
                                     @endforeach
-                                    <div class="homes-price">Family Home  </div>
-                                    <img src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" alt="home-1" class="img-responsive"
-                                    height="750" width="1000">
+                                    <div class="homes-price">{{$property->propertytype['name']}} </div>
+
+{{--                                    <img src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" alt="home-1" class="img-responsive"--}}
+
+                                    <img src="https://immobucket.s3.us-east-2.amazonaws.com/{{$property->images[0]->resizedfilename}}" height="750" width="1000">
                                 </a>
                             </div>
                         </div>

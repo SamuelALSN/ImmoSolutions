@@ -101,7 +101,7 @@
                             <a href="" class="btn popup-video popup-youtube"><i
                                     class="fas fa-video"></i></a>
                             <a class="img-poppu btn"
-                               href="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}"
+                               href="https://immobucket.s3.us-east-2.amazonaws.com/{{$property->images[0]->resizedfilename}}"
                                data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
                         </div>
                         <div class="homes">
@@ -113,7 +113,7 @@
                                 @endforeach
                                 <div class="homes-price">  @lang("Info") </div>
                                 <img
-                                    src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}"
+                                    src="https://immobucket.s3.us-east-2.amazonaws.com/{{$property->images[0]->resizedfilename}}"
                                     alt="home-1" class="img-responsive"
                                     height="750" width="1000">
                             </a>

@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Image;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
-use Intervention\Image\Facades\Image as InterventionImage;
-use Intervention\Image\Size;
-use Intervention\Image\Image as Img;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image as InterventionImage;
 use Validator;
 
 class ImagesController extends Controller
@@ -69,16 +67,14 @@ class ImagesController extends Controller
             $save_name = $name . '.' . $photo->getClientOriginalExtension();
             $resize_name = $name . Str::random(2) . '.' . $photo->getClientOriginalExtension();
 
-            InterventionImage::make($photo)
+           $resized_image =  InterventionImage::make($photo)
                 ->encode('jpg', 75)
                 ->resize(1000, 750)
-//                ->resize(1000, 750, function ($constraints) {
-//                    $constraints->aspectRatio();
-//                })
-                ->crop(1000, 750)
-                ->save($this->photos_path . '/' . $resize_name);
+                ->crop(1000, 750);
+               // ->save($this->photos_path . '/' . $resize_name);
 
-            $photo->move($this->photos_path, $save_name);
+            Storage::disk('s3')->put($resize_name,file_get_contents($photo), 'public');
+            //$photo->move($this->photos_path, $save_name);
 
             $upload = new Image();
             $upload->file = $save_name;
@@ -87,9 +83,11 @@ class ImagesController extends Controller
             $upload->property_id = $request->input('propertyadd_id');
             $upload->save();
         }
+
         return Response()->json([
             'message' => 'Image Enrégistrer avec sucès'
         ], 200);
+
     }
 
     /**

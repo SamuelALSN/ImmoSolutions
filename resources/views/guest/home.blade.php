@@ -246,7 +246,8 @@
                                         <a href="" class="btn popup-video popup-youtube"><i
                                                 class="fas fa-video"></i></a>
                                         <a class="img-poppu btn"
-                                           href="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}"
+{{--                                           href="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}" --}}
+                                           href="https://immobucket.s3.us-east-2.amazonaws.com/{{$property->images[0]->resizedfilename}}"
                                            data-rel="lightcase:myCollection:slideshow"><i class="fa fa-photo"></i></a>
                                     </div>
                                     <div class="homes">
@@ -258,9 +259,10 @@
                                             @endforeach
                                             <div class="homes-price">  @lang("Info") </div>
                                             <img
-                                                src="{{asset('storage/images/'.$property->images[0]->resizedfilename)}}"
+                                                src="https://immobucket.s3.us-east-2.amazonaws.com/{{$property->images[0]->resizedfilename}}"
                                                 alt="home-1" class="img-responsive"
-                                                height="750" width="1000">
+                                                style="width:100%; height:70%">
+{{--                                                height="750" width="1000">--}}
                                         </a>
                                     </div>
                                 </div>
@@ -352,7 +354,7 @@
     <!-- END SECTION FEATURED PROPERTIES -->
 
     <!-- START SECTION POPULAR PLACES -->
-    @include('guest.section.popular-places')
+{{--    @include('guest.section.popular-places')--}}
     <!-- END SECTION POPULAR PLACES -->
 
     <!-- START SECTION AGENTS -->

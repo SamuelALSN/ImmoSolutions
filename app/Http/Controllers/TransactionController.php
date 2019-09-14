@@ -41,7 +41,7 @@ class TransactionController extends Controller
 
         $validator = Validator::make($request->all(), [
             'beginDate' => 'required|date|after:tomorrow',
-            'endDate' => 'required|date|after:beginDate',
+            'endDate' => 'nullable|date|after:beginDate',
             'visiteDate' => 'required|date|before:beginDate',
             'ammount' => 'required|integer',
         ]);
